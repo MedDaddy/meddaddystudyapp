@@ -1,0 +1,32 @@
+MED DADDY v8.0.0 QA REPORT
+
+Base release: v7.9.0 GCS Practice Lab
+
+NEURO CONTENT
+- Existing A&P II nervous-system questions retained: 160
+- New review/textbook questions: 110
+- Total A&P II nervous-system questions: 270
+- Unique instructor key-word definition questions: 62
+- Instructor study-question prompts covered: 17 of 17
+- Questions mapped directly to the 17 prompts: 34
+- Additional Patton chapter checks: 14
+- Textbook span: Chapters 18 through 24
+- Duplicate new question IDs: 0
+- New-bank answer distribution: A 29, B 29, C 26, D 26
+
+ONTARIO PCP DIRECTIVES
+- Source: Ontario ALS PCS v5.4
+- Status check: v5.4 remains listed as in force by Ontario
+- PCP Core directives indexed: 18
+- PCP Auxiliary directives indexed: 17
+- Total PCP-scope directives: 35
+- Complete sections retained where present: Indications, Conditions, Contraindications, Treatment, Clinical Considerations
+
+TECHNICAL
+- Standalone HTML generated successfully
+- Embedded scripts pass JavaScript syntax parsing
+- Root-level index.html included in deployment ZIP
+- Offline assets remain embedded
+- Neuro glossary and PCP directive study page IDs are unique
+
+Med Daddy is a study aid and does not replace current standards, authorization, service policy, Base Hospital direction, or clinical judgment.
