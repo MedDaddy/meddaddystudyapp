@@ -1,18 +1,16 @@
-# Med Daddy v8.2.0 — Psychology Midterm Prep
+# Med Daddy v8.2.1 — Psychology Navigation Fix
 
-This release expands the PCP109 Psychology midterm module while preserving the existing Med Daddy nervous-system, ECG, CTAS, GCS, and Ontario PCP directive study tools.
+This maintenance release fixes the blank screen that appeared after selecting Psychology from the home screen.
 
-## Psychology update
+## Fix
 
-- 232 original four-option questions
-- 58 correct answers in each position (A, B, C, and D)
-- Definition, applied-recognition, comparison, sequencing, and integrated-case questions
-- Specific teaching rationale after every answer
-- Coverage of the first three psychology classes, all relevant supplied slide decks, review handouts, and the 15-item instructor study sheet
-- 15-question rapid drill, 30-question practice test, 75-question midterm simulation, and complete 232-question mastery mode
+- The shared navigation function now includes full-screen study panels mounted outside the original main container.
+- Psychology Midterm Prep opens correctly.
+- Starting a Psychology quiz hides the Psychology landing page and opens the quiz normally.
+- All 232 Psychology questions and refined teaching rationales are retained.
+- Existing Neuro, Ontario PCP Directives, ECG, CTAS, GCS, and other Med Daddy content is retained.
 
-## Deploy to GitHub Pages
+## GitHub Pages
 
-Upload `index.html` and `.nojekyll` directly to the repository root. In **Settings → Pages**, deploy from the `main` branch and `/(root)`.
+Upload `index.html` and `.nojekyll` directly to the repository root, replacing the existing `index.html`.
 
-This is a course study aid. Confirm clinical or reporting procedures against current legislation, standards, service policy, and instructor direction.

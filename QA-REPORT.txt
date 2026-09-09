@@ -1,43 +1,24 @@
-MED DADDY v8.2.0 — PSYCHOLOGY MIDTERM PREP
-QUALITY ASSURANCE REPORT
+MED DADDY v8.2.1 — PSYCHOLOGY NAVIGATION FIX
 
-Question count: 232
-Unique question IDs: 232
-Unique normalized prompts: 232
-Answer balance: A 58 | B 58 | C 58 | D 58
-Choice count: four choices on every question
-Invalid answer keys: 0
-Missing or short explanations: 0
-Generic filler rationales remaining: 0
-JavaScript syntax errors: 0
+Root cause:
+The Psychology panel was mounted outside the original .container element, but
+the shared show() function only toggled .container > section.panel elements.
+The home panel was hidden while the Psychology panel remained hidden.
 
-Difficulty mix:
-- Medium: 93
-- Hard: 72
-- Instructor Hard: 67
+Repair:
+The show() function now toggles all section.panel application pages.
 
-Source coverage confirmed:
-- Class 1 Perception_and_Pain.ppt
-- Class 2 Emotions.ppt
-- Stress.ppt
-- Crisis Intervention.ppt
-- Behavioral Emergencies.ppt
-- 1-Ch 40 Psychiatric Emergencies1+ CREATED JUNE 26 2026.pptx
-- Abuse_presentation.ppt
-- Emotions handout.doc
-- Stress Reduction Handout.doc
-- Crisis Intervention Handout.doc
-- Victims of abuse handout.doc
-- Instructor study-question sheet
+Verification:
+- Psychology panel exists: PASS
+- Psychology tile handler targets psychMidtermPage: PASS
+- Shared navigation includes psychMidtermPage: PASS
+- Quiz panel is controlled by the same navigation path: PASS
+- Psychology launch function present: PASS
+- Psychology questions retained: 232
+- JavaScript syntax errors: 0
+- Version marker: v8.2.1
 
-Focused review-sheet additions include bruise evolution and its limits,
-objective versus subjective data, bipolar/mania, depression,
-schizophrenia versus schizophreniform disorder, ulcers in the stress triad,
-shingles, Freud and Erikson stages, individual defence mechanisms, the HPA
-axis, stress reduction, PTSD-sensitive care, phobias, and violent-scene safety.
+Deployment package:
+- index.html at ZIP root: PASS
+- .nojekyll at ZIP root: PASS
 
-Packaging check:
-- Root index.html present
-- Root .nojekyll present
-- README present
-- QA report present
