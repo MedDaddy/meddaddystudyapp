@@ -1,24 +1,18 @@
-# Med Daddy v8.0.0
+# Med Daddy v8.2.0 — Psychology Midterm Prep
 
-## Neuro Mastery and Ontario PCP Directive Study Centre
+This release expands the PCP109 Psychology midterm module while preserving the existing Med Daddy nervous-system, ECG, CTAS, GCS, and Ontario PCP directive study tools.
 
-This single-file offline release retains every feature from Med Daddy v7.9.0 and adds:
+## Psychology update
 
-- 270 A&P II nervous-system questions
-- one question for every unique instructor review-sheet definition
-- question coverage for all 17 instructor study-question areas
-- Patton *Anatomy & Physiology*, 11th edition, Chapters 18–24 coverage
-- searchable nervous-system glossary
-- complete nervous-system review learning guide
-- home-screen Ontario PCP Directive Study Centre
-- 35 complete PCP Core and PCP Auxiliary directives from Ontario ALS PCS v5.4
+- 232 original four-option questions
+- 58 correct answers in each position (A, B, C, and D)
+- Definition, applied-recognition, comparison, sequencing, and integrated-case questions
+- Specific teaching rationale after every answer
+- Coverage of the first three psychology classes, all relevant supplied slide decks, review handouts, and the 15-item instructor study sheet
+- 15-question rapid drill, 30-question practice test, 75-question midterm simulation, and complete 232-question mastery mode
 
-## GitHub Pages
+## Deploy to GitHub Pages
 
-Upload `index.html` and `.nojekyll` directly to the repository root. In GitHub Pages settings, publish from the `main` branch and `/(root)`.
+Upload `index.html` and `.nojekyll` directly to the repository root. In **Settings → Pages**, deploy from the `main` branch and `/(root)`.
 
-## Clinical notice
-
-This is a study aid. Paramedics must follow current Ontario standards, Base Hospital authorization, service policy, medical direction, and their authorized scope of practice.
-
-Created by Sam Preston.
+This is a course study aid. Confirm clinical or reporting procedures against current legislation, standards, service policy, and instructor direction.

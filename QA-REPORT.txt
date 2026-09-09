@@ -1,32 +1,43 @@
-MED DADDY v8.0.0 QA REPORT
+MED DADDY v8.2.0 — PSYCHOLOGY MIDTERM PREP
+QUALITY ASSURANCE REPORT
 
-Base release: v7.9.0 GCS Practice Lab
+Question count: 232
+Unique question IDs: 232
+Unique normalized prompts: 232
+Answer balance: A 58 | B 58 | C 58 | D 58
+Choice count: four choices on every question
+Invalid answer keys: 0
+Missing or short explanations: 0
+Generic filler rationales remaining: 0
+JavaScript syntax errors: 0
 
-NEURO CONTENT
-- Existing A&P II nervous-system questions retained: 160
-- New review/textbook questions: 110
-- Total A&P II nervous-system questions: 270
-- Unique instructor key-word definition questions: 62
-- Instructor study-question prompts covered: 17 of 17
-- Questions mapped directly to the 17 prompts: 34
-- Additional Patton chapter checks: 14
-- Textbook span: Chapters 18 through 24
-- Duplicate new question IDs: 0
-- New-bank answer distribution: A 29, B 29, C 26, D 26
+Difficulty mix:
+- Medium: 93
+- Hard: 72
+- Instructor Hard: 67
 
-ONTARIO PCP DIRECTIVES
-- Source: Ontario ALS PCS v5.4
-- Status check: v5.4 remains listed as in force by Ontario
-- PCP Core directives indexed: 18
-- PCP Auxiliary directives indexed: 17
-- Total PCP-scope directives: 35
-- Complete sections retained where present: Indications, Conditions, Contraindications, Treatment, Clinical Considerations
+Source coverage confirmed:
+- Class 1 Perception_and_Pain.ppt
+- Class 2 Emotions.ppt
+- Stress.ppt
+- Crisis Intervention.ppt
+- Behavioral Emergencies.ppt
+- 1-Ch 40 Psychiatric Emergencies1+ CREATED JUNE 26 2026.pptx
+- Abuse_presentation.ppt
+- Emotions handout.doc
+- Stress Reduction Handout.doc
+- Crisis Intervention Handout.doc
+- Victims of abuse handout.doc
+- Instructor study-question sheet
 
-TECHNICAL
-- Standalone HTML generated successfully
-- Embedded scripts pass JavaScript syntax parsing
-- Root-level index.html included in deployment ZIP
-- Offline assets remain embedded
-- Neuro glossary and PCP directive study page IDs are unique
+Focused review-sheet additions include bruise evolution and its limits,
+objective versus subjective data, bipolar/mania, depression,
+schizophrenia versus schizophreniform disorder, ulcers in the stress triad,
+shingles, Freud and Erikson stages, individual defence mechanisms, the HPA
+axis, stress reduction, PTSD-sensitive care, phobias, and violent-scene safety.
 
-Med Daddy is a study aid and does not replace current standards, authorization, service policy, Base Hospital direction, or clinical judgment.
+Packaging check:
+- Root index.html present
+- Root .nojekyll present
+- README present
+- QA report present
