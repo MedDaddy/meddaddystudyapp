@@ -1,0 +1,52 @@
+MED DADDY v8.4.0 — PCT II ENVIRONMENTAL SOURCE MANIFEST
+============================================================
+
+COURSE SOURCES
+1. 1-Ch 23 Burns2+.pdf
+   - 69 slides/pages reviewed
+   - Skin anatomy, burn depth and zones, TBSA, inhalation injury, shock,
+     eschar, fluid formula, chemical/electrical/radiation burns and care
+
+2. 1-Ch 36 Toxicology Substance Abuse and Poisoning2+ (2).pdf
+   - 155 slides/pages reviewed
+   - Exposure routes, toxidromes, substance-use terminology, alcohol,
+     stimulants, hallucinogens, opioids, pesticides, specific toxins,
+     caustics, hydrocarbons, toxic alcohols, bites/stings and HazMat
+
+3. 1-Ch 38 Enviro2+ (2).pdf
+   - 125 slides/pages reviewed
+   - Thermoregulation, heat illness, hypothermia, frostbite, drowning,
+     gas laws, diving injury, decompression illness and altitude illness
+
+4. Study Guide Environmental Emergencies v2 2026.docx
+   - Every key term and nested emphasis point mapped to direct questions
+   - Chapters 23, 36 and 38 used as the course spine
+
+5. PCT II Enviro. mock.pdf
+   - 16 pages / 120 questions reviewed
+   - Used for examination style and coverage
+
+6. PCT II Enviro. mockHIGHLIGHTS.pdf
+   - 16 pages / highlighted answer set reviewed
+   - Used to identify instructor emphasis
+   - Answers were not imported blindly; clinical claims were cross-checked
+
+7. moodle.txt
+   - 25 basic questions reviewed
+   - Used only as a low-weight coverage check; wording was not imported
+
+STANDARDS CROSS-CHECK
+- Ontario Basic Life Support Patient Care Standards, Version 3.4
+- Ontario Advanced Life Support Patient Care Standards, Version 5.4
+
+CORRECTED OR QUALIFIED COURSE/MOCK SHORTCUTS
+- HF acid: no universal ice-water-immersion rule
+- Worsening burn airway: no categorical deferral of advanced airway care
+- CO: standard pulse oximetry may be falsely normal
+- Cyanide: cyanosis and bitter-almond odour are not reliable exclusion tests
+- Hydroxocobalamin and nerve-agent antidotes: auxiliary/authorization-dependent
+- Unknown chemical irrigation: current Ontario BLS minimum is 20 minutes when stable
+
+AUTHORSHIP
+- Med Daddy created by Sam Preston
+- New question wording and learning-guide presentation are original to this release

@@ -1,24 +1,64 @@
-MED DADDY v8.2.1 — PSYCHOLOGY NAVIGATION FIX
+MED DADDY v8.4.0 — PCT II ENVIRONMENTAL QA REPORT
+============================================================
 
-Root cause:
-The Psychology panel was mounted outside the original .container element, but
-the shared show() function only toggled .container > section.panel elements.
-The home panel was hidden while the Psychology panel remained hidden.
+Release artifact: MedDaddy-v8.4.0-PCT2-Environmental.html
+SHA-256: 2cdc3f9b02c51445ebd2adc7da2d9569df37b0007d0b084b554e5e538ab8d2ec
+Size: 24,468,374 bytes
 
-Repair:
-The show() function now toggles all section.panel application pages.
+PCT II ENVIRONMENTAL CONTENT
+- Questions: 579
+- Directly mapped concepts: 174
+- Case/application questions: 57
+- Learning guides: 12
+- Answer distribution: A 145 / B 145 / C 145 / D 144
+- Burns questions: 155
+- Heat & Cold questions: 125
+- Water, Diving & Altitude questions: 89
+- Toxicology & HazMat questions: 210
+- Four unique choices per question: PASS
+- Valid answer key per question: PASS
+- Full explanation per question: PASS
+- Three option-specific incorrect rationales per question: PASS
+- Duplicate question IDs: 0
+- Duplicate prompts: 0
+- Required study-guide objectives missing: 0
 
-Verification:
-- Psychology panel exists: PASS
-- Psychology tile handler targets psychMidtermPage: PASS
-- Shared navigation includes psychMidtermPage: PASS
-- Quiz panel is controlled by the same navigation path: PASS
-- Psychology launch function present: PASS
-- Psychology questions retained: 232
+CLINICAL SPOT CHECKS
+- Consensus-formula case (70 kg × 30%): 8,400 mL — PASS
+- Adult anterior trunk + entire arm TBSA: 27% — PASS
+- Normal standard SpO2 does not exclude CO — PASS
+- Severe hypothermia requires careful signs-of-life assessment — PASS
+- Unknown-chemical irrigation: at least 20 min if stable — PASS
+- Ventilation precedes/accompanies naloxone — PASS
+- Auxiliary PCP scope wording for cyanide/nerve-agent care — PASS
+
+APPLICATION INTEGRATION
+- Environmental module page exists: PASS
+- PCT II Unit Three home-panel entry exists: PASS
+- Environmental route exists: PASS
+- 50-, 100-, complete-bank and four focused launch modes exist: PASS
+- Twelve environmental guides registered: PASS
+- ECG and PCT II Neuro units retained: PASS
+- Psychology, CTAS and GCS modules retained: PASS
+
+CODE CHECKS
+- Inline script blocks parsed: 6
 - JavaScript syntax errors: 0
-- Version marker: v8.2.1
+- Root-level index.html included in deployment archive: PASS
+- .nojekyll included: PASS
 
-Deployment package:
-- index.html at ZIP root: PASS
-- .nojekyll at ZIP root: PASS
+SOURCE REVIEW
+- Burns deck: 69 slides/pages audited
+- Toxicology/Substance Abuse/Poisoning deck: 155 slides/pages audited
+- Environmental Emergencies deck: 125 slides/pages audited
+- Environmental Study Guide v2 2026: every listed emphasis point mapped
+- Environmental mock: 120 questions / 16 pages audited
+- Highlighted mock: answer emphasis annotations extracted and audited
+- Moodle sample: 25 basic questions used only as a coverage check
+- Ontario BLS PCS 3.4 and ALS PCS 5.4 used as standards cross-checks
 
+Note: the installed Playwright package did not include a browser executable in
+the execution image. Navigation safety was verified structurally: the page is a
+top-level section.panel, every route target exists, the PCT II card calls the
+correct route, quiz and guide launch functions are present, and every inline
+JavaScript block parses without error.
