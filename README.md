@@ -1,13 +1,5 @@
-# Med Daddy v8.6.2 - GitHub Pages package
+# Med Daddy v8.6.3 — Neuro 120-Question Mock
 
-This package keeps the complete app but stores embedded images as normal web assets so `index.html` remains below GitHub's browser-upload limit.
+Upload `index.html`, `.nojekyll`, and the complete `assets` folder to the repository root. Do not upload only `index.html`; the externalized assets are required.
 
-## Upload
-
-Extract the ZIP. Upload all of the following to the repository root:
-
-- `index.html`
-- `.nojekyll`
-- the complete `assets` folder
-
-Keep the folder name and filenames unchanged. Do not upload the ZIP itself.
+The rebuilt 82-question Neuro bank and the uploaded 120-question mock are separate modes.
