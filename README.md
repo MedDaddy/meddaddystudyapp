@@ -1,7 +1,13 @@
-# Med Daddy v8.6.0
+# Med Daddy v8.6.2 - GitHub Pages package
 
-Question-bank audit release.
+This package keeps the complete app but stores embedded images as normal web assets so `index.html` remains below GitHub's browser-upload limit.
 
-Deploy `index.html` from the repository root with GitHub Pages set to the `main` branch and `/(root)`.
+## Upload
 
-See `QUESTION-BANK-AUDIT-REPORT-v8.6.0.md` for the full before-and-after audit.
+Extract the ZIP. Upload all of the following to the repository root:
+
+- `index.html`
+- `.nojekyll`
+- the complete `assets` folder
+
+Keep the folder name and filenames unchanged. Do not upload the ZIP itself.
