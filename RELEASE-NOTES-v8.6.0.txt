@@ -1,0 +1,12 @@
+MED DADDY v8.6.0 - QUESTION BANK AUDIT
+
+- Audited all active banks: 5,412 questions reviewed structurally and source-mapped.
+- Retained 4,269 unique questions.
+- Removed 1,143 invalid, duplicate, answer-revealing or low-value questions.
+- Removed every synthetic "clinical association" question.
+- Removed duplicate reverse-definition items from Neuro, Environmental and Endocrine.
+- Removed generic distractor rationale templates from 1,086 retained questions.
+- Repaired 29 missing cardiovascular-physiology metadata records.
+- Rebuilt the cumulative A&P exam as 100 unique questions without duplicated bank entries.
+- Added source hierarchy: Nancy Caroline for PCT, Patton for A&P, uploaded unit files for every module, and current Ontario BLS/ALS standards for care and directives.
+- Passed schema, uniqueness, source, answer-position and inline JavaScript QA.

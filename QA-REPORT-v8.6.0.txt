@@ -1,0 +1,16 @@
+MED DADDY v8.6.0 QA
+
+PASS - 4,269 active questions
+PASS - 0 invalid schemas
+PASS - 0 duplicate IDs
+PASS - 0 duplicate normalized prompts
+PASS - 0 answer-revealing association templates
+PASS - 0 reverse-definition duplicates in newest PCT II banks
+PASS - 0 generic distractor rationale templates
+PASS - 0 questions missing original source metadata
+PASS - 0 questions missing audit reference
+PASS - 100 unique questions in the A&P cumulative exam
+PASS - answer positions balanced: A 1,079 / B 1,069 / C 1,065 / D 1,056
+PASS - all eight inline scripts executed without error in the test harness
+PASS - deployment index.html matches the standalone release byte-for-byte
+PASS - ZIP contains root-level index.html and .nojekyll
