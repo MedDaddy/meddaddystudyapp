@@ -691,6 +691,11 @@ box-shadow:0 0 34px rgba(57,242,11,.08);margin-bottom:18px}
 .pct2-neuro{max-width:1500px;margin:0 auto;padding:1.2rem}.pct2-neuro-hero{display:grid;grid-template-columns:1.5fr .8fr;gap:1rem;padding:1.35rem;border:1px solid #34495e;border-radius:22px;background:linear-gradient(135deg,#101d2d,#16142b)}
 .pct2-neuro-hero h1{margin:.3rem 0}.pct2-neuro-actions{display:grid;gap:.65rem;align-content:center}.pct2-neuro-actions button{width:100%}.pct2-neuro-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin:1rem 0}.pct2-neuro-metrics div,.pct2-neuro-card{background:#111b2c;border:1px solid #30415a;border-radius:16px;padding:1rem}.pct2-neuro-metrics strong{display:block;font-size:1.6rem;color:#71d7ff}.pct2-neuro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}.pct2-neuro-card h3{margin-top:0}.pct2-neuro-card button{width:100%;margin-top:.45rem}.pct2-review-map{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}.pct2-review-map article{background:#0e1927;border-left:4px solid #39c0ed;border-radius:12px;padding:1rem}.pct2-review-map h3{margin:.1rem 0 .4rem}.pct2-neuro-note{margin:1rem 0;padding:1rem;border:1px solid #8a6a28;background:#201b12;border-radius:14px}.pct2-course-units{display:grid;gap:1rem}.pct2-unit-block{padding:1rem;border:1px solid #314159;border-radius:18px;background:#0d1725}.pct2-unit-block h3{margin:.1rem 0 .75rem}@media(max-width:850px){.pct2-neuro-hero{grid-template-columns:1fr}.pct2-neuro-grid{grid-template-columns:1fr}.pct2-neuro-metrics{grid-template-columns:repeat(2,1fr)}.pct2-review-map{grid-template-columns:1fr}}
 </style>
+
+<style>
+.env-uploaded-mocks{margin:16px 0;padding:18px;border:1px solid rgba(250,204,21,.35);border-radius:18px;background:linear-gradient(135deg,rgba(113,63,18,.18),rgba(15,23,42,.85));display:grid;grid-template-columns:minmax(220px,.8fr) minmax(420px,1.4fr);gap:16px;align-items:center}.env-uploaded-mocks-copy>span{font-size:.72rem;font-weight:950;letter-spacing:.13em;color:#facc15}.env-uploaded-mocks-copy h2{margin:4px 0}.env-uploaded-mocks-copy p,.env-uploaded-mock-grid p{color:#cbd5e1;line-height:1.5}.env-uploaded-mock-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.env-uploaded-mock-grid article{padding:14px;border:1px solid rgba(148,163,184,.2);border-radius:13px;background:rgba(15,23,42,.72)}.env-uploaded-mock-grid article>b{font-size:.7rem;letter-spacing:.1em;color:#fbbf24}.env-uploaded-mock-grid h3{margin:5px 0}.env-uploaded-mock-grid button{width:100%}@media(max-width:800px){.env-uploaded-mocks,.env-uploaded-mock-grid{grid-template-columns:1fr}}
+</style>
+
 <script src="assets/media.js"></script>
 </head>
 <body>
@@ -704,7 +709,7 @@ box-shadow:0 0 34px rgba(57,242,11,.08);margin-bottom:18px}
         <div>
           <div class="md5-brand-line">
             <h1>Med Daddy</h1>
-            <span>v8.8.2</span>
+            <span>v8.8.3</span>
           </div>
           <p>The PCP Companion</p>
         </div>
@@ -832,7 +837,7 @@ box-shadow:0 0 34px rgba(57,242,11,.08);margin-bottom:18px}
     <section class="md5-bottom-grid">
       <article class="md5-info-card blue md88-release">
   <span>CURRENT RELEASE</span>
-  <h3>v8.8.2 — Environmental Audit &amp; Study Cleanup <b>NEW</b></h3>
+  <h3>v8.8.3 — Environmental Audit &amp; Study Cleanup <b>NEW</b></h3>
   <p>Environmental practice is now one audited question per objective, with the uploaded 120-question mock separated under Discord Mocks. Study Mode is condensed into expandable course units.</p>
   <details><summary>What changed</summary><ul><li>Removed 360 repetitive Environmental definition variants</li><li>Retained 219 distinct, source-mapped learning objectives</li><li>Added clean and highlighted-source Environmental mock entries</li><li>Condensed PCT II Study Mode navigation</li></ul></details>
 </article>
@@ -1495,6 +1500,15 @@ box-shadow:0 0 34px rgba(57,242,11,.08);margin-bottom:18px}
 <section id="pct2EnvironmentalPage" class="panel hidden pct2-environmental" aria-hidden="true">
  <div class="topbar"><div><span class="companion-kicker">PATIENT CARE &amp; THEORY II</span><h1>🌡️ Environmental Emergencies</h1></div><button class="secondary" onclick="showStudyHub();openCourseTile('pct2')">← PCT II</button></div>
  <div class="pct2-env-hero"><div><span class="companion-kicker">THREE CHAPTERS • COMPLETE STUDY GUIDE • MOCK-INFORMED • ONTARIO-CHECKED</span><h1>Environmental care from burn scene to toxic exposure</h1><p>Burns, heat, cold, drowning, diving, altitude, toxicology, substance use, envenomation, radiation and HazMat—built from every supplied slide deck and every emphasized review-sheet point.</p></div><div class="pct2-env-actions"><button class="primary" onclick="launchPCTEnvironmentalQuiz(50)">Start 50-question exam mock</button><button onclick="launchPCTEnvironmentalQuiz(100)">100-question challenge</button><button onclick="launchPCTEnvironmentalQuiz(9999)">Complete mastery bank</button><button onclick="showGuideById('pct2-env-burn-depth')">Open 12 learning guides</button><button onclick="showEnvironmentalCompletedReview()">Completed Review Sheet</button></div></div>
+ 
+<section class="env-uploaded-mocks" aria-label="Uploaded Environmental mock tests">
+ <div class="env-uploaded-mocks-copy"><span>UPLOADED MOCK TESTS</span><h2>Discord Environmental Mock</h2><p>Both supplied PDFs contain the same 120 questions. The clean copy is for exam practice; the highlighted copy is retained as a separate answer-key review. Neither is mixed into the audited Med Daddy bank.</p></div>
+ <div class="env-uploaded-mock-grid">
+  <article><b>Mock 1</b><h3>Clean 120-Question Test</h3><p>Original wording, original order and no answers shown before you respond.</p><button class="primary" onclick="launchEnvironmentalDiscordMock('clean')">Start clean mock</button></article>
+  <article><b>Answer Review</b><h3>Highlighted Copy</h3><p>The matching highlighted source preserved as its own review attempt.</p><button onclick="launchEnvironmentalDiscordMock('highlighted')">Open highlighted-copy review</button></article>
+ </div>
+</section>
+
  <div class="pct2-env-metrics"><div><strong>219</strong><small>audited learning objectives</small></div><div><strong>219</strong><small>distinct objectives</small></div><div><strong>12</strong><small>learning guides</small></div><div><strong>50</strong><small>questions in exam mode</small></div></div>
  <div class="pct2-env-note"><strong>Mock sanity check:</strong> the highlighted 120-question mock guides emphasis and style. When a highlighted answer conflicts with current safe practice—such as ice-water treatment for HF, deferring a deteriorating burn airway, relying on cyanosis or almond odour, or trusting a normal SpO₂ in CO—the app teaches the corrected rule and explains why.</div>
  <div class="study-section-heading"><div><span>FOCUSED PRACTICE</span><h2>Train one emergency family at a time</h2></div></div>
@@ -4795,7 +4809,7 @@ openCourseTile=function(courseId){
 refreshECGCourseSelectors();
 
 </script>
-<!-- Med Daddy v8.8.2 • Created by Sam Preston • Psychology navigation fix • GCS Practice Lab • CTAS full-screen image zoom • ECG Academy source strips verified • AP2 bank signature 8ee73a78b355b334 -->
+<!-- Med Daddy v8.8.3 • Created by Sam Preston • Psychology navigation fix • GCS Practice Lab • CTAS full-screen image zoom • ECG Academy source strips verified • AP2 bank signature 8ee73a78b355b334 -->
 <script>
 (function browserPayload(){
 
@@ -5044,7 +5058,7 @@ refreshECGCourseSelectors();
       .replace('100 cumulative instructor-hard questions','Audited cumulative exam drawn from retained A&P questions');
   });
   window.MED_DADDY_AUDIT={version:'8.6.0',before:5412,after:4269,removed:1143};
-  console.info('Med Daddy v8.8.2 audited bank loaded:',BANK.length,'questions');
+  console.info('Med Daddy v8.8.3 audited bank loaded:',BANK.length,'questions');
 })();
 </script>
 
@@ -5089,7 +5103,7 @@ refreshECGCourseSelectors();
     endocrine:BANK.filter(q=>String(q.id||'').startsWith('PCT2-ENDO-')).length
   };
   document.title='Med Daddy v8.6.1 — PCT II Question Quality Hotfix';
-  document.querySelectorAll('span').forEach(el=>{if(el.textContent.trim()==='v8.8.2')el.textContent='v8.6.1';});
+  document.querySelectorAll('span').forEach(el=>{if(el.textContent.trim()==='v8.8.3')el.textContent='v8.6.1';});
   const max=document.getElementById('numQuestions');if(max)max.max=String(BANK.length);
   if(window.MED_DADDY_AUDIT){window.MED_DADDY_AUDIT.version='8.6.1';window.MED_DADDY_AUDIT.totalQuestions=BANK.length;}
   window.PCT2_QUALITY_AUDIT={removed:removedIds.size,retained:counts,totalQuestions:BANK.length};
@@ -5164,7 +5178,7 @@ const MD88_ENVIRONMENTAL_DISCORD_MOCK=[{"id":"DISCORD-ENV-MOCK-001","course":"Di
 
 
 <script>
-/* v8.8.2: authoritative course router; replaces the older chained two-course handlers. */
+/* v8.8.3: authoritative course router; replaces the older chained two-course handlers. */
 window.openCourseTile=function(courseId){
  const routes={
   pct:['pctCoursePanel','courseTilePct'],
