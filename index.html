@@ -704,7 +704,7 @@ box-shadow:0 0 34px rgba(57,242,11,.08);margin-bottom:18px}
         <div>
           <div class="md5-brand-line">
             <h1>Med Daddy</h1>
-            <span>v8.8.1</span>
+            <span>v8.8.2</span>
           </div>
           <p>The PCP Companion</p>
         </div>
@@ -832,7 +832,7 @@ box-shadow:0 0 34px rgba(57,242,11,.08);margin-bottom:18px}
     <section class="md5-bottom-grid">
       <article class="md5-info-card blue md88-release">
   <span>CURRENT RELEASE</span>
-  <h3>v8.8.1 — Environmental Audit &amp; Study Cleanup <b>NEW</b></h3>
+  <h3>v8.8.2 — Environmental Audit &amp; Study Cleanup <b>NEW</b></h3>
   <p>Environmental practice is now one audited question per objective, with the uploaded 120-question mock separated under Discord Mocks. Study Mode is condensed into expandable course units.</p>
   <details><summary>What changed</summary><ul><li>Removed 360 repetitive Environmental definition variants</li><li>Retained 219 distinct, source-mapped learning objectives</li><li>Added clean and highlighted-source Environmental mock entries</li><li>Condensed PCT II Study Mode navigation</li></ul></details>
 </article>
@@ -4795,7 +4795,7 @@ openCourseTile=function(courseId){
 refreshECGCourseSelectors();
 
 </script>
-<!-- Med Daddy v8.8.1 • Created by Sam Preston • Psychology navigation fix • GCS Practice Lab • CTAS full-screen image zoom • ECG Academy source strips verified • AP2 bank signature 8ee73a78b355b334 -->
+<!-- Med Daddy v8.8.2 • Created by Sam Preston • Psychology navigation fix • GCS Practice Lab • CTAS full-screen image zoom • ECG Academy source strips verified • AP2 bank signature 8ee73a78b355b334 -->
 <script>
 (function browserPayload(){
 
@@ -5044,7 +5044,7 @@ refreshECGCourseSelectors();
       .replace('100 cumulative instructor-hard questions','Audited cumulative exam drawn from retained A&P questions');
   });
   window.MED_DADDY_AUDIT={version:'8.6.0',before:5412,after:4269,removed:1143};
-  console.info('Med Daddy v8.8.1 audited bank loaded:',BANK.length,'questions');
+  console.info('Med Daddy v8.8.2 audited bank loaded:',BANK.length,'questions');
 })();
 </script>
 
@@ -5089,7 +5089,7 @@ refreshECGCourseSelectors();
     endocrine:BANK.filter(q=>String(q.id||'').startsWith('PCT2-ENDO-')).length
   };
   document.title='Med Daddy v8.6.1 — PCT II Question Quality Hotfix';
-  document.querySelectorAll('span').forEach(el=>{if(el.textContent.trim()==='v8.8.1')el.textContent='v8.6.1';});
+  document.querySelectorAll('span').forEach(el=>{if(el.textContent.trim()==='v8.8.2')el.textContent='v8.6.1';});
   const max=document.getElementById('numQuestions');if(max)max.max=String(BANK.length);
   if(window.MED_DADDY_AUDIT){window.MED_DADDY_AUDIT.version='8.6.1';window.MED_DADDY_AUDIT.totalQuestions=BANK.length;}
   window.PCT2_QUALITY_AUDIT={removed:removedIds.size,retained:counts,totalQuestions:BANK.length};
@@ -5162,12 +5162,35 @@ const MD88_ENVIRONMENTAL_DISCORD_MOCK=[{"id":"DISCORD-ENV-MOCK-001","course":"Di
 </style>
 <script>window.showEnvironmentalCompletedReview=function(){show('environmentalCompletedReviewPage');window.scrollTo(0,0);};</script>
 
+
 <script>
-(function hydrateMedia(){
- document.querySelectorAll('[src^="md-media:"],[href^="md-media:"]').forEach(function(el){
-  ['src','href'].forEach(function(attr){var v=el.getAttribute(attr);if(v&&v.indexOf('md-media:')===0)el.setAttribute(attr,MD_MEDIA[v.slice(9)]);});
+/* v8.8.2: authoritative course router; replaces the older chained two-course handlers. */
+window.openCourseTile=function(courseId){
+ const routes={
+  pct:['pctCoursePanel','courseTilePct'],
+  ap1:['ap1CoursePanel','courseTileAp1'],
+  fund2:['fund2CoursePanel','courseTileFund2'],
+  ap2:['ap2CoursePanel','courseTileAp2'],
+  pct2:['pct2CoursePanel','courseTilePct2']
+ };
+ const route=routes[courseId];
+ if(!route)return;
+ Object.values(routes).forEach(function(pair){
+  const panel=document.getElementById(pair[0]);
+  const tile=document.getElementById(pair[1]);
+  const selected=pair[0]===route[0];
+  if(panel){panel.classList.toggle('hidden',!selected);panel.setAttribute('aria-hidden',String(!selected));}
+  if(tile)tile.classList.toggle('active',selected);
  });
-})();
+ const target=document.getElementById(route[0]);
+ if(target){
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+   const top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-16);
+   window.scrollTo({top:top,behavior:'smooth'});
+  });});
+ }
+};
 </script>
-</body>
+
+<script>(function(){document.querySelectorAll('[src^="md-media:"],[href^="md-media:"]').forEach(function(el){['src','href'].forEach(function(a){var v=el.getAttribute(a);if(v&&v.indexOf('md-media:')===0)el.setAttribute(a,MD_MEDIA[v.slice(9)]);});});})();</script></body>
 </html>
