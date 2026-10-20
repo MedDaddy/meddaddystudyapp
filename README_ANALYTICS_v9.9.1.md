@@ -1,14 +1,14 @@
 # Med Daddy v9.9.1 — privacy-first analytics integration (staged)
 
-## Activation required, no tracking until activated
+## Activated Oct 20 2026 — website tracking enabled (subject to privacy controls)
 
-This release includes a ready-to-connect Umami Cloud visitor tracker. `md_analytics_config.js` intentionally has `websiteId: ''`. **No tracking script is loaded and no analytics requests are sent until the site owner adds their Umami Cloud website UUID.** Do not mistake a staged integration for active visitor counting.
+The website owner has now supplied their public Umami Cloud website ID and activated tracking in `md_analytics_config.js`. Browser privacy signals and visitor opt-out still suppress it. Dashboard receipt of actual events needs a live-site visit and account-owner confirmation; historical counts cannot be recovered.
 
 ### One-time owner setup
 1. Create or sign in to a free *Hobby* Umami Cloud account: https://cloud.umami.is
 2. Choose **Websites → Add website**. Name: `Med Daddy`; Domain: `meddaddy.github.io` (host only, not the `/meddaddystudyapp/` path).
 3. Open **Tracking Code** for that website and copy **data-website-id**, a public UUID such as `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. No account password or API key should be shared.
-4. Set `websiteId: 'that-uuid'` in `md_analytics_config.js` and redeploy. The page will begin reporting normal pageviews and `unit_open` events.
+4. COMPLETE: The approved public website ID is configured in `md_analytics_config.js` and deployed. The page should report pageviews and supported `unit_open` events where users permit tracking.
 5. Visit https://meddaddy.github.io/meddaddystudyapp/ and test under Umami's dashboard. Don't expect perfect totals: blockers, privacy choices and unavailable networks exclude some visits.
 
 ## What is recorded, only after activation
@@ -35,3 +35,8 @@ This does not track other standalone study pages (e.g. `/urinary_plain_english.h
 - Append both after all app overlays in the unpacked-app loader; update version to 9.9.1
 - Preserve v9.9.0 index in `v9.9.0_rollback_index.html`
 - No question bank, treatment directive, study progress key or student score key is changed.
+
+## Activation audit — Oct 20, 2026
+- Config-only change from a blank website ID to the website owner's supplied UUID, without changing quiz banks, stored answers, or the app entrypoint.
+- Umami's own browser tracking and privacy controls apply; ad blockers, Do Not Track, Global Privacy Control and per-visitor opt-outs may reduce counts.
+- A successful GitHub Pages workflow confirms deployment, NOT receipt of analytics events in the private Umami dashboard. Owner should validate using a permitted test browser.

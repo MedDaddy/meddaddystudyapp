@@ -1,2 +1,2 @@
-/* v9.9.1: Add your own Umami Cloud website ID to activate. Blank = no analytics requests. */
-window.MD_ANALYTICS_CONFIG=Object.freeze({websiteId:"",hostname:"meddaddy.github.io"});
+/* Med Daddy v9.9.1 — Umami Cloud activated Oct 20 2026. Public website ID only. */
+window.MD_ANALYTICS_CONFIG=Object.freeze({websiteId:"6d156816-2d0c-448c-8f14-1037e9c9fa7a",hostname:"meddaddy.github.io"});
