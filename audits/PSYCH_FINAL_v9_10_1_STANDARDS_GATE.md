@@ -1,4 +1,4 @@
-# Med Daddy | Psychology Final v9.10.1 — source coverage and release gate
+# Med Daddy | Psychology Final v9.10.2 — source coverage and release gate
 
 Status: **INTERIM, NOT COMPLETE to the user's ten-point Med Daddy standard.**
 Source cut: user's eight uploads on 2026-10-22, alongside preserved existing Psychology Midterm source/question bank.
@@ -27,7 +27,7 @@ Source cut: user's eight uploads on 2026-10-22, alongside preserved existing Psy
 ## Explicit acceptance gate evaluation
 1. Read uploaded sources: **PASS for text and referenced teaching points**, visual diagram/embedded-image inspection remains open.
 2. High-Yield 50 = 10×5: **PASS**.
-3. Five questions for **every** review point: **FAIL**. 35 final-review points × 5 would require 175 unique objective-specific items; only one direct reviewed item per point plus thematic High-Yield/slide extensions exists. The additional 17 handout questions also require a separate five-per-point ledger.
+3. Five questions for **every** review point: **FAIL**. 35 final-review points × 5 would require 175 unique objective-specific items; only one direct reviewed item per point plus thematic High-Yield/slide extensions exists. A manually reviewed crosswalk saved at `audits/PSYCH_FINAL_v9_10_2_REVIEW_CROSSWALK.json` shows 7 of 35 final review objectives currently have at least five directly relevant items; 28 remain short, requiring 79 additional objective-specific question slots. The additional 17 handout questions also require a separate five-per-point ledger.
 4. Three questions for every explicit slide question: **PARTIAL**. Eight distinct Substance Abuse embedded source questions meet 3×8, but Rohypnol/caffeine and Death DNR case questions have not all been independently expanded; clinical DNR cases need directive reconciliation before release.
 5. Psych exam style: **PARTIAL**. Mix of definition, interpretation, scenario and clinical recognition; further instructor-style grading is required.
 6. Preserve uploaded mocks: **PASS for eight source prompts embedded in Substance Abuse**, unscored because original slides do not supply verified keys. Previous Midterm preserved. No standalone separate Psychology mock PDF was uploaded this turn.
@@ -52,3 +52,9 @@ Source cut: user's eight uploads on 2026-10-22, alongside preserved existing Psy
 - Unit must NOT be labelled complete or "five-per-point verified" on this checkpoint.
 
 Next authoring work: complete 140 missing objective-specific review questions, then separately audit 17 handout questions and remaining explicit slide questions to the agreed standard.
+## v9.10.2 QA update
+- Corrected 21 lecture-slide-number references in the Final Review and High-Yield scripts by comparing the source PowerPoint slide indexes directly.
+- Inspected the death/mortality source charts as rendered images; the 2011 ranked cancer/heart/stroke table is Death.ppt slide 3, while slide 4 is a coarser pie chart.
+- The 109 new questions now have 327 individually authored incorrect-option explanations (105 review, 150 High-Yield, 72 slide expansions). All three script modules pass JavaScript syntax checks after the changes.
+- GitHub rollback preserved separately at `v9.9.6_rollback_index.html` and `v9.10.1_rollback_index.html`.
+- Original lecture mock is unscored; its source file did not include verified keys. No fabricated key is used.
