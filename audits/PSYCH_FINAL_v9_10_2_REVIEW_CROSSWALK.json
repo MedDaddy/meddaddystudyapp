@@ -1,0 +1,435 @@
+{
+  "version": "9.10.2",
+  "methodology": "Manual question-to-objective matching by subject and source, not a tally of keyword matches. Existing source-linked questions may cover more than one instructor review objective if each directly tests its requirements. This is a checkpoint, not a complete coverage certification.",
+  "totalReviewPoints": 35,
+  "fullFiveCoveragePoints": 7,
+  "pointsStillShort": 28,
+  "additionalObjectiveQuestionSlotsRequired": 79,
+  "items": [
+    {
+      "reviewPoint": 1,
+      "source": "Final review.docx.pdf question 1",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-001",
+        "PSY-FINAL-HY-002"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 2,
+      "source": "Final review.docx.pdf question 2",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-002"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 3,
+      "source": "Final review.docx.pdf question 3",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-003",
+        "PSY-FINAL-HY-014"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 4,
+      "source": "Final review.docx.pdf question 4",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-004",
+        "PSY-FINAL-HY-022",
+        "PSY-FINAL-HY-023",
+        "PSY-FINAL-HY-025",
+        "PSY-FINAL-SLIDE-004",
+        "PSY-FINAL-SLIDE-005",
+        "PSY-FINAL-SLIDE-006"
+      ],
+      "verifiedObjectiveSpecificCount": 7,
+      "meetsFive": true,
+      "stillNeeded": 0
+    },
+    {
+      "reviewPoint": 5,
+      "source": "Final review.docx.pdf question 5",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-005",
+        "PSY-FINAL-SLIDE-019",
+        "PSY-FINAL-SLIDE-020",
+        "PSY-FINAL-SLIDE-021"
+      ],
+      "verifiedObjectiveSpecificCount": 4,
+      "meetsFive": false,
+      "stillNeeded": 1
+    },
+    {
+      "reviewPoint": 6,
+      "source": "Final review.docx.pdf question 6",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-006"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 7,
+      "source": "Final review.docx.pdf question 7",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-007",
+        "PSY-FINAL-HY-016",
+        "PSY-FINAL-HY-025"
+      ],
+      "verifiedObjectiveSpecificCount": 3,
+      "meetsFive": false,
+      "stillNeeded": 2
+    },
+    {
+      "reviewPoint": 8,
+      "source": "Final review.docx.pdf question 8",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-008",
+        "PSY-FINAL-HY-001"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 9,
+      "source": "Final review.docx.pdf question 9",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-009",
+        "PSY-FINAL-HY-027",
+        "PSY-FINAL-HY-030"
+      ],
+      "verifiedObjectiveSpecificCount": 3,
+      "meetsFive": false,
+      "stillNeeded": 2
+    },
+    {
+      "reviewPoint": 10,
+      "source": "Final review.docx.pdf question 10",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-010"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 11,
+      "source": "Final review.docx.pdf question 11",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-011"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 12,
+      "source": "Final review.docx.pdf question 12",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-012",
+        "PSY-FINAL-HY-017",
+        "PSY-FINAL-HY-018",
+        "PSY-FINAL-HY-019",
+        "PSY-FINAL-HY-020"
+      ],
+      "verifiedObjectiveSpecificCount": 5,
+      "meetsFive": true,
+      "stillNeeded": 0
+    },
+    {
+      "reviewPoint": 13,
+      "source": "Final review.docx.pdf question 13",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-013",
+        "PSY-FINAL-HY-026",
+        "PSY-FINAL-HY-027",
+        "PSY-FINAL-HY-030"
+      ],
+      "verifiedObjectiveSpecificCount": 4,
+      "meetsFive": false,
+      "stillNeeded": 1
+    },
+    {
+      "reviewPoint": 14,
+      "source": "Final review.docx.pdf question 14",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-014",
+        "PSY-FINAL-HY-011",
+        "PSY-FINAL-HY-015"
+      ],
+      "verifiedObjectiveSpecificCount": 3,
+      "meetsFive": false,
+      "stillNeeded": 2
+    },
+    {
+      "reviewPoint": 15,
+      "source": "Final review.docx.pdf question 15",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-015",
+        "PSY-FINAL-HY-021",
+        "PSY-FINAL-HY-022",
+        "PSY-FINAL-HY-024",
+        "PSY-FINAL-SLIDE-001",
+        "PSY-FINAL-SLIDE-002",
+        "PSY-FINAL-SLIDE-003"
+      ],
+      "verifiedObjectiveSpecificCount": 7,
+      "meetsFive": true,
+      "stillNeeded": 0
+    },
+    {
+      "reviewPoint": 16,
+      "source": "Final review.docx.pdf question 16",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-016"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 17,
+      "source": "Final review.docx.pdf question 17",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-017",
+        "PSY-FINAL-HY-043",
+        "PSY-FINAL-SLIDE-010",
+        "PSY-FINAL-SLIDE-011",
+        "PSY-FINAL-SLIDE-012",
+        "PSY-FINAL-SLIDE-022",
+        "PSY-FINAL-SLIDE-023",
+        "PSY-FINAL-SLIDE-024"
+      ],
+      "verifiedObjectiveSpecificCount": 8,
+      "meetsFive": true,
+      "stillNeeded": 0
+    },
+    {
+      "reviewPoint": 18,
+      "source": "Final review.docx.pdf question 18",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-018"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 19,
+      "source": "Final review.docx.pdf question 19",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-019"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 20,
+      "source": "Final review.docx.pdf question 20",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-020"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 21,
+      "source": "Final review.docx.pdf question 21",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-021",
+        "PSY-FINAL-HY-018",
+        "PSY-FINAL-HY-019",
+        "PSY-FINAL-HY-020"
+      ],
+      "verifiedObjectiveSpecificCount": 4,
+      "meetsFive": false,
+      "stillNeeded": 1
+    },
+    {
+      "reviewPoint": 22,
+      "source": "Final review.docx.pdf question 22",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-022",
+        "PSY-FINAL-HY-016"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 23,
+      "source": "Final review.docx.pdf question 23",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-023",
+        "PSY-FINAL-HY-012",
+        "PSY-FINAL-HY-013",
+        "PSY-FINAL-HY-015"
+      ],
+      "verifiedObjectiveSpecificCount": 4,
+      "meetsFive": false,
+      "stillNeeded": 1
+    },
+    {
+      "reviewPoint": 24,
+      "source": "Final review.docx.pdf question 24",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-024",
+        "PSY-FINAL-HY-034"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 25,
+      "source": "Final review.docx.pdf question 25",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-025",
+        "PSY-FINAL-HY-049"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 26,
+      "source": "Final review.docx.pdf question 26",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-026"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 27,
+      "source": "Final review.docx.pdf question 27",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-027",
+        "PSY-FINAL-HY-028"
+      ],
+      "verifiedObjectiveSpecificCount": 2,
+      "meetsFive": false,
+      "stillNeeded": 3
+    },
+    {
+      "reviewPoint": 28,
+      "source": "Final review.docx.pdf question 28",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-028",
+        "PSY-FINAL-HY-005",
+        "PSY-FINAL-HY-048"
+      ],
+      "verifiedObjectiveSpecificCount": 3,
+      "meetsFive": false,
+      "stillNeeded": 2
+    },
+    {
+      "reviewPoint": 29,
+      "source": "Final review.docx.pdf question 29",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-029"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 30,
+      "source": "Final review.docx.pdf question 30",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-030"
+      ],
+      "verifiedObjectiveSpecificCount": 1,
+      "meetsFive": false,
+      "stillNeeded": 4
+    },
+    {
+      "reviewPoint": 31,
+      "source": "Final review.docx.pdf question 31",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-031",
+        "PSY-FINAL-HY-031",
+        "PSY-FINAL-HY-035",
+        "PSY-FINAL-SLIDE-017"
+      ],
+      "verifiedObjectiveSpecificCount": 4,
+      "meetsFive": false,
+      "stillNeeded": 1
+    },
+    {
+      "reviewPoint": 32,
+      "source": "Final review.docx.pdf question 32",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-032",
+        "PSY-FINAL-HY-032",
+        "PSY-FINAL-HY-035",
+        "PSY-FINAL-SLIDE-018"
+      ],
+      "verifiedObjectiveSpecificCount": 4,
+      "meetsFive": false,
+      "stillNeeded": 1
+    },
+    {
+      "reviewPoint": 33,
+      "source": "Final review.docx.pdf question 33",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-033",
+        "PSY-FINAL-HY-042",
+        "PSY-FINAL-SLIDE-013",
+        "PSY-FINAL-SLIDE-014",
+        "PSY-FINAL-SLIDE-015"
+      ],
+      "verifiedObjectiveSpecificCount": 5,
+      "meetsFive": true,
+      "stillNeeded": 0
+    },
+    {
+      "reviewPoint": 34,
+      "source": "Final review.docx.pdf question 34",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-034",
+        "PSY-FINAL-HY-006",
+        "PSY-FINAL-HY-007",
+        "PSY-FINAL-HY-008",
+        "PSY-FINAL-HY-010",
+        "PSY-FINAL-HY-036",
+        "PSY-FINAL-HY-037",
+        "PSY-FINAL-HY-038",
+        "PSY-FINAL-HY-039",
+        "PSY-FINAL-HY-040"
+      ],
+      "verifiedObjectiveSpecificCount": 10,
+      "meetsFive": true,
+      "stillNeeded": 0
+    },
+    {
+      "reviewPoint": 35,
+      "source": "Final review.docx.pdf question 35",
+      "directQuestionIds": [
+        "PSY-FINAL-REV-035",
+        "PSY-FINAL-HY-041",
+        "PSY-FINAL-HY-044",
+        "PSY-FINAL-HY-045",
+        "PSY-FINAL-SLIDE-007",
+        "PSY-FINAL-SLIDE-008",
+        "PSY-FINAL-SLIDE-009"
+      ],
+      "verifiedObjectiveSpecificCount": 7,
+      "meetsFive": true,
+      "stillNeeded": 0
+    }
+  ]
+}
