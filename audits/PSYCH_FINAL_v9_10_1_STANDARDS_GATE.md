@@ -31,7 +31,7 @@ Source cut: user's eight uploads on 2026-10-22, alongside preserved existing Psy
 4. Three questions for every explicit slide question: **PARTIAL**. Eight distinct Substance Abuse embedded source questions meet 3×8, but Rohypnol/caffeine and Death DNR case questions have not all been independently expanded; clinical DNR cases need directive reconciliation before release.
 5. Psych exam style: **PARTIAL**. Mix of definition, interpretation, scenario and clinical recognition; further instructor-style grading is required.
 6. Preserve uploaded mocks: **PASS for eight source prompts embedded in Substance Abuse**, unscored because original slides do not supply verified keys. Previous Midterm preserved. No standalone separate Psychology mock PDF was uploaded this turn.
-7. Four choices, answer/rationale structure, leakage and ID checks: **automated structure PASS (109)**. Independent distractor plausibility, near-duplicate and option-specific rationale editorial review **OPEN**.
+7. Four choices, keyed answers, explanation and incorrect-choice rationales: **automated structure PASS (109)**. 109 individual correct-answer explanations and **327 individually authored incorrect-option explanations** are present; initial generic boilerplate was replaced and a post-edit check found none remaining. Independent clinical distractor plausibility, near-duplicate/editorial review **OPEN**.
 8. Ontario BLS/ALS: **PARTIAL**. Patient safety/ABCs and recognition are used; source mentions atropine, flumazenil and legacy DNRO language are not presented as PCP medication permissions. No outdated-source medication directive is used as an operational answer; a full current standard crosswalk remains open.
 9. Small checkpoint and rollback: **PASS**. v9.9.6 index preserved as `v9.9.6_rollback_index.html`; new logic is additive and isolated.
 10. Prove coverage: **PARTIAL**. Ledger explicitly distinguishes established counts from outstanding objectives.
@@ -48,7 +48,7 @@ Source cut: user's eight uploads on 2026-10-22, alongside preserved existing Psy
 - JavaScript parsed successfully for each new module.
 - Unique IDs across 109 questions; four choices; one keyed answer; three `whyWrong` entries; nonempty source locator/review link: passed.
 - Legacy answer-leak detector reproduced and applied to 109 items: zero reported flags.
-- Actual-browser navigation / launch / CSS testing and cumulative prior-bank size check are still required after activation.
+- Quiz-launch function harness passed for sessions of 50, 10, 50 High-Yield, 35 Review, 24 Lecture, 50 Cumulative and 109 Full Final; preserved Midterm count in the harness is 183 (cumulative 292). Real-device/browser visual verification and clinical item-by-item review remain open.
 - Unit must NOT be labelled complete or "five-per-point verified" on this checkpoint.
 
 Next authoring work: complete 140 missing objective-specific review questions, then separately audit 17 handout questions and remaining explicit slide questions to the agreed standard.
