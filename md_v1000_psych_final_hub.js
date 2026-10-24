@@ -1,4 +1,4 @@
-/* Med Daddy v9.10.0 — Psychology Final unit, additive integration.
+/* Med Daddy v9.10.3 — Psychology Final EXCLUSIVELY from post-midterm uploads.
    Existing Psychology Midterm bank, prior units and progress keys untouched.
    IMPORTANT: Interim coverage checkpoint. The 35 review prompts are NOT yet 5-per-point. */
 (()=>{'use strict';
@@ -25,12 +25,11 @@
  }
  if(errors.length){window.MD_PSYCH_FINAL_1000={ready:false,errors};console.error('Psychology final release blocked',errors);return;}
  if(registry instanceof Map)for(const q of current)registry.set(q.id,q);
- const midterm=typeof BANK!=='undefined'?BANK.filter(q=>q.course==='Psychology'&&q.unit==='Psychology Midterm Prep'):[];
  const section=document.createElement('section');section.className='panel hidden md1000-psych';section.id='psychFinalPage';section.setAttribute('aria-hidden','true');
  section.innerHTML=[
  '<div class="md1000-head"><div><small>PCP109 · PSYCHOLOGY FINAL</small><h1>Psychology Final Exam</h1>',
- '<p>Death & dying • Suicide and patient communication • Alcohol • Substance abuse • Earlier course integration</p></div>',
- '<div class="md1000-tools"><button type="button" data-md1000="midterm">Earlier Midterm Unit</button><button type="button" data-md1000="home">← Study Home</button></div></div>',
+ '<p>Death & dying • Suicide and patient communication • Alcohol • Substance abuse · Post-midterm sources only</p></div>',
+ '<div class="md1000-tools"><button type="button" data-md1000="home">← Study Home</button></div></div>',
  '<div class="md1000-hero"><button type="button" class="md1000-primary" data-md1000="exam"><small>RECOMMENDED</small><strong>Final Practice Exam · 50</strong><span>Mixed new course questions with detailed take-up after each answer</span></button></div>',
  '<div class="md1000-grid">',
  '<button type="button" data-md1000="daily"><strong>Daily Review · up to 20</strong><span>Previously missed, then never-seen final questions</span></button>',
@@ -38,18 +37,16 @@
  '<button type="button" data-md1000="hy"><strong>High-Yield 50</strong><span>10 source-based concepts · 5 questions per concept</span></button>',
  '<button type="button" data-md1000="review"><strong>Final Instructor Review · 35</strong><span>One question per numbered final-review point so far</span></button>',
  '<button type="button" data-md1000="slide"><strong>Lecture Slide Questions · 24</strong><span>Three questions for each of eight unique embedded Substance Abuse quiz prompts</span></button>',
- '<button type="button" data-md1000="cumulative"><strong>Cumulative Exam · 50</strong><span>Mix new final material with the previous Psychology Midterm bank</span></button>',
- '<button type="button" data-md1000="all"><strong>Full New Final Bank · 109</strong><span>All newly authored review, high-yield and lecture expansion questions</span></button>',
- '<button type="button" data-md1000="old"><strong>Preserved Psychology Midterm</strong><span>Open the existing pre-midterm material unchanged</span></button>',
- '</div>',
+  '<button type="button" data-md1000="all"><strong>Full New Final Bank · 109</strong><span>All newly authored review, high-yield and lecture expansion questions</span></button>',
+  '</div>',
  '<section class="md1000-browser"><h2>Choose a specific study source</h2><div class="md1000-controls">',
- '<label>Question bank <select id="md1000-source"><option value="mixed">All new final questions</option><option value="hy">High-Yield 50</option><option value="review">Final review Q1–35</option><option value="slide">Lecture question expansions</option><option value="prior">Original Midterm material</option><option value="cumulative">Cumulative final + Midterm</option><option value="concept">One high-yield concept</option><option value="point">One numbered review objective</option></select></label>',
+ '<label>Question bank <select id="md1000-source"><option value="mixed">All new final questions</option><option value="hy">High-Yield 50</option><option value="review">Final review Q1–35</option><option value="slide">Lecture question expansions</option><option value="concept">One high-yield concept</option><option value="point">One numbered review objective</option></select></label>',
  '<label>Session length <select id="md1000-count"><option value="10">10 · quick</option><option value="20">20 · study</option><option value="30">30 · practice</option><option value="50" selected>50 · exam</option><option value="all">All available</option></select></label>',
  '<button type="button" class="md1000-start" data-md1000="selected">Start selected practice →</button>',
  '</div><label id="md1000-focus-wrap" hidden>Focus area <select id="md1000-focus"></select></label>',
  '<p id="md1000-count-info" role="status" aria-live="polite"></p></section>',
  '<details class="md1000-details"><summary>Exam map, source notes and clinical safety limits</summary>',
- '<p>The new final bank draws from uploaded Death.ppt, Suicide Newest.pptx, Substance Abuse.ppt, Alcoholism.ppt, their review handouts and Final review.docx.pdf. Earlier Psychology Midterm questions are preserved in their original bank.</p>',
+ '<p>The new final bank draws from uploaded Death.ppt, Suicide Newest.pptx, Substance Abuse.ppt, Alcoholism.ppt, their review handouts and Final review.docx.pdf. All Final question pools exclude pre-midterm material; the original Midterm remains available separately.</p>',
  '<p>Some older slides include historical mortality/suicide statistics, superseded DNRO procedures, and medication suggestions outside PCP scope. Those are not presented as current prehospital orders. The lecture-slide question set covers eight distinct quiz prompts in the Substance Abuse deck; other explicit lecture questions remain to be crosswalked.</p>',
  '<p><strong>Coverage checkpoint, not a completed unit:</strong> all 35 final-review prompts have one independently authored question; 5 questions for EVERY review point and complete coverage of other handout and slide prompts remain outstanding. Do not infer full content readiness from the bank size.</p></details>',
  '<p id="md1000-progress" class="md1000-progress"></p>'
@@ -62,8 +59,6 @@
   if(mode==='hy')return high;
   if(mode==='review')return review;
   if(mode==='slide')return slides;
-  if(mode==='prior')return midterm;
-  if(mode==='cumulative')return [...current,...midterm];
   if(mode==='concept')return high.filter(q=>q.highYieldConcept===Number(focus.value));
   if(mode==='point')return review.filter(q=>q.reviewPoint===Number(focus.value));
   return current;
@@ -80,7 +75,7 @@
  function hist(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return new Set(Array.isArray(v)?v:[]);}catch{return new Set();}}
  function update(){
   const pool=sourcePool(),n=count.value==='all'?pool.length:Math.min(pool.length,Number(count.value));
-  $('#md1000-count-info').textContent=pool.length+' questions in this source · '+n+' in the selected session'+(src.value==='prior'?' · preserved pre-midterm material':'')+'.';
+  $('#md1000-count-info').textContent=pool.length+' questions in this source · '+n+' in the selected session'+'.';
   const seen=hist('msk_seen_v11'),missed=hist('msk_missed_v1');
   $('#md1000-progress').textContent='New Psychology Final progress on this device: '+current.filter(q=>seen.has(q.id)).length+'/'+current.length+' seen · '+current.filter(q=>missed.has(q.id)).length+' missed · '+current.filter(q=>!seen.has(q.id)).length+' new.';
  }
@@ -102,7 +97,6 @@
   const b=event.target.closest('button[data-md1000]');if(!b)return;
   const action=b.dataset.md1000;
   if(action==='home'){show('studyHub');return;}
-  if(action==='old'||action==='midterm'){show('psychMidtermPage');return;}
   if(action==='exam')return launch(current,50,'Psychology Final 50');
   if(action==='daily'){
    const missed=hist('msk_missed_v1'),seen=hist('msk_seen_v11');
@@ -114,7 +108,6 @@
   if(action==='hy')return launch(high,'all','Independent High Yield 50');
   if(action==='review')return launch(review,'all','35-point final review');
   if(action==='slide')return launch(slides,'all','Distinct slide quiz expansions 24');
-  if(action==='cumulative')return launch([...current,...midterm],50,'Cumulative Final + original midterm');
   if(action==='all')return launch(current,'all','Full new Final');
   if(action==='selected')return launch(sourcePool(),count.value,src.options[src.selectedIndex].text);
  });
@@ -130,8 +123,16 @@
  const tile=[...document.querySelectorAll('.course-tile')].find(el=>/psychology/i.test(el.textContent||''));
  if(tile){
   tile.onclick=()=>show('psychFinalPage');
-  const p=tile.querySelector('p');if(p)p.textContent='Final exam: 109 new questions + preserved Midterm study bank';
+  const p=tile.querySelector('p');if(p)p.textContent='Post-midterm FINAL ONLY · 109 questions from the eight latest uploads';
   const b=tile.querySelector('b');if(b)b.textContent='Open Psychology Final →';
+  // Separate Midterm access is outside the Final's exam selectors and question pools.
+  if(legacy&&!document.getElementById('md1003-midterm-separate')){
+    const priorBtn=document.createElement('button');priorBtn.type='button';
+    priorBtn.id='md1003-midterm-separate';priorBtn.className='md1003-midterm-link';
+    priorBtn.textContent='Psychology Midterm (separate preserved unit)';
+    priorBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();show('psychMidtermPage');});
+    tile.after(priorBtn);
+  }
  }
  const style=document.createElement('style');style.id='md1000-final-style';
  style.textContent=[
@@ -162,14 +163,15 @@
  '.md1000-details summary{font-weight:800;cursor:pointer}',
  '.md1000-details p{color:#cbdae7;line-height:1.6;font-size:.9rem}',
  '.md1000-progress{color:#abd1e8;font-size:.88rem;line-height:1.5}',
+ '.md1003-midterm-link{display:block;width:100%;text-align:left;padding:12px 16px;background:#142a3d;border:1px solid #496c87;border-radius:12px;color:#c6def1;cursor:pointer}',
  '@media(max-width:850px){.md1000-grid{grid-template-columns:repeat(2,1fr)}.md1000-controls{grid-template-columns:1fr 1fr}.md1000-start{grid-column:1/-1}}',
  '@media(max-width:570px){.md1000-grid,.md1000-controls{grid-template-columns:1fr}.md1000-start{grid-column:auto}.md1000-head{flex-direction:column}.md1000-tools{width:100%}}'
  ].join('\n');
  document.head.appendChild(style);
  window.showPsychFinal1000=()=>{show('psychFinalPage');update();};
- window.MD_PSYCH_FINAL_1000={version:'9.10.0',ready:true,reviewQuestions:review.length,highYieldQuestions:high.length,slideExtensions:slides.length,newTotal:current.length,preservedMidtermCount:midterm.length,cumulativeTotal:current.length+midterm.length,sourceQuestionsChanged:false,existingCoursesChanged:false,coverageComplete:false,remaining:'5 x each final review point; every other handout item; all other explicit lecture questions'};
+ window.MD_PSYCH_FINAL_1000={version:'9.10.3',ready:true,reviewQuestions:review.length,highYieldQuestions:high.length,slideExtensions:slides.length,newTotal:current.length,postMidtermOnly:true,midtermExcluded:true,finalOnlyCount:current.length,sourceQuestionsChanged:false,existingCoursesChanged:false,coverageComplete:false,remaining:'5 x each final review point; every other handout item; all other explicit lecture questions'};
  const badge=document.querySelector('#appVersion,.app-version,[data-app-version]');
- if(badge)badge.textContent=badge.textContent.replace(/9\.9\.[0-9]+/g,'9.10.0');
- document.title=document.title.replace(/v9\.9\.[0-9]+/,'v9.10.0');
- for(const span of document.querySelectorAll('span'))if(/^v9\.9\.[0-9]+$/.test(span.textContent.trim()))span.textContent='v9.10.0';
+ if(badge)badge.textContent=badge.textContent.replace(/9\.(?:9\.[0-9]+|10\.[0-2])/g,'9.10.3');
+ document.title=document.title.replace(/v9\.(?:9\.[0-9]+|10\.[0-2])/,'v9.10.3');
+ for(const span of document.querySelectorAll('span'))if(/^v9\.(?:9\.[0-9]+|10\.[0-2])$/.test(span.textContent.trim()))span.textContent='v9.10.3';
 })();
