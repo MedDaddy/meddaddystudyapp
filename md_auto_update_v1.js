@@ -13,6 +13,13 @@ const status=window.MD_AUTO_UPDATE={
  running:true,version:current,pendingVersion:null,checks:0,lastCheck:null,
  refreshes:0,offline:false
 };
+// Display the installed build version after all legacy unit patches finish.
+document.title=document.title.replace(/\bMed Daddy v\d+\.\d+\.\d+/i,'Med Daddy v'+current);
+const badge=document.querySelector('#appVersion,.app-version,[data-app-version]');
+if(badge)badge.textContent=badge.textContent.replace(/\b\d+\.\d+\.\d+\b/,current);
+for(const span of document.querySelectorAll('span')){
+ if(/^v\d+\.\d+\.\d+$/.test(span.textContent.trim()))span.textContent='v'+current;
+}
 const CHECK_MS=240000; // 4 minutes; also check when app regains focus
 const HOLD_KEY='md_auto_update_attempt_v1';
 let checking=false;
@@ -54,6 +61,7 @@ async function check(force=false){
   // No stale browser response and a unique cache key for GitHub Pages.
   const res=await fetch(url.href,{cache:'no-store',credentials:'same-origin'});
   if(!res.ok)return;
+  status.offline=false;
   const html=await res.text();
   const version=(html.slice(0,1000).match(/<title>\s*Med Daddy v(\d+\.\d+\.\d+)\b/i)||[])[1];
   if(!version||version===current){
