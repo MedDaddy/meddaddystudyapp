@@ -90,6 +90,11 @@
  '#md1004-term-panel li{margin:8px 0}'
  ].join('\n');document.head.appendChild(css);
  window.MD_PSYCH_KEY_TERMS_1004={version:'9.10.4',ready:true,termCount:44,verifiedQuestions:questions.length,unresolved,questions,midtermIncluded:false,existingQuestionsChanged:false};
+ // Refresh the Final hub's total now that the independent source has registered.
+ window.MD_PSYCH_FINAL_1000.newTotal=109+questions.length;
+ window.MD_PSYCH_FINAL_1000.finalOnlyCount=109+questions.length;
+ const finalSelector=page.querySelector('#md1000-source');
+ if(finalSelector?.dispatchEvent&&typeof Event!=='undefined')finalSelector.dispatchEvent(new Event('change'));
  const badge=document.querySelector('#appVersion,.app-version,[data-app-version]');
  if(badge)badge.textContent=badge.textContent.replace(/9\.10\.[0-3]/g,'9.10.4');
  document.title=document.title.replace(/v9\.10\.[0-3]/,'v9.10.4');
