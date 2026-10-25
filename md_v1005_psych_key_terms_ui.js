@@ -44,5 +44,9 @@ const label=page.querySelector('[data-md1000="all"] strong');
 if(label)label.textContent='Full Post-Midterm Bank · 232';
 const select=page.querySelector('#md1000-source');
 if(select){const o=[...select.options].find(x=>x.value==='terms');if(o)o.textContent='Key Terms Challenge · 123';}
+const badge=document.querySelector('#appVersion,.app-version,[data-app-version]');
+if(badge)badge.textContent=badge.textContent.replace(/9\.10\.[0-4]/g,'9.10.5');
+document.title=document.title.replace(/v9\.10\.[0-4]/,'v9.10.5');
+for(const span of document.querySelectorAll('span'))if(/^v9\.10\.[0-4]$/.test(span.textContent.trim()))span.textContent='v9.10.5';
 window.MD_PSYCH_TERMS_UI_1005={ready:true,sourceQuestions:123,externalQuestions:9};
 })();
