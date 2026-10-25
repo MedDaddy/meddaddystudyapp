@@ -26,7 +26,14 @@ for(const q of bank){
 }
 if(issues.length||prepared.length!==50){window.MD_PSYCH_HIGHYIELD_QUALITY_1009={ready:false,issues};console.error(issues);return;}
 for(const item of prepared){reg.delete(item.old.id);Object.assign(item.old,item.newItem);reg.set(item.old.id,item.old);}
-window.MD_PSYCH_HIGHYIELD_QUALITY_1009={version:'9.10.9',ready:true,revised:50,keysPreserved:true,wrongExplanations:150,priorMidtermChanged:false};
+// The first two questions per keyword intentionally teach the vocabulary.
+ // Label these honestly; the third, individually audited comparison is Instructor Hard.
+ const terms=window.MD_PSYCH_TERMS_1005?.courseQuestions||[];
+ for(const item of terms){
+  if(item.id.endsWith('-2'))item.difficulty='Key Term Identification';
+  else if(!item.id.endsWith('-3R'))item.difficulty='Key Term Recognition';
+ }
+ window.MD_PSYCH_HIGHYIELD_QUALITY_1009={version:'9.10.9',ready:true,revised:50,keysPreserved:true,wrongExplanations:150,priorMidtermChanged:false};
 const badge=document.querySelector('#appVersion,.app-version,[data-app-version]');
 if(badge)badge.textContent=badge.textContent.replace(/9\.10\.[0-8]/g,'9.10.9');
 document.title=document.title.replace(/v9\.10\.[0-8]/,'v9.10.9');
