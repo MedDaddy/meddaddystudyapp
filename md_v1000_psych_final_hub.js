@@ -13,6 +13,8 @@
  if(typeof start!=='function'||typeof shuffle!=='function'||typeof show!=='function')errors.push('Med Daddy study engine missing');
  if(errors.length){window.MD_PSYCH_FINAL_1000={ready:false,errors};console.error(errors);return;}
  const current=[...review,...high,...slides],ids=new Set,stemSet=new Set;
+ // The independent Key Terms module registers later; the shared pool is dynamic.
+ const finalPool=()=>[...current,...(window.MD_PSYCH_KEY_TERMS_1004?.ready?window.MD_PSYCH_KEY_TERMS_1004.questions:[])];
  const registry=window.MD_SAFE_QUESTIONS;
  for(const q of current){
   const norm=String(q.prompt||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
@@ -37,10 +39,10 @@
  '<button type="button" data-md1000="hy"><strong>High-Yield 50</strong><span>10 source-based concepts · 5 questions per concept</span></button>',
  '<button type="button" data-md1000="review"><strong>Final Instructor Review · 35</strong><span>One question per numbered final-review point so far</span></button>',
  '<button type="button" data-md1000="slide"><strong>Lecture Slide Questions · 24</strong><span>Three questions for each of eight unique embedded Substance Abuse quiz prompts</span></button>',
-  '<button type="button" data-md1000="all"><strong>Full New Final Bank · 109</strong><span>All newly authored review, high-yield and lecture expansion questions</span></button>',
+  '<button type="button" data-md1000="all"><strong>Full Post-Midterm Bank · 150</strong><span>Review, high-yield, lecture questions and the new key-term set</span></button>',
   '</div>',
  '<section class="md1000-browser"><h2>Choose a specific study source</h2><div class="md1000-controls">',
- '<label>Question bank <select id="md1000-source"><option value="mixed">All new final questions</option><option value="hy">High-Yield 50</option><option value="review">Final review Q1–35</option><option value="slide">Lecture question expansions</option><option value="concept">One high-yield concept</option><option value="point">One numbered review objective</option></select></label>',
+ '<label>Question bank <select id="md1000-source"><option value="mixed">All new final questions</option><option value="hy">High-Yield 50</option><option value="review">Final review Q1–35</option><option value="slide">Lecture question expansions</option><option value="terms">Key Terms Challenge · 41</option><option value="concept">One high-yield concept</option><option value="point">One numbered review objective</option></select></label>',
  '<label>Session length <select id="md1000-count"><option value="10">10 · quick</option><option value="20">20 · study</option><option value="30">30 · practice</option><option value="50" selected>50 · exam</option><option value="all">All available</option></select></label>',
  '<button type="button" class="md1000-start" data-md1000="selected">Start selected practice →</button>',
  '</div><label id="md1000-focus-wrap" hidden>Focus area <select id="md1000-focus"></select></label>',
@@ -59,9 +61,10 @@
   if(mode==='hy')return high;
   if(mode==='review')return review;
   if(mode==='slide')return slides;
+  if(mode==='terms')return window.MD_PSYCH_KEY_TERMS_1004?.ready?window.MD_PSYCH_KEY_TERMS_1004.questions:[];
   if(mode==='concept')return high.filter(q=>q.highYieldConcept===Number(focus.value));
   if(mode==='point')return review.filter(q=>q.reviewPoint===Number(focus.value));
-  return current;
+  return finalPool();
  }
  function updateFocus(){
   const mode=src.value;focusWrap.hidden=mode!=='concept'&&mode!=='point';
@@ -76,8 +79,8 @@
  function update(){
   const pool=sourcePool(),n=count.value==='all'?pool.length:Math.min(pool.length,Number(count.value));
   $('#md1000-count-info').textContent=pool.length+' questions in this source · '+n+' in the selected session'+'.';
-  const seen=hist('msk_seen_v11'),missed=hist('msk_missed_v1');
-  $('#md1000-progress').textContent='New Psychology Final progress on this device: '+current.filter(q=>seen.has(q.id)).length+'/'+current.length+' seen · '+current.filter(q=>missed.has(q.id)).length+' missed · '+current.filter(q=>!seen.has(q.id)).length+' new.';
+  const seen=hist('msk_seen_v11'),missed=hist('msk_missed_v1'),all=finalPool();
+  $('#md1000-progress').textContent='Post-midterm Psychology Final progress on this device: '+all.filter(q=>seen.has(q.id)).length+'/'+all.length+' seen · '+all.filter(q=>missed.has(q.id)).length+' missed · '+all.filter(q=>!seen.has(q.id)).length+' new.';
  }
  src.addEventListener('change',updateFocus);count.addEventListener('change',update);focus.addEventListener('change',update);
  updateFocus();
@@ -97,18 +100,18 @@
   const b=event.target.closest('button[data-md1000]');if(!b)return;
   const action=b.dataset.md1000;
   if(action==='home'){show('studyHub');return;}
-  if(action==='exam')return launch(current,50,'Psychology Final 50');
+  if(action==='exam')return launch(finalPool(),50,'Psychology Final 50 including key terms');
   if(action==='daily'){
    const missed=hist('msk_missed_v1'),seen=hist('msk_seen_v11');
-   const pool=[...shuffle(current.filter(q=>missed.has(q.id))),...shuffle(current.filter(q=>!seen.has(q.id)&&!missed.has(q.id)))].slice(0,20);
+   const all=finalPool();const pool=[...shuffle(all.filter(q=>missed.has(q.id))),...shuffle(all.filter(q=>!seen.has(q.id)&&!missed.has(q.id)))].slice(0,20);
    if(!pool.length)return alert('No missed or unseen Final questions remain. Try Full Bank or another selector.');
    return launch(pool,'all','Missed + never seen');
   }
-  if(action==='quick')return launch(current,10,'Quick Final 10');
+  if(action==='quick')return launch(finalPool(),10,'Quick Final 10');
   if(action==='hy')return launch(high,'all','Independent High Yield 50');
   if(action==='review')return launch(review,'all','35-point final review');
   if(action==='slide')return launch(slides,'all','Distinct slide quiz expansions 24');
-  if(action==='all')return launch(current,'all','Full new Final');
+  if(action==='all')return launch(finalPool(),'all','Full post-midterm Final');
   if(action==='selected')return launch(sourcePool(),count.value,src.options[src.selectedIndex].text);
  });
  // Visible navigation from existing Psychology entry, with a safe path back to
@@ -123,7 +126,7 @@
  const tile=[...document.querySelectorAll('.course-tile')].find(el=>/psychology/i.test(el.textContent||''));
  if(tile){
   tile.onclick=()=>show('psychFinalPage');
-  const p=tile.querySelector('p');if(p)p.textContent='Post-midterm FINAL ONLY · 109 questions from the eight latest uploads';
+  const p=tile.querySelector('p');if(p)p.textContent='Post-midterm FINAL ONLY · 150 questions from the eight latest uploads';
   const b=tile.querySelector('b');if(b)b.textContent='Open Psychology Final →';
   // Separate Midterm access is outside the Final's exam selectors and question pools.
   if(legacy&&!document.getElementById('md1003-midterm-separate')){
