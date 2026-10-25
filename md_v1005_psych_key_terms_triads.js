@@ -9,6 +9,7 @@ if(!oldBank?.ready||oldBank.questions.length!==41||manifest?.length!==44||!(regi
  window.MD_PSYCH_TERMS_1005={ready:false,error:'Missing keyword prerequisites'};return;
 }
 const dictionary=new Map(manifest.map(r=>[r[0],r])),originals=new Map(oldBank.questions.map(q=>[q.keyTerm,q]));
+dictionary.set('Grief',['Grief','The internal feelings of sorrow or anguish that accompany a significant loss','Grief is experienced internally; mourning describes the outward social expression of bereavement.']);
 const sourceExt={MAOIs:'https://www.cancer.gov/publications/dictionaries/cancer-terms/def/monoamine-oxidase-inhibitor',TCAs:'https://www.ncbi.nlm.nih.gov/mesh/68000929','Trap House':'https://www.dictionary.com/browse/trap-house'};
 const variants={'Korsakoffs':'Korsakoff','Wernikis encephalopathy':'Wernicke','Kubler-Ross theory':'Kübler-Ross'};
 const hasTerm=(s,t)=>[t,variants[t]||t].some(v=>String(s).toLowerCase().includes(v.toLowerCase()));
