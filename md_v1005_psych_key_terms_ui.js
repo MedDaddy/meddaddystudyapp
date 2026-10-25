@@ -1,0 +1,2 @@
+/* Med Daddy v9.10.5 keyword practice UI */
+(()=>{'use strict';if(window.MD_PSYCH_TERMS_UI_1005)return;const b=window.MD_PSYCH_TERMS_1005;if(!b?.ready)return;window.MD_PSYCH_TERMS_UI_1005={ready:true,sourceQuestions:b.courseQuestions.length,externalQuestions:b.supplementalQuestions.length};})();
