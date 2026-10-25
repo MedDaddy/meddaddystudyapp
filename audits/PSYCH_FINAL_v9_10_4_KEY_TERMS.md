@@ -33,9 +33,9 @@ These appear in the new UI under "Instructor keyword checklist" rather than bein
 - JavaScript syntax parsed.
 - 41 unique key-term IDs; 4 choices each; 41 keyed responses; 123 wrong-option rationales.
 - Answer letter distribution: A=10, B=10, C=10, D=11.
-- 41, 20, and 10 question selections launch correctly in the quiz-function test harness.
+- Standard Final 50, Quick 10, High-Yield 50, Instructor Review 35, Lecture 24, Full Final 150, and standalone Key Terms 41/20/10 all launch correctly in the quiz-function test harness. No pre-midterm items appear in these launch pools.
 - No direct-question stem overlaps found above lexical similarity threshold 0.49 against the existing 109-question Final bank; a full semantic deduplication and live-browser test remain open.
-- Original 109 scored post-midterm questions untouched. After this addition, *150* final-only scored items are available across all independent sets; the generic final pool remains 109 until a deliberate bank-merging decision.
+- Original 109 scored post-midterm questions untouched. After this addition, **150 final-only scored items** are available: the generic Final 50, Daily Review and Full Final 150 dynamically include the 41 additional keyword questions; the independent Key Terms Challenge remains selectable at 10, 20 or 41.
 - The Psychology Final's original 35-point instructor review sheet **still** does not have five independently vetted questions per numbered point. This update is not a certification that the complete unit meets all ten Med Daddy acceptance requirements.
 
 **Status: Key Terms Challenge operational in source and launched in simulated quiz tests; 3 source terms transparently unresolved.**
