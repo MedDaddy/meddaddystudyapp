@@ -1,8 +1,13 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-10-27
-**Current repository version:** v9.11.7
+**Current repository version:** v9.11.8
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
+
+## v9.11.8 critical version consistency fix
+- Root cause: the outer loader presented v9.11.8, but on every load it explicitly rewrote the embedded application's APP_VERSION to **v9.11.3**. This made the home screen display v9.11.3 even though the repo was newer; it was **not evidence of an active updater**, which had already been disconnected.
+- Fixed in `index.html`: `mdReleaseVersion='9.11.8'` now supplies the embedded `APP_VERSION`, the outer page title/loading label, and appended script cache query. Never reintroduce literal stale APP_VERSION numbers in the embedded loader.
+- `md_auto_update_v1.js` remains excluded from the startup script chain; user progress and banks are unchanged by this label fix.
 
 ## Student-facing interface
 - Single normal unit exam launcher, same shared study-mode engine.
@@ -21,7 +26,7 @@ Updated: 2026-10-27
 - **Previous bank**: 360 normal + 100 older high-yield preserved, plus 50 later high-yield and 15 combination questions in registered source modules.
 - **Source hierarchy and question style**: see MED_DADDY_STANDARDS.md.
 
-## Validation performed for v9.11.7
+## Validation performed for v9.11.8
 - Confirmed original mock has 130 distinct IDs, 130 four-option questions, and 130 source keys.
 - Confirmed new source-deck and mock modules parse as valid JavaScript.
 - Confirmed index script order: combinations, High-Yield hub, preserved mock, unified source-deck UI.
