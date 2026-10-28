@@ -117,6 +117,28 @@
  const textbookCrosswalk=slides.filter(q=>/host|chain|transmission|precaution|ppe|clean|sepsis|fever|hiv|hepatitis|tuberculosis|meningitis|mrsa|influenza|infection/i.test(q.topic+' '+q.conceptGroup)).slice(0,75);
  const textbook=[...textbookOriginal,...textbookCrosswalk];
  const dedupe=arr=>[...new Map(arr.filter(q=>q&&q.id&&Array.isArray(q.choices)&&q.choices.length===4).map(q=>[q.id,q])).values()];
+ // The Med Daddy core quiz engine only accepts questions registered in
+ // MD_SAFE_QUESTIONS. An unregistered source mock is otherwise silently dropped,
+ // producing the misleading "No missed or unseen questions" alert.
+ // Register newly imported source questions without resetting stored progress.
+ const safeRegistry=window.MD_SAFE_QUESTIONS;
+ const registrationErrors=[];
+ if(!(safeRegistry instanceof Map))registrationErrors.push('Question safety registry is unavailable.');
+ function registerSourceQuestions(items){
+  if(!(safeRegistry instanceof Map))return;
+  for(const q of items){
+   if(!q||!q.id||!q.prompt||!Array.isArray(q.choices)||q.choices.length!==4||!['A','B','C','D'].includes(q.answer)){
+    registrationErrors.push('Invalid original source question '+String(q?.id||'unknown'));continue;
+   }
+   const leak=typeof mdLeakReason==='function'?mdLeakReason(q):'';
+   if(leak){registrationErrors.push('Question '+q.id+' requires manual review: '+leak);continue;}
+   const current=safeRegistry.get(q.id);
+   if(current){
+    if(current.prompt!==q.prompt||current.answer!==q.answer)registrationErrors.push('Source question ID collision: '+q.id);
+   }else safeRegistry.set(q.id,q);
+  }
+ }
+ registerSourceQuestions([...mock,...textbookOriginal]);
  const decks={
   all:dedupe([...normal,...high,...high50,...combinations]),
   instructor:dedupe(guide),
@@ -154,6 +176,7 @@
  '<p class="muted" id="md-inf917-count" aria-live="polite"></p>';
  box.querySelector('#md-inf917-pcp').onclick=()=>{if(typeof showPCPDirectiveStudy==='function')showPCPDirectiveStudy();else if(typeof openStandardsLibrary==='function')openStandardsLibrary('ALS');};
  const topbar=page.querySelector('.topbar');if(topbar)topbar.after(box);else page.prepend(box);
+ if(registrationErrors.length)console.error('Med Daddy Infectious source deck registration:',registrationErrors);
  const pick=box.querySelector('#md-inf917-deck'),size=box.querySelector('#md-inf917-size'),status=box.querySelector('#md-inf917-count');
  function update(){
   const chosen=decks[pick.value]||[];
@@ -164,7 +187,9 @@
  pick.onchange=update;size.onchange=update;update();
  box.querySelector('#md-inf917-start').onclick=()=>{
   const chosen=decks[pick.value]||[];
+  if(registrationErrors.length){status.textContent='Some source questions failed validation. Study session has not started; no progress was cleared. See console details.';return;}
   if(chosen.length<50){status.textContent='This deck has fewer than 50 valid questions. Select the full bank.';return;}
+  if(chosen.some(q=>!safeRegistry.has(q.id))){status.textContent='This source deck is not registered with the quiz engine. No progress was changed.';return;}
   const wanted=pick.value==='mock'||size.value==='all'?chosen.length:Math.min(Number(size.value),chosen.length);
   const pool=pick.value==='mock'?chosen.slice():shuffle(chosen.slice()).slice(0,wanted);
   const recycle=document.getElementById('recycle');if(recycle)recycle.checked=false;
@@ -178,6 +203,6 @@
  '#md-inf-9117 button{grid-column:1/-1;min-height:48px;border-radius:8px;font-weight:700}'+
  '@media(max-width:650px){#md-inf-9117 .md-inf917-form{grid-template-columns:1fr}}';
  css.textContent+='#md-inf-9117 .md-inf917-directive{margin:10px 0 0}#md-inf-9117 .md-inf917-directive button{width:100%;min-height:42px}';document.head.appendChild(css);
- document.title='Med Daddy v9.11.7 — PCT II Infectious Exam Prep';
- window.MD_INF_UI_9117={ready:true,version:'9.11.7',decks:Object.fromEntries(Object.entries(decks).map(([k,v])=>[k,v.length])),retainedPCPDirectives:true};
+ document.title='Med Daddy v9.11.9 — PCT II Infectious Exam Prep';
+ window.MD_INF_UI_9117={ready:registrationErrors.length===0,version:'9.11.9',decks:Object.fromEntries(Object.entries(decks).map(([k,v])=>[k,v.length])),retainedPCPDirectives:true};
 })();
