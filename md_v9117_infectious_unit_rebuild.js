@@ -140,13 +140,15 @@
  '<option value="high">High-Yield Practice</option></select>'+
  '<label for="md-inf917-size">Questions</label><select id="md-inf917-size"><option value="50">50</option><option value="75">75</option><option value="100">100</option><option value="all">Full deck</option></select>'+
  '<button type="button" id="md-inf917-start" class="success">Start Study Session</button></div>'+
+ '<p class="md-inf917-directive"><button type="button" id="md-inf917-pcp" class="secondary">PCP Directives &amp; Medications</button></p>'+
  '<p class="muted" id="md-inf917-count" aria-live="polite"></p>';
+ box.querySelector('#md-inf917-pcp').onclick=()=>{if(typeof showPCPDirectiveStudy==='function')showPCPDirectiveStudy();else if(typeof openStandardsLibrary==='function')openStandardsLibrary('ALS');};
  const topbar=page.querySelector('.topbar');if(topbar)topbar.after(box);else page.prepend(box);
  const pick=box.querySelector('#md-inf917-deck'),size=box.querySelector('#md-inf917-size'),status=box.querySelector('#md-inf917-count');
  function update(){
   const chosen=decks[pick.value]||[];
   const isMock=pick.value==='mock';
-  size.disabled=isMock;size.value=isMock?'all':(size.value==='all'?'all':size.value);
+  if(isMock){size.disabled=true;size.value='all';}else{if(size.disabled)size.value='50';size.disabled=false;}
   status.textContent=chosen.length+' questions in this deck'+(isMock?' · original order and supplied key preserved':'');
  }
  pick.onchange=update;size.onchange=update;update();
@@ -165,6 +167,7 @@
  '#md-inf-9117 select{width:100%;min-height:44px;border-radius:8px;padding:8px;background:#101f31;color:#eef7ff;border:1px solid #5c7996}'+
  '#md-inf-9117 button{grid-column:1/-1;min-height:48px;border-radius:8px;font-weight:700}'+
  '@media(max-width:650px){#md-inf-9117 .md-inf917-form{grid-template-columns:1fr}}';
- document.head.appendChild(css);
+ css.textContent+='#md-inf-9117 .md-inf917-directive{margin:10px 0 0}#md-inf-9117 .md-inf917-directive button{width:100%;min-height:42px}';document.head.appendChild(css);
+ document.title='Med Daddy v9.11.7 — PCT II Infectious Exam Prep';
  window.MD_INF_UI_9117={ready:true,version:'9.11.7',decks:Object.fromEntries(Object.entries(decks).map(([k,v])=>[k,v.length])),retainedPCPDirectives:true};
 })();
