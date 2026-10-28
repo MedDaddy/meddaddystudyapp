@@ -1,8 +1,13 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-10-27
-**Current repository version:** v9.11.8
+**Current repository version:** v9.11.9
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
+
+## v9.11.9 preserved mock launch repair
+- Root cause: core Med Daddy start() safety wrappers discard **unregistered** question IDs. The uploaded Infectious original mock and nine new Chapter 39 textbook questions were present in source decks but absent from window.MD_SAFE_QUESTIONS, so launching the mock filtered all 130 to an empty pool and falsely showed a "No missed or unseen" alert.
+- Fix: the source-deck module now registers new mock/textbook questions with the existing safety Map, preserving identity, original mock order and answer key. Structural/answer-leak checks and ID collision guards remain active; no stored progress keys are reset and no safety wrapper is disabled.
+- Verified via executable JavaScript launcher simulation: all 130 mock questions registered, all nine textbook questions registered, selecting preserved mock launches all 130 original IDs in order. Also verified index title and single embedded release version both v9.11.9. Live GitHub Pages rendering not yet verified.
 
 ## v9.11.8 critical version consistency fix
 - Root cause: the outer loader presented v9.11.8, but on every load it explicitly rewrote the embedded application's APP_VERSION to **v9.11.3**. This made the home screen display v9.11.3 even though the repo was newer; it was **not evidence of an active updater**, which had already been disconnected.
