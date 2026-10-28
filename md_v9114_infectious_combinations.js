@@ -22,8 +22,8 @@ window.MD_INFECT_COMB_9114=questions;
 window.MD_INFECT_9114={version:'9.11.4',ready:true,added:questions.length,scope:'PCT II Infectious only',otherUnitsTouched:false};
 // Add a focused launch to the existing application without changing its filters, banks or progress keys.
 const launch=document.createElement('button');launch.type='button';launch.textContent='Infectious Diseases — 15 combination questions';launch.id='md-infect-9114-launch';
-launch.style.cssText='display:block;margin:14px auto;padding:12px 18px;background:#146d90;color:white;border:1px solid #51a8d1;border-radius:9px;cursor:pointer;font-weight:700;max-width:95%';
+launch.style.cssText='display:flex;flex-direction:column;justify-content:center;min-height:74px;background:#184260;color:#f1f9ff;border:1px solid #5d96b7;border-radius:11px;padding:14px;text-align:left;cursor:pointer;font-weight:700;width:100%';
 launch.onclick=()=>{const items=questions.slice();if(typeof shuffle==='function')shuffle(items);start(items);};
-const parent=document.querySelector('#pct2InfectiousPage,#md112-infectious-hub')||document.querySelector('#home,#homeScreen,#dashboard,.home,.dashboard,main')||document.body;
+const parent=document.querySelector('#md112-infectious-hub .md112-cards')||document.querySelector('#pct2InfectiousPage,#md112-infectious-hub')||document.body;
 parent.appendChild(launch);
 })();
