@@ -7,6 +7,9 @@
  const page=document.getElementById('pct2InfectiousPage');
  const bank=typeof BANK!=='undefined'&&Array.isArray(BANK)?BANK:[];
  const mock=window.MD_INF_PRESERVED_MOCK_2026;
+ const dirA=window.MD_INF_DIRECTIVES_A_91110,dirB=window.MD_INF_DIRECTIVES_B_91110;
+ const directives=Array.isArray(dirA)&&dirA.length===25&&Array.isArray(dirB)&&dirB.length===25?[...dirA,...dirB]:[];
+ if(directives.length!==50)console.warn('Infectious PCP directive 50 deck is not fully loaded. Original source decks remain available.');
  if(!page||!bank.length||!Array.isArray(mock)||mock.length!==130){
    window.MD_INF_UI_9117={ready:false,error:'Missing source unit page, bank or 130-question preserved mock'};return;
  }
@@ -138,14 +141,15 @@
    }else safeRegistry.set(q.id,q);
   }
  }
- registerSourceQuestions([...mock,...textbookOriginal]);
+ registerSourceQuestions([...mock,...textbookOriginal,...directives]);
  const decks={
-  all:dedupe([...normal,...high,...high50,...combinations]),
+  all:dedupe([...normal,...high,...high50,...combinations,...directives]),
   instructor:dedupe(guide),
   peer:dedupe(peer),
   slides:dedupe(slides),
   textbook:dedupe(textbook),
   mock:dedupe(mock),
+  directives:dedupe(directives),
   high:dedupe([...high,...high50])
  };
  window.MD_INF_SOURCE_DECKS_9117={decks,peerMap,version:'9.11.7',sourceNotes:{
@@ -169,7 +173,8 @@
  '<option value="peer">Additional Exam Review · 26 topics</option>'+
  '<option value="slides">Chapter 39 Lecture Slides</option>'+
  '<option value="textbook">Nancy Caroline Chapter 39 · Case &amp; Topic Review</option>'+
- '<option value="high">High-Yield Practice</option></select>'+
+ '<option value="high">High-Yield Practice</option>'+
+ '<option value="directives">Infectious — PCP Directives &amp; BLS Standards · 50</option></select>'+
  '<label for="md-inf917-size">Questions</label><select id="md-inf917-size"><option value="50">50</option><option value="75">75</option><option value="100">100</option><option value="all">Full deck</option></select>'+
  '<button type="button" id="md-inf917-start" class="success">Start Study Session</button></div>'+
  '<p class="md-inf917-directive"><button type="button" id="md-inf917-pcp" class="secondary">PCP Directives &amp; Medications</button></p>'+
@@ -180,9 +185,9 @@
  const pick=box.querySelector('#md-inf917-deck'),size=box.querySelector('#md-inf917-size'),status=box.querySelector('#md-inf917-count');
  function update(){
   const chosen=decks[pick.value]||[];
-  const isMock=pick.value==='mock';
-  if(isMock){size.disabled=true;size.value='all';}else{if(size.disabled)size.value='50';size.disabled=false;}
-  status.textContent=chosen.length+' questions in this deck'+(isMock?' · original order and supplied key preserved':'');
+  const isMock=pick.value==='mock',isDirective=pick.value==='directives';
+  if(isMock||isDirective){size.disabled=true;size.value='all';}else{if(size.disabled)size.value='50';size.disabled=false;}
+  status.textContent=chosen.length+' questions in this deck'+(isMock?' · original order and supplied key preserved':isDirective?' · Ontario PCP and BLS directive focus':'');
  }
  pick.onchange=update;size.onchange=update;update();
  box.querySelector('#md-inf917-start').onclick=()=>{
@@ -193,6 +198,8 @@
   const wanted=pick.value==='mock'||size.value==='all'?chosen.length:Math.min(Number(size.value),chosen.length);
   const pool=pick.value==='mock'?chosen.slice():shuffle(chosen.slice()).slice(0,wanted);
   const recycle=document.getElementById('recycle');if(recycle)recycle.checked=false;
+  // An explicitly selected exam must not be silently reduced to prior misses/unseen items.
+  const adaptive=document.getElementById('adaptiveNext');if(adaptive)adaptive.checked=false;
   if(typeof start==='function')start(pool);
   else status.textContent='Study engine unavailable. Reload the app.';
  };
@@ -203,6 +210,6 @@
  '#md-inf-9117 button{grid-column:1/-1;min-height:48px;border-radius:8px;font-weight:700}'+
  '@media(max-width:650px){#md-inf-9117 .md-inf917-form{grid-template-columns:1fr}}';
  css.textContent+='#md-inf-9117 .md-inf917-directive{margin:10px 0 0}#md-inf-9117 .md-inf917-directive button{width:100%;min-height:42px}';document.head.appendChild(css);
- document.title='Med Daddy v9.11.9 — PCT II Infectious Exam Prep';
- window.MD_INF_UI_9117={ready:registrationErrors.length===0,version:'9.11.9',decks:Object.fromEntries(Object.entries(decks).map(([k,v])=>[k,v.length])),retainedPCPDirectives:true};
+ document.title='Med Daddy v9.11.10 — PCT II Infectious Exam Prep';
+ window.MD_INF_UI_9117={ready:registrationErrors.length===0,version:'9.11.10',decks:Object.fromEntries(Object.entries(decks).map(([k,v])=>[k,v.length])),retainedPCPDirectives:true};
 })();
