@@ -50,68 +50,60 @@ const legacy=(typeof BANK!=='undefined'&&Array.isArray(BANK)?BANK:[]).filter(q=>
 const legacyUnique=[...new Map(legacy.map(q=>[q.id,q])).values()].filter(q=>q&&q.prompt&&Array.isArray(q.choices)&&q.choices.length===4&&['A','B','C','D'].includes(q.answer));
 const host=document.createElement('section');host.id='md112-infectious-hub';host.className='md112-hub';
 const content=[
- '<div class="md112-header"><h2>Infectious Diseases</h2><p>PCT II · Chapter 39 · Study Mode</p></div>',
- '<div class="md112-cards">',
- '<button data-inf112="exam" class="md112-primary"><strong>High-Yield Review</strong><span>50 questions</span></button>',
- '<button data-inf112="daily"><strong>Missed + New</strong><span>20 questions</span></button>',
- '<button data-inf112="quick"><strong>Quick Practice</strong><span>10 questions</span></button>',
- '<button data-inf112="all"><strong>All High-Yield</strong><span>50 questions</span></button>',
- '</div>',
- '<section class="md112-source"><h3>Custom Practice</h3><div class="md112-controls">',
- '<label for="md112-bank">Question bank</label><select id="md112-bank"><option value="new">High-Yield 50</option><option value="legacy">Full Infectious Diseases bank</option></select>',
+ '<div class="md112-header"><h2>Infectious Diseases</h2><p>PCT II · Chapter 39 · Exam Practice</p></div>',
+ '<section class="md112-source"><div class="md112-controls">',
+ '<label for="md112-bank">Question collection</label>',
+ '<select id="md112-bank"><option value="combined">All Infectious Questions</option><option value="legacy">Full Unit Bank</option><option value="new">High-Yield 50</option></select>',
  '<label for="md112-topic">Topic</label><select id="md112-topic"><option value="all">All topics</option></select>',
- '<label for="md112-count">Questions</label><select id="md112-count"><option value="10">10</option><option value="20">20</option><option value="50">50</option></select>',
- '<button data-inf112="selected" class="md112-start">Start Study Session</button></div>',
+ '<label for="md112-count">Exam length</label><select id="md112-count"><option value="50">50 questions</option><option value="75">75 questions</option><option value="100">100 questions</option><option value="all">Entire selection</option></select>',
+ '<button data-inf112="selected" class="md112-start">Start Exam Practice</button></div>',
  '<p id="md112-status" aria-live="polite"></p></section>'
-].join('');;
+].join('');
 host.innerHTML=content;
 const old=page.querySelector('.ap2-hero,.pct-hero,.unit-hero,h1');
 if(old&&old.after)old.after(host);else page.prepend(host);
 const bankSelect=host.querySelector('#md112-bank'),topicSelect=host.querySelector('#md112-topic'),sizeSelect=host.querySelector('#md112-count'),status=host.querySelector('#md112-status');
 for(const name of groups){const option=document.createElement('option');option.value=name;option.textContent=name;topicSelect.appendChild(option);}
+function allQuestions(){
+ const extras=Array.isArray(window.MD_INFECT_COMB_9114)?window.MD_INFECT_COMB_9114:[];
+ return [...new Map([...legacyUnique,...questions,...extras].map(q=>[q.id,q])).values()];
+}
 function getPool(){
- let pool=bankSelect.value==='legacy'?legacyUnique:questions;
+ const pool=bankSelect.value==='legacy'?legacyUnique:bankSelect.value==='new'?questions:allQuestions();
  return topicSelect.value==='all'?pool:pool.filter(q=>q.topic===topicSelect.value);
 }
 function countText(){
- const c=getPool().length;
- status.textContent=(bankSelect.value==='new'?'New vetted High-Yield':'Legacy unit bank, rationale review still pending')+': '+c+' questions in this selection.';
+ const n=getPool().length;
+ status.textContent=n>=50?n+' questions available. Minimum practice length: 50.':'Only '+n+' in this selection. Choose All topics to build a 50-question exam.';
 }
-bankSelect.addEventListener('change',()=>{
- const names=bankSelect.value==='legacy'?[...new Set(legacyUnique.map(q=>q.topic||'Other'))].sort():groups;
+function refreshTopics(){
+ const pool=bankSelect.value==='legacy'?legacyUnique:bankSelect.value==='new'?questions:allQuestions();
+ const names=[...new Set(pool.map(q=>q.topic||'Other'))].sort();
  topicSelect.innerHTML='<option value="all">All topics</option>';
  for(const name of names){const op=document.createElement('option');op.value=name;op.textContent=name;topicSelect.appendChild(op);}
  countText();
-});topicSelect.addEventListener('change',countText);sizeSelect.addEventListener('change',countText);
-countText();
-function hist(key){try{const val=JSON.parse(localStorage.getItem(key)||'[]');return new Set(Array.isArray(val)?val:[])}catch{return new Set()}}
-function launch(items,n,mode){
- if(!items.length){status.textContent='No questions available for that selection.';return;}
- let selected=shuffle(items.slice()).slice(0,n==='all'?items.length:Math.min(n,items.length));
- if(selected.some(q=>registry.get(q.id)?.prompt!==q.prompt&&!legacy.includes(q))){
-  status.textContent='Question safety registry mismatch. Reopen the unit.';return;
- }
+}
+bankSelect.addEventListener('change',refreshTopics);
+topicSelect.addEventListener('change',countText);
+sizeSelect.addEventListener('change',countText);
+refreshTopics();
+host.addEventListener('click',e=>{
+ const btn=e.target.closest('button[data-inf112="selected"]');
+ if(!btn)return;
+ const pool=getPool();
+ if(pool.length<50){countText();return;}
+ const requested=sizeSelect.value==='all'?pool.length:Number(sizeSelect.value);
+ const selected=shuffle(pool.slice()).slice(0,Math.min(requested,pool.length));
+ if(selected.length<50){countText();return;}
+ if(selected.some(q=>registry.has(q.id)&&registry.get(q.id)?.prompt!==q.prompt)){status.textContent='Question bank mismatch. Reload Med Daddy and retry.';return;}
  const adaptive=document.getElementById('adaptiveNext'),recycle=document.getElementById('recycle');
  if(adaptive)adaptive.checked=false;if(recycle)recycle.checked=false;
  start(selected);
- if(typeof quiz!=='undefined'&&quiz.length!==selected.length){status.textContent='Expected '+selected.length+', got '+quiz.length;return;}
- window.MD_INFECTIOUS_LAST_9112={count:selected.length,mode};
-}
-host.addEventListener('click',e=>{
- const btn=e.target.closest('button[data-inf112]');if(!btn)return;
- const action=btn.dataset.inf112;
- if(action==='exam'||action==='all')return launch(questions,50,'High-Yield 50');
- if(action==='quick')return launch(questions,10,'Quick 10');
- if(action==='daily'){
-  const missed=hist('msk_missed_v1'),seen=hist('msk_seen_v11');
-  const selected=[...shuffle(questions.filter(q=>missed.has(q.id))),...shuffle(questions.filter(q=>!missed.has(q.id)&&!seen.has(q.id)))].slice(0,20);
-  return launch(selected,selected.length,'Missed + New');
- }
- if(action==='selected')return launch(getPool(),Number(sizeSelect.value),'Topic/Source '+bankSelect.value);
+ window.MD_INFECTIOUS_LAST_9112={count:selected.length,mode:'Exam Practice',bank:bankSelect.value};
 });
 const style=document.createElement('style');style.id='md112-style';
 style.textContent=[
- '#md112-infectious-hub{margin:12px auto 20px;padding:16px;background:#11283b;border:1px solid #3f6981;color:#e7f6ff;border-radius:12px}',
+ '#md112-infectious-hub{margin:12px auto 20px;padding:14px;background:#11283b;border:1px solid #3f6981;color:#e7f6ff;border-radius:12px}',
  '#md112-infectious-hub *{box-sizing:border-box}',
  '.md112-header small{font-size:.77rem;letter-spacing:.07em;color:#89c8ea;font-weight:750}',
  '.md112-header h2{font-size:1.55rem;margin:7px 0}.md112-header p{color:#c1d7e6;margin:8px 0}',
@@ -121,7 +113,7 @@ style.textContent=[
  '.md112-cards strong{font-size:1rem}.md112-cards span{color:#c5dce7;font-size:.82rem}',
  '#md112-infectious-hub .md112-primary{background:#145473;border-color:#88cbec}',
  '.md112-source{padding:12px;background:#0d2235;border:1px solid #2a5674;border-radius:10px}.md112-source h3{margin:0 0 12px;font-size:1rem}',
- '.md112-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}',
+ '.md112-controls{display:grid;grid-template-columns:minmax(100px,1fr) minmax(160px,2fr);gap:9px;align-items:center}',
  '.md112-controls label{font-size:.84rem;font-weight:700}',
  '.md112-controls select{min-height:43px;width:100%;background:#101f31;color:#eef7ff;padding:9px;border:1px solid #5c7996;border-radius:8px}',
  '.md112-controls .md112-start{grid-column:1/-1;text-align:center!important;min-height:48px}',
