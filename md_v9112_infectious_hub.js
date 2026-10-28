@@ -50,36 +50,20 @@ const legacy=(typeof BANK!=='undefined'&&Array.isArray(BANK)?BANK:[]).filter(q=>
 const legacyUnique=[...new Map(legacy.map(q=>[q.id,q])).values()].filter(q=>q&&q.prompt&&Array.isArray(q.choices)&&q.choices.length===4&&['A','B','C','D'].includes(q.answer));
 const host=document.createElement('section');host.id='md112-infectious-hub';host.className='md112-hub';
 const content=[
- '<header class="md112-header"><div><small>PATIENT CARE &amp; THEORY II · CHAPTER 39</small><h2>Infectious Diseases — Exam Preparation</h2>',
- '<p>High-Yield 50 built from your uploaded Chapter 39 lecture and six-page instructor test guide. Your existing full unit bank remains separate.</p></div></header>',
+ '<div class="md112-header"><h2>Infectious Diseases</h2><p>PCT II · Chapter 39 · Study Mode</p></div>',
  '<div class="md112-cards">',
- '<button data-inf112="exam" class="md112-primary"><small>START HERE</small><strong>Infectious Practice Exam · 50</strong><span>10 critical concepts × 5 instructor-style questions</span></button>',
- '<button data-inf112="daily"><strong>Daily Review · 20</strong><span>Missed + entirely new questions</span></button>',
- '<button data-inf112="quick"><strong>Quick Review · 10</strong><span>Fast warm-up</span></button>',
- '<button data-inf112="all"><strong>Full High-Yield 50</strong><span>All newly sourced questions</span></button></div>',
- '<section class="md112-source"><h3>Choose what to study</h3>',
- '<div class="md112-controls"><label for="md112-bank">Question collection</label><select id="md112-bank"><option value="new">New High-Yield 50 — source checked</option>',
- '<option value="legacy">Existing Infectious Bank — rationale audit pending</option></select>',
- '<label for="md112-topic">Topic</label><select id="md112-topic"><option value="all">All key concepts</option></select>',
- '<label for="md112-count">Questions</label><select id="md112-count"><option value="10">10 questions</option><option value="20">20 questions</option><option value="50">50 questions</option></select>',
- '<button data-inf112="selected" class="md112-start">Start Selected Practice</button></div>',
- '<p id="md112-status" aria-live="polite"></p></section>',
- '<details><summary>Exam topics &amp; preparation checklist</summary>',
- '<p><strong>Instructor guide:</strong> approximately 50 questions, primarily multiple choice plus some matching. Know all ten domains below, not just the clinical scenarios.</p>',
- '<ul><li>Incubation, communicable period, carriers, reservoirs, host resistance, chemotaxis and phagocytosis</li>',
- '<li>Airborne, droplet, contact, common vehicle and vector transmission</li>',
- '<li>Routine Practices, hand hygiene, correct PPE selection, sharps safety and occupational exposure</li>',
- '<li>Measles versus rubella versus mumps versus varicella; pertussis and complication timing</li>',
- '<li>Meningitis, active versus latent TB, pneumonia, bronchiolitis/RSV, croup and epiglottitis</li>',
- '<li>Syphilis, gonorrhoea, chlamydia, HSV, scabies and lice</li>',
- '<li>Hepatitis A/B/C/D/E/G, HIV seropositivity and AIDS opportunistic disease</li>',
- '<li>West Nile, Lyme disease, hantavirus, rabies and tetanus</li>',
- '<li>MRSA, VRE, SARS, MERS, avian influenza and travel/exposure history</li>',
- '<li>ABCDE reassessment, oxygen/ventilatory support and transport within current Ontario PCP authority</li></ul>',
- '<p><b>Source caution:</b> Chapter 39 contains dated disease facts and treatment examples. Use the current applicable Ontario BLS/ALS material to authorize interventions, not lecture examples alone.</p></details>',
- '<details><summary>What is finished and what still needs QA?</summary>',
- '<p>This launch has a separate, manually authored High-Yield 50 with an explanation for each correct and incorrect option. The existing larger Infectious bank is retained; its older audit flagged many short rationales. The full source-by-source five-per-review-point and every embedded lecture question coverage audit is not complete. Original bank answers and progress have not been modified.</p></details>'
-].join('');
+ '<button data-inf112="exam" class="md112-primary"><strong>High-Yield Review</strong><span>50 questions</span></button>',
+ '<button data-inf112="daily"><strong>Missed + New</strong><span>20 questions</span></button>',
+ '<button data-inf112="quick"><strong>Quick Practice</strong><span>10 questions</span></button>',
+ '<button data-inf112="all"><strong>All High-Yield</strong><span>50 questions</span></button>',
+ '</div>',
+ '<section class="md112-source"><h3>Custom Practice</h3><div class="md112-controls">',
+ '<label for="md112-bank">Question bank</label><select id="md112-bank"><option value="new">High-Yield 50</option><option value="legacy">Full Infectious Diseases bank</option></select>',
+ '<label for="md112-topic">Topic</label><select id="md112-topic"><option value="all">All topics</option></select>',
+ '<label for="md112-count">Questions</label><select id="md112-count"><option value="10">10</option><option value="20">20</option><option value="50">50</option></select>',
+ '<button data-inf112="selected" class="md112-start">Start Study Session</button></div>',
+ '<p id="md112-status" aria-live="polite"></p></section>'
+].join('');;
 host.innerHTML=content;
 const old=page.querySelector('.ap2-hero,.pct-hero,.unit-hero,h1');
 if(old&&old.after)old.after(host);else page.prepend(host);
@@ -127,16 +111,16 @@ host.addEventListener('click',e=>{
 });
 const style=document.createElement('style');style.id='md112-style';
 style.textContent=[
- '#md112-infectious-hub{margin:14px auto 24px;padding:20px;background:#11283b;border:1px solid #3f6981;color:#e7f6ff;border-radius:16px}',
+ '#md112-infectious-hub{margin:12px auto 20px;padding:16px;background:#11283b;border:1px solid #3f6981;color:#e7f6ff;border-radius:12px}',
  '#md112-infectious-hub *{box-sizing:border-box}',
  '.md112-header small{font-size:.77rem;letter-spacing:.07em;color:#89c8ea;font-weight:750}',
  '.md112-header h2{font-size:1.55rem;margin:7px 0}.md112-header p{color:#c1d7e6;margin:8px 0}',
  '.md112-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:19px 0}',
  '#md112-infectious-hub button{border:1px solid #5d96b7;background:#184260;border-radius:11px;color:#f1f9ff;padding:14px;text-align:left;cursor:pointer}',
- '.md112-cards button{display:flex;flex-direction:column;gap:7px;min-height:110px}',
- '.md112-cards strong{font-size:1.1rem}.md112-cards span{color:#c5dce7;font-size:.88rem}',
+ '.md112-cards button{display:flex;flex-direction:column;gap:5px;min-height:74px}',
+ '.md112-cards strong{font-size:1rem}.md112-cards span{color:#c5dce7;font-size:.82rem}',
  '#md112-infectious-hub .md112-primary{background:#145473;border-color:#88cbec}',
- '.md112-source{padding:15px;background:#0d2235;border:1px solid #2a5674;border-radius:12px}',
+ '.md112-source{padding:12px;background:#0d2235;border:1px solid #2a5674;border-radius:10px}.md112-source h3{margin:0 0 12px;font-size:1rem}',
  '.md112-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}',
  '.md112-controls label{font-size:.84rem;font-weight:700}',
  '.md112-controls select{min-height:43px;width:100%;background:#101f31;color:#eef7ff;padding:9px;border:1px solid #5c7996;border-radius:8px}',
