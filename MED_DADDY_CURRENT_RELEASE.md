@@ -13,6 +13,13 @@ Updated: 2026-10-27
 - Executable JavaScript simulation with the safety registry verified registration and launch of all 50 directive items and revalidated the preserved 130-question original mock. Syntax and GitHub loader order verified. The simulation does **not** constitute an independently observed live browser test.
 - No other unit bank modified; no automatic mid-session updater.
 
+## v9.11.10 — Infectious PCP Directives 50
+- A separate 50-question Ontario PCP directives and BLS standards exam deck is integrated into the EXISTING Infectious Diseases source selector, not a standalone mini-app or new page. The same 50 questions are included in the Full Infectious bank.
+- Source files: `md_v91110_infectious_directives_a.js` (25), `md_v91110_infectious_directives_b.js` (25), `md_v91110_infectious_directives_hub.js` (integration). The index loads source A and B, the existing unit hub, then the new integration hub.
+- Topics: Fever/sepsis, Dysphagia/epiglottitis, Croup Medical Directive, Bronchoconstriction Medical Directive, Auxiliary IV and Fluid Therapy, Bite Injury, Oxygen Therapy. References: BLS PCS 3.4 and ALS PCS 5.4.
+- QA run: source files parse; 50 unique question IDs and stems; each has four distinct choices, one answer key, detailed correct and per-distractor explanations. Checked against the app's `mdLeakReason`; all 50 passed. Registration and selector/full-bank integration passed an executable JS simulation (50/50 registered; dropdown option present). **Live user-browser interaction still unverified.**
+- Existing mock, reviews, other units and local progress keys are unchanged. Auto-reload remains disabled.
+
 ## v9.11.9 preserved mock launch repair
 - Root cause: core Med Daddy start() safety wrappers discard **unregistered** question IDs. The uploaded Infectious original mock and nine new Chapter 39 textbook questions were present in source decks but absent from window.MD_SAFE_QUESTIONS, so launching the mock filtered all 130 to an empty pool and falsely showed a "No missed or unseen" alert.
 - Fix: the source-deck module now registers new mock/textbook questions with the existing safety Map, preserving identity, original mock order and answer key. Structural/answer-leak checks and ID collision guards remain active; no stored progress keys are reset and no safety wrapper is disabled.
