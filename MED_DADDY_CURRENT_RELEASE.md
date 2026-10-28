@@ -1,8 +1,17 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-10-27
-**Current repository version:** v9.11.9
+**Current repository version:** v9.11.10
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
+
+## v9.11.10 — Infectious PCP directives exam deck
+- Added **50 new instructor-style four-choice questions** to the existing PCT II Infectious Diseases UI under **"Infectious — PCP Directives & BLS Standards · 50"**, not as a separate mini app or short quiz tile.
+- Sources individually referenced: Ontario BLS PCS v3.4 (Fever, Dysphagia, Bite Injury, Oxygen Therapy) and ALS PCS v5.4 (PCP Croup, Bronchoconstriction, Auxiliary IV and Fluid Therapy). 50 items across seven clinically relevant strands (8 Fever, 6 Dysphagia, 11 Croup, 10 Bronchoconstriction, 6 IV, 5 Bite, 4 Oxygen). Includes dose/threshold/indication/contraindication and correct-combination questions.
+- Files: `md_v91110_infectious_directives_a.js` (25), `md_v91110_infectious_directives_b.js` (25), integration update `md_v9117_infectious_unit_rebuild.js`; index patched to load all dependencies before UI.
+- Every question has a distinct key and distractor rationale; structural audit found 50 unique IDs/stems, four distinct options, keys distributed 13/13/12/12, and no incomplete rationale fields.
+- Exam launch uses fixed **50-question full deck** and explicitly disables the shared adaptive/missed-only and recycle filters for this source-selected examination; previously stored learning history and progress remain unchanged.
+- Executable JavaScript simulation with the safety registry verified registration and launch of all 50 directive items and revalidated the preserved 130-question original mock. Syntax and GitHub loader order verified. The simulation does **not** constitute an independently observed live browser test.
+- No other unit bank modified; no automatic mid-session updater.
 
 ## v9.11.9 preserved mock launch repair
 - Root cause: core Med Daddy start() safety wrappers discard **unregistered** question IDs. The uploaded Infectious original mock and nine new Chapter 39 textbook questions were present in source decks but absent from window.MD_SAFE_QUESTIONS, so launching the mock filtered all 130 to an empty pool and falsely showed a "No missed or unseen" alert.
