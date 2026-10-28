@@ -29,7 +29,17 @@
   ['Antibody formation',['K29']],['Infection prevention',['R14']],
   ['Virulence / organism factors',['K33','R11']],['MRSA transmission',['K14']]
  ];
- const peerMap=peerTopics.map(([topic,tags],i)=>({reviewItem:i+1,topic,questionIds:[...new Set(tags.flatMap(tag=>mapping.get(tag)||[]))]}));
+ const peerMap=peerTopics.map(([topic,tags],i)=>{
+  const no=i+1;
+  let ids=[...new Set(tags.flatMap(tag=>mapping.get(tag)||[]))];
+  const filter=no===8?/chlamydia/i:no===14?/mening/i:no===22?/mononucleosis|epstein|ebv/i:null;
+  if(filter){
+   const matched=ids.filter(id=>{const q=byId.get(id);return q&&filter.test((q.topic||'')+' '+(q.prompt||''));});
+   if(matched.length>=5)ids=matched;
+   else ids=normal.filter(q=>filter.test((q.topic||'')+' '+(q.prompt||''))).map(q=>q.id);
+  }
+  return {reviewItem:no,topic,questionIds:ids};
+ });
  const peer=[...new Map(peerMap.flatMap(p=>p.questionIds.map(id=>byId.get(id)).filter(Boolean)).map(q=>[q.id,q])).values()];
  const guide=normal.filter(q=>Array.isArray(q.reviewPointIds)&&q.reviewPointIds.length);
  const slides=normal.filter(q=>Array.isArray(q.slideReferences)&&q.slideReferences.length);
