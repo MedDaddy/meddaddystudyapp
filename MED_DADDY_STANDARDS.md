@@ -1,5 +1,5 @@
 # Med Daddy — Established Project Standards
-Updated: 2026-10-27. This document is the persistent source of truth across ChatGPT conversations.
+Updated: 2026-10-28. This document is the persistent source of truth across ChatGPT conversations.
 
 ## Release workflow
 - Work on the currently deployed GitHub **main** branch, after checking the live version. Never replace newer code with an old local build.
@@ -38,6 +38,18 @@ Updated: 2026-10-27. This document is the persistent source of truth across Chat
 - Answer rationale must explain why the key is best and specifically why each competing option is wrong, not generic boilerplate.
 - Zero answer leakage (headings, dash/colon, embedded diagnosis, keyed phrases), no duplicate/near-duplicate stems, no implausible throwaway distractors, no stem/key mismatch, no unsupported details.
 - Follow user exam feedback, including tricky wording and selective factual recall; maintain strong Ontario BLS/ALS directive emphasis overall.
+
+## PCT II Medications Unit — established gold standard (user confirmed 2026-10-28)
+- **Adopt the successful Infectious Diseases 50-question PCP Directives deck as the mandatory quality benchmark** for the upcoming all-medications PCT II unit. The user explicitly confirmed this was the style that helps most; do not regress to easy recall, generic distractors, or superficial explanations.
+- Build **at least one complete, integrated 50+ question medications practice deck** in the existing Med Daddy UI, with standard 50/75/100/full exam sizes where available, not a cluster of small quizzes. Keep source decks and preserved mocks distinct.
+- Questions should predominantly be **realistic PCP scenarios** with pertinent age/weight, vitals, symptoms, medication history, prior doses, allergies, level of awareness, stability and reassessment findings. Test the field decision, not just memorized drug definitions.
+- Cover each medication and relevant Ontario PCP medical directive in the uploaded class material: **indications, contraindications, age/weight and vital-sign thresholds (including strict versus inclusive cutoffs), dose, concentration, formulation, route, maximum single and cumulative doses, intervals, repeats, sequencing, MED CHECK, need to patch/seek authorization, withholds, documentation, reassessment, adverse effects, and changing priorities.**
+- Include accurate calculation problems for mg, mcg, mL, mg/kg, concentration, max-dose caps and relevant administration rates **only when supported by the course materials and current, applicable Ontario PCP directives**. Show the arithmetic in the post-answer rationale, never telegraph the key in the stem.
+- Use **high-quality competing plans** and numbered combination options that test a *collection* of appropriate medications/actions (e.g., select 1, 2, and 4), plus subtle instructor-style qualifier traps. Each of four options must be plausible, and exactly one is defensibly best.
+- For each item, include a specific rationale for the key **and separate, substantive rationales for every incorrect choice**; explain the exact condition, calculation, or scope rule that makes it wrong.
+- Anchor questions in the **actual uploaded medication lecture, reviews, textbooks and applicable Ontario BLS/ALS PCS**; check exact revision of directives at build time. Preserve instructor-original mocks unchanged and flag their errors separately. Never invent a dose, threshold, protocol, or authorization or use general medical practice to silently replace a course source.
+- Independently audit every deck for pharmacologic accuracy, math, answer leakage, distractor realism, ambiguous cases, near duplicates, scope errors and working startup. Preserve all existing units, saved progress, source provenance and the accepted clean Infectious Diseases UI.
+- Treat the Infectious Diseases directive set as the **reference implementation**, not a bank of stems to copy with different drug names. Build genuinely varied and source-specific medication reasoning problems.
 
 ## Question quality — A&P II
 - Use the same four-option, one-key, detailed-explanation QA standard.
