@@ -127,5 +127,8 @@
   build();
   if(typeof show==='function')show('pcpMasteryPage');
  };
- window.MD_PCP_MED_GOLD_91111={ready:!problems.length,pools:Object.fromEntries(Object.entries(pools).map(([k,v])=>[k,v.length])),medicationTopics:medTopics.size,problems,version:'9.11.11',framework:'scenario-first, 50/75/100/full, existing Med Daddy progress'};
+ // A previous Infectious unit patch set a stale hard-coded browser title.
+ // Restore the shared embedded release version after all legacy patch scripts.
+ document.title='Med Daddy v'+(typeof APP_VERSION==='string'?APP_VERSION:'9.11.11')+' — The PCP Companion';
+  window.MD_PCP_MED_GOLD_91111={ready:!problems.length,pools:Object.fromEntries(Object.entries(pools).map(([k,v])=>[k,v.length])),medicationTopics:medTopics.size,problems,version:'9.11.11',framework:'scenario-first, 50/75/100/full, existing Med Daddy progress'};
 })();
