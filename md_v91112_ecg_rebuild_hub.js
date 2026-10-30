@@ -42,13 +42,13 @@
  const sourceReview=uniq([...review,...original4.filter(q=>/AV|Rhythm|Intervals|Waveforms|Rate Calculation|Fix the Rule/.test(q.topic))]);
  const tracks={
   four:{
-   all:pool4,images:stripQuiz,
+   challenge:uniq([...four,...review,...stripQuiz]),all:pool4,images:stripQuiz,
    theory:pool4.filter(q=>/Anatomy|Conduction|ECG Theory|Waveforms|Paper|Interval|Rate Calculation|Regularity|Fix the Rule/.test(q.topic)),
    rhythms:pool4.filter(q=>/Rhythm|AV Blocks|Paced|Clinical Decisions|Authentic Strip/.test(q.topic)),
    review:sourceReview
   },
   twelve:{
-   all:pool12,
+   challenge:uniq([...twelve,...original12]),all:pool12,
    anatomy:pool12.filter(q=>/Anatomy|Placement|Chest Leads|Territor|Acquisition|Waveform/.test(q.topic)),
    stemi:pool12.filter(q=>/ST Analysis|STEMI Mimics|PCP Bypass|STEMI|Fifteen Lead|Serial ECG/.test(q.topic)),
    clinical:pool12.filter(q=>/PCP Bypass|STEMI|ST Analysis|Waveform Interpretation/.test(q.topic))
@@ -68,7 +68,7 @@
  '<div id="md-ecg-four"><h3>4-Lead · Rhythm, Theory &amp; Conduction</h3>'+
  '<p class="muted">Anatomy and conduction, waveforms and intervals, rate calculations, atrial/junctional/ventricular rhythms, AV blocks, pacing faults, and PCP clinical reasoning.</p>'+
  '<div class="md-ecg-launch"><label for="md-ecg-four-bank">Practice focus</label>'+
- '<select id="md-ecg-four-bank"><option value="all">Complete 4-Lead Unit</option>'+
+ '<select id="md-ecg-four-bank"><option value="challenge">Instructor-Level 4-Lead Challenge — recommended</option><option value="all">Complete 4-Lead Unit</option>'+
  '<option value="images">Authentic Rhythm Strip Identification</option>'+
  '<option value="theory">Cardiac Anatomy, Conduction &amp; Theory</option>'+
  '<option value="rhythms">Rhythm Interpretation, Blocks &amp; Pacemakers</option>'+
@@ -80,7 +80,7 @@
  '<div id="md-ecg-twelve" hidden><h3>12-Lead · Acquisition, Territories &amp; STEMI</h3>'+
  '<p class="muted">Lead placement, coronary anatomy, J point/ST deviation, contiguous territories, right-sided and posterior leads, STEMI mimics, and BLS bypass reasoning.</p>'+
  '<div class="md-ecg-launch"><label for="md-ecg-twelve-bank">Practice focus</label>'+
- '<select id="md-ecg-twelve-bank"><option value="all">Complete 12-Lead Unit</option>'+
+ '<select id="md-ecg-twelve-bank"><option value="challenge">Instructor-Level 12-Lead Challenge — recommended</option><option value="all">Complete 12-Lead Unit</option>'+
  '<option value="anatomy">Anatomy, Lead Placement &amp; Acquisition</option>'+
  '<option value="stemi">STEMI Territories, Mimics &amp; Recognition</option>'+
  '<option value="clinical">Clinical Interpretation &amp; Bypass Decisions</option></select>'+
@@ -139,20 +139,36 @@
   const bank=tracks[which];
   const update=()=>{
    const focus=bank[sel.value]||[],full=bank.all||[];
-   meta.textContent=sel.value==='all'?full.length+' questions in this section':focus.length+' focused questions; remaining questions drawn from the same '+(which==='four'?'4-lead':'12-lead')+' pool to reach the selected exam size.';
+   meta.textContent=(sel.value==='all'||sel.value==='challenge'||sel.value==='images')?
+    focus.length+' questions in this selected deck (new instructor-level questions prioritized in Challenge mode)':
+    focus.length+' focused questions; remaining questions drawn from the same '+(which==='four'?'4-lead':'12-lead')+' pool to reach the selected exam size.';
   };
   sel.onchange=update;length.onchange=update;update();
   root.querySelector('#md-ecg-'+which+'-start').onclick=()=>{
    if(errors.length){meta.textContent='Question validation needs attention. No progress was changed.';console.error('ECG rebuild',errors);return;}
    const full=bank.all||[],focus=bank[sel.value]||[];
-   const n=length.value==='all'?full.length:Math.min(Number(length.value),full.length);
+   const exclusive=sel.value==='images'||sel.value==='challenge';
+   const effective=exclusive?focus:full;
+   const n=length.value==='all'?effective.length:Math.min(Number(length.value),effective.length);
    if(n<50){meta.textContent='This lead section needs at least 50 questions.';return;}
    const shuffled=x=>typeof shuffle==='function'?shuffle(x.slice()):x.slice();
-   // Focus first; fill without duplicates from the same lead track.
-   const focusN=sel.value==='all'?n:Math.min(focus.length,Math.max(15,Math.ceil(n*.65)));
-   const first=shuffled(focus).slice(0,focusN),used=new Set(first.map(q=>q.id));
-   const rest=shuffled(full.filter(q=>!used.has(q.id))).slice(0,n-first.length);
-   const selected=shuffled([...first,...rest]);
+   let selected=[];
+   if(sel.value==='challenge'){
+    const newPriority=which==='four'?[...four,...review]:twelve;
+    // Always start with 35 authored instructor-hard cases (or all available),
+    // then include authenticated course strips / remaining lead-specific items.
+    const leadPriority=shuffled(newPriority).slice(0,Math.min(n,35,newPriority.length));
+    const used=new Set(leadPriority.map(q=>q.id));
+    selected=shuffled([...leadPriority,...shuffled(focus.filter(q=>!used.has(q.id))).slice(0,n-leadPriority.length)]);
+   }else if(sel.value==='images'||sel.value==='all'){
+    selected=shuffled(focus).slice(0,n);
+   }else{
+    // Focus up to 65% of a session, using questions from the same lead track
+    // for the remainder; maintain full-length sessions without duplicates.
+    const focusN=Math.min(focus.length,Math.max(15,Math.ceil(n*.65)));
+    const first=shuffled(focus).slice(0,focusN),used=new Set(first.map(q=>q.id));
+    selected=shuffled([...first,...shuffled(full.filter(q=>!used.has(q.id))).slice(0,n-first.length)]);
+   }
    if(selected.length<50||selected.some(q=>!registry.has(q.id))){meta.textContent='Cannot start: safe 50-question ECG pool not available. Saved progress remains intact.';return;}
    const recycle=document.getElementById('recycle');if(recycle)recycle.checked=false;
    if(typeof start==='function')start(selected);
