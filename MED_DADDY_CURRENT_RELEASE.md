@@ -1,6 +1,6 @@
 # Med Daddy — Current release and source-deck inventory
-Updated: 2026-10-27
-**Current repository version:** v9.11.10
+Updated: 2026-10-29
+**Current repository version:** v9.11.11
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
 
@@ -19,6 +19,16 @@ Updated: 2026-10-27
 - Topics: Fever/sepsis, Dysphagia/epiglottitis, Croup Medical Directive, Bronchoconstriction Medical Directive, Auxiliary IV and Fluid Therapy, Bite Injury, Oxygen Therapy. References: BLS PCS 3.4 and ALS PCS 5.4.
 - QA run: source files parse; 50 unique question IDs and stems; each has four distinct choices, one answer key, detailed correct and per-distractor explanations. Checked against the app's `mdLeakReason`; all 50 passed. Registration and selector/full-bank integration passed an executable JS simulation (50/50 registered; dropdown option present). **Live user-browser interaction still unverified.**
 - Existing mock, reviews, other units and local progress keys are unchanged. Auto-reload remains disabled.
+
+## v9.11.11 — Home-screen PCP Medication Mastery rebuild (2026-10-29)
+- User reported **86% on the PCT II Infectious Diseases exam on 2026-10-29** after one night of dedicated study while working. Confirmed recent results: Environmental 88%, Endocrine 86%, Infectious Diseases 86%. Keep these separate from in-app practice results.
+- User expressly identified the Infectious Diseases 50-question directive testing as the new gold standard and requested that same challenging scenario structure for **PCP medications testing accessible from the home screen**.
+- Added `md_v91111_pcp_med_gold.js` to the deployed main page following all existing baseline and unit patch scripts; version and script cache now use v9.11.11. **No existing question bank replaced or deleted.**
+- Existing source-based banks: 120 original PCP medication questions (30 medication/formulation entries), plus 298 PCP Scenario Mastery questions. Of the latter, **285 clinical questions** match medication topics, MED CHECK/MACC, integrated plans, or medication-bearing directives. New home-screen medication mode combines these into **405 distinct questions**, including 285 clinical scenarios.
+- New compact menu, following the approved Infectious Diseases layout: Clinical Directive Decisions (default), MED CHECK & Integrated Treatment Plans, Medication-Specific Scenarios, Dose Calculations & Thresholds, All Questions, Original Foundations. 50/75/100/full sessions; no small-quiz grid.
+- Core rules: four choices, exact keyed option, distinct wrong-answer explanations, tested authorization/scope conditions; source records/IDs preserved; existing safety registry checked; same Med Daddy adaptive progress. No automatic reloads.
+- Runtime simulated test: 50 distinct registered scenario questions launched successfully; core modules passed JavaScript syntax checks. **Live hosted/browser test blocked by environment policy** and remains unverified.
+- This update **curates and restructures existing source-anchored medication and scenario questions**; it does not constitute a newly authored 405-question bank or an independent medical audit of every case. Do not claim otherwise.
 
 ## v9.11.9 preserved mock launch repair
 - Root cause: core Med Daddy start() safety wrappers discard **unregistered** question IDs. The uploaded Infectious original mock and nine new Chapter 39 textbook questions were present in source decks but absent from window.MD_SAFE_QUESTIONS, so launching the mock filtered all 130 to an empty pool and falsely showed a "No missed or unseen" alert.
