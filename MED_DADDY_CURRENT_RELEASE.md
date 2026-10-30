@@ -1,6 +1,6 @@
 # Med Daddy — Current release and source-deck inventory
-Updated: 2026-10-29
-**Current repository version:** v9.11.11
+Updated: 2026-10-30
+**Current repository version:** v9.11.12
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
 
@@ -19,6 +19,17 @@ Updated: 2026-10-29
 - Topics: Fever/sepsis, Dysphagia/epiglottitis, Croup Medical Directive, Bronchoconstriction Medical Directive, Auxiliary IV and Fluid Therapy, Bite Injury, Oxygen Therapy. References: BLS PCS 3.4 and ALS PCS 5.4.
 - QA run: source files parse; 50 unique question IDs and stems; each has four distinct choices, one answer key, detailed correct and per-distractor explanations. Checked against the app's `mdLeakReason`; all 50 passed. Registration and selector/full-bank integration passed an executable JS simulation (50/50 registered; dropdown option present). **Live user-browser interaction still unverified.**
 - Existing mock, reviews, other units and local progress keys are unchanged. Auto-reload remains disabled.
+
+## v9.11.12 — PCT II ECG rebuild (2026-10-30)
+- 11 user-uploaded ECG materials inspected; full inventory, source provenance and outstanding mock image-import work documented in `ECG_REBUILD_SOURCE_AUDIT.md`.
+- Preserve existing ECG Academy's 188 source-linked questions and original visual assets (95 real rhythm strips, 16 12-lead tracings). Existing 66 image-based rhythm questions remain playable.
+- Added 72 new four-option instructor-hard questions across 4-lead (25), 12-lead (37) and the PCT II ECG instructor review (10). Every added question has one key, topic/source metadata and specific explanation for each wrong option. Strict source distinction between 2019-era teaching and current Ontario BLS PCS v3.4 STEMI bypass criteria.
+- New normal ECG Academy has two **distinct tabs**: 4-Lead Rhythm Interpretation and 12-Lead Interpretation, with clean standard 50/75/100/full exam launcher and relevant original image gallery under each track. Old shortcut grids hidden; PCT II home menu retains Open ECG Academy.
+- Current full bank: **260** questions, **199** in 4-lead and **61** in 12-lead. These track numbers partition original and new records without overlap.
+- Default instructor challenge: 50Q 4-lead contains **35 new hard questions plus 15 original visual strip questions**; 50Q 12-lead contains **35 new hard questions and 15 previous course questions**. Dedicated authentic strip mode produces **50 image-based questions**, source images unchanged. 12-lead full deck gives 61.
+- Core quiz safety registry checks preserved; no old IDs removed, no local progress clearing, no auto-updater. Version label/cache updated to 9.11.12.
+- Executable simulated runtime checks: both tracks launch 50 distinct registered questions; visual strip mode yields exactly 50 images; full 12-lead selects 61, all unique/registered. New scripts parse and 72 new questions pass structure, rationales and answer-leakage checks.
+- **Not completed:** independent live-browser regression; original `ECG Practice (1).pdf` 50-item image-based mock as a separately playable deck; `Question 1(1).txt` as standalone preserved exam; expanding all 13 ECG instructor review prompts to five new questions each; item-level clinical audit of previous 188 questions. Never claim these are finished.
 
 ## v9.11.11 — Home-screen PCP Medication Mastery rebuild (2026-10-29)
 - User reported **86% on the PCT II Infectious Diseases exam on 2026-10-29** after one night of dedicated study while working. Confirmed recent results: Environmental 88%, Endocrine 86%, Infectious Diseases 86%. Keep these separate from in-app practice results.
