@@ -119,6 +119,7 @@
  '#md-ecg91112 .md-ecg-launch label{font-weight:700}#md-ecg91112 select{width:100%;min-height:44px;padding:9px;border-radius:8px;border:1px solid #45637d;background:#101d2f;color:#e6f4ff}'+
  '#md-ecg91112 .md-ecg-launch button{grid-column:1/-1;min-height:48px;font-weight:750}'+
  '#md-ecg91112 .ecg-section{margin-top:26px}#md-ecg91112 .md-ecg-ref-guides{margin-top:20px;padding:14px;border:1px solid #45637d;border-radius:12px}'+
+ '#md-ecg91112 [hidden],#ecgAcademyPage>.ecg-section[hidden],#ecgAcademyPage>.ecg-hero[hidden]{display:none!important}'+
  '#md-ecg91112 .md-ecg-source-note{margin-top:18px;opacity:.75}'+
  '@media(max-width:680px){#md-ecg91112 .md-ecg-launch{grid-template-columns:1fr}#md-ecg91112 .md-ecg-tabs{grid-template-columns:1fr}#md-ecg91112 .md-ecg-count{text-align:left}}';
  document.head.appendChild(css);
@@ -158,7 +159,16 @@
    else meta.textContent='Quiz engine unavailable. Please reload the application.';
   };
  }
- setup('four');setup('twelve');selectTrack('four');
+ // Preserve existing unit menu entry and remove extra quick-test shortcuts; the new
+ // two-track academy is the sole ECG entry point, as in the other clean PCT units.
+ const pctMenu=document.getElementById('pct2CoursePanel');
+ if(pctMenu){
+  pctMenu.querySelectorAll('button[onclick]').forEach(button=>{
+   const on=button.getAttribute('onclick')||'';
+   if(/launchECGStripMastery\(|launchECGQuiz\(/.test(on))button.remove();
+  });
+ }
+  setup('four');setup('twelve');selectTrack('four');
  window.MD_ECG_REBUILD_91112={ready:errors.length===0,errors,version:'9.11.12',counts:{
   original:originals.length,new:imported.length,total:originals.length+imported.length,
   four:pool4.length,twelve:pool12.length,authenticImageQuestions:stripQuiz.length,
