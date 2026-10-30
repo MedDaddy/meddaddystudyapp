@@ -1,5 +1,5 @@
 # Med Daddy — Established Project Standards
-Updated: 2026-10-28. This document is the persistent source of truth across ChatGPT conversations.
+Updated: 2026-10-30. This document is the persistent source of truth across ChatGPT conversations.
 
 ## Release workflow
 - Work on the currently deployed GitHub **main** branch, after checking the live version. Never replace newer code with an old local build.
@@ -50,6 +50,16 @@ Updated: 2026-10-28. This document is the persistent source of truth across Chat
 - Anchor questions in the **actual uploaded medication lecture, reviews, textbooks and applicable Ontario BLS/ALS PCS**; check exact revision of directives at build time. Preserve instructor-original mocks unchanged and flag their errors separately. Never invent a dose, threshold, protocol, or authorization or use general medical practice to silently replace a course source.
 - Independently audit every deck for pharmacologic accuracy, math, answer leakage, distractor realism, ambiguous cases, near duplicates, scope errors and working startup. Preserve all existing units, saved progress, source provenance and the accepted clean Infectious Diseases UI.
 - Treat the Infectious Diseases directive set as the **reference implementation**, not a bank of stems to copy with different drug names. Build genuinely varied and source-specific medication reasoning problems.
+
+## PCT II ECG Unit — 4-lead versus 12-lead gold standard (2026-10-30)
+- **Two distinct, selectable ECG tracks:** 4-Lead Rhythm Interpretation (cardiac anatomy and conduction; pacemaker rates/failures; waveform/interval timing; paper/rate calculations; P–QRS relationships; AV blocks; sinus, atrial, junctional, ventricular and paced rhythms; patient stability/PCP decisions) and 12-Lead Interpretation (electrode landmarks; axis; coronary territories; ST/T and J-point analysis; reciprocal changes; posterior and right-sided extension; ischemia/infarction; BBB/STEMI mimics; current Ontario STEMI bypass decisions).
+- Use a clean standard unit launcher and 50/75/100/full sessions; **default Instructor-Level Challenge** with heavily weighted new scenario/application questions. Keep 50-image-only original rhythm-strip practice and genuine 12-lead image inspection available in the correct sections. No 10- to 20-question micro-shortcut grid.
+- Never manufacture or redraw alleged **authentic course tracings**. Preserve original image and provenance. Never label a 12-lead tracing with a diagnosis absent from the source without independent verification. Text-only scenarios must be identified as text-only.
+- Preserve uploaded `ECG Practice (1).pdf` (20 four-lead + 30 twelve-lead original questions) as a distinct **original-preserved mock** once the actual PDF strip images, options and source keys can be faithfully imported. A separate unrelated authentic ECG strip bank does not substitute for that mock.
+- Each uploaded ECG study guide or review gets an independent coverage map; expand 5 unique questions per review prompt when supportable, including challenging anatomy/theory/interpretation questions—not exclusively directive questions.
+- Use the Chapter 30 textbook/lectures, 4-lead slides, 12-lead CTS teaching, ECG study tool, and other uploaded references. Treat old STEMI-bypass handouts as historical; **verify current Ontario BLS/ALS PCS separately** before using authorization or bypass thresholds.
+- Audit unsafe shorthand (“irregular means AF,” “wide QRS means ventricular”): these are not universal rules. Challenge differential diagnoses and the context of the actual patient.
+- Use the same successful Infectious/Medications directive-quality 4-option, one-best-answer, rationale-for-every-choice, source-anchored, no-answer-leakage standards. Verify live navigation, image loading, registry, preserved progress and question selection before claiming fully completed.
 
 ## Question quality — A&P II
 - Use the same four-option, one-key, detailed-explanation QA standard.
