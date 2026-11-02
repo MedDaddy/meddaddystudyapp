@@ -1,6 +1,6 @@
 # Med Daddy — Current release and source-deck inventory
-Updated: 2026-10-30
-**Current repository version:** v9.11.12
+Updated: 2026-11-01
+**Current repository version:** v9.11.13
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
 
@@ -19,6 +19,16 @@ Updated: 2026-10-30
 - Topics: Fever/sepsis, Dysphagia/epiglottitis, Croup Medical Directive, Bronchoconstriction Medical Directive, Auxiliary IV and Fluid Therapy, Bite Injury, Oxygen Therapy. References: BLS PCS 3.4 and ALS PCS 5.4.
 - QA run: source files parse; 50 unique question IDs and stems; each has four distinct choices, one answer key, detailed correct and per-distractor explanations. Checked against the app's `mdLeakReason`; all 50 passed. Registration and selector/full-bank integration passed an executable JS simulation (50/50 registered; dropdown option present). **Live user-browser interaction still unverified.**
 - Existing mock, reviews, other units and local progress keys are unchanged. Auto-reload remains disabled.
+
+## v9.11.13 — ECG rhythm-strip-only default and concise cases
+- User confirmed they want a dedicated test **only using supplied rhythm strips** and complained that the new ECG questions were too abstract/wordy.
+- **Location:** Home → PCT II → ECG Academy → 4-Lead Rhythm Interpretation → Practice focus: **Rhythm Strips Only — 66 authentic course images** (now the *default* option) → 50 questions → Start 4-Lead Exam.
+- A separate **50-question image-only mode** uses original ECG study-tool strip images: actual source image is displayed **above four rhythm alternatives**, with the short stem "Identify the rhythm shown." The underlying image IDs, originally keyed correct rhythm names, and course provenance are retained. The supplied `ECG Practice (1).pdf` 50-item mock still remains a separate outstanding import.
+- Simplified all **72 newly written ECG question stems** without altering keys, answer choices, individualized post-answer rationales, or source references: 4-lead new 25 items average 158→84 characters; review new 10 average 145→73; 12-lead new 37 average 117→79.
+- Existing 188 ECG questions and 95 source strip images / 16 full 12-lead gallery images remain intact. Current full-bank sizes 199 four-lead and 61 twelve-lead; all 72 newly written items retained.
+- Confirmed by reading the original embedded app that its shared quiz renderer displays `ECG_STRIP_MAP[imageId].image` above choices. Original 66 image question answers exactly match course strip labels; all source image IDs resolve.
+- Functional JavaScript launch tests: 50 image-only questions, 50 actual images, no text-only questions and all canonical safety registry prompts consistent; 50 unique 4-lead challenge questions (35 new); 50 unique 12-lead challenge questions (35 new). No stored-progress clearing, no auto-reload.
+- New website version/title v9.11.13 committed; **live GitHub Pages browser visualization remains unverified**.
 
 ## v9.11.12 — PCT II ECG rebuild (2026-10-30)
 - 11 user-uploaded ECG materials inspected; full inventory, source provenance and outstanding mock image-import work documented in `ECG_REBUILD_SOURCE_AUDIT.md`.
