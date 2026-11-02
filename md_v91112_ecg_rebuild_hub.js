@@ -39,6 +39,12 @@
  const pool4=uniq([...original4,...four,...review]);
  const pool12=uniq([...original12,...twelve]);
  const stripQuiz=original4.filter(q=>q.imageId&&window.ECG_STRIP_MAP?.[q.imageId]);
+ // User-facing image questions stay short; no labels or answers in the stem.
+ for(const q of stripQuiz){
+  q.prompt='Identify the rhythm shown.';
+  const canonical=registry.get(q.id);
+  if(canonical&&canonical!==q)canonical.prompt=q.prompt;
+ }
  const sourceReview=uniq([...review,...original4.filter(q=>/AV|Rhythm|Intervals|Waveforms|Rate Calculation|Fix the Rule/.test(q.topic))]);
  const tracks={
   four:{
@@ -66,10 +72,11 @@
  '<button type="button" id="md-ecg-tab4" class="primary">4-Lead Rhythm Interpretation</button>'+
  '<button type="button" id="md-ecg-tab12" class="secondary">12-Lead Interpretation</button></div>'+
  '<div id="md-ecg-four"><h3>4-Lead · Rhythm, Theory &amp; Conduction</h3>'+
- '<p class="muted">Anatomy and conduction, waveforms and intervals, rate calculations, atrial/junctional/ventricular rhythms, AV blocks, pacing faults, and PCP clinical reasoning.</p>'+
+ '<p class="muted"><strong>Rhythm Strips Only</strong> tests recognition from actual ECG images, without theory questions. Choose the other decks for anatomy, intervals, blocks, pacemakers and clinical decisions.</p>'+
  '<div class="md-ecg-launch"><label for="md-ecg-four-bank">Practice focus</label>'+
- '<select id="md-ecg-four-bank"><option value="challenge">Instructor-Level 4-Lead Challenge — recommended</option><option value="all">Complete 4-Lead Unit</option>'+
- '<option value="images">Authentic Rhythm Strip Identification</option>'+
+ '<select id="md-ecg-four-bank"><option value="images">Rhythm Strips Only — 66 authentic course images</option>'+
+ '<option value="challenge">Instructor-Level 4-Lead Challenge</option><option value="all">Complete 4-Lead Unit</option>'+
+
  '<option value="theory">Cardiac Anatomy, Conduction &amp; Theory</option>'+
  '<option value="rhythms">Rhythm Interpretation, Blocks &amp; Pacemakers</option>'+
  '<option value="review">Instructor ECG Review — Focused Practice</option></select>'+
@@ -185,7 +192,7 @@
   });
  }
   setup('four');setup('twelve');selectTrack('four');
- window.MD_ECG_REBUILD_91112={ready:errors.length===0,errors,version:'9.11.12',counts:{
+ window.MD_ECG_REBUILD_91112={ready:errors.length===0,errors,version:'9.11.13',counts:{
   original:originals.length,new:imported.length,total:originals.length+imported.length,
   four:pool4.length,twelve:pool12.length,authenticImageQuestions:stripQuiz.length,
   authenticStripGallery:strips.length,originalTwelveLeadTracings:full12.length
