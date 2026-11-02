@@ -1,6 +1,6 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-11-01
-**Current repository version:** v9.11.13
+**Current repository version:** v9.11.14
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Unit:** PCT II Infectious & Communicable Diseases
 
@@ -19,6 +19,13 @@ Updated: 2026-11-01
 - Topics: Fever/sepsis, Dysphagia/epiglottitis, Croup Medical Directive, Bronchoconstriction Medical Directive, Auxiliary IV and Fluid Therapy, Bite Injury, Oxygen Therapy. References: BLS PCS 3.4 and ALS PCS 5.4.
 - QA run: source files parse; 50 unique question IDs and stems; each has four distinct choices, one answer key, detailed correct and per-distractor explanations. Checked against the app's `mdLeakReason`; all 50 passed. Registration and selector/full-bank integration passed an executable JS simulation (50/50 registered; dropdown option present). **Live user-browser interaction still unverified.**
 - Existing mock, reviews, other units and local progress keys are unchanged. Auto-reload remains disabled.
+
+## v9.11.14 — Original 100-question ECG Mock (2026-11-01)
+- Imported the newly supplied **ECG Mock.pdf** (16 pages, 100 text-based questions, original key on page 16) as its own preserved 100-question ECG source deck.
+- The new **Start Original 100-Question Mock** launcher sits inside ECG Academy, accessible from either the 4-lead or 12-lead track. Original question order, all four answer alternatives, source-provided answer key and page/section references preserved.
+- This text-only 100-question mock is **not** the separate visual 50-question `ECG Practice (1).pdf` previously uploaded. The 50-question original strip mock remains outstanding for import.
+- Detected and flagged suspected source-key errors in original global questions **99 and 100**. Kept the supplied keys unchanged; warnings are included in the post-answer explanation. Other 98 keys are original/unverified, not certified correct.
+- Verified by executable launch simulation: 100 unique registered questions; 100-question session starts in original order with source keys unchanged; no stats reset and no new 10-question tiles; auto-updater remains disabled. Live browser rendering remains unverified.
 
 ## v9.11.13 — ECG rhythm-strip-only default and concise cases
 - User confirmed they want a dedicated test **only using supplied rhythm strips** and complained that the new ECG questions were too abstract/wordy.
