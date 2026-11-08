@@ -1,5 +1,15 @@
 # A&P II Lymphatic & Immune Systems — Source & Release Audit
-Updated: 2026-11-07. Current v9.11.17; previous release findings retained.
+Updated: 2026-11-07. Current v9.11.19; previous release findings retained.
+
+## v9.11.19 — Actual Patton Chapter 31–33 review prompts audited and incorporated
+- Exam prep scope: **user-uploaded Patton *Anatomy & Physiology*, 11th edition**. The chapter headings had been verified in earlier releases, but prior authoring had **not** systematically included the actual end-of-chapter Review/ Critical Thinking prompts. Those sections were now read directly in full.
+- Patton chapter-level source counts: **Chapter 31 Lymphatic System: Review 1–19 and Critical Thinking 1–5 (24)**; **Chapter 32 Innate Immunity: Review 1–8 and Critical Thinking 1–7 (15)**; **Chapter 33 Adaptive Immunity: Review 1–12 and Critical Thinking 1–5 (17)**. In total, **56 independently indexed source prompts**.
+- New original multiple-choice bank: `md_v91119_patton_review_ch31.js` (24), `md_v91119_patton_review_ch32.js` (15), `md_v91119_patton_review_ch33.js` (17). Each question has 4 distinct choices; unique key, correct-answer explanation, 3 distinct explanations for the wrong options, and precise source section/number locator. These questions are **new transformations**, not verbatim copies from the textbook.
+- The initial editorial pass identified 18 weaker distractor sets; these were strengthened in-place: Ch31 10, Ch32 4, Ch33 4. Answer content and source mappings retained. Correct-letter distribution **A14/B14/C14/D14**.
+- The question stems were checked against the previous 127 authored and 127 cleaned mock questions for exact normalized duplicates; none were found (several related textbook concepts are necessarily revisited in distinct source questions). The new Patton questions remain their own selectable review deck, and are also in the mixed `Complete A&P Science` bank.
+- Current Lymph active totals: **56 Patton +70 instructor-review +57 lecture =183 source-linked authored questions; plus 127 cleaned mock =310 distinct question IDs**. High Yield 50 is a subset of instructor review. Raw 500 source records remain archived outside the playable banks.
+- Simulation QA: Patton full 56 and 50, Complete Science full 183 and 100, Cleaned Mock 127, High-Yield 50, all launch correctly, no duplicate IDs or missing answer-key entries, nested existing A&P page remains active on opening. In-app version and script cache buster updated to `v9.11.19`. Live browser validation was not possible.
+- The fix for the blank dark page reported in v9.11.17 is in v9.11.18 and retained: Lymph content is now within the supported A&P parent page rather than created as an unregistered sibling page.
 
 ## v9.11.17 — Complete second editorial pass and final registration checks (2026-11-07)
 - Following the first 59 question repairs, a second review also found remaining too-obvious alternatives. Added **16 more review edits** and **13 lecture edits** via `md_v91116_lymph_quality_review_final.js` and `md_v91116_lymph_quality_lecture_final.js`. One lecture item was improved in both passes: **88 edit operations across 87 distinct questions**, with all correct answers, source locators, and IDs retained.
