@@ -1,8 +1,16 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-11-07
-**Current repository version:** v9.11.16
+**Current repository version:** v9.11.17
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Current new unit:** A&P II Lymphatic & Immune Systems
+
+## v9.11.17 — Final A&P II Lymph question-quality and cleaned-mock release
+- **254 active Lymph questions:** 127 new source-linked, 127 reviewed deduplicated source-mock items. The original two 250-item source PDFs are archived in GitHub, not presented as 500 playable questions.
+- Original mocks included 184 repeated stems, extreme answer-B bias (A 230/250 B and B 227/250 B), mixed-in unrelated PCT topics, and at least one conflicting/ambiguous original key. The new cleaned 127-Q A&P practice set has one concept per stem and source provenance.
+- Answer positions are **reordered with the correct answer text**, never just the letter, producing 127-Q distribution **A32, B32, C32, D31**. Question order shuffles each practice session; per-question option positions are stable for progress consistency.
+- Editorial review of authored A&P items strengthened **87 distinct questions** (88 patch edits: first pass 24 review + 35 lecture, additional 16 review + 13 lecture with one overlap). Specific explanations were rewritten for all changed distractors.
+- Latest simulated QA: 254 unique registered IDs, zero invalid answer mappings, zero duplicate active stems between authored and cleaned source mock, 50/70/100/127 sessions launched as configured, no changes to saved progress or unrelated units. Release HTML and in-app title now v9.11.17.
+- Full detail: `A_P_II_LYMPH_SOURCE_AUDIT.md`. **Outstanding** live visual/browser QA and any external instructor signoff of historical mock keys.
 
 ## v9.11.16 — Corrected A&P II Lymph mock and authored-question audit (2026-11-07)
 - **User identified true QA failures** in the earlier v9.11.15 Lymph release: original mock duplicates/500 inflation, answer key overwhelmingly B, and a concern about authored-question difficulty. Audit confirmed these.
