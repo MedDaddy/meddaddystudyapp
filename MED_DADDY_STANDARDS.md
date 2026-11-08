@@ -1,5 +1,5 @@
 # Med Daddy — Established Project Standards
-Updated: 2026-11-07. This document is the persistent source of truth across ChatGPT conversations.
+Updated: 2026-11-07. Current A&P textbook review rule through v9.11.19.
 
 ## Release workflow
 - Work on the currently deployed GitHub **main** branch, after checking the live version. Never replace newer code with an old local build.
@@ -82,6 +82,13 @@ Updated: 2026-11-07. This document is the persistent source of truth across Chat
 - A balanced **High-Yield 50** is a subset of authored questions, not fictitious additional bank count. Preserve original 250-item `A&P II LYMPH mock.pdf` and 250-item `A&P II Lymph Mock (1).pdf` independently and unchanged, source keys flagged as unverified.
 - Use full-length 50/75/100/full as bank length allows, same Med Daddy engine/progress and no extra micro-quiz grid. Source mock original order is mandatory when taking the full original mock.
 - The authored science bank excludes unrelated PCP directive management; original source mocks may contain PCP material without making it verified A&P instruction. Do not silently fix provided mock keys; flag and verify with the course where needed.
+
+## A&P textbook end-of-chapter review source rule (v9.11.19)
+- For an uploaded assigned A&P textbook, do not only check chapter headings/subject matter. **Read the actual end-of-chapter Review Questions and Critical Thinking Questions** for every assigned chapter before claiming complete textbook coverage.
+- Map each original numbered book prompt to an **original authored exam-style 4-choice question** (not verbatim copying), with source chapter, Review vs Critical Thinking section, original question number, four plausible alternatives, one best answer, and individualized reasons for wrong answers. Include the thought process but avoid vague or long case stems.
+- Identify exact and concept-overlap with the active instructor-review, lecture and original mock banks. Keep the textbook review selectable as its own bank; combine it with larger study pools only after dedup and launch checks.
+- Use a minimum 50-question session where the bank allows; do not expose short micro-quiz tile grids. Keep original textbook text and already-preserved original mock PDFs unchanged.
+- For A&P II Lymphatic specifically, Patton 11e chapters 31/32/33 contain **39 Review Questions + 17 Critical Thinking Questions** (24/15/17 respectively). The textbook-source deck is 56 questions in v9.11.19.
 
 ## Mandatory mock audit and distractor-quality gate (learned from A&P Lymph v9.11.15–17)
 - Do not equate combined uploaded mock item counts with **independently useful question counts**. Compare every mock against every other mock and itself by normalized stem and overlapping concepts. Distinguish raw preserved archives from the **deduplicated, course-relevant live practice bank**.
