@@ -1,5 +1,5 @@
 /* Med Daddy v9.11.15 — A&P II Lymphatic & Immune Systems
- * Instructor-review 70 Q (five for each of 14 points), balanced High-Yield 50,
+ * Instructor-review 70 Q (five for each of 14 points), ten-concept High-Yield 50,
  * TWO original-preserved 250-item source mocks. Uses existing Med Daddy engine.
  * The private practice test influenced STYLISTIC standards only and is never published.
  */
@@ -74,15 +74,32 @@
   for(const q of [...review,...lecture,...patton])if(!BANK.some(x=>x.id===q.id))BANK.push(q);
  }
  if(errors.length){window.MD_AP2_LYMPH_91115={ready:false,errors};console.error('Lymph unit start prevented',errors);return;}
- // Assemble a balanced High-Yield 50; 14 topics represented with at least 3 Q each.
- const highYield=[];
- for(let p=1;p<=14;p++){
-  const pointQuestions=review.filter(q=>q.reviewPoint===p);
-  const take=p<=8?4:3;
-  highYield.push(...pointQuestions.slice(0,take));
+ // High-Yield 50 follows our ten key concepts x five questions standard.
+ // The groups below retain coverage of all fourteen instructor-review points.
+ const highYieldConcepts=[
+  {name:'Fluid compartments',parts:[[1,5]]},
+  {name:'Lymphatic vessels and circulation',parts:[[2,3],[4,2]]},
+  {name:'Lymph nodes',parts:[[3,5]]},
+  {name:'Lymphoid organs',parts:[[5,5]]},
+  {name:'Innate and adaptive defence',parts:[[6,3],[7,2]]},
+  {name:'Phagocytes',parts:[[8,5]]},
+  {name:'Antibodies and humoral immunity',parts:[[9,3],[11,2]]},
+  {name:'Acquired immunity and clonal selection',parts:[[10,3],[13,2]]},
+  {name:'Complement',parts:[[12,5]]},
+  {name:'Interferons',parts:[[14,5]]}
+ ];
+ const highYield=[],highYieldCoverage=[];
+ for(const concept of highYieldConcepts){
+  const qs=concept.parts.flatMap(([p,n])=>review.filter(q=>q.reviewPoint===p).slice(0,n));
+  if(qs.length!==5){
+   window.MD_AP2_LYMPH_91115={ready:false,errors:['High Yield concept incomplete: '+concept.name]};return;
+  }
+  highYield.push(...qs);
+  highYieldCoverage.push({concept:concept.name,questionIds:qs.map(q=>q.id)});
  }
- if(highYield.length!==50||new Set(highYield.map(x=>x.id)).size!==50){
-  window.MD_AP2_LYMPH_91115={ready:false,errors:['High Yield 50 coverage mismatch']};return;
+ if(highYield.length!==50||new Set(highYield.map(q=>q.id)).size!==50||
+    new Set(highYield.map(q=>q.reviewPoint)).size!==14){
+  window.MD_AP2_LYMPH_91115={ready:false,errors:['High Yield 50 concept coverage/duplicate mismatch']};return;
  }
  const page=document.createElement('section');
  page.id='ap2LymphPage';page.className='md-lymph-contained';page.style.display='none';
@@ -93,7 +110,7 @@
  '<button type="button" id="md-lymph-home">Study Home</button></div>'+
  '<div class="md-lymph-control"><label for="md-lymph-bank">Question deck</label>'+
  '<select id="md-lymph-bank">'+
- '<option value="high">High-Yield 50 · private-test question style</option>'+
+ '<option value="high">High-Yield 50 · 10 key concepts × 5 questions</option>'+
  '<option value="science">Complete A&amp;P Lymphatic/Immune Science · 183 questions</option>'+ 
  '<option value="review">Instructor 14-Point Review · 70 questions</option>'+
  '<option value="lecture">Immune Lecture Quick Quiz Coverage · 57 questions</option>'+ 
@@ -108,7 +125,7 @@
  '<details class="md-lymph-notes"><summary>Sources &amp; original mocks</summary>'+
  '<p><strong>Review:</strong> Lymph immune review.doc (14 points × five questions) plus Immune System.ppt (19 Quick Quiz prompts × three questions). Patton Anatomy &amp; Physiology 11e: Ch 31 Lymphatic System, Ch 32 Innate Immunity, Ch 33 Adaptive Immunity. Additionally, 56 original questions now individually map to all 39 textbook end-of-chapter Review Questions and all 17 Critical Thinking prompts.</p>'+  
  '<p><strong>Mock audit:</strong> The two 250-question source PDFs remain unchanged in the GitHub archive. Their 500 raw items contain 184 repeated stems, extensive non-A&amp;P material, questionable keys and extreme B-answer bias. The live cleaned mock contains 127 distinct course-screened A&amp;P questions drawn from both, with original correct answer text preserved and new A–D option positions balanced 32/32/32/31. Source item numbers and original keys remain in metadata.</p>'+ 
- '<p>High Yield 50 is a balanced selection from the 70 newly authored questions, not 50 additional original questions. The old private test is not included.</p></details>'+
+ '<p>High Yield 50 uses ten concepts with five questions each, covering all 14 instructor-review points; these are selections from the authored review, not 50 additional original questions. The old private test is not included.</p></details>'+
  '</section>';
  // Keep the unit inside Med Daddy's EXISTING registered A&P page;
  // sibling pages copied from .page are hidden by the app's show() navigation.
@@ -179,6 +196,6 @@
  '#ap2LymphPage .md-lymph-notes summary{cursor:pointer;font-weight:700}'+
  '@media(max-width:650px){#ap2LymphPage .md-lymph-control{grid-template-columns:1fr}}';
  document.head.appendChild(css);
- document.title='Med Daddy v9.11.19 — A&P II Lymphatic & Immune Systems';
- window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.19',counts:{review:review.length,lecture:lecture.length,pattonChapterReviews:patton.length,science:review.length+lecture.length+patton.length,highYield:highYield.length,cleanMock:clean.length,archivedMocks:mockA.length+mockB.length,totalPlayableUnique:review.length+lecture.length+patton.length+clean.length},mockAudit:cleanAudit,sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
+ document.title='Med Daddy v9.11.20 — A&P II Lymphatic & Immune Systems';
+ window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.20',highYieldCoverage,counts:{review:review.length,lecture:lecture.length,pattonChapterReviews:patton.length,science:review.length+lecture.length+patton.length,highYield:highYield.length,cleanMock:clean.length,archivedMocks:mockA.length+mockB.length,totalPlayableUnique:review.length+lecture.length+patton.length+clean.length},mockAudit:cleanAudit,sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
 })();
