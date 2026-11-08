@@ -1,5 +1,5 @@
 # Med Daddy — Established Project Standards
-Updated: 2026-10-30. This document is the persistent source of truth across ChatGPT conversations.
+Updated: 2026-11-07. This document is the persistent source of truth across ChatGPT conversations.
 
 ## Release workflow
 - Work on the currently deployed GitHub **main** branch, after checking the live version. Never replace newer code with an old local build.
@@ -74,6 +74,14 @@ Updated: 2026-10-30. This document is the persistent source of truth across Chat
 - Use the same four-option, one-key, detailed-explanation QA standard.
 - Prioritize terminology, anatomy, physiology, mechanisms, processes, sequences, cause/effect, subtle distinctions and exam-style wording over long PCT clinical scenarios.
 - Instructor-hard without artificial trickery; cover all uploaded review points with multiple defensible variants.
+
+## A&P II Lymphatic & Immune Systems — exam-standard implementation (2026-11-07)
+- Assigned uploaded textbook **Patton A&P 11e Ch 31 Lymphatic System, Ch 32 Innate Immunity, Ch 33 Adaptive Immunity** plus Lymph immune review.doc, Immune System.ppt, the two full mock PDFs and marked practice feedback. Never invent content from inaccessible Kahoot pages.
+- A&P style is the established **private-test** style: concise straightforward fact/mechanism/function/sequencing questions; four credible close distractors; one best answer; no unnecessary patient scenario padding or wordy abstract prompts. The original private test remains private and is not deployed as a public source deck.
+- **Every one of the 14 instructor review points gets five distinct new questions**, with traceable review and Patton references. **Every one of the 19 embedded Immune System.ppt Quick Quiz prompts gets three distinct new questions**, with slide citation, independent clinical/science QA and individual incorrect-option explanations.
+- A balanced **High-Yield 50** is a subset of authored questions, not fictitious additional bank count. Preserve original 250-item `A&P II LYMPH mock.pdf` and 250-item `A&P II Lymph Mock (1).pdf` independently and unchanged, source keys flagged as unverified.
+- Use full-length 50/75/100/full as bank length allows, same Med Daddy engine/progress and no extra micro-quiz grid. Source mock original order is mandatory when taking the full original mock.
+- The authored science bank excludes unrelated PCP directive management; original source mocks may contain PCP material without making it verified A&P instruction. Do not silently fix provided mock keys; flag and verify with the course where needed.
 
 ## Study-mode rules
 - Explain the selected answer after each question. Keep the screen uncluttered.
