@@ -1,8 +1,18 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-11-07
-**Current repository version:** v9.11.15
+**Current repository version:** v9.11.16
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Current new unit:** A&P II Lymphatic & Immune Systems
+
+## v9.11.16 — Corrected A&P II Lymph mock and authored-question audit (2026-11-07)
+- **User identified true QA failures** in the earlier v9.11.15 Lymph release: original mock duplicates/500 inflation, answer key overwhelmingly B, and a concern about authored-question difficulty. Audit confirmed these.
+- Original 500 preserved PDF mock questions contained **184 duplicate stems**, leaving **316 distinct stem strings** before curriculum relevance checking. Raw Mock A marked B in 230/250, and raw Mock B marked B in 227/250. Competing/repeated answer text had 24 differences, including the thoracic duct versus cisterna chyli; source items with questionable/ambiguous keys were excluded, not blindly taught.
+- **Cleaned playable Lymph mock now exactly 127 unique A&P course-screened questions** (114 selected from Mock A, 13 from Mock B). Original PDF mock sources and original answer keys remain archived untouched, but are no longer available as redundant/biased 250-item study decks. All active source items retain provenance and original key in metadata.
+- Shuffled option ordering was created with correct **answer content kept fixed**, then correct A–D keys recalculated. Final distribution among 127 source-mock questions: **A 32 / B 32 / C 32 / D 31**. Session *question order* shuffles; option-letter placements are stable across sessions to protect question IDs and progress consistency.
+- **Authored bank quality audit corrected 59 weak distractor sets** (24 instructor review + 35 lecture). These now use closer, content-based distractors and specific wrong-answer rationales. The 127 authored questions remain source-referenced with one keyed answer each.
+- **Only 254 Lymph questions are active**: 127 newly authored and 127 deduplicated/mock-screened. High Yield 50 is a subset of 127 authored. Old 500 kept for source provenance but not registered as playable questions.
+- Verified 254 safe-registry entries; simulated 50/100/full clean mock, 50 High Yield, 100/full Science, 70 Review and 57 Lecture all launched with unique registered items. Correct answer option content, key distribution and script order validated. No progress reset, auto-update or unrelated unit modifications. **Live browser QA remains outstanding.**
+- Full details: `A_P_II_LYMPH_SOURCE_AUDIT.md`.
 
 ## v9.11.15 — A&P II Lymphatic & Immune Systems (2026-11-07)
 - Built a new A&P II unit on the existing study home for the **November 10 Lymphatic exam**.
