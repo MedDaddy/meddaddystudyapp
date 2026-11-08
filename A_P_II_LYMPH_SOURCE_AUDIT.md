@@ -1,5 +1,13 @@
 # A&P II Lymphatic & Immune Systems — Source & Release Audit
-Updated: 2026-11-07. Med Daddy current v9.11.16; original v9.11.15 notes retained below as release history.
+Updated: 2026-11-07. Current v9.11.17; previous release findings retained.
+
+## v9.11.17 — Complete second editorial pass and final registration checks (2026-11-07)
+- Following the first 59 question repairs, a second review also found remaining too-obvious alternatives. Added **16 more review edits** and **13 lecture edits** via `md_v91116_lymph_quality_review_final.js` and `md_v91116_lymph_quality_lecture_final.js`. One lecture item was improved in both passes: **88 edit operations across 87 distinct questions**, with all correct answers, source locators, and IDs retained.
+- Replaced out-of-domain/giveaway choices with plausible anatomy/immune near misses, including competing lymph drainage routes, lymphatic pump mechanisms, fluid compartment choices, splenic tissue types, immunoglobulin classes, complement effects, immune cell lineages, and true differences between innate/adaptive pathways.
+- Guarded Lymph unit loading on all **five** quality patches (24 + 18 + 17 + 16 + 13 changed questions), and on the 127-question cleaned source mock audit. A missing patch blocks launch rather than quietly dropping approved question difficulty.
+- **Final v9.11.17 executable test:** 254 unique registered Lymph IDs; zero malformed authored choices or absent individualized rationales; zero incorrect answer-content remappings in cleaned source mock; no exact prompt overlap between authored and cleaned banks.
+- Each available launcher succeeded in simulation: High Yield 50, complete Science 127, Science 100, Instructor Review 70, Lecture 57, cleaned mock 50/100/all 127. Full 127-question cleaned mock correct letters remain **32 A, 32 B, 32 C, 31 D**.
+- Caution: no live web-browser end-to-end test, no independent instructor answer-sheet signoff and no exam-performance calibration yet. The strict check shows the current code is internally coherent, not that every possible clinical interpretation has been independently certified.
 
 ## v9.11.16 — Corrective source, duplication and difficulty audit (2026-11-07)
 
