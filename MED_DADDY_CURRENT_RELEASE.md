@@ -1,8 +1,21 @@
 # Med Daddy — Current release and source-deck inventory
 Updated: 2026-11-07
-**Current repository version:** v9.11.17
+**Current repository version:** v9.11.19
 **Repository:** MedDaddy/meddaddystudyapp (main)
 **Current new unit:** A&P II Lymphatic & Immune Systems
+
+## v9.11.19 — Patton Chapters 31–33 end-of-chapter review bank (2026-11-07)
+- User requested **questions based directly on the actual end-of-chapter reviews** in uploaded *Patton Anatomy & Physiology, 11th Edition*. Earlier chapters were used as context; the book's end-of-chapter REVIEW and CRITICAL THINKING prompts were **not systematically read or covered** before this release. That limitation was acknowledged to the user.
+- Opened and read the uploaded EPUB chapters. Chapter 31 has 19 Review + 5 Critical Thinking prompts, Chapter 32 has 8 + 7, Chapter 33 has 12 + 5: **39 review prompts plus 17 critical-thinking prompts = 56 total**.
+- Authored **56 original, four-choice, source-identified instructor-style questions** as one question for each textbook end-of-chapter prompt (not a verbatim copyrighted extract): 24 from Ch31, 15 from Ch32, 17 from Ch33; three specific wrong-answer rationales plus correct explanation; answer letters balanced **14 A / 14 B / 14 C / 14 D**. Repaired 18 weaker distractor sets before launch.
+- Added dedicated **Patton Chapters 31–33 · End-of-Chapter Reviews · 56 questions** exam mode with 50 or full-56 sessions. Source metadata includes chapter, Review or Critical Thinking, and original question number.
+- Mixed **Complete A&P Science** grew from 127 to **183** (70 instructor review + 57 lecture review + 56 textbook review). Cleaned original-mock practice stays its own **127**; High-Yield 50 is unchanged. **310 distinct active question IDs** across Lymph unit (183 authored +127 clean mock). No exact question-stem duplication across the three bank groups; related concepts recur between instructional source groups intentionally.
+- Simulated startup and launch checks passed: 56 original Patton-source questions all registered, Patton 50 and full 56, complete 183 science, science 100, high-yield 50, cleaned mock 127. No progress reset and no auto-update. Live browser QA still not available.
+
+## v9.11.18 — Blank Lymphatic page navigation repair (2026-11-07)
+- User screenshot showed a blank dark app page when clicking Lymphatic unit. Original launcher had created a separate unregistered page beside the existing A&P page, then deliberately hid the supported A&P page. This violated the router's ownership of page visibility.
+- Changed Lymphatic panel to be a **nested section within the existing registered A&P Urinary page**. Opening the unit now calls the registered page's `show('ap2UrinaryPage')` route and toggles only the nested Lymphatic section via a parent CSS class; returning and starting a quiz restore the parent's normal display before navigation.
+- Tested UI state simulation: Lymphatic click displayed supported A&P parent and nested content, Study Home returned, and 50-question cleaned mock opened the quiz with correct registered entries. This is stronger navigation testing than the earlier loose mock, but actual live browser DOM/layout is not independently verified.
 
 ## v9.11.17 — Final A&P II Lymph question-quality and cleaned-mock release
 - **254 active Lymph questions:** 127 new source-linked, 127 reviewed deduplicated source-mock items. The original two 250-item source PDFs are archived in GitHub, not presented as 500 playable questions.
