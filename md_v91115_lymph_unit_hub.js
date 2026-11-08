@@ -72,7 +72,7 @@
   window.MD_AP2_LYMPH_91115={ready:false,errors:['High Yield 50 coverage mismatch']};return;
  }
  const page=document.createElement('section');
- page.id='ap2LymphPage';page.className=urinary.className;page.style.display='none';
+ page.id='ap2LymphPage';page.className='md-lymph-contained';page.style.display='none';
  page.innerHTML=
  '<section class="md-lymph-panel">'+
  '<div class="md-lymph-head"><div><small>ANATOMY &amp; PHYSIOLOGY II · NOV 10</small><h1>Lymphatic &amp; Immune Systems</h1>'+
@@ -96,19 +96,25 @@
  '<p><strong>Mock audit:</strong> The two 250-question source PDFs remain unchanged in the GitHub archive. Their 500 raw items contain 184 repeated stems, extensive non-A&amp;P material, questionable keys and extreme B-answer bias. The live cleaned mock contains 127 distinct course-screened A&amp;P questions drawn from both, with original correct answer text preserved and new A–D option positions balanced 32/32/32/31. Source item numbers and original keys remain in metadata.</p>'+ 
  '<p>High Yield 50 is a balanced selection from the 70 newly authored questions, not 50 additional original questions. The old private test is not included.</p></details>'+
  '</section>';
- urinary.after(page);
+ // Keep the unit inside Med Daddy's EXISTING registered A&P page;
+ // sibling pages copied from .page are hidden by the app's show() navigation.
+ urinary.prepend(page);
  const unitCard=document.createElement('div');
  unitCard.id='md-ap2-lymph-card';unitCard.className='md-lymph-card';
  unitCard.innerHTML='<div><strong>A&amp;P II — Lymphatic &amp; Immune Systems</strong><small>Nov 10 · 127 authored questions · 127 cleaned mock questions</small></div>'+  
  '<button type="button" id="md-lymph-open">Open Lymphatic Unit</button>';
  homeUnit.after(unitCard);
  function open(){
+  // Select the supported A&P page, then show its nested Lymph content.
+  // Never hide the parent page or use an unregistered page class.
   show('ap2UrinaryPage');
-  urinary.style.display='none';page.style.display='block';
+  urinary.classList.add('md-lymph-unit-visible');
+  page.style.display='block';
   page.scrollIntoView?.({block:'start'});
  }
  function exit(){
-  page.style.display='none';urinary.style.display='';
+  urinary.classList.remove('md-lymph-unit-visible');
+  page.style.display='none';
   show('studyHub');
  }
  page.querySelector('#md-lymph-home').onclick=exit;
@@ -136,12 +142,16 @@
   const recycle=document.getElementById('recycle'),adaptive=document.getElementById('adaptiveNext');
   if(recycle)recycle.checked=false;
   if(adaptive)adaptive.checked=false;
-  page.style.display='none';urinary.style.display='';
+  // Restore the A&P parent's ordinary content before the quiz engine
+  // changes screens. The app controls its own page visibility.
+  urinary.classList.remove('md-lymph-unit-visible');
+  page.style.display='none';
   start(selection);
   if(typeof quiz!=='undefined'&&quiz.length!==n)console.warn('Lymph exam expected '+n+', quiz engine loaded '+quiz.length);
  };
  const css=document.createElement('style');css.id='md-ap2-lymph-style';
  css.textContent=
+ '#ap2UrinaryPage.md-lymph-unit-visible > :not(#ap2LymphPage){display:none !important}'+
  '#md-ap2-lymph-card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:14px 0;padding:17px 18px;border:1px solid #3a6483;background:#10233a;border-radius:13px;color:#eff8ff}'+
  '#md-ap2-lymph-card strong{display:block;font-size:1.12rem}#md-ap2-lymph-card small{display:block;opacity:.8;margin-top:6px}'+
  '#md-ap2-lymph-card button{min-height:43px;padding:10px 17px;font-weight:700;border-radius:8px}'+
@@ -155,6 +165,6 @@
  '#ap2LymphPage .md-lymph-notes summary{cursor:pointer;font-weight:700}'+
  '@media(max-width:650px){#ap2LymphPage .md-lymph-control{grid-template-columns:1fr}}';
  document.head.appendChild(css);
- document.title='Med Daddy v9.11.17 — A&P II Lymphatic & Immune Systems';
- window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.17',counts:{review:review.length,lecture:lecture.length,science:review.length+lecture.length,highYield:highYield.length,cleanMock:clean.length,archivedMocks:mockA.length+mockB.length,totalPlayableUnique:review.length+lecture.length+clean.length},mockAudit:cleanAudit,sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
+ document.title='Med Daddy v9.11.18 — A&P II Lymphatic & Immune Systems';
+ window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.18',counts:{review:review.length,lecture:lecture.length,science:review.length+lecture.length,highYield:highYield.length,cleanMock:clean.length,archivedMocks:mockA.length+mockB.length,totalPlayableUnique:review.length+lecture.length+clean.length},mockAudit:cleanAudit,sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
 })();
