@@ -10,16 +10,17 @@
  const mockA=window.MD_AP2_LYMPH_MOCK_A_91115||[];
  const mockB=window.MD_AP2_LYMPH_MOCK_B_91115||[];
  const review=[...a,...b];
+ const lecture=[...(window.MD_AP2_LYMPH_LECTURE_A_91115||[]),...(window.MD_AP2_LYMPH_LECTURE_B_91115||[]),...(window.MD_AP2_LYMPH_LECTURE_C_91115||[])];
  const registry=window.MD_SAFE_QUESTIONS;
  const urinary=document.getElementById('ap2UrinaryPage');
  const homeUnit=document.getElementById('ap2UnitThree');
  const errors=[];
- if(review.length!==70||mockA.length!==250||mockB.length!==250)errors.push('A&P Lymph source banks incomplete');
+ if(review.length!==70||lecture.length!==57||mockA.length!==250||mockB.length!==250)errors.push('A&P Lymph source banks incomplete');
  if(!(registry instanceof Map))errors.push('Question registry unavailable');
  if(!urinary||!homeUnit)errors.push('Med Daddy A&P study pages not found');
  if(typeof start!=='function'||typeof show!=='function'||typeof shuffle!=='function')errors.push('Med Daddy study engine unavailable');
  const IDs=new Set();
- for(const q of [...review,...mockA,...mockB]){
+ for(const q of [...review,...lecture,...mockA,...mockB]){
   if(!q||!q.id||IDs.has(q.id)||typeof q.prompt!=='string'||!Array.isArray(q.choices)||q.choices.length!==4||!/^[ABCD]$/.test(q.answer))errors.push('Question format/id: '+(q?.id||'?'));
   IDs.add(q.id);
  }
@@ -32,13 +33,24 @@
  for(const [name,items] of [['A',mockA],['B',mockB]]){
   items.forEach((q,i)=>{if(q.originalOrdinal!==i+1)errors.push('Mock '+name+' source order at '+(i+1));});
  }
- if(!errors.length)for(const q of [...review,...mockA,...mockB]){
+ const byLecturePrompt=new Map();
+ for(const q of lecture){
+  const key=q.lectureSlide+'.'+q.lecturePromptIndex;
+  byLecturePrompt.set(key,(byLecturePrompt.get(key)||0)+1);
+  if(!q.whyCorrect||Object.keys(q.whyWrong||{}).length!==3||!q.sourceLocator)
+   errors.push('Lecture rationale/source: '+q.id);
+ }
+ for(const [slide,count] of [[7,3],[25,4],[33,2],[54,4],[61,3],[68,3]]){
+  const indices=slide===7?[1,2,3]:slide===25?[4,5,6,7]:slide===33?[8,9]:slide===54?[10,11,12,13]:slide===61?[14,15,16]:[17,18,19];
+  for(const idx of indices)if(byLecturePrompt.get(slide+'.'+idx)!==3)errors.push('Lecture Quick Quiz '+slide+' prompt '+idx+' needs 3 questions');
+ }
+  if(!errors.length)for(const q of [...review,...lecture,...mockA,...mockB]){
   const old=registry.get(q.id);
   if(old&&(old.prompt!==q.prompt||old.answer!==q.answer)){errors.push('Registry collision: '+q.id);continue;}
   if(!old)registry.set(q.id,q);
  }
  if(!errors.length&&typeof BANK!=='undefined'&&Array.isArray(BANK)){
-  for(const q of review)if(!BANK.some(x=>x.id===q.id))BANK.push(q);
+  for(const q of [...review,...lecture])if(!BANK.some(x=>x.id===q.id))BANK.push(q);
  }
  if(errors.length){window.MD_AP2_LYMPH_91115={ready:false,errors};console.error('Lymph unit start prevented',errors);return;}
  // Assemble a balanced High-Yield 50; 14 topics represented with at least 3 Q each.
@@ -61,7 +73,9 @@
  '<div class="md-lymph-control"><label for="md-lymph-bank">Question deck</label>'+
  '<select id="md-lymph-bank">'+
  '<option value="high">High-Yield 50 · private-test question style</option>'+
+ '<option value="science">Complete A&amp;P Lymphatic/Immune Science · 127 questions</option>'+
  '<option value="review">Instructor 14-Point Review · 70 questions</option>'+
+ '<option value="lecture">Immune Lecture Quick Quiz Coverage · 57 questions</option>'+ 
  '<option value="a">Original Mock A · 250 questions (preserved)</option>'+
  '<option value="b">Original Mock B · 250 questions (preserved)</option>'+
  '</select>'+
@@ -70,14 +84,14 @@
  '<button type="button" id="md-lymph-start" class="success">Start A&amp;P Lymph Exam</button></div>'+
  '<p id="md-lymph-meta" class="muted" aria-live="polite"></p>'+
  '<details class="md-lymph-notes"><summary>Sources &amp; original mocks</summary>'+
- '<p><strong>Review:</strong> Lymph immune review.doc (14 topics; five new instructor-style questions per point), Immune System.ppt, Patton Anatomy &amp; Physiology 11e Ch 31 Lymphatic System, Ch 32 Innate Immunity, Ch 33 Adaptive Immunity.</p>'+
+ '<p><strong>Review:</strong> Lymph immune review.doc (14 topics × five new questions), plus Immune System.ppt (19 embedded Quick Quiz prompts × three distinct questions each). Patton Anatomy &amp; Physiology 11e: Ch 31 Lymphatic System, Ch 32 Innate Immunity, Ch 33 Adaptive Immunity.</p>'+ 
  '<p><strong>Original mocks:</strong> A&amp;P II LYMPH mock.pdf (250) and A&amp;P II Lymph Mock (1).pdf (250). Original wording, choices, answer positions and order retained. Original answer keys are supplied, not independently certified; some source items cover PCP management outside this A&amp;P unit.</p>'+
  '<p>High Yield 50 is a balanced selection from the 70 newly authored questions, not 50 additional original questions. The old private test is not included.</p></details>'+
  '</section>';
  urinary.after(page);
  const unitCard=document.createElement('div');
  unitCard.id='md-ap2-lymph-card';unitCard.className='md-lymph-card';
- unitCard.innerHTML='<div><strong>A&amp;P II — Lymphatic &amp; Immune Systems</strong><small>Nov 10 · High-Yield 50 · 14 review points · 2 preserved mocks</small></div>'+
+ unitCard.innerHTML='<div><strong>A&amp;P II — Lymphatic &amp; Immune Systems</strong><small>Nov 10 · 127 source-linked science questions · 2 preserved mocks</small></div>'+ 
  '<button type="button" id="md-lymph-open">Open Lymphatic Unit</button>';
  homeUnit.after(unitCard);
  function open(){
@@ -92,13 +106,13 @@
  page.querySelector('#md-lymph-home').onclick=exit;
  unitCard.querySelector('#md-lymph-open').onclick=open;
  const sel=page.querySelector('#md-lymph-bank'),length=page.querySelector('#md-lymph-length'),meta=page.querySelector('#md-lymph-meta');
- const banks={high:highYield,review,a:mockA,b:mockB};
+ const banks={high:highYield,science:[...review,...lecture],review,lecture,a:mockA,b:mockB};
  function options(){
   const pool=banks[sel.value];
   [...length.options].forEach(o=>o.disabled=o.value!=='all'&&Number(o.value)>pool.length);
   if(length.selectedOptions?.[0]?.disabled)length.value='all';
   const mock=sel.value==='a'||sel.value==='b';
-  meta.textContent=pool.length+' questions • '+(mock?'Original source key and original order in full mode':'14 review points • separate detailed rationales')+'.';
+  meta.textContent=pool.length+' questions • '+(mock?'Original source key and original order in full mode':'Course-based A&P, short stems and distinct answer explanations')+'.';
  }
  sel.onchange=options;length.onchange=options;options();
  page.querySelector('#md-lymph-start').onclick=()=>{
@@ -134,5 +148,6 @@
  '#ap2LymphPage .md-lymph-notes summary{cursor:pointer;font-weight:700}'+
  '@media(max-width:650px){#ap2LymphPage .md-lymph-control{grid-template-columns:1fr}}';
  document.head.appendChild(css);
- window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.15',counts:{review:review.length,highYield:highYield.length,mockA:mockA.length,mockB:mockB.length,total:review.length+mockA.length+mockB.length},sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
+ document.title='Med Daddy v9.11.15 — A&P II Lymphatic & Immune Systems';
+ window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.15',counts:{review:review.length,lecture:lecture.length,science:review.length+lecture.length,highYield:highYield.length,mockA:mockA.length,mockB:mockB.length,total:review.length+lecture.length+mockA.length+mockB.length},sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
 })();
