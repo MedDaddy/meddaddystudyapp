@@ -83,6 +83,14 @@ Updated: 2026-11-07. This document is the persistent source of truth across Chat
 - Use full-length 50/75/100/full as bank length allows, same Med Daddy engine/progress and no extra micro-quiz grid. Source mock original order is mandatory when taking the full original mock.
 - The authored science bank excludes unrelated PCP directive management; original source mocks may contain PCP material without making it verified A&P instruction. Do not silently fix provided mock keys; flag and verify with the course where needed.
 
+## Mandatory mock audit and distractor-quality gate (learned from A&P Lymph v9.11.15–17)
+- Do not equate combined uploaded mock item counts with **independently useful question counts**. Compare every mock against every other mock and itself by normalized stem and overlapping concepts. Distinguish raw preserved archives from the **deduplicated, course-relevant live practice bank**.
+- Check for incorrect/ambiguous source keys and multiple semantically valid answers; compare against uploaded assigned textbook/lecture and the appropriate directive only if the question is genuinely within PCT scope. **Keep original source material unchanged**, record disputed keys, and exclude uncertain/unrelated items from curated practice until verified.
+- Detect extreme correct-letter bias. For reviewed practice derivatives, **move the actual correct answer text when reordering choices, then recalculate the A–D key**, never just reassign the letter. Avoid shuffling “Both A and B”/“All of the above” unless rewritten and re-verified; question-order shuffle should not corrupt stored progress.
+- Structural QA is not enough: reject unrelated throwaway distractors, answer leakage, unrealistic or implausible alternatives, repeated stems/near-identical concepts, generic incorrect-option explanations, and vague or overly long questions. Require two or three credible competing choices for meaningful instructor-hard A&P practice.
+- Preserve source provenance and original key metadata in cleaned practice; do not label all 500 raw mock source items “verified” merely because extracted keys parse. Distinguish original archive, source-screened practice, and independently authored questions.
+- Guard deployment on all QA repair scripts loading, exactly four distinct choices, one defensible key, all named topic/review coverage, stable registry IDs, correct answer-content remapping, session launch counts, stored-progress safety, and exact version/script cache busting. Do not claim live browser QA without actually performing it.
+
 ## Study-mode rules
 - Explain the selected answer after each question. Keep the screen uncluttered.
 - Subsequent adaptive sessions favor **previously missed** and **entirely new** questions. Preserve the user's progress and statistics keys.
