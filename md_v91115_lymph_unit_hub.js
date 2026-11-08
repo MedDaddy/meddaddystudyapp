@@ -155,6 +155,6 @@
  '#ap2LymphPage .md-lymph-notes summary{cursor:pointer;font-weight:700}'+
  '@media(max-width:650px){#ap2LymphPage .md-lymph-control{grid-template-columns:1fr}}';
  document.head.appendChild(css);
- document.title='Med Daddy v9.11.16 — A&P II Lymphatic & Immune Systems';
- window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.16',counts:{review:review.length,lecture:lecture.length,science:review.length+lecture.length,highYield:highYield.length,cleanMock:clean.length,archivedMocks:mockA.length+mockB.length,totalPlayableUnique:review.length+lecture.length+clean.length},mockAudit:cleanAudit,sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
+ document.title='Med Daddy v9.11.17 — A&P II Lymphatic & Immune Systems';
+ window.MD_AP2_LYMPH_91115={ready:true,version:'9.11.17',counts:{review:review.length,lecture:lecture.length,science:review.length+lecture.length,highYield:highYield.length,cleanMock:clean.length,archivedMocks:mockA.length+mockB.length,totalPlayableUnique:review.length+lecture.length+clean.length},mockAudit:cleanAudit,sources:['Patton 11e Ch31','Patton 11e Ch32','Patton 11e Ch33','Lymph immune review.doc','Immune System.ppt','A&P II LYMPH mock.pdf','A&P II Lymph Mock (1).pdf'],privateMockNeverPublished:true,reviewPointCounts:Object.fromEntries([...byPoint]),errors};
 })();
