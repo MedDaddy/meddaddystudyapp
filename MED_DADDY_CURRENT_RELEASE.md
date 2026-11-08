@@ -1,8 +1,17 @@
 # Med Daddy — Current release and source-deck inventory
-Updated: 2026-11-01
-**Current repository version:** v9.11.14
+Updated: 2026-11-07
+**Current repository version:** v9.11.15
 **Repository:** MedDaddy/meddaddystudyapp (main)
-**Unit:** PCT II Infectious & Communicable Diseases
+**Current new unit:** A&P II Lymphatic & Immune Systems
+
+## v9.11.15 — A&P II Lymphatic & Immune Systems (2026-11-07)
+- Built a new A&P II unit on the existing study home for the **November 10 Lymphatic exam**.
+- Source backbone: uploaded **Patton 11th edition Ch 31 (Lymphatic), Ch 32 (Innate immunity), Ch 33 (Adaptive immunity)**; 14-item instructor review; 69-slide Immune System lecture; two different 250-question original mocks; marked immune practice feedback (topics, not private wording). Kahoot link not retrievable, so not imported.
+- **127 new source-linked and original authored A&P questions:** 70 (14 review points × five distinct questions each) and 57 (19 lecture Quick Quiz prompts × three distinct questions each). Every authored item has 4 plausible choices, one keyed answer, and individual rationales for all distractors; direct private-test-style stems rather than abstract filler.
+- **500 separate preserved source mock questions:** `A&P II LYMPH mock.pdf` and `A&P II Lymph Mock (1).pdf`, each 250 questions with original order and key kept. These are **source-unverified answer keys**, not newly audited facts or blended into the teaching bank.
+- Six study selections on the clean unit page: High-Yield 50 (balanced subset of review 70), Complete A&P Science 127, Instructor 14-Point Review 70, Immune Lecture 57, Original Mock A 250, Original Mock B 250. Available 50/75/100/full sessions as source size allows. No small redundant quiz tile grids.
+- Runtime-simulated launch checks: 50 High Yield unique, 100/full 127 A&P Science, full Review 70, full Lecture 57, and both mock 250 sessions in original order; 627 total IDs registered with no collision. No auto-reload or saved-progress clearing. **Live browser QA not confirmed.**
+- Details and outstanding risks documented in `A_P_II_LYMPH_SOURCE_AUDIT.md`.
 
 ## v9.11.10 — Infectious PCP directives exam deck
 - Added **50 new instructor-style four-choice questions** to the existing PCT II Infectious Diseases UI under **"Infectious — PCP Directives & BLS Standards · 50"**, not as a separate mini app or short quiz tile.
