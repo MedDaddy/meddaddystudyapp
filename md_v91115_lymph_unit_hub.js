@@ -11,7 +11,7 @@
  const mockB=window.MD_AP2_LYMPH_MOCK_B_91115||[];
  const clean=window.MD_AP2_LYMPH_CLEAN_91116||[];
  const cleanAudit=window.MD_AP2_LYMPH_CLEAN_AUDIT_91116||{};
- const quality=[window.MD_AP2_LYMPH_QUALITY_REVIEW_91116,window.MD_AP2_LYMPH_QUALITY_LECTURE_A_91116,window.MD_AP2_LYMPH_QUALITY_LECTURE_B_91116];
+ const quality=[window.MD_AP2_LYMPH_QUALITY_REVIEW_91116,window.MD_AP2_LYMPH_QUALITY_LECTURE_A_91116,window.MD_AP2_LYMPH_QUALITY_LECTURE_B_91116,window.MD_AP2_LYMPH_QUALITY_REVIEW_FINAL_91116,window.MD_AP2_LYMPH_QUALITY_LECTURE_FINAL_91116];
  const review=[...a,...b];
  const lecture=[...(window.MD_AP2_LYMPH_LECTURE_A_91115||[]),...(window.MD_AP2_LYMPH_LECTURE_B_91115||[]),...(window.MD_AP2_LYMPH_LECTURE_C_91115||[])];
  const registry=window.MD_SAFE_QUESTIONS;
@@ -19,7 +19,7 @@
  const homeUnit=document.getElementById('ap2UnitThree');
  const errors=[];
  if(review.length!==70||lecture.length!==57||mockA.length!==250||mockB.length!==250||clean.length!==127||!cleanAudit.ready)errors.push('A&P Lymph source banks or audited practice bank incomplete');
- if(quality.some(q=>!q?.ready)||quality.reduce((n,q)=>n+(q?.changed||q?.fixed||0),0)!==59)errors.push('A&P original question-quality repairs did not load');
+ if(quality.some(q=>!q?.ready)||quality.reduce((n,q)=>n+(q?.changed||q?.fixed||0),0)!==88)errors.push('A&P original question-quality repairs did not load');
  if(!(registry instanceof Map))errors.push('Question registry unavailable');
  if(!urinary||!homeUnit)errors.push('Med Daddy A&P study pages not found');
  if(typeof start!=='function'||typeof show!=='function'||typeof shuffle!=='function')errors.push('Med Daddy study engine unavailable');
