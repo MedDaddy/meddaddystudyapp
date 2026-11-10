@@ -45,6 +45,7 @@
   {name:'Renin-angiotensin, ADH and ANH',parts:[[24,5]]},
   {name:'Classic endocrine disorders',parts:[[25,5]]}
  ];
+ const textbookBlend=patton.length?[...patton,...review.slice(0,11)]:[];
  const highYield=[];
  for(const concept of highYieldConcepts){
   const items=concept.parts.flatMap(([point,n])=>review.filter(q=>q.reviewPoint===point).slice(0,n));
@@ -71,7 +72,7 @@
  '<div class="md-endo-control"><label for="md-endo-bank">Question deck</label>'+
  '<select id="md-endo-bank"><option value="high">High-Yield 50 · 10 key concepts × 5 questions</option>'+
  '<option value="review">Instructor 25-Point Endocrine Review · 125 questions</option>'+
- (patton.length?'<option value="patton">Patton Chapters 25–26 · 39 review questions</option><option value="all">Complete Endocrine Science · '+(review.length+patton.length)+' questions</option>':'')+
+ (patton.length?'<option value="patton">Patton Ch 25–26 · all 39 textbook questions + 11 review reinforcement (50)</option><option value="all">Complete Endocrine Science · '+(review.length+patton.length)+' questions</option>':'')+
  '</select><label for="md-endo-length">Session length</label>'+
  '<select id="md-endo-length"><option value="50">50 questions</option><option value="75">75 questions</option><option value="100">100 questions</option><option value="all">Full selected bank</option></select>'+
  '<button type="button" class="success" id="md-endo-start">Start A&amp;P Endocrine Exam</button></div>'+
@@ -79,7 +80,7 @@
  '<details class="md-endo-notes"><summary>Source coverage &amp; study notes</summary>'+
  '<p><strong>Instructor review:</strong> Endocrine review.doc, all 25 numbered points, five nonduplicate questions each. Endocrine Regulation.ppt and Endocrine Glands.ppt cross-check key mechanisms; Hormones Study Tool.ppt provides additional study emphasis.</p>'+
  '<p><strong>Textbook:</strong> Patton Anatomy &amp; Physiology, 11th edition, chapters 25 Endocrine Regulation and 26 Endocrine Glands. The High-Yield 50 is a curated selection from the 125 authored review questions, not an additional 50 original questions.</p>'+
- (patton.length?'<p><strong>Patton deck:</strong> one authored MCQ for every 6+18 chapter Review Questions and 5+10 Critical Thinking prompts, preserved as a separate source-mapped selection.</p>':'<p><strong>Patton end-of-chapter deck:</strong> not yet included in this release; the review bank remains independently usable.</p>')+
+ (patton.length?'<p><strong>Patton-focused session:</strong> all 39 original textbook-mapped items plus 11 review reinforcement questions to meet our 50-question minimum. The 39 original textbook-mapped items remain independently identified by their source fields.</p>':'<p><strong>Patton end-of-chapter deck:</strong> not yet included in this release; the review bank remains independently usable.</p>')+
  '<p>For detailed male reproductive anatomy, the assigned Patton chapter is 45; that is not represented as a complete instructor-reviewed male unit here.</p></details></section>';
  parent.prepend(page);
  const card=document.createElement('div');card.id='md-ap2-endo-card';card.className='md-endo-card';
@@ -97,7 +98,7 @@
  page.querySelector('#md-endo-home').onclick=exit;
  card.querySelector('#md-endo-open').onclick=open;
  const bank=page.querySelector('#md-endo-bank'),length=page.querySelector('#md-endo-length'),meta=page.querySelector('#md-endo-meta');
- const pools={high:highYield,review,patton,all:[...review,...patton]};
+ const pools={high:highYield,review,patton:textbookBlend,all:[...review,...patton]};
  function options(){
   const pool=pools[bank.value]||highYield;
   [...length.options].forEach(o=>o.disabled=o.value!=='all'&&Number(o.value)>pool.length);
