@@ -1,0 +1,4 @@
+Med Daddy GitHub Pages redeploy marker
+Release: v9.11.20
+Date: 2026-11-10
+App source and question banks unchanged.
