@@ -6,23 +6,27 @@
  if(window.MD_AP2_ENDO_91121)return;
  const review=[...(window.MD_AP2_ENDO_REV_A_91121||[]),...(window.MD_AP2_ENDO_REV_B_91121||[]),...(window.MD_AP2_ENDO_REV_C_91121||[])];
  const patton=window.MD_AP2_ENDO_PATTON_91121||[];
+ const lecture=[...(window.MD_AP2_ENDO_QC_A_91121||[]),...(window.MD_AP2_ENDO_QC_B_91121||[]),...(window.MD_AP2_ENDO_QC_C_91121||[])];
  const errors=[];
  const registry=window.MD_SAFE_QUESTIONS;
  const parent=document.getElementById('ap2UrinaryPage');
  const anchor=document.getElementById('ap2UnitThree');
  if(review.length!==125)errors.push('Expected 125 Endocrine review questions');
+ if(lecture.length!==72)errors.push('Expected 72 lecture Quick Check questions');
  if(!(registry instanceof Map))errors.push('Med Daddy question registry missing');
  if(!parent||!anchor)errors.push('Existing A&P unit navigation missing');
  if(typeof start!=='function'||typeof show!=='function'||typeof shuffle!=='function')errors.push('Existing study engine unavailable');
  const ids=new Set(),stems=new Set(),counts={};
  const normalize=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
- for(const q of [...review,...patton]){
+ for(const q of [...review,...patton,...lecture]){
   if(!q?.id||ids.has(q.id)||!q.prompt||!Array.isArray(q.choices)||q.choices.length!==4||
      !/^[ABCD]$/.test(q.answer)||!q.whyCorrect||Object.keys(q.whyWrong||{}).length!==3||
      !q.sourceLocator||new Set(q.choices).size!==4)errors.push('Question format: '+(q?.id||'?'));
   ids.add(q.id);const norm=normalize(q.prompt);if(stems.has(norm))errors.push('Duplicate stem: '+q.id);stems.add(norm);
  }
  for(const q of review)counts[q.reviewPoint]=(counts[q.reviewPoint]||0)+1;
+ const quickCheckCounts={};for(const q of lecture)quickCheckCounts[q.lecturePrompt]=(quickCheckCounts[q.lecturePrompt]||0)+1;
+ for(let p=1;p<=24;p++)if(quickCheckCounts[p]!==3)errors.push('Quick Check '+p+' lacks 3 unique questions');
  for(let p=1;p<=25;p++)if(counts[p]!==5)errors.push('Review point '+p+' incomplete');
  if(patton.length&&patton.length!==39)errors.push('Patton must be complete 39 Q or absent');
  if(patton.length){
@@ -54,14 +58,14 @@
  }
  if(highYield.length!==50||new Set(highYield.map(q=>q.id)).size!==50)errors.push('High-Yield 50 duplicate/size');
  if(errors.length){window.MD_AP2_ENDO_91121={ready:false,errors};console.error('A&P endocrine initialization prevented',errors);return;}
- for(const q of [...review,...patton]){
+ for(const q of [...review,...patton,...lecture]){
   const old=registry.get(q.id);
   if(old&&(old.prompt!==q.prompt||old.answer!==q.answer)){errors.push('Registry collision: '+q.id);break;}
  }
  if(errors.length){window.MD_AP2_ENDO_91121={ready:false,errors};return;}
- for(const q of [...review,...patton])if(!registry.has(q.id))registry.set(q.id,q);
+ for(const q of [...review,...patton,...lecture])if(!registry.has(q.id))registry.set(q.id,q);
  if(typeof BANK!=='undefined'&&Array.isArray(BANK))
-  for(const q of [...review,...patton])if(!BANK.some(x=>x.id===q.id))BANK.push(q);
+  for(const q of [...review,...patton,...lecture])if(!BANK.some(x=>x.id===q.id))BANK.push(q);
  const page=document.createElement('section');
  page.id='ap2EndocrinePage';page.style.display='none';page.className='md-endo-contained';
  page.innerHTML=
@@ -71,20 +75,20 @@
  '<button type="button" id="md-endo-home">Study Home</button></div>'+
  '<div class="md-endo-control"><label for="md-endo-bank">Question deck</label>'+
  '<select id="md-endo-bank"><option value="high">High-Yield 50 · 10 key concepts × 5 questions</option>'+
- '<option value="review">Instructor 25-Point Endocrine Review · 125 questions</option>'+
- (patton.length?'<option value="patton">Patton Ch 25–26 · all 39 textbook questions + 11 review reinforcement (50)</option><option value="all">Complete Endocrine Science · '+(review.length+patton.length)+' questions</option>':'')+
+ '<option value="review">Instructor 25-Point Endocrine Review · 125 questions</option><option value="lecture">Lecture Quick Checks · 24 prompts × 3 = 72 questions</option>'+
+ (patton.length?'<option value="patton">Patton Ch 25–26 · all 39 textbook questions + 11 review reinforcement (50)</option><option value="all">Complete Endocrine Science · '+(review.length+patton.length+lecture.length)+' questions</option>':'')+
  '</select><label for="md-endo-length">Session length</label>'+
  '<select id="md-endo-length"><option value="50">50 questions</option><option value="75">75 questions</option><option value="100">100 questions</option><option value="all">Full selected bank</option></select>'+
  '<button type="button" class="success" id="md-endo-start">Start A&amp;P Endocrine Exam</button></div>'+
  '<p id="md-endo-meta" class="muted" aria-live="polite"></p>'+
  '<details class="md-endo-notes"><summary>Source coverage &amp; study notes</summary>'+
- '<p><strong>Instructor review:</strong> Endocrine review.doc, all 25 numbered points, five nonduplicate questions each. Endocrine Regulation.ppt and Endocrine Glands.ppt cross-check key mechanisms; Hormones Study Tool.ppt provides additional study emphasis.</p>'+
+ '<p><strong>Instructor review:</strong> Endocrine review.doc, all 25 numbered points, five nonduplicate questions each. <strong>Lectures:</strong> Endocrine Regulation.ppt and Endocrine Glands.ppt, all 24 Quick Check prompts with three new questions each. Hormones Study Tool.ppt provides additional study emphasis.</p>'+
  '<p><strong>Textbook:</strong> Patton Anatomy &amp; Physiology, 11th edition, chapters 25 Endocrine Regulation and 26 Endocrine Glands. The High-Yield 50 is a curated selection from the 125 authored review questions, not an additional 50 original questions.</p>'+
  (patton.length?'<p><strong>Patton-focused session:</strong> all 39 original textbook-mapped items plus 11 review reinforcement questions to meet our 50-question minimum. The 39 original textbook-mapped items remain independently identified by their source fields.</p>':'<p><strong>Patton end-of-chapter deck:</strong> not yet included in this release; the review bank remains independently usable.</p>')+
  '<p>For detailed male reproductive anatomy, the assigned Patton chapter is 45; that is not represented as a complete instructor-reviewed male unit here.</p></details></section>';
  parent.prepend(page);
  const card=document.createElement('div');card.id='md-ap2-endo-card';card.className='md-endo-card';
- card.innerHTML='<div><strong>A&amp;P II — Endocrine System</strong><small>25-point instructor review · 125 questions · High-Yield 50</small></div>'+
+ card.innerHTML='<div><strong>A&amp;P II — Endocrine System</strong><small>125 review · 72 lecture · 39 textbook · High-Yield 50</small></div>'+
  '<button type="button" id="md-endo-open">Open Endocrine Unit</button>';
  anchor.after(card);
  function exit(){parent.classList.remove('md-endo-unit-visible');page.style.display='none';show('studyHub')}
@@ -98,7 +102,7 @@
  page.querySelector('#md-endo-home').onclick=exit;
  card.querySelector('#md-endo-open').onclick=open;
  const bank=page.querySelector('#md-endo-bank'),length=page.querySelector('#md-endo-length'),meta=page.querySelector('#md-endo-meta');
- const pools={high:highYield,review,patton:textbookBlend,all:[...review,...patton]};
+ const pools={high:highYield,review,patton:textbookBlend,lecture,all:[...review,...patton,...lecture]};
  function options(){
   const pool=pools[bank.value]||highYield;
   [...length.options].forEach(o=>o.disabled=o.value!=='all'&&Number(o.value)>pool.length);
@@ -134,5 +138,5 @@
  '@media(max-width:650px){#ap2EndocrinePage .md-endo-control{grid-template-columns:1fr}}';
  document.head.appendChild(css);
  document.title='Med Daddy v9.11.21 — A&P II Endocrine System';
- window.MD_AP2_ENDO_91121={ready:true,version:'9.11.21',counts:{review:review.length,patton:patton.length,highYield:highYield.length,uniquePlayable:review.length+patton.length},highYieldCoverage:highYieldConcepts.map(g=>({concept:g.name,parts:g.parts})),errors:[]};
+ window.MD_AP2_ENDO_91121={ready:true,version:'9.11.21',counts:{review:review.length,patton:patton.length,lecture:lecture.length,highYield:highYield.length,uniquePlayable:review.length+patton.length+lecture.length},highYieldCoverage:highYieldConcepts.map(g=>({concept:g.name,parts:g.parts})),errors:[]};
 })();
