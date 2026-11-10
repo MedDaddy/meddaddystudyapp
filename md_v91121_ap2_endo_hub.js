@@ -1,4 +1,4 @@
-/* Med Daddy v9.11.21 — A&P II Endocrine launch hub.
+/* Med Daddy v9.11.22 — A&P II Endocrine launch hub.
  * 25 instructor-review points x 5 original questions; 10 high-yield topics x 5.
  * Existing A&P/other units remain unchanged. Patton additions can load separately later.
  */
@@ -137,6 +137,6 @@
  '#ap2EndocrinePage .md-endo-notes summary{cursor:pointer;font-weight:700}'+
  '@media(max-width:650px){#ap2EndocrinePage .md-endo-control{grid-template-columns:1fr}}';
  document.head.appendChild(css);
- document.title='Med Daddy v9.11.21 — A&P II Endocrine System';
- window.MD_AP2_ENDO_91121={ready:true,version:'9.11.21',counts:{review:review.length,patton:patton.length,lecture:lecture.length,highYield:highYield.length,uniquePlayable:review.length+patton.length+lecture.length},highYieldCoverage:highYieldConcepts.map(g=>({concept:g.name,parts:g.parts})),errors:[]};
+ document.title='Med Daddy v9.11.22 — A&P II Endocrine System';
+ window.MD_AP2_ENDO_91121={ready:true,version:'9.11.22',counts:{review:review.length,patton:patton.length,lecture:lecture.length,highYield:highYield.length,uniquePlayable:review.length+patton.length+lecture.length},highYieldCoverage:highYieldConcepts.map(g=>({concept:g.name,parts:g.parts})),errors:[]};
 })();

@@ -1,0 +1,12 @@
+# Med Daddy GitHub Pages publishing configuration.
+# Keep all historical snapshots in GitHub; omit only redundant full-size HTML backups
+# from the published Pages artifact to minimize deploy syncing size.
+exclude:
+  - "9.74.html"
+  - "9.75 actual.html"
+  - "MedDaddy-v9.2.0-index (1).html"
+  - "MedDaddy-v9.2.0-index.html"
+  - "MedDaddy-v9.5.0-index.html"
+  - "MedDaddy-v9.6.0-index.html"
+  - "MedDaddy-v9.6.1-index.html"
+  - "index (1).html"
