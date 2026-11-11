@@ -54,7 +54,7 @@ if(errors.length){window.MD_PCT2_SRD_UI_91124={ready:false,errors};console.error
 /* SRD-only statement layout; Unicode line separator U+2028 is a forced
  * line break in current browsers even with white-space:normal. Keep source
  * prompts plain text (no injected HTML) and preserve question identities. */
-const lineBreak='\u2028';
+const lineBreak='\n';
 function stackStatements(stem){
  let out=stem;
  if(/Consider:\s*1\.\s/.test(out)){
@@ -74,6 +74,26 @@ for(const q of all){
  q._mdSrdPromptBeforeContext=original;
  q.srdDirectiveName=q.topic==='Integrated PCP Directive Choices'?crossDirective(original):nameFor(q.topic);
  q.prompt=q.srdDirectiveName+lineBreak+stackStatements(original);
+}
+/* The main quiz renders text with normal CSS whitespace. Preserve the line
+ * breaks of SRD combination questions without changing any other unit.
+ * A targeted observer handles each new question as the quiz advances. */
+const stackedIds=new Set(all.filter(q=>/\n(?:1|A)\.\s/.test(q.prompt)).map(q=>q.id));
+function preserveSrdStatementLines(){
+ if(!stackedIds.size||typeof quiz==='undefined'||!Array.isArray(quiz)||
+    !quiz.some(q=>stackedIds.has(q.id)))return;
+ const candidates=document.body?.querySelectorAll('h1,h2,h3,h4,p,div,span,section,article')||[];
+ for(const el of candidates){
+  const s=el.textContent||'';
+  if(s.length>4000||!/\n(?:1|A)\.\s/.test(s))continue;
+  if(Array.from(el.children).some(c=>/\n(?:1|A)\.\s/.test(c.textContent||'')))continue;
+  if(el.style.whiteSpace!=='pre-line')el.style.whiteSpace='pre-line';
+ }
+}
+if(typeof MutationObserver!=='undefined'&&document.body){
+ const observer=new MutationObserver(preserveSrdStatementLines);
+ observer.observe(document.body,{subtree:true,childList:true,characterData:true});
+ preserveSrdStatementLines();
 }
 const css=document.createElement('link');css.id='md-srd-91124-css';css.rel='stylesheet';css.href='./md_v91124_srd_ui.css?md_build=9.11.24';document.head.appendChild(css);
 selector.style.display='none';
