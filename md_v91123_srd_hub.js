@@ -91,10 +91,34 @@ const families=[
  ['Nausea and vomiting',byName('Nausea/Vomiting')],
  ['Analgesia',byName('Analgesia')],
  ['Cardiogenic pulmonary edema',byName('Acute Cardiogenic Pulmonary Edema')],
- ['Integrated PCP treatment choices',byName('Integrated PCP Directive Choices')]
+ ['PCP safety across systems',[...byName('Suspected Adrenal Crisis'),...byName('Supraglottic Airway'),...byName('Medication Calculations and Pharmacology'),...byName('Seizure — PCP Auxiliary (Treat and Discharge)'),...byName('Integrated PCP Directive Choices')]]
 ];
-const highYield=families.flatMap(([name,pool])=>chooseEven(pool,5));
-const sourceMock=chooseEven(questions,50);  // original 350-item source mock remains archived, not imported as false keys.
+/* Balance each curated 50-question deck independently, while preserving the
+ * exact topic count of each family by swapping only within the same topic.
+ * The 200-item master bank is independently 50/50/50/50. */
+function balanceDeck(selected,target){
+ const out=selected.slice();
+ const counts=()=>out.reduce((o,q)=>(o[q.answer]=(o[q.answer]||0)+1,o),{A:0,B:0,C:0,D:0});
+ const score=o=>Object.keys(target).reduce((s,k)=>s+(o[k]-target[k])**2,0);
+ let count=counts();
+ for(let tries=0;tries<100;tries++){
+  let best=null;
+  for(let i=0;i<out.length;i++){
+   const old=out[i];
+   for(const next of questions){
+    if(next.topic!==old.topic||next.answer===old.answer||out.some(x=>x.id===next.id))continue;
+    const nextCount={...count,[old.answer]:count[old.answer]-1,[next.answer]:count[next.answer]+1};
+    const nextScore=score(nextCount);
+    if(nextScore<score(count)&&(!best||nextScore<best.score))
+     best={i,next,count:nextCount,score:nextScore};
+   }
+  }
+  if(!best)break;out[best.i]=best.next;count=best.count;
+ }
+ return out;
+}
+const highYield=balanceDeck(families.flatMap(([name,pool])=>chooseEven(pool,5)),{A:13,B:12,C:12,D:13});
+const sourceMock=balanceDeck(chooseEven(questions,50),{A:13,B:12,C:13,D:12}); // original 350Q source archive kept separately.
 const dose=questions.filter(q=>q.reviewCategory==='D');
 const contraindications=questions.filter(q=>q.reviewCategory==='C');
 const treatment=questions.filter(q=>q.reviewCategory==='T'||q.reviewCategory==='S');
