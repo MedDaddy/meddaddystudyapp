@@ -1,0 +1,1899 @@
+ORIGINAL SOURCE MOCK — PCT II PHARMACOLOGY, user-uploaded PDF, text extract for audit only.
+Not a verified or playable answer key. Original 43-page PDF remains in user file library.
+
+<PARSED TEXT FOR PAGE: 1 / 43>
+This mock test contains 350 multiple-choice questions designed to assess your mastery of
+pharmacology, drug administration, and medical mathematics, specifically following the structure
+of your Pharmacology Study Guide and the official ALS PCS/Companion Documents.
+Part 1: Key Terms and General Principles (1-50)
+1. What is the primary goal of pharmacology in the prehospital setting?
+A) Cure chronic conditions
+B) Reverse, prevent, or control various diseases
+C) Replace all existing body functions
+D) Diagnose mental health disorders
+2. A medication that stimulates a response in a receptor site is defined as a(n):
+A) Antagonist
+B) Agonist
+C) Inhibitor
+D) Neutralizer
+3."Affinity" refers to what property of a medication?
+A) The ability to produce a response
+B) The time it takes to leave the body
+C) The attraction between a medication and its receptors
+D) The cost of the medication
+4. An antagonist is a medication that:
+A) Mimics the body's natural chemicals
+B) Occupies a receptor site but does not create a response
+C) Speeds up the heart rate specifically
+D) Is used only for pediatric patients
+5. Which model describes how a drug molecule binds to a specific receptor?
+A) The link-and-chain model
+B) The fluid-mosaic model
+C) The lock-and-key model
+D) The sliding-filament model
+6. A medication used to treat a rare disease affecting a small percentage of the population is
+called a(n):
+A) Generic drug
+B) Orphan drug
+C) Synthetic drug
+D) Prototype drug
+7. The study of the adverse and harmful effects of chemicals or drugs is:
+A) Pharmacokinetics
+B) Pharmacodynamics
+C) Toxicology
+D) Pharmacogenomics
+8. Which sub-discipline focuses on how genes influence an individual's response to drugs?
+A) Toxicology
+B) Clinical pharmacology
+C) Pharmacogenomics
+<PARSED TEXT FOR PAGE: 2 / 43>
+D) Biostatistics
+
+9. The proprietary name given to a drug by its manufacturer is the:
+A) Generic name
+B) Chemical name
+C) Brand (Trade) name
+D) Official name
+10. The name "N-acetyl-para-aminophenol" is an example of which drug name type?
+A) Brand name
+B) Generic name
+C) Chemical name
+D) Street name
+11. According to paramedic standards, which name should be used in protocols and
+documentation?
+A) Brand name
+B) Chemical name
+C) Generic name
+D) Any recognizable name
+12. Which source of medication includes Digitalis and Morphine?
+A) Animals
+B) Minerals
+C) Plants
+D) Microorganisms
+13. Which source provides medications like Insulin and Thyroid hormones?
+A) Synthetic labs
+B) Plants
+C) Animals
+D) Minerals
+14. In the drug approval process, Phase I clinical trials focus primarily on:
+A) Large-scale efficacy
+B) Safety in healthy volunteers
+C) Dosing for pregnant women
+D) Post-marketing surveillance
+15. What is the purpose of Phase IV clinical trials?
+A) Laboratory testing
+B) Determining the lethal dose in animals
+C) Long-term monitoring after approval (Pharmacovigilance)
+D) Finding the chemical name
+16. Pharmacovigilance refers to:
+A) Creating new molecular compounds
+B) Post-marketing surveillance for drug safety
+C) Monitoring patient insurance compliance
+D) The speed of drug absorption
+<PARSED TEXT FOR PAGE: 3 / 43>
+17.Which Canadian agency ensures safe and efficacious medications and manages the Drug
+Product Database (DPD)?
+A) FDA
+B) Health Canada’s Therapeutic Products Directorate (TPD)
+C) CDC
+D) EMA
+18.The Compendium of Pharmaceuticals and Specialties (CPS) is used to:
+A) Order narcotics for the ambulance
+B) Look up indications, dosages, and contraindications for Canadian drugs
+C) Track paramedic continuing education credits
+D) Identify street drugs
+19.If a paramedic prepares a medication but another administers it, who is legally responsible
+for the appropriate use?
+A) Only the paramedic who prepared it
+B) Only the paramedic who administered it
+C) Both paramedics are legally responsible
+D) Only the base hospital physician
+20."Efficacy" is defined as:
+A) The speed of onset
+B) The ability of a drug to produce a desired effect
+C) The amount of drug needed to reach an effect
+D) The duration of action
+21.The attraction between a drug and a receptor is "Affinity," while the drug's ability to activate
+the receptor is:
+A) Potency
+B) Half-life
+C) Efficacy
+D) Bioavailability
+22. Competitive inhibition occurs when:
+A) A drug binds to a site other than the active receptor
+B) A drug competes with the agonist for the same receptor site
+C) A drug destroys the receptor permanently
+D) A drug is too large to fit into the receptor
+23.Non-competitive inhibition involves a drug binding to:
+A) The same site as the agonist
+B) An allosteric site, changing the receptor's shape
+C) The red blood cells only
+D) The liver enzymes
+24. Which professional role is primarily responsible for studying drug mechanisms and side
+effects?
+A) Paramedic
+B) Physician
+C) Pharmacologist
+D) Nurse
+<PARSED TEXT FOR PAGE: 4 / 43>
+25. The term "Indications" in a medication profile refers to:
+A) Conditions where the drug should NEVER be used
+B) Common side effects
+C) Reasons or conditions for which the medication is given
+D) The cost of the drug per dose
+26. "Contraindications" are conditions where a drug:
+A) Is highly recommended
+B) Should not be used because it may cause harm
+C) Is given in half doses
+D) Has reached its half-life
+27. A "Relative Contraindication" means: [ALS PCS general logic]
+A) The drug can never be given
+B) The benefits may outweigh the risks in specific life-threatening situations
+C) The drug is only for pediatric use
+D) The drug is out of stock
+28. Side effects are defined as:
+A) The primary therapeutic effect
+B) Unintended but often predictable responses to a drug
+C) Fatal reactions only
+D) Signs of a drug overdose
+29, Which regulatory theme is highlighted by a global shortage of a life-saving medication?
+A) Computational modeling
+B) The challenge of equitable drug access
+C) Receptor binding
+D) Herbal medicine history
+30. When assessing a patient, obtaining an accurate list of current medications helps avoid:
+A) Using the wrong stretcher
+B) Dangerous drug interactions
+C) Taking vital signs
+D) Calling for backup
+31. In the prehospital setting, a paramedic's goal is to:
+A) Cure the disease permanently
+B) Stabilize the patient and reverse life threats
+C) Prescribe long-term antibiotics
+D) Perform surgery
+32. A "Prototype" drug is: [General Pharm Terminology]
+A) The first drug in a class used as a model for others
+B) A drug that is no longer used
+C) A drug that is only in the testing phase
+D) An illegal substance
+33. The "Therapeutic Index" measures:
+A) The price of a drug
+B) The safety margin between a therapeutic dose and a toxic dose
+C) The time it takes for a drug to absorb
+<PARSED TEXT FOR PAGE: 5 / 43>
+D) The number of receptors in the body
+34. A drug with a "Narrow Therapeutic Index" is:
+A) Very safe
+B) Hard to find
+C) More dangerous because small dose changes can cause toxicity
+D) Only given by mouth
+35. The "Half-life" of a medication is the time required for:
+A) The drug to start working
+B) The drug to reach peak concentration
+C) The body to reduce the drug concentration by 50%
+D) The drug to be completely eliminated
+36. After 4 half-lives, approximately what percentage of a drug remains in the body? [General
+Math logic]
+A) 50%
+B) 25%
+C) 12.5%
+D) 6.25%
+37. "Potency" refers to:
+A) The maximal effect of a drug
+B) The amount of drug required to produce a specific effect
+C) The drug's ability to stay in the liver
+D) The shelf life of the drug
+38. "Idiosyncratic reactions" are: [General Pharm Terminology]
+A) Common side effects
+B) Predictable allergic reactions
+C) Unusual, unpredictable responses to a drug
+D) Reactions that only occur in the elderly
+39. Tolerance is a condition where: [General Pharm Terminology]
+A) A drug works better over time
+B) Decreased responsiveness to a drug occurs after repeated use
+C) The patient becomes allergic to the drug
+D) The drug is eliminated faster
+40. Tachyphylaxis is: [General Pharm Terminology]
+A) A slow-onset allergy
+B) Rapidly occurring tolerance to a drug
+C) A type of fast heart rate
+D) An infection of the blood
+41. A "Synergistic" effect occurs when:
+A) Two drugs cancel each other out
+B) One drug works and the other does not
+C) Two drugs with similar actions produce an effect greater than the sum of their parts
+D) A drug causes a seizure
+<PARSED TEXT FOR PAGE: 6 / 43>
+42. An "Additive" effect is when: [General Pharm Terminology]
+A) 1 + 1 = 2 (the combined effect of two drugs equals the sum of their individual effects)
+B) 1 + 1 = 3
+C) 1 + 1 = 0
+D) A drug is added to an IV bag
+43. Potentiation occurs when: [General Pharm Terminology]
+A) Two agonists bind at once
+B) One drug (which has no effect on its own) increases the effect of another drug
+C) A drug is used for a potential emergency
+D) The drug reaches the brain
+44. "Antagonism" (the process) results in:
+A) Increased drug activity
+B) One drug decreasing or cancelling the effect of another
+C) Better absorption
+D) Rapid heart rate
+45. What is a "Loading Dose"? [General Pharm Terminology]
+A) A dose given to a pregnant patient
+B) A larger-than-normal initial dose to quickly reach therapeutic levels
+C) The last dose given before discharge
+D) A dose that causes vomiting
+46. What is a "Maintenance Dose"? [General Pharm Terminology]
+A) The dose that keeps the drug at a steady therapeutic level
+B) The dose used to clean a nebulizer
+C) A dose given only once a year
+D) A dose that is always 100mg
+47. Cumulative effect refers to: [General Pharm Terminology]
+A) A drug that works only on the skin
+B) Increased effect of a drug when it is administered faster than the body can eliminate it
+C) The drug being sold in multiple stores
+D) A lack of response to a drug
+48. Which factor would lead a paramedic to use a lower dose for an elderly patient?
+A) Increased cardiac output
+B) Decreased renal function and total body water
+C) Increased body fat
+D) Faster drug metabolism
+49. Teratogenicity is the ability of a drug to:
+A) Kill bacteria
+B) Cause birth defects in a developing fetus
+C) Lower blood pressure in males
+D) Improve memory
+50. The "Rights of Medication Administration" are intended to:
+A) Speed up the transport time
+B) Reduce preventable medication errors and ensure patient safety
+C) Help paramedics remember their names
+<PARSED TEXT FOR PAGE: 7 / 43>
+D) Replace the need for a physician
+
+
+
+
+Part 2: Pharmacokinetics (ADME) (51-100)
+51.Pharmacokinetics is defined as:
+    A.​ ) What the drug does to the body
+    B.​ ) What the body does to the drug
+    C.​ ) The study of drug prices
+    D.​ ) The movement of ambulances
+52. The "A" in the ADME acronym stands for:
+    A.​ ) Affinity
+    B.​ ) Agonist
+    C.​ ) Absorption
+    D.​ ) Adrenergic
+53. Absorption is the process of:
+    A.​ ) Moving a drug from its site of administration into the bloodstream
+    B.​ ) Breaking down a drug in the liver
+    C.​ ) Pumping a drug out of the kidneys
+    D.​ ) Attaching a drug to a receptor
+54. Which of the following can DECREASE drug absorption?
+    A.​ ) High cardiac output
+    B.​ ) Poor perfusion at the injection site
+    C.​ ) Rapid gastric emptying
+    D.​ ) Thin skin
+55. The "D" in ADME stands for:
+    A.​ ) Dose
+    B.​ ) Distribution
+    C.​ ) Duration
+    D.​ ) Depressant
+56. Distribution is the process by which a drug:
+    A.​ ) Enters the stomach
+    B.​ ) Is transported throughout the body’s fluids and tissues
+    C.​ ) Is changed into a metabolite
+    D.​ ) Is excreted in the feces
+57. Which organ is the primary site for drug metabolism?
+    A.​ ) Heart
+    B.​ ) Lungs
+    C.​ ) Liver
+    D.​ ) Kidneys
+58. The "M" in ADME stands for:
+    A.​ ) Medication
+    B.​ ) Milligram
+    C.​ ) Metabolism (Biotransformation)
+<PARSED TEXT FOR PAGE: 8 / 43>
+    D.​ ) Muscle
+59. Metabolism usually makes a drug:
+    A.​ ) More potent
+    B.​ ) More water-soluble for easier excretion
+    C.​ ) Harder to eliminate
+    D.​ ) Toxic immediately
+60. The "E" in ADME stands for:
+    A.​ ) Efficacy
+    B.​ ) Epinephrine
+    C.​ ) Excretion (Elimination)
+    D.​ ) Endocrine
+61. Which organ is the primary site for drug excretion?
+    A.​ ) Liver
+    B.​ ) Skin
+    C.​ ) Kidneys
+    D.​ ) Spleen
+62. The "First-Pass Effect" refers to:
+    A.​ ) A drug passing through the heart first
+    B.​ ) Metabolism of an oral drug by the liver before it reaches systemic circulation
+    C.​ ) The drug being excreted in the first hour
+    D.​ ) A paramedic passing a test on the first try
+63. Which route of administration completely bypasses the First-Pass Effect?
+    A.​ ) Oral (PO)
+    B.​ ) Rectal (PR) [Note: mostly bypasses lower rectum, partial upper]
+    C.​ ) Intravenous (IV)
+    D.​ ) Sublingual (SL) [Sources 148/149 specifically note SL bypasses liver]
+64. Bioavailability is the percentage of a drug that:
+    A.​ ) Remains in the liver
+    B.​ ) Reaches the systemic circulation in an unchanged, active form
+    C.​ ) Is toxic to the patient
+    D.​ ) Is purchased by the hospital
+65. Which route has 100% bioavailability?
+    A.​ ) Oral
+    B.​ ) Intramuscular
+    C.​ ) Intravenous
+    D.​ ) Subcutaneous
+66. A "Prodrug" is a medication that: [General Pharm Terminology]
+    A.​ ) Is active when swallowed but inactive after metabolism
+    B.​ ) Is inactive when administered and must be metabolized into an active form
+    C.​ ) Is only used by professional athletes
+    D.​ ) Works faster than any other drug
+67. How does liver failure (cirrhosis) affect pharmacokinetics?
+    A.​ ) It speeds up drug excretion
+    B.​ ) It impairs drug metabolism, leading to prolonged drug effects and potential toxicity
+<PARSED TEXT FOR PAGE: 9 / 43>
+    C.​ ) It makes oral drugs absorb faster
+    D.​ ) It has no effect on medications
+68. Why might a paramedic choose the subcutaneous route over the intramuscular route?
+    A.​ ) For faster onset
+    B.​ ) For medications requiring slow, sustained absorption
+    C.​ ) Because it is less painful
+    D.​ ) Only if the patient has no muscles
+69. "Active transport" of a drug across a cell membrane requires: [General Pharm Terminology]
+    A.​ ) No energy
+    B.​ ) Energy (ATP) and a carrier protein
+    C.​ ) A high concentration of water
+    D.​ ) Gravity
+70. "Passive diffusion" occurs when a drug moves from an area of: [General Pharm
+Terminology]
+    A.​ ) Low concentration to high concentration
+    B.​ ) High concentration to low concentration
+    C.​ ) The brain to the toes
+    D.​ ) The IV bag to the tubing
+71. Protein binding refers to drugs attaching to:
+    A.​ ) Muscle fibers
+    B.​ ) Plasma proteins (like albumin) in the blood
+    C.​ ) The walls of the stomach
+    D.​ ) The DNA in the nucleus
+72. Only the _________ portion of a protein-bound drug is pharmacologically active.
+    A.​ ) Bound
+    B.​ ) Large
+    C.​ ) Free (unbound)
+    D.​ ) Frozen
+73. In patients with low serum albumin (e.g., malnourished or elderly), drug effects may be:
+    A.​ ) Decreased
+    B.​ ) Increased (more free drug available)
+    C.​ ) Eliminated instantly
+    D.​ ) Non-existent
+74. The Blood-Brain Barrier (BBB) is a semi-permeable membrane that:
+    A.​ ) Allows all drugs to enter the brain
+    B.​ ) Protects the CNS by restricting the passage of certain large or water-soluble drugs
+    C.​ ) Is located in the heart
+    D.​ ) Disappears during a stroke
+75. The Placental Barrier protects the fetus but is ___________ against many drugs.
+    A.​ ) Totally impermeable
+    B.​ ) Not a complete barrier (many drugs can cross)
+    C.​ ) Made of bone
+    D.​ ) Only found in males
+<PARSED TEXT FOR PAGE: 10 / 43>
+76. A drug that is "Lipid-soluble" (fat-soluble) will generally:
+    A.​ ) Be excreted by the kidneys easily
+    B.​ ) Cross cell membranes and the BBB more easily
+    C.​ ) Stay in the stomach forever
+    D.​ ) Never work
+77. Water-soluble drugs are generally eliminated via the:
+    A.​ ) Lungs
+    B.​ ) Liver
+    C.​ ) Kidneys
+    D.​ ) Sweat glands
+78. If a patient vomits 5 minutes after taking an oral pill, which process was most affected?
+    A.​ ) Metabolism
+    B.​ ) Distribution
+    C.​ ) Absorption
+    D.​ ) Excretion
+79. "Onset of Action" is the time it takes for:
+    A.​ ) The drug to be eliminated
+    B.​ ) The drug to reach a minimum effective concentration and start working
+    C.​ ) The patient to stop complaining
+    D.​ ) The paramedic to arrive
+80. "Peak Effect" occurs when the drug:
+    A.​ ) Is first swallowed
+    B.​ ) Reaches its highest concentration in the target tissue
+    C.​ ) Is 50% gone
+    D.​ ) Is out of the body
+81. "Duration of Action" is the length of time:
+    A.​ ) The drug remains at a therapeutic level in the body
+    B.​ ) It takes to draw up the medication
+    C.​ ) The patient stays in the hospital
+    D.​ ) Between two doses
+82. "Biotransformation" is another name for:
+    A.​ ) Absorption
+    B.​ ) Metabolism
+    C.​ ) Distribution
+    D.​ ) Genetic engineering
+83. A drug metabolite that is "Active" means:
+    A.​ ) It continues to have an effect on the body
+    B.​ ) It is ready for excretion only
+    C.​ ) It is toxic to everyone
+    D.​ ) It is a pro-drug
+84. What determines the rate of distribution?
+    A.​ ) The color of the drug
+    B.​ ) Physical and chemical properties of the drug and cardiovascular function (perfusion)
+    C.​ ) The brand of IV tubing used
+<PARSED TEXT FOR PAGE: 11 / 43>
+    D.​ ) The patient's height
+85. "Zero-order kinetics" means a drug is eliminated at a: [General Pharm Terminology]
+    A.​ ) Rate proportional to the concentration
+    B.​ ) Constant rate, regardless of concentration (e.g., alcohol)
+    C.​ ) Rate that increases every hour
+    D.​ ) Random rate
+86. "First-order kinetics" means the rate of elimination is: [General Pharm Terminology]
+    A.​ ) Constant
+    B.​ ) Proportional to the drug concentration (percentage-based)
+    C.​ ) Zero
+    D.​ ) Only through the lungs
+87. The "Volume of Distribution" (Vd) relates: [General Pharm Terminology]
+    A.​ ) The size of the IV bag to the patient's weight
+    B.​ ) The amount of drug in the body to the concentration of drug in the blood
+    C.​ ) How many pills are in a bottle
+    D.​ ) The speed of the ambulance
+88. If a drug has a very high Vd, it is likely: [General Pharm Terminology]
+    A.​ ) Sticking to the blood proteins
+    B.​ ) Widely distributed into body tissues and fat
+    C.​ ) Not being absorbed
+    D.​ ) Only in the kidneys
+89. What is the effect of "Enterohepatic Recirculation"? [General Pharm Terminology]
+    A.​ ) It speeds up drug elimination
+    B.​ ) It cycles drugs from the liver to the bile and back to the intestine for reabsorption,
+         prolonging action
+    C.​ ) It causes immediate vomiting
+    D.​ ) It prevents drugs from entering the heart
+90. A drug elixir is a medication form consisting of:
+    A.​ ) A solid pill
+    B.​ ) A clear, sweetened, hydroalcoholic solution
+    C.​ ) A thick paste
+    D.​ ) A gas
+91. A drug suspension is:
+    A.​ ) A clear liquid
+    B.​ ) A mixture of solid particles in a liquid that must be shaken before use
+    C.​ ) A gelatin container
+    D.​ ) A transdermal patch
+92. Which medication form is mixed with a wax-like base and melts at body temperature?
+    A.​ ) Capsule
+    B.​ ) Tablet
+    C.​ ) Suppository
+    D.​ ) Pulvule
+<PARSED TEXT FOR PAGE: 12 / 43>
+93. A drug "Extract" is a:
+    A.​ ) Diluted version of a drug
+    B.​ ) Concentrated preparation made by evaporating solvent
+    C.​ ) Powder found in the woods
+    D.​ ) Type of gas
+94. Which form of medication is primarily used in operating room anesthesia?
+    A.​ ) Tablets
+    B.​ ) Vapour
+    C.​ ) Suppositories
+    D.​ ) Elixirs
+95. A "Gel" medication is used:
+    A.​ ) Only through an IV
+    B.​ ) For sublingual or buccal absorption (e.g., glucose)
+    C.​ ) As a gas
+    D.​ ) To clean the ambulance
+96. "Topical" administration is used for:
+    A.​ ) Local effects on skin or mucous membranes
+    B.​ ) Rapid systemic effects in cardiac arrest
+    C.​ ) Deep muscle injections
+    D.​ ) Brain surgery
+97. Transdermal patches provide:
+    A.​ ) Immediate peak effects
+    B.​ ) Sustained, slow release of medication through the skin
+    C.​ ) 100% bioavailability instantly
+    D.​ ) Local effects only
+98. A patient in SHOCK will have ___________ absorption of IM or SC medications.
+    A.​ ) Increased
+    B.​ ) Unchanged
+    C.​ ) Reduced (due to poor peripheral perfusion)
+    D.​ ) Immediate
+99. Which route of administration is the most dangerous because it delivers the entire dose at
+once?
+    A.​ ) Oral
+    B.​ ) Subcutaneous
+    C.​ ) Intravenous
+    D.​ ) Topical
+100. The study of the metabolism and action of medications within the body is:
+    A.​ ) Pharmacodynamics
+    B.​ ) Pharmacogenomics
+    C.​ ) Pharmacokinetics
+    D.​ ) Toxicology
+<PARSED TEXT FOR PAGE: 13 / 43>
+Part 3: Pharmacodynamics & Nervous System (101-150)
+101. Pharmacodynamics is defined as:
+   A.​ ) What the body does to the drug
+   B.​ ) What the drug does to the body (mechanism of action)
+   C.​ ) The movement of drugs into the urine
+   D.​ ) The cost of drug research
+102. Drugs influence the body's existing functions but do NOT:
+   A.​ ) Bind to receptors
+   B.​ ) Interact with tissues
+   C.​ ) Provide the body with functions it does not already have
+   D.​ ) Have side effects
+103. The "Central Nervous System" (CNS) serves as the body’s:
+   A.​ ) Transport system
+   B.​ ) Control centre
+   C.​ ) Waste disposal unit
+   D.​ ) Cooling system
+104. Which nervous system division is responsible for the "Fight or Flight" response?
+   A.​ ) Parasympathetic
+   B.​ ) Somatic
+   C.​ ) Sympathetic
+   D.​ ) Sensory
+105. Which division is known as the "Rest and Digest" (Rest and Repair) system?
+   A.​ ) Sympathetic
+   B.​ ) Parasympathetic
+   C.​ ) Voluntary
+   D.​ ) Motor
+106. Adrenergic receptors respond to which neurotransmitters?
+   A.​ ) Acetylcholine
+   B.​ ) Norepinephrine and Epinephrine ) Dopamine and Serotonin
+   C.​ ) GABA
+107. Stimulation of Alpha-1 (α1) receptors causes:
+   A.​ ) Bronchodilation
+   B.​ ) Increased heart rate
+   C.​ ) Peripheral vasoconstriction and increased blood pressure
+   D.​ ) Pupil constriction
+108. Stimulation of Beta-1 (β1) receptors primarily affects the:
+   A.​ ) Lungs
+   B.​ ) GI tract
+   C.​ ) Heart (increased rate and contractility)
+   D.​ ) Skin
+109. Stimulation of Beta-2 (β2) receptors results in:
+   A.​ ) Vasoconstriction
+   B.​ ) Bronchodilation and vasodilation in skeletal muscle
+   C.​ ) Decreased heart rate
+<PARSED TEXT FOR PAGE: 14 / 43>
+    D.​ ) Bladder contraction
+110. A "Sympathomimetic" drug:
+    A.​ ) Blocks the sympathetic nervous system
+    B.​ ) Mimics the actions of the sympathetic nervous system
+    C.​ ) Slows down the heart
+    D.​ ) Causes sleepiness
+111. A "Sympatholytic" drug (like a Beta-blocker):
+    A.​ ) Mimics adrenaline
+    B.​ ) Blocks or inhibits the sympathetic nervous system
+    C.​ ) Speeds up the heart
+    D.​ ) Dilates the pupils
+112. Parasympathetic (cholinergic) nerves release which primary neurotransmitter?
+    A.​ ) Norepinephrine
+    B.​ ) Acetylcholine (ACh)
+    C.​ ) Epinephrine
+    D.​ ) Cortisol
+113. Anticholinergic drugs (like Atropine) work by:
+    A.​ ) Stimulating ACh receptors
+    B.​ ) Blocking the actions of the parasympathetic nervous system
+    C.​ ) Increasing GI motility
+    D.​ ) Causing bradycardia
+114. Common effects of blocking the parasympathetic system (anticholinergics) include:
+    A.​ ) Excessive salivation and diarrhea
+    B.​ ) Tachycardia, dry mouth, and pupil dilation
+    C.​ ) Slow heart rate and wheezing
+    D.​ ) Decreased blood pressure
+115. Which receptors are found at the junction between nerves and skeletal muscles? [General
+Neuro logic]
+    A.​ ) Alpha-2
+    B.​ ) Nicotinic (Cholinergic)
+    C.​ ) Beta-2
+    D.​ ) Muscarinic
+116. Inositol and cAMP are examples of "Second Messengers" that:
+    A.​ ) Are given as pills
+    B.​ ) Relay signals from the receptor to the inside of the cell
+    C.​ ) Block all receptors
+    D.​ ) Are used only by paramedics
+117. Which drug class is believed to affect the inhibitory neurotransmitter GABA to slow brain
+activity?
+    A.​ ) Opioids
+    B.​ ) CNS stimulants
+    C.​ ) Benzodiazepines
+    D.​ ) Beta-blockers
+<PARSED TEXT FOR PAGE: 15 / 43>
+118. Two examples of common prehospital benzodiazepines are:
+   A.​ ) Morphine and Fentanyl
+   B.​ ) Midazolam and Diazepam
+   C.​ ) Atropine and Epinephrine
+   D.​ ) Salbutamol and Ipratropium
+119. Opioid agonists (like Morphine and Fentanyl) are primarily used for:
+   A.​ ) Seizure control
+   B.​ ) Pain management and analgesia
+   C.​ ) Increasing blood sugar
+   D.​ ) Reducing fever
+120. CNS stimulants like amphetamines typically cause:
+   A.​ ) Sedation and bradycardia
+   B.​ ) Hypertension, tachycardia, and anxiety
+   C.​ ) Hypoglycemia
+   D.​ ) Constricted pupils
+121. The "DUMBELS" or "SLUDGE" mnemonics describe overstimulation of which system?
+   A.​ ) Sympathetic
+   B.​ ) Somatic
+   C.​ ) Parasympathetic (Cholinergic surge)
+   D.​ ) Sensory
+122. What does the "S" in SLUDGE stand for?
+   A.​ ) Sleepiness
+   B.​ ) Salivation
+   C.​ ) Seizure
+   D.​ ) Stroke
+123. What is the drug of choice (antidote) for a cholinergic/organophosphate overdose?
+   A.​ ) Naloxone
+   B.​ ) Atropine
+   C.​ ) Glucagon
+   D.​ ) Insulin
+124. Beta-blockers like Metoprolol are primarily used to treat:
+   A.​ ) Asthma
+   B.​ ) Hypotension
+   C.​ ) Rapid heart rates (e.g., AF) and hypertension
+   D.​ ) Low blood sugar
+125. If you give a Beta-2 AGONIST (like Albuterol), you expect:
+   A.​ ) Bronchoconstriction
+   B.​ ) Bronchodilation
+   C.​ ) Slow heart rate
+   D.​ ) Vomiting
+126. What safety precaution applies when giving benzodiazepines for a seizure?
+   A.​ ) Monitor for tachycardia
+   B.​ ) Monitor airway and ventilation for potential depression
+   C.​ ) Ensure the patient is standing up
+<PARSED TEXT FOR PAGE: 16 / 43>
+    D.​ ) Give with alcohol for better effect
+127. A "Sympatholytic" response to Metoprolol involves:
+    A.​ ) Increasing O2 demand
+    B.​ ) Blocking β1 receptors to decrease heart rate and contractility
+    C.​ ) Stimulating α1 to increase BP
+    D.​ ) Dilating the pupils
+128. Blocking ACh receptors in the heart results in: [Anticholinergic logic]
+    A.​ ) Bradycardia
+    B.​ ) Increased heart rate (tachycardia)
+    C.​ ) Cardiac arrest
+    D.​ ) No change
+129. Which class of drugs is used for ADHD and narcolepsy?
+    A.​ ) Benzodiazepines
+    B.​ ) CNS stimulants
+    C.​ ) Opioid agonists
+    D.​ ) Antihypertensives
+130. "Pharmacodynamics" involves the study of:
+    A.​ ) Dose-response relationships and receptor binding
+    B.​ ) Drug journey through the kidneys
+    C.​ ) The liver's ability to clean the blood
+    D.​ ) Drug expiration dates
+131. What is the "Minimum Effective Concentration"? [General Pharm logic]
+    A.​ ) The lowest dose that causes death
+    B.​ ) The lowest concentration of drug in the blood that produces the desired effect
+    C.​ ) The amount of drug left after 1 hour
+    D.​ ) The concentration in the IV bag
+132. What happens during "Neurotransmission" when an action potential arrives at the axon
+terminal?
+    A.​ ) The cell dies
+    B.​ ) Calcium influx causes vesicle fusion and neurotransmitter release
+    C.​ ) The drug is eliminated
+    D.​ ) The brain stops working
+133. Neurotransmitters bind to what on the next cell?
+    A.​ ) The nucleus
+    B.​ ) Postsynaptic receptors
+    C.​ ) The myelin sheath
+    D.​ ) The mitochondria
+134. Which receptors are primarily found in the lungs?
+    A.​ ) Beta-1
+    B.​ ) Beta-2
+    C.​ ) Alpha-1
+    D.​ ) Dopaminergic
+<PARSED TEXT FOR PAGE: 17 / 43>
+135. Which receptors are primarily found in the heart?
+    A.​ ) Beta-1
+    B.​ ) Beta-2
+    C.​ ) Alpha-1
+    D.​ ) Muscarinic
+136. Alpha-1 agonists are used in shock to increase blood pressure by causing:
+    A.​ ) Cardiac slowing
+    B.​ ) Peripheral vasoconstriction
+    C.​ ) Diuresis
+    D.​ ) Muscle relaxation
+137. Dopamine at high doses primarily stimulates which receptors to increase BP? [EMS Med
+logic]
+    A.​ ) Beta-2
+    B.​ ) Alpha-1
+    C.​ ) Muscarinic
+    D.​ ) Histamine
+138. "Refractory" means a condition or symptom that is:
+    A.​ ) Improving rapidly
+    B.​ ) Not responding to initial treatment
+    C.​ ) Only occurring in children
+    D.​ ) Found in the liver
+139. Which neurotransmitter is the main one for the voluntary (somatic) nervous system?
+    A.​ ) Adrenaline
+    B.​ ) Acetylcholine
+    C.​ ) Serotonin
+    D.​ ) Dopamine
+140. "Agonist" means the drug has both affinity and ___________?
+    A.​ ) Toxicity
+    B.​ ) Efficacy
+    C.​ ) Potency
+    D.​ ) Half-life
+141. Antagonists have affinity for a receptor but zero ___________?
+    A.​ ) Weight
+    B.​ ) Cost
+    C.​ ) Intrinsic activity/Efficacy
+    D.​ ) Name
+142. A "Depressant" medication generally ___________ CNS activity.
+    A.​ ) Speeds up
+    B.​ ) Stops completely
+    C.​ ) Slows down
+    D.​ ) Has no effect on
+143. A "Stimulant" medication generally ___________ CNS activity.
+    A.​ ) Decreases
+    B.​ ) Increases
+<PARSED TEXT FOR PAGE: 18 / 43>
+   C.​ ) Stabilizes
+   D.​ ) Removes
+144. Which CNS agents produce effects through a variety of specific or nonspecific
+mechanisms?
+   A.​ ) Cardiovascular drugs
+   B.​ ) CNS agents
+   C.​ ) Respiratory drugs
+   D.​ ) Renal drugs
+145. Epinephrine acts on which receptor types?
+   A.​ ) Only Alpha-1
+   B.​ ) Only Beta-1 and Beta-2
+   C.​ ) Alpha-1, Beta-1, and Beta-2
+   D.​ ) Only Nicotinic
+146. Why is Epinephrine used in cardiac arrest?
+   A.​ ) To put the patient to sleep
+   B.​ ) To agonize Beta-1 receptors and increase cardiac activity
+   C.​ ) To cause diarrhea
+   D.​ ) To lower blood pressure
+147. Metoprolol is "Beta-1 selective," meaning it primarily targets:
+   A.​ ) The lungs
+   B.​ ) The heart
+   C.​ ) The brain
+   D.​ ) The bladder
+148. If you block Beta-2 receptors in an asthmatic patient, you might cause:
+   A.​ ) Bronchodilation
+   B.​ ) Bronchospasm (wheezing)
+   C.​ ) Tachycardia
+   D.​ ) Increased energy
+149. "Muscarinic" receptors are a subtype of ___________ receptors.
+   A.​ ) Adrenergic
+   B.​ ) Cholinergic
+   C.​ ) Opioid
+   D.​ ) Histamine
+150. Nicotinic receptors are also a subtype of ___________ receptors.
+   A.​ ) Adrenergic
+   B.​ ) Cholinergic
+   C.​ ) GABA
+   D.​ ) Dopamine
+
+Part 4: Medication Math & Infusions (151-200)
+151. Accurate medication calculation is essential because a misplaced decimal can cause a:
+   A.​ ) 2x error
+   B.​ ) 5x error
+   C.​ ) 10x or 100x error
+<PARSED TEXT FOR PAGE: 19 / 43>
+     D.​ ) No change in effect
+152. According to standards, a leading zero should ALWAYS be used. Correct notation for half a
+milligram is:
+     A.​ ) .5 mg
+     B.​ ) 0.5 mg
+     C.​ ) .50 mg
+     D.​ ) 0,5 mg
+153. Trailing zeros should NEVER be used. Correct notation for one milligram is:
+     A.​ ) 1.0 mg
+     B.​ ) 1 mg
+     C.​ ) 1.00 mg
+     D.​ ) 01 mg
+154. What is the standard abbreviation for a microgram to avoid confusion with "mg"?
+     A.​ ) μg
+     B.​ ) m.
+     C.​ ) mcg
+     D.​ ) mic
+155. The metric system unit "mL" should be used instead of:
+     A.​ ) L
+     B.​ ) cc or dr
+     C.​ ) g
+     D.​ ) mg
+156. Weight for calculations must ALWAYS be documented in:
+     A.​ ) Pounds (lbs)
+     B.​ ) Grams (g)
+     C.​ ) Kilograms (kg)
+     D.​ ) Ounces (oz)
+157. How many milligrams (mg) are in 1 gram (g)?
+     A.​ ) 10
+     B.​ ) 100
+     C.​ ) 1,000
+     D.​ ) 10,000
+158. How many micrograms (mcg) are in 1 milligram (mg)?
+     A.​ ) 100
+     B.​ ) 500
+     C.​ ) 1,000
+     D.​ ) 10,000
+159. A medication order is for 1,250 mg. How many grams is this?
+     A.​ ) 0.125 g
+     B.​ ) 1.25 g
+     C.​ ) 12.5 g
+     D.​ ) 125 g
+<PARSED TEXT FOR PAGE: 20 / 43>
+160. A prefilled syringe contains 500 mcg of a drug. How many milligrams is this?
+   A.​ ) 0.05 mg
+   B.​ ) 0.5 mg
+   C.​ ) 5 mg
+   D.​ ) 50 mg
+161. To convert pounds (lbs) to kilograms (kg), you divide the weight in lbs by approximately:
+[Med Math Logic]
+   A.​ ) 1.5
+   B.​ ) 2.2
+   C.​ ) 3.0
+   D.​ ) 5.0
+162. A patient weighs 154 lbs. What is their weight in kg?
+   A.​ ) 60 kg
+   B.​ ) 70 kg
+   C.​ ) 80 kg
+   D.​ ) 90 kg
+163. What is the standard formula to calculate the dose to give (X)?
+   A.​ ) (Desired dose / Volume on hand) x Dose on hand
+   B.​ ) (Desired dose / Dose on hand) x Volume on hand
+   C.​ ) (Dose on hand / Desired dose) x Volume on hand
+   D.​ ) Desired dose + Volume on hand
+164. Order: 8 mg morphine IV. Available: 10 mg/mL. How many mL do you give?
+   A.​ ) 0.5 mL
+   B.​ ) 0.8 mL
+   C.​ ) 1.0 mL
+   D.​ ) 1.2 mL
+165. Order: 0.1 mg/kg midazolam IV. Weight: 25 kg. Available: 5 mg/mL. How many mL?
+   A.​ ) 0.1 mL
+   B.​ ) 0.25 mL
+   C.​ ) 0.5 mL
+   D.​ ) 1.0 mL
+166. Order: 1 mcg/kg IV fentanyl. Weight: 65 kg. Available: 50 mcg/mL. How many mL?
+   A.​ ) 1.0 mL
+   B.​ ) 1.3 mL
+   C.​ ) 1.5 mL
+   D.​ ) 2.0 mL
+167. A vial reads "2 mg per 2 mL." What is the concentration in mg/mL?
+   A.​ ) 0.5 mg/mL
+   B.​ ) 1 mg/mL
+   C.​ ) 2 mg/mL
+   D.​ ) 4 mg/mL
+168. The formula for concentration/dilution problems is C1V1 = C2V2. What does C1 represent?
+   A.​ ) Final concentration
+   B.​ ) Stock/Initial concentration
+<PARSED TEXT FOR PAGE: 21 / 43>
+    C.​ ) Total volume needed
+    D.​ ) The patient's weight
+169. Stock: 1 mg/mL epinephrine. Desired: 0.1 mg/mL. Final volume needed: 10 mL. How much
+stock solution do you use?
+    A.​ ) 1 mL
+    B.​ ) 5 mL
+    C.​ ) 10 mL
+    D.​ ) 0.1 mL
+170. In the epinephrine dilution above (#169), how much diluent (NS) do you add to the 1 mL of
+stock?
+    A.​ ) 1 mL
+    B.​ ) 5 mL
+    C.​ ) 9 mL
+    D.​ ) 10 mL
+171. Which unit is used for drip rates in IV infusions?
+    A.​ ) mL/hr
+    B.​ ) gtt/min
+    C.​ ) mg/min
+    D.​ ) mcg/kg/min
+172. What is the drip factor of a "Microdrip" set? [Med Math Logic]
+    A.​ ) 10 gtt/mL
+    B.​ ) 15 gtt/mL
+    C.​ ) 20 gtt/mL
+    D.​ ) 60 gtt/mL
+173. What is a common drip factor for a "Macrodrip" set?
+    A.​ ) 10 or 15 gtt/mL
+    B.​ ) 60 gtt/mL
+    C.​ ) 100 gtt/mL
+    D.​ ) 1 gtt/mL
+174. Formula for Drip Rate (gtt/min):
+    A.​ ) (Total Volume x Drip Factor) / Time in Minutes
+    B.​ ) (Total Volume / Drip Factor) x Time in Minutes
+    C.​ ) (Desired dose x weight) / 60
+    D.​ ) Dose on hand / Volume
+175. Administer 1,000 mL NS bolus over 30 minutes using 15 gtt/mL tubing. What is the drip
+rate?
+    A.​ ) 100 gtt/min
+    B.​ ) 250 gtt/min
+    C.​ ) 500 gtt/min
+    D.​ ) 1,000 gtt/min
+176. You have 1 g of Lidocaine in 250 mL. What is the concentration in mg/mL?
+    A.​ ) 1 mg/mL
+    B.​ ) 2 mg/mL
+    C.​ ) 4 mg/mL
+<PARSED TEXT FOR PAGE: 22 / 43>
+    D.​ ) 10 mg/mL
+177. Order: 2 mg/min Lidocaine. Concentration: 4 mg/mL. Tubing: 60 gtt/mL. What is the drip
+rate?
+    A.​ ) 15 gtt/min
+    B.​ ) 30 gtt/min
+    C.​ ) 60 gtt/min
+    D.​ ) 120 gtt/min
+178. Order: Dopamine 10 mcg/kg/min. Weight: 70 kg. Concentration: 400 mg in 250 mL. What is
+the mL/hr rate?
+    A.​ ) 10 mL/hr
+    B.​ ) 26 mL/hr
+    C.​ ) 52 mL/hr
+    D.​ ) 100 mL/hr
+179. Before starting a dopamine infusion, a paramedic should always convert mg to:
+    A.​ ) Grams
+    B.​ ) Ounces
+    C.​ ) Micrograms (mcg)
+    D.​ ) Liters
+180. What is the total volume of fluid for a 90 kg patient with 30% burns over 24 hours using the
+Parkland formula (4mL x % x kg)?
+    A.​ ) 5,400 mL
+    B.​ ) 10,800 mL
+    C.​ ) 2,700 mL
+    D.​ ) 1,500 mL
+181. According to the Parkland formula, how much of that 10,800 mL (from #180) is given in the
+FIRST 8 hours?
+    A.​ ) 10,800 mL
+    B.​ ) 5,400 mL
+    C.​ ) 2,700 mL
+    D.​ ) 1,000 mL
+182. A 5-year-old child weighs approximately how much according to common guess-weight
+formulas?
+    A.​ ) 10 kg
+    B.​ ) 20 kg (Formula: [Age x 2] + 10 or similar)
+    C.​ ) 30 kg
+    D.​ ) 40 kg
+183. If you need to round a fractional dose, you should round to:
+    A.​ ) The highest possible number
+    B.​ ) The nearest dose that can be accurately measured
+    C.​ ) The next whole liter
+    D.​ ) Zero
+184. Order: 2.5 mg Lorazepam IV. Available: 4 mg/mL. Round to the nearest hundredth.
+    A.​ ) 0.6 mL
+    B.​ ) 0.62 mL
+<PARSED TEXT FOR PAGE: 23 / 43>
+    C.​ ) 0.63 mL
+    D.​ ) 0.7 mL
+185. A 30 kg pediatric patient needs Epinephrine 0.01 mg/kg IV (1:10,000). Concentration is 0.1
+mg/mL. How many mL?
+    A.​ ) 0.3 mL
+    B.​ ) 1 mL
+    C.​ ) 3 mL
+    D.​ ) 10 mL
+186. A 100 lb patient has 60% burns. Using Parkland (4mL x % x kg), what is the total 24-hr
+volume? (Note: 100 lb = ~45kg)
+    A.​ ) 5,400 mL
+    B.​ ) 10,800 mL
+    C.​ ) 12,000 mL
+    D.​ ) 24,000 mL
+187. In the field, how should you label a drawn-up syringe?
+    A.​ ) Just the drug name
+    B.​ ) Drug name, total dose, and concentration (mg/mL)
+    C.​ ) The patient's name only
+    D.​ ) The date of the call
+188. What is the "safest way" to confirm a dosage before administration?
+    A.​ ) Guessing based on experience
+    B.​ ) Confirming verbally with a second competent party if available
+    C.​ ) Doing the math in your head only
+    D.​ ) Checking social media
+189. The concentration of 1:1,000 Epinephrine in mg/mL is:
+    A.​ ) 0.1 mg/mL
+    B.​ ) 1 mg/mL
+    C.​ ) 10 mg/mL
+    D.​ ) 100 mg/mL
+190. The concentration of 1:10,000 Epinephrine in mg/mL is:
+    A.​ ) 0.01 mg/mL
+    B.​ ) 0.1 mg/mL
+    C.​ ) 1 mg/mL
+    D.​ ) 10 mg/mL
+191. Order: 150 mg of a drug. Stock is 300 mg in 2 mL. How many mL? [Math]
+    A.​ ) 0.5 mL
+    B.​ ) 1 mL
+    C.​ ) 1.5 mL
+    D.​ ) 2 mL
+192. An IV bag of 250 mL contains how many liters?
+    A.​ ) 0.25 L
+    B.​ ) 2.5 L
+    C.​ ) 25 L
+    D.​ ) 0.025 L
+<PARSED TEXT FOR PAGE: 24 / 43>
+193. Order: 250 mg Cefazolin IV. Available: 500 mg per 2 mL. How many mL?
+     A.​ ) 0.5 mL
+     B.​ ) 1 mL
+     C.​ ) 1.5 mL
+     D.​ ) 2 mL
+194. Reconstitute 1 g of powder with 9 mL sterile water. Final concentration (mg/mL)?
+     A.​ ) 10 mg/mL
+     B.​ ) 100 mg/mL (1,000mg / 10mL total)
+     C.​ ) 50 mg/mL
+     D.​ ) 1 mg/mL
+195. Order: Ketamine 1.5 mg/kg IV. Weight: 80 kg. Available: 50 mg/mL. How many mL?
+     A.​ ) 2.0 mL
+     B.​ ) 2.4 mL
+     C.​ ) 3.0 mL
+     D.​ ) 4.8 mL
+196. Norepinephrine infusion at 12 mL/hr. Concentration: 8 mg in 250 mL. Weight: 80 kg. What
+is the mcg/kg/min dose?
+     A.​ ) 0.05 mcg/kg/min
+     B.​ ) 0.09 mcg/kg/min
+     C.​ ) 0.15 mcg/kg/min
+     D.​ ) 0.2 mcg/kg/min
+197. 1 puff from a Salbutamol MDI equals how many micrograms?
+     A.​ ) 10 mcg
+     B.​ ) 50 mcg
+     C.​ ) 100 mcg
+     D.​ ) 200 mcg
+198. Wait time between Salbutamol puffs? [General logic]
+     A.​ ) 0 seconds
+     B.​ ) 30-60 seconds
+     C.​ ) 5 minutes
+     D.​ ) 1 hour
+199. Order: 500 mg Calcium Chloride IV. Bag: 1 g in 10 mL. How many mL?
+     A.​ ) 2.5 mL
+     B.​ ) 5 mL
+     C.​ ) 10 mL
+     D.​ ) 20 mL
+200. The mnemonic "Dose = (Desired / Have) x Vol" is used for:
+     A.​ ) Choosing a route
+     B.​ ) Calculating injection volumes
+     C.​ ) Checking expiration dates
+     D.​ ) Measuring height
+<PARSED TEXT FOR PAGE: 25 / 43>
+Part 5: Routes, Forms, and 7/8 Rights (201-250)
+201. Which of the following is NOT one of the "Rights" of medication administration?
+   A.​ ) Right Drug
+   B.​ ) Right Dose
+   C.​ ) Right Price
+   D.​ ) Right Time
+202. The "Right Documentation" includes recording:
+   A.​ ) Drug, dose, route, time, and patient response
+   B.​ ) Only the drug name
+   C.​ ) What the partner thought of the dose
+   D.​ ) The patient's favorite color
+203. Which route involves medication absorbed somewhere along the GI tract?
+   A.​ ) Parenteral
+   B.​ ) Enteral
+   C.​ ) Percutaneous
+   D.​ ) Intradermal
+204. "Parenteral" routes include all of the following EXCEPT:
+   A.​ ) IV
+   B.​ ) IM
+   C.​ ) Oral (PO)
+   D.​ ) SC
+205. Which route is used if a patient is vomiting and cannot take oral medications?
+   A.​ ) Sublingual
+   B.​ ) Rectal (PR)
+   C.​ ) Topical
+   D.​ ) MDI
+206. The Intraosseous (IO) route is preferred when:
+   A.​ ) The patient is awake and talking
+   B.​ ) Rapid IV access is not practical, especially in emergencies
+   C.​ ) The patient has no bones
+   D.​ ) The drug is a pill
+207. Where is the most common site for an IM injection in the upper arm?
+   A.​ ) Biceps
+   B.​ ) Triceps
+   C.​ ) Deltoid muscle
+   D.​ ) Wrist
+208. Where is the "upper outer quadrant" used for IM injections?
+   A.​ ) Thigh
+   B.​ ) Gluteus muscle (buttocks)
+   C.​ ) Abdomen
+   D.​ ) Neck
+209. Subcutaneous (SC) injections are given into the:
+   A.​ ) Muscle
+   B.​ ) Bone marrow
+<PARSED TEXT FOR PAGE: 26 / 43>
+   C.​ ) Fat or connective tissue beneath the skin
+   D.​ ) Bloodstream
+210. What is the peak effect time for most SC medications?
+   A.​ ) 1 minute
+   B.​ ) 5 minutes
+   C.​ ) 30 minutes
+   D.​ ) 2 hours
+211. Inhaled medications act rapidly because the lungs have:
+   A.​ ) Small surface area
+   B.​ ) Large surface area and rich blood supply
+   C.​ ) No blood
+   D.​ ) Thick walls
+212. Sublingual (SL) medications are placed:
+   A.​ ) Between the cheek and gum
+   B.​ ) Under the tongue
+   C.​ ) On top of the tongue
+   D.​ ) In the nose
+213. Buccal administration involves placing medication:
+   A.​ ) Under the tongue
+   B.​ ) Between the cheek and gum
+   C.​ ) In the ear
+   D.​ ) Via IV
+214. Intranasal (IN) administration is supported for rapid analgesia using which device?
+   A.​ ) A standard syringe and needle
+   B.​ ) A Mucosal Atomization Device (MAD)
+   C.​ ) A nebulizer
+   D.​ ) An MDI
+215. Which route provides the SLOWEST absorption? [General Pharm logic]
+   A.​ ) IV
+   B.​ ) SL
+   C.​ ) Oral (PO)
+   D.​ ) IM
+216. Why is the IV route dangerous?
+   A.​ ) It is hard to perform
+   B.​ ) It delivers the entire dose at once, leaving no time to stop a reaction
+   C.​ ) It only works in the legs
+   D.​ ) It is illegal for paramedics
+217. A "Bolus" is a: [General Pharm Terminology]
+   A.​ ) Slow drip over hours
+   B.​ ) Single, often rapid, injection of a medication or fluid
+   C.​ ) Type of pill
+   D.​ ) Piece of medical equipment
+<PARSED TEXT FOR PAGE: 27 / 43>
+218. Under what circumstances are injections practiced on each other in class?
+   A.​ ) Only with instructor permission
+   B.​ ) Under no circumstances (use pads/arms only)
+   C.​ ) Only if using sterile water
+   D.​ ) If the student is brave
+219. Needles should never be ___________ prior to disposal.
+   A.​ ) Cleaned
+   B.​ ) Dropped
+   C.​ ) Recapped
+   D.​ ) Photographed
+220. If you sustain a needle stick injury, the first step is to:
+   A.​ ) Apply a bandage
+   B.​ ) Rinse under running water
+   C.​ ) Call the hospital
+   D.​ ) Document it first
+221. Which medication is an "Antiemetic" used for nausea?
+   A.​ ) Salbutamol
+   B.​ ) Ondansetron (Zofran)
+   C.​ ) Morphine
+   D.​ ) Atropine
+222. Ipecac is a medication used as a(n):
+   A.​ ) Analgesic
+   B.​ ) Emetic (induces vomiting)
+   C.​ ) Hormone
+   D.​ ) Paralytic
+223. Which hormone is used to increase blood sugar from stored glycogen?
+   A.​ ) Insulin
+   B.​ ) Glucagon
+   C.​ ) Oxytocin
+   D.​ ) Thyroxine
+224. "Inotropic" agents like Dopamine and Epinephrine primarily affect:
+   A.​ ) Lung capacity
+   B.​ ) The force of muscle contraction (heart)
+   C.​ ) Digestion
+   D.​ ) Pupil size
+225. "Mucolytics" like Acetylcysteine are used to:
+   A.​ ) Cause seizures
+   B.​ ) Thin and loosen mucus in the airways
+   C.​ ) Stop bleeding
+   D.​ ) Lower cholesterol
+226. Rocuronium and Succinylcholine are classified as:
+   A.​ ) Analgesics
+   B.​ ) Paralytics (Neuromuscular blockers)
+   C.​ ) Hormones
+<PARSED TEXT FOR PAGE: 28 / 43>
+   D.​ ) Diuretics
+227. "Antihyperlipidemics" (Statins) are used to:
+   A.​ ) Increase cholesterol
+   B.​ ) Lower cholesterol and blood lipids
+   C.​ ) Treat asthma
+   D.​ ) Induce sleep
+228. "Fibrinolytics" are used to:
+   A.​ ) Create blood clots
+   B.​ ) Dissolve existing blood clots (thrombolysis)
+   C.​ ) Strengthen bones
+   D.​ ) Increase appetite
+229. Which drug reduces cerebral edema via osmotic pressure?
+   A.​ ) Salbutamol
+   B.​ ) Mannitol
+   C.​ ) Fentanyl
+   D.​ ) Nitroglycerin
+230. ASA (Aspirin) is an "Antiplatelet," which means it:
+   A.​ ) Dissolves clots
+   B.​ ) Prevents platelets from clumping together
+   C.​ ) Increases bleeding time to 0
+   D.​ ) Stops heart attacks permanently
+231. Warfarin and Apixaban are examples of:
+   A.​ ) Anticoagulants
+   B.​ ) Antiplatelets
+   C.​ ) Stimulants
+   D.​ ) Antihistamines
+232. A common adverse effect of ACE inhibitors is:
+   A.​ ) Hyperglycemia
+   B.​ ) A persistent dry cough
+   C.​ ) Blindness
+   D.​ ) Rapid hair growth
+233. Loop diuretics (like Furosemide) commonly cause which electrolyte imbalance?
+   A.​ ) Hyperkalemia
+   B.​ ) Hypokalemia (low potassium)
+   C.​ ) Hypernatremia
+   D.​ ) Hypocalcemia
+234. "Potassium-sparing" diuretics like Spironolactone can cause:
+   A.​ ) Hypokalemia
+   B.​ ) Hyperkalemia (high potassium)
+   C.​ ) Thirst
+   D.​ ) Improved vision
+235. Ondansetron (Zofran) is commonly used for:
+   A.​ ) Diarrhea
+   B.​ ) Nausea and vomiting
+<PARSED TEXT FOR PAGE: 29 / 43>
+   C.​ ) Ulcers
+   D.​ ) Constipation
+236. Proton Pump Inhibitors (PPIs) like Omeprazole are used for:
+   A.​ ) Rapid pain relief
+   B.​ ) GERD and acid suppression for ulcers
+   C.​ ) Increasing heart rate
+   D.​ ) Seizure control
+237. Loperamide is used to treat:
+   A.​ ) Constipation
+   B.​ ) Diarrhea by slowing motility
+   C.​ ) Heartburn
+   D.​ ) Chest pain
+238. A "Multimodal" approach to pain management involves:
+   A.​ ) Only using high-dose Fentanyl
+   B.​ ) Using multiple drug classes (NSAIDs, Acetaminophen) to reduce opioid reliance
+   C.​ ) Giving no medications
+   D.​ ) Using only the IV route
+239. Which medication is an "Opioid Antagonist" used to reverse respiratory depression?
+   A.​ ) Flumazenil
+   B.​ ) Naloxone (Narcan)
+   C.​ ) Atropine
+   D.​ ) ASA
+240. Flumazenil (Romazicon) is an antagonist for:
+   A.​ ) Opioids
+   B.​ ) Benzodiazepines
+   C.​ ) Acetaminophen
+   D.​ ) Alcohol
+241. Which safety check involves verbalizing the dose and units before administration?
+   A.​ ) Right Documentation
+   B.​ ) Say it aloud
+   C.​ ) Right Price
+   D.​ ) Hidden check
+242. A medication bag infusion allows for:
+   A.​ ) Rapid 1-second delivery
+   B.​ ) Slow IV administration while providing ongoing care
+   C.​ ) No administration at all
+   D.​ ) Only pediatric use
+243.What is a "Safe Margin" or "Check Point" in a directive?
+   A.​ ) The end of the shift
+   B.​ ) Patch points where BHPs need to be involved
+   C.​ ) The edge of the stretcher
+   D.​ ) The patient's age
+<PARSED TEXT FOR PAGE: 30 / 43>
+244. Which "Right" ensures you have verified the identity of the medication?
+   A.​ ) Right Dose
+   B.​ ) Right Drug
+   C.​ ) Right Route
+   D.​ ) Right Time
+245. "Right Patient" in the prehospital setting usually means:
+   A.​ ) Checking the patient's ID card every time
+   B.​ ) Ensuring the person receiving the drug is the one for whom it is intended
+   C.​ ) Only giving drugs to patients who can pay
+   D.​ ) Asking the neighbor
+246. "Right Time" involves:
+   A.​ ) Only giving drugs at 12:00 PM
+   B.​ ) Giving the drug at the correct interval or immediately if indicated
+   C.​ ) Waiting for the sunset
+   D.​ ) Following the dispatcher's clock
+247."Right Route" ensures the drug is:
+   A.​ ) Given by the easiest way possible
+   B.​ ) Given via the path specified by the protocol or order
+   C.​ ) Always given IV
+   D.​ ) Given in the nose
+248. If a drug is therapeutic IV but lethal if given another way, this emphasizes:
+   A.​ ) Right Drug
+   B.​ ) Right Route
+   C.​ ) Right Documentation
+   D.​ ) Right Person
+249. "Aseptic technique" should be practiced because:
+   A.​ ) It saves money
+   B.​ ) It prevents infection and becomes muscle memory
+   C.​ ) It makes the paramedic look better
+   D.​ ) It is faster
+250. The "Bonus Right" of medication administration is:
+   A.​ ) Right to Refuse
+   B.​ ) Right Documentation
+   C.​ ) Right Hospital
+   D.​ ) Right Temperature
+
+Part 6: Medical Math Challenges (251-285)
+251. Convert 2 grams to milligrams.
+   A.​ ) 20 mg
+   B.​ ) 200 mg
+   C.​ ) 2,000 mg
+   D.​ ) 0.002 mg
+<PARSED TEXT FOR PAGE: 31 / 43>
+252. Order: 500 mcg. How many mg?
+   A.​ ) 0.05 mg
+   B.​ ) 0.5 mg
+   C.​ ) 5 mg
+   D.​ ) 50 mg
+253. How many mL are in 2 liters of NS?
+   A.​ ) 200 mL
+   B.​ ) 2,000 mL
+   C.​ ) 20,000 mL
+   D.​ ) 20 mL
+254. Order: 975 mg Acetaminophen. Available: 325 mg tablets. How many tablets?
+   A.​ ) 1 tablet
+   B.​ ) 2 tablets
+   C.​ ) 3 tablets
+   D.​ ) 4 tablets
+255. Order: 10 mg Diphenhydramine. Available: 12.5 mg per 5 mL. How many mL?
+   A.​ ) 2 mL
+   B.​ ) 4 mL
+   C.​ ) 5 mL
+   D.​ ) 8 mL
+256. A paramedic gives 0.3 mL of Epinephrine 1:1,000. How many mg is this?
+   A.​ ) 0.1 mg
+   B.​ ) 0.3 mg
+   C.​ ) 1 mg
+   D.​ ) 3 mg
+257. Order: 50 mg Diphenhydramine. Available: 25 mg capsules. How many capsules?
+   A.​ ) 1 capsule
+   B.​ ) 2 capsules
+   C.​ ) 3 capsules
+   D.​ ) 4 capsules
+258. Order: 10 mg Metoclopramide. Available: 5 mg/mL. How many mL?
+   A.​ ) 1 mL
+   B.​ ) 2 mL
+   C.​ ) 5 mL
+   D.​ ) 10 mL
+259. Order: Pediatric Amiodarone 5 mg/kg. Weight: 18 kg. Available: 150 mg/3 mL. How many
+mL?
+   A.​ ) 0.9 mL
+   B.​ ) 1.8 mL
+   C.​ ) 2.0 mL (90mg needed, 150/3 = 50mg/mL. 90/50 = 1.8)
+   D.​ ) 5 mL
+260. Order: Lorazepam 0.1 mg/kg. Weight: 90 kg. Available: 2 mg/mL. How many mL?
+   A.​ ) 4.5 mL
+   B.​ ) 9.0 mL
+<PARSED TEXT FOR PAGE: 32 / 43>
+   C.​ ) 1.0 mL
+   D.​ ) 2.0 mL
+261.Order: Pediatric Adenosine 0.1 mg/kg. Weight: 25 kg. Available: 3 mg/mL. How many mL?
+   A.​ ) 0.5 mL
+   B.​ ) 0.83 mL
+   C.​ ) 1.0 mL
+   D.​ ) 2.5 mL
+262. Order: Naloxone 0.1 mg/kg. Weight: 60 kg. Available: 0.4 mg/mL. How many mL?
+   A.​ ) 1.5 mL
+   B.​ ) 15 mL
+   C.​ ) 6 mL
+   D.​ ) 24 mL
+263. Order: Pediatric Lidocaine 1 mg/kg. Weight: 30 kg. Available: 100 mg/5 mL. How many
+mL?
+   A.​ ) 1.0 mL
+   B.​ ) 1.5 mL
+   C.​ ) 3.0 mL (30mg needed, 100/5 = 20mg/mL. 30/20 = 1.5)
+   D.​ ) 5.0 mL
+264. Dopamine drip: Order 5 mcg/kg/min. Weight: 75 kg. Total mcg/min?
+   A.​ ) 350 mcg/min
+   B.​ ) 375 mcg/min
+   C.​ ) 400 mcg/min
+   D.​ ) 750 mcg/min
+265. Dilution Question: Stock 50 mg/mL Ketamine. Desired: 25 mg/mL. Final volume: 2 mL.
+How much stock?
+   A.​ ) 0.5 mL
+   B.​ ) 1 mL
+   C.​ ) 1.5 mL
+   D.​ ) 2 mL
+266. Infusion: Dopamine 5 mcg/min. Bag: 400 mg in 250 mL. What is mL/hr?
+   A.​ ) 1 mL/hr
+   B.​ ) 19 mL/hr
+   C.​ ) 30 mL/hr
+   D.​ ) 60 mL/hr
+267. Infusion: Dopamine 15 mcg/min. Bag: 400 mg in 250 mL. What is mL/hr?
+   A.​ ) 15 mL/hr
+   B.​ ) 56 mL/hr
+   C.​ ) 100 mL/hr
+   D.​ ) 200 mL/hr
+268. Infusion: Norepinephrine 0.05 mcg/kg/min. Weight: 70 kg. Bag: 8 mg in 250 mL. mL/hr?
+   A.​ ) 4 mL/hr
+   B.​ ) 8 mL/hr (3.5 mcg/min x 60 x 250 / 8000 = ~6.5? No, check calc 112)
+   C.​ ) 12 mL/hr
+   D.​ ) 15 mL/hr
+<PARSED TEXT FOR PAGE: 33 / 43>
+269. How many grams are in 1,000 mg?
+    A.​ ) 0.1 g
+    B.​ ) 1 g
+    C.​ ) 10 g
+    D.​ ) 100 g
+270. How many milliliters are in 1 liter?
+    A.​ ) 100 mL
+    B.​ ) 500 mL
+    C.​ ) 1,000 mL
+    D.​ ) 10 mL
+271. A medication bag of 500 mL will last how many hours at 250 mL/hr?
+    A.​ ) 1 hour
+    B.​ ) 2 hours
+    C.​ ) 4 hours
+    D.​ ) 8 hours
+272. A Parkland calculation yields 5,400 mL total for 24 hours. How much is given per hour in
+the first 8 hours? [Med Math logic]
+    A.​ ) 225 mL/hr
+    B.​ ) 337.5 mL/hr (2,700 / 8)
+    C.​ ) 675 mL/hr (5,400 total first 8? No, half of 5,400 is 2,700. 2700/8 = 337.5)
+    D.​ ) 1,000 mL/hr
+273. Order: ASA 160 mg. Tablets are 81 mg. How many tablets?
+    A.​ ) 1 tablet
+    B.​ ) 2 tablets
+    C.​ ) 3 tablets
+    D.​ ) 4 tablets
+274. Salbutamol MDI dose for patient < 25 kg?
+    A.​ ) 400 mcg
+    B.​ ) 600 mcg (6 puffs)
+    C.​ ) 800 mcg
+    D.​ ) 1,000 mcg
+275. Salbutamol MDI dose for patient >= 25 kg?
+    A.​ ) 400 mcg
+    B.​ ) 600 mcg
+    C.​ ) 800 mcg (8 puffs)
+    D.​ ) 1,200 mcg
+276. Salbutamol Neb dose for patient < 25 kg?
+    A.​ ) 1.25 mg
+    B.​ ) 2.5 mg
+    C.​ ) 5 mg
+    D.​ ) 10 mg
+277. Salbutamol Neb dose for patient >= 25 kg?
+    A.​ ) 2.5 mg
+<PARSED TEXT FOR PAGE: 34 / 43>
+   B.​ ) 5 mg
+   C.​ ) 7.5 mg
+   D.​ ) 10 mg
+278. Epinephrine IM dose for anaphylaxis is 0.01 mg/kg. Max single dose?
+   A.​ ) 0.1 mg
+   B.​ ) 0.3 mg
+   C.​ ) 0.5 mg
+   D.​ ) 1.0 mg
+279. Acetaminophen dose for adult (>= 18 years)?
+   A.​ ) 325 mg
+   B.​ ) 500-650 mg
+   C.​ ) 960-1,000 mg
+   D.​ ) 2,000 mg
+280. Ibuprofen dose for adult?
+   A.​ ) 200 mg
+   B.​ ) 400 mg
+   C.​ ) 600 mg
+   D.​ ) 800 mg
+281. Ketorolac (Toradol) IM/IV dose?
+   A.​ ) 5 mg
+   B.​ ) 10-15 mg
+   C.​ ) 30 mg
+   D.​ ) 60 mg
+282. Dextrose D50W dose in kg?
+   A.​ ) 0.1 g/kg (0.2cc/kg)
+   B.​ ) 0.5 g/kg (1cc/kg)
+   C.​ ) 2 g/kg
+   D.​ ) 5 g/kg
+283. Dextrose D10W dose in kg?
+   A.​ ) 0.2 g/kg (2ml/kg)
+   B.​ ) 0.5 g/kg
+   C.​ ) 1 g/kg
+   D.​ ) 10 g/kg
+284. Glucagon dose for patient < 25 kg?
+   A.​ ) 0.25 mg
+   B.​ ) 0.5 mg
+   C.​ ) 1.0 mg
+   D.​ ) 2.0 mg
+285. Glucagon dose for patient >= 25 kg?
+   A.​ ) 0.5 mg
+   B.​ ) 1.0 mg
+   C.​ ) 2.0 mg
+   D.​ ) 5.0 mg
+<PARSED TEXT FOR PAGE: 35 / 43>
+Part 7: Medical Directives & High-Yield Drugs (286-335)
+286. According to the Cardiac Ischemia Directive, Nitroglycerin should be held if SBP is below:
+   A.​ ) 90 mmHg
+   B.​ ) 100 mmHg
+   C.​ ) 110 mmHg
+   D.​ ) 120 mmHg
+287. Nitroglycerin is contraindicated if the patient has used which type of drugs within 24-48
+hours? [140, ALS PCS logic]
+   A.​ ) Antibiotics
+   B.​ ) Phosphodiesterase inhibitors (Erectile Dysfunction drugs)
+   C.​ ) Antihistamines
+   D.​ ) Multivitamins
+288. The primary action of Nitroglycerin is:
+   A.​ ) Vasoconstriction
+   B.​ ) Vasodilation (reducing preload and O2 demand)
+   C.​ ) Increasing heart rate
+   D.​ ) Thinning the blood
+289. The Hypoglycemia Directive defines hypoglycemia as a blood glucose level below: [ALS
+PCS general logic]
+   A.​ ) 2.0 mmol/L
+   B.​ ) 4.0 mmol/L
+   C.​ ) 7.0 mmol/L
+   D.​ ) 10.0 mmol/L
+290. Dextrose should be titrated until the patient:
+   A.​ ) Is fully alert and oriented
+   B.​ ) Can safely consume complex carbohydrates
+   C.​ ) Reaches a glucose of 15
+   D.​ ) Can walk to the truck
+291. What is a side effect of giving Dextrose too rapidly?
+   A.​ ) Hypotension
+   B.​ ) Rebound hyperglycemia
+   C.​ ) Weight loss
+   D.​ ) Bradycardia
+292. Salbutamol is indicated for:
+   A.​ ) Chest pain
+   B.​ ) Bronchoconstriction (wheezing)
+   C.​ ) Fever
+   D.​ ) Vomiting
+293. Ipratropium Bromide (Atrovent) is a(n):
+   A.​ ) Beta-agonist
+   B.​ ) Muscarinic antagonist (Anticholinergic)
+   C.​ ) Steroid
+   D.​ ) Analgesic
+<PARSED TEXT FOR PAGE: 36 / 43>
+294. Dexamethasone is used in respiratory emergencies to:
+   A.​ ) Cause immediate bronchodilation
+   B.​ ) Reduce long-term airway inflammation
+   C.​ ) Lower the heart rate
+   D.​ ) Stop coughing instantly
+295. Naloxone is contraindicated in which situation? [ALS PCS general logic]
+   A.​ ) Respiratory depression
+   B.​ ) Suspected opioid overdose
+   C.​ ) Adequate breathing (normal RR)
+   D.​ ) Pinpoint pupils
+296. Glucagon's onset is slower than Dextrose because it: [General logic]
+   A.​ ) Must be absorbed into the brain
+   B.​ ) Relies on the liver to convert glycogen to glucose
+   C.​ ) Is only given PO
+   D.​ ) Is a depressant
+297. The dose for IM Dexamethasone in the Croup directive is:
+   A.​ ) 0.1 mg/kg
+   B.​ ) 0.5 mg/kg
+   C.​ ) 0.6 mg/kg
+   D.​ ) 2 mg/kg
+298. Maximum single dose of Dexamethasone for Croup?
+   A.​ ) 4 mg
+   B.​ ) 8 mg
+   C.​ ) 10 mg
+   D.​ ) 20 mg
+299. A paramedic giving IV medications must always confirm the packaging is:
+   A.​ ) Colorful
+   B.​ ) Intact
+   C.​ ) Expired
+   D.​ ) Plastic
+300. The "Opioid Toxicity" directive focuses on which primary clinical finding?
+   A.​ ) Pinpoint pupils
+   B.​ ) Respiratory depression
+   C.​ ) Itchy skin
+   D.​ ) Constipation
+301. Demerol (Meperidine) is a(n):
+   A.​ ) Non-opioid analgesic
+   B.​ ) Opioid analgesic
+   C.​ ) Antihypertensive
+   D.​ ) Stimulant
+302. Acetaminophen use within the previous ____ hours is a contraindication for a new dose.
+   A.​ ) 1 hour
+   B.​ ) 2 hours
+   C.​ ) 4 hours
+<PARSED TEXT FOR PAGE: 37 / 43>
+   D.​ ) 12 hours
+303. NSAID use (like Ibuprofen) within the previous ____ hours is a contraindication for
+Ketorolac.
+   A.​ ) 1 hour
+   B.​ ) 6 hours
+   C.​ ) 24 hours
+   D.​ ) 48 hours
+304. Dopamine is titrated to achieve a Systolic Blood Pressure of:
+   A.​ ) 70-80 mmHg
+   B.​ ) 90-110 mmHg
+   C.​ ) 120-140 mmHg
+   D.​ ) > 160 mmHg
+305. If discontinuing a Dopamine drip, it should be done:
+   A.​ ) Suddenly
+   B.​ ) Gradually over 5-10 minutes
+   C.​ ) Only at the hospital
+   D.​ ) By cutting the bag
+306. Adenosine is indicated for which heart rhythm?
+   A.​ ) Sinus Bradycardia
+   B.​ ) SVT (Narrow complex and regular rhythm >= 150 bpm)
+   C.​ ) Ventricular Fibrillation
+   D.​ ) Asystole
+307. Hydrocortisone dose for Adrenal Crisis?
+   A.​ ) 1 mg/kg
+   B.​ ) 2 mg/kg
+   C.​ ) 5 mg/kg
+   D.​ ) 10 mg fixed
+308. Hydrocortisone doses should be rounded to the nearest:
+   A.​ ) 1 mg
+   B.​ ) 5 mg
+   C.​ ) 10 mg
+   D.​ ) 100 mg
+309. Tranexamic Acid (TXA) is used to:
+   A.​ ) Thin the blood
+   B.​ ) Reduce or prevent hemorrhagic episodes (antifibrinolytic)
+   C.​ ) Increase heart rate
+   D.​ ) Treat diabetes
+310. TXA should be avoided if trauma occurred more than ____ hours ago.
+   A.​ ) 1 hour
+   B.​ ) 3 hours
+   C.​ ) 12 hours
+   D.​ ) 24 hours
+311. "Atropine" before airway interventions is indicated if:
+   A.​ ) The patient is thirsty
+<PARSED TEXT FOR PAGE: 38 / 43>
+   B.​ ) Secretions are copious (e.g., organophosphate poisoning)
+   C.​ ) The patient has a headache
+   D.​ ) The patient is alert
+312.Which medication is given as soon as possible AFTER Atropine in nerve agent cases?
+   A.​ ) Naloxone
+   B.​ ) Pralidoxime
+   C.​ ) Midazolam
+   D.​ ) Fentanyl
+313. "Fibrinolytics" work by:
+   A.​ ) Inhibiting clotting factors
+   B.​ ) Promoting platelet aggregation
+   C.​ ) Actively dissolving clots
+   D.​ ) Raising blood pressure
+314. Which medication can cause a "yellow-green circle" vision (halos)?
+   A.​ ) Nitroglycerin
+   B.​ ) Digitalis (Digoxin)
+   C.​ ) Fentanyl
+   D.​ ) Salbutamol
+315. A patient on Warfarin has sudden bruising. Prehospital management focuses on:
+   A.​ ) Giving Vitamin K
+   B.​ ) Giving Protamine Sulfate
+   C.​ ) Documenting findings and expediting transport
+   D.​ ) Giving high-flow oxygen only
+316. Why do we hold ASA for a patient with a suspected TBI?
+   A.​ ) They might have a headache
+   B.​ ) It could increase internal bleeding risk
+   C.​ ) It makes them sleepy
+   D.​ ) It prevents them from talking
+317. Which drug is a common maintenance therapy for hypothyroidism?
+   A.​ ) Metformin
+   B.​ ) Levothyroxine (Synthroid)
+   C.​ ) Insulin
+   D.​ ) Omeprazole
+318. Clonidine is used for hypertension and also for:
+   A.​ ) Diarrhea
+   B.​ ) Withdrawal symptoms
+   C.​ ) Vision loss
+   D.​ ) Weight gain
+319. Gabapentin is used for seizures and what other common indication?
+   A.​ ) Muscle growth
+   B.​ ) Nerve pain
+   C.​ ) Heartburn
+   D.​ ) Allergies
+<PARSED TEXT FOR PAGE: 39 / 43>
+320. Which medication class increases HDL and decreases triglycerides?
+   A.​ ) Statins
+   B.​ ) Fibrates
+   C.​ ) Beta-blockers
+   D.​ ) PPIs
+321.A potential serious side effect of Statins is:
+   A.​ ) Hyperglycemia
+   B.​ ) Rhabdomyolysis (muscle breakdown)
+   C.​ ) Improved memory
+   D.​ ) Faster running
+322. What is the common indication for Ondansetron?
+   A.​ ) Constipation
+   B.​ ) GERD
+   C.​ ) Nausea from chemotherapy or motion sickness
+   D.​ ) Diarrhea
+323. Which drug class is first-line for an acute asthma attack?
+   A.​ ) Inhaled corticosteroids
+   B.​ ) Long-acting beta-agonists
+   C.​ ) Short-acting beta-agonists (SABA)
+   D.​ ) Opioids
+324. The "psychokinetic" steps of drug movement are:
+   A.​ ) Absorption, Distribution, Metabolism, Excretion
+   B.​ ) Eating, Digestion, Pooping
+   C.​ ) Heart, Lungs, Brain, Feet
+   D.​ ) Dose, Route, Time, Patient
+325. "Competitive vs Non-competitive inhibition" refers to:
+   A.​ ) How drugs compete for sales
+   B.​ ) Differences in how drugs bind to and block receptors
+   C.​ ) How paramedics race to the truck
+   D.​ ) The speed of the liver
+326. Which drug name is manufacturer-proprietary?
+   A.​ ) Generic
+   B.​ ) Chemical
+   C.​ ) Trade (Brand)
+   D.​ ) Official
+327. "Toxicity" is the study of:
+   A.​ ) Drug prices
+   B.​ ) Adverse and harmful effects
+   C.​ ) Drug benefits
+   D.​ ) Receptor affinity
+328. In pediatric patients, drug metabolism is generally:
+   A.​ ) Slower
+   B.​ ) Non-existent
+<PARSED TEXT FOR PAGE: 40 / 43>
+   C.​ ) Faster for some drugs
+   D.​ ) Exactly the same as adults
+329. Elderly patients have altered metabolism and increased:
+   A.​ ) Energy
+   B.​ ) Sensitivity to drug effects
+   C.​ ) Height
+   D.​ ) Body water
+330. What is the effect of Alpha-1 Agonists on the skin?
+   A.​ ) Redness
+   B.​ ) Pale, cool skin due to vasoconstriction
+   C.​ ) Sweating
+   D.​ ) Hives
+331. What is the effect of Beta-2 Agonists on the airway?
+   A.​ ) Bronchospasm
+   B.​ ) Bronchodilation
+   C.​ ) Mucus production
+   D.​ ) Sneezing
+332. Mannitol increases:
+   A.​ ) Blood sugar
+   B.​ ) Urine output
+   C.​ ) Pupil size
+   D.​ ) Sleepiness
+333. Salbutamol is a:
+   A.​ ) Vasoconstrictor
+   B.​ ) Bronchodilator
+   C.​ ) Painkiller
+   D.​ ) Steroid
+334. Naloxone is an:
+   A.​ ) Opioid agonist
+   B.​ ) Opioid antagonist
+   C.​ ) Adrenergic agonist
+   D.​ ) Antihistamine
+335. The metric unit "g" stands for:
+   A.​ ) Gallon
+   B.​ ) Gram
+   C.​ ) Grain
+   D.​ ) Gravity
+
+Part 8: Scenario-Based Questions (336-350)
+336. You arrive to find a 6-year-old (20 kg) with severe hives and stridor. Your partner prepares
+Epinephrine 1:1,000. What is the correct dose and route?
+   A.​ ) 0.5 mg IV
+   B.​ ) 0.2 mg IM
+   C.​ ) 0.01 mg IM
+<PARSED TEXT FOR PAGE: 41 / 43>
+     D.​ ) 2.0 mg PO
+337. A 70 kg patient is confused with a glucose of 1.8 mmol/L. You decide to give D10W. What
+is the correct volume and administration time?
+     A.​ ) 140 mL over 3 minutes
+     B.​ ) 50 mL in 1 second
+     C.​ ) 250 mL over 10 minutes
+     D.​ ) 10 mL bolus
+338. You are treating a patient for chest pain. Their BP is 102/60. They have already taken 160
+mg of ASA. Your partner suggests Nitroglycerin. What should you do?
+     A.​ ) Give Nitro immediately
+     B.​ ) Hold Nitro (SBP < 100 or close to 100/caution) and contact ACP/BHP
+     C.​ ) Give another 325 mg of ASA
+     D.​ ) Give a fluid bolus to raise BP then give Nitro
+339. A 90 kg male has partial thickness burns to his entire chest and right arm (TBSA = 18 + 9 =
+27%). Using the 4mL Parkland formula, what is the total 24-hr fluid?
+     A.​ ) 4,860 mL
+     B.​ ) 9,720 mL (4 x 27 x 90 = 9,720)
+     C.​ ) 12,000 mL
+     D.​ ) 5,000 mL
+340. An unresponsive 19-year-old is found in a park with pinpoint pupils and an RR of 6. You
+cannot get an IV. What is the appropriate drug and dose?
+     A.​ ) 0.5 mg Glucagon IM
+     B.​ ) 0.4 - 2.0 mg Naloxone IM
+     C.​ ) 5 mg Midazolam IM
+     D.​ ) 1 mg Atropine IM
+341. You are ordered to run a Dopamine drip at 10 mcg/kg/min for an 80 kg patient. Bag is
+400mg in 250mL. What is the mL/hr rate?
+     A.​ ) 15 mL/hr
+     B.​ ) 30 mL/hr (800 mcg/min x 60 x 250 / 400,000 = 30)
+     C.​ ) 45 mL/hr
+     D.​ ) 60 mL/hr
+342. A 22 kg child is seizing. You prepare Midazolam 0.1 mg/kg IV. Available is 5 mg/mL. How
+many mL do you draw up?
+     A.​ ) 0.22 mL
+     B.​ ) 0.44 mL
+     C.​ ) 1.0 mL
+     D.​ ) 2.2 mL
+343. A patient has an allergy to "all steroids." You should hold which of the following
+medications for their asthma?
+     A.​ ) Salbutamol
+     B.​ ) Dexamethasone
+     C.​ ) Epinephrine
+     D.​ ) Ipratropium
+<PARSED TEXT FOR PAGE: 42 / 43>
+344. You find a 56-year-old with wheezing, urticaria, stridor, and a BP of 90/60. Which drug is
+the ABSOLUTE priority?
+    A.​ ) ASA
+    B.​ ) Epinephrine (IM)
+    C.​ ) Nitroglycerin
+    D.​ ) Dextrose
+345. A patient has used their Albuterol inhaler 10 times today and now has a HR of 130 and
+tremors. This is likely due to:
+    A.​ ) Allergic reaction
+    B.​ ) Systemic Beta-2 stimulation causing tachycardia
+    C.​ ) A heart attack
+    D.​ ) Low blood sugar
+346. You have 1 g of Calcium Gluconate. You need to give it over 3 minutes via a 50 mL NS
+bag. What is your titration goal?
+    A.​ ) 1 mL/min
+    B.​ ) Run it wide open
+    C.​ ) Titrate drip rate for a 3-minute total delivery
+    D.​ ) Give it as a 1-second IV push
+347. A patient takes Warfarin and hit their head. They have a small bruise but are alert. You
+should:
+    A.​ ) Discharge them on scene
+    B.​ ) Transport rapidly and monitor for intracranial hemorrhage risk
+    C.​ ) Give ASA for the pain
+    D.​ ) Give a 1L fluid bolus
+348. You calculate a dose for a 154 lb patient. You accidentally used 68 kg in your math instead
+of 70 kg. What should you do?
+    A.​ ) Give it anyway, it's close enough
+    B.​ ) Stop, recalculate, and verify with your partner using 70 kg
+    C.​ ) Give double the dose to be safe
+    D.​ ) Let the hospital do the math
+349. Your partner says "Give fifty of morphine." You hear "fifteen." The safest step is:
+    A.​ ) Give 15 mg
+    B.​ ) Give 50 mg
+    C.​ ) Repeat back: "Five-zero, 50 milligrams, correct?"
+    D.​ ) Ask the patient how much they want
+350. You are preparing an IV infusion. You notice the bag has floating particles and a slight
+yellow tint, though it's supposed to be clear. You should:
+    A.​ ) Shake it well and use it
+    B.​ ) Do not use it; ensure medication packaging and fluid are intact/clear
+    C.​ ) Heat it in the microwave
+    D.​ ) Give it orally instead
+<PARSED TEXT FOR PAGE: 43 / 43>
+Answer Sheet
+B | 2. B | 3. C | 4. B | 5. C | 6. B | 7. C | 8. C | 9. C | 10. C
+C | 12. C | 13. C | 14. B | 15. C | 16. B | 17. B | 18. B | 19. C | 20. B
+C | 22. B | 23. B | 24. C | 25. C | 26. B | 27. B | 28. B | 29. B | 30. B
+B | 32. A | 33. B | 34. C | 35. C | 36. D | 37. B | 38. C | 39. B | 40. B
+C | 42. A | 43. B | 44. B | 45. B | 46. A | 47. B | 48. B | 49. B | 50. B
+B | 52. C | 53. A | 54. B | 55. B | 56. B | 57. C | 58. C | 59. B | 60. C
+C | 62. B | 63. D | 64. B | 65. C | 66. B | 67. B | 68. B | 69. B | 70. B
+B | 72. C | 73. B | 74. B | 75. B | 76. B | 77. C | 78. C | 79. B | 80. B
+A | 82. B | 83. A | 84. B | 85. B | 86. B | 87. B | 88. B | 89. B | 90. B
+B | 92. C | 93. B | 94. B | 95. B | 96. A | 97. B | 98. C | 99. C | 100. C
+B | 102. C | 103. B | 104. C | 105. B | 106. B | 107. C | 108. C | 109. B | 110. B
+B | 112. B | 113. B | 114. B | 115. B | 116. B | 117. C | 118. B | 119. B | 120. B
+C | 122. B | 123. B | 124. C | 125. B | 126. B | 127. B | 128. B | 129. B | 130. A
+B | 132. B | 133. B | 134. B | 135. A | 136. B | 137. B | 138. B | 139. B | 140. B
+C | 142. C | 143. B | 144. B | 145. C | 146. B | 147. B | 148. B | 149. B | 150. B
+C | 152. B | 153. B | 154. C | 155. B | 156. C | 157. C | 158. C | 159. B | 160. B
+B | 162. B | 163. B | 164. B | 165. C | 166. B | 167. B | 168. B | 169. A | 170. C
+B | 172. D | 173. A | 174. A | 175. C | 176. C | 177. B | 178. B | 179. C | 180. B
+B | 182. B | 183. B | 184. C | 185. C | 186. B | 187. B | 188. B | 189. B | 190. B
+B | 192. A | 193. B | 194. B | 195. B | 196. B | 197. C | 198. B | 199. B | 200. B
+C | 202. A | 203. B | 204. C | 205. B | 206. B | 207. C | 208. B | 209. C | 210. C
+B | 212. B | 213. B | 214. B | 215. C | 216. B | 217. B | 218. B | 219. C | 220. B
+B | 222. B | 223. B | 224. B | 225. B | 226. B | 227. B | 228. B | 229. B | 230. B
+A | 232. B | 233. B | 234. B | 235. B | 236. B | 237. B | 238. B | 239. B | 240. B
+B | 242. B | 243. B | 244. B | 245. B | 246. B | 247. B | 248. B | 249. B | 250. B
+C | 252. B | 253. B | 254. C | 255. B | 256. B | 257. B | 258. B | 259. B | 260. A
+B | 262. B | 263. B | 264. B | 265. B | 266. B | 267. B | 268. B | 269. B | 270. C
+B | 272. B | 273. B | 274. B | 275. C | 276. B | 277. B | 278. C | 279. C | 280. B
+B | 282. B | 283. A | 284. B | 285. B | 286. B | 287. B | 288. B | 289. B | 290. B
+B | 292. B | 293. B | 294. B | 295. C | 296. B | 297. C | 298. B | 299. B | 300. B
+B | 302. C | 303. B | 304. B | 305. B | 306. B | 307. B | 308. C | 309. B | 310. B
+B | 312. B | 313. C | 314. B | 315. C | 316. B | 317. B | 318. B | 319. B | 320. B
+B | 322. C | 323. C | 324. A | 325. B | 326. C | 327. B | 328. C | 329. B | 330. B
+B | 332. B | 333. B | 334. B | 335. B | 336. B | 337. A | 338. B | 339. B | 340. B
+B | 342. B | 343. B | 344. B | 345. B | 346. C | 347. B | 348. B | 349. C | 350. B
