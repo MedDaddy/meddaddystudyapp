@@ -231,5 +231,5 @@ css.textContent='#pct2InfectiousPage.md-srd-visible > :not(#pct2SrdPage){display
  '#pct2SrdPage details{opacity:.92;font-size:.91rem;margin-top:18px}#pct2SrdPage details summary{font-weight:700;cursor:pointer}'+
  '@media(max-width:650px){#pct2SrdPage .md-srd-select{grid-template-columns:1fr}}';
 document.head.appendChild(css);
-window.MD_PCT2_SRD_91123={ready:true,version:'9.11.29',errors:[],counts:{all:medicationQuestions.length,wrestle:50,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-medicationQuestions.length,sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',addedMedicationScenarios:extraQuestions.length,highYieldFamilies:families.map(([name])=>name)};
+window.MD_PCT2_SRD_91123={ready:true,version:'9.11.29',errors:[],counts:{all:medicationQuestions.length,wrestle:50,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-(medicationQuestions.length-extraQuestions.length),sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',addedMedicationScenarios:extraQuestions.length,highYieldFamilies:families.map(([name])=>name)};
 })();
