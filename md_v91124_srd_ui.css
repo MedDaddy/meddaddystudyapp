@@ -27,3 +27,7 @@
 #pct2SrdPage #md-srd-fib-finish{display:flex;flex-wrap:wrap;gap:12px;margin-top:15px}
 #pct2SrdPage #md-srd-fib-finish h3,#pct2SrdPage #md-srd-fib-finish p{width:100%;margin:4px 0}
 @media(max-width:640px){#pct2SrdPage .md-srd-tiles{grid-template-columns:1fr}#pct2SrdPage .md-srd-tiles button{min-height:105px}}
+
+#pct2SrdPage .md-srd-length-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:19px 0;padding:14px 16px;background:#0c2735;border:1px solid #527f8f;border-radius:10px}
+#pct2SrdPage .md-srd-length-setting label{font-weight:700}
+#pct2SrdPage .md-srd-length-setting select{min-height:44px;border:1px solid #6393a4;border-radius:8px;background:#061923;color:white;padding:9px}
