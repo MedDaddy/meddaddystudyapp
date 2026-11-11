@@ -68,7 +68,8 @@ tileZone.innerHTML='<h2>Choose your SRD training match</h2><p class="md-srd-intr
 '<button type="button" data-srd-mode="dose"><span class="md-srd-tile-icon">💉</span><strong>Doses &amp; Medication Math</strong><small>72 dosing, routes, weight and calculation questions</small></button>'+
 '<button type="button" data-srd-mode="contra"><span class="md-srd-tile-icon">🛑</span><strong>Contraindication Traps</strong><small>60 subtle eligibility and contraindication cases</small></button>'+
 '<button type="button" data-srd-mode="treatment"><span class="md-srd-tile-icon">🩺</span><strong>Best Treatment &amp; Reassessment</strong><small>68 clinical decisions and reassessment questions</small></button>'+
-'<button type="button" data-srd-mode="all"><span class="md-srd-tile-icon">📚</span><strong>Full SRD Bank</strong><small>All 200 source-linked, instructor-hard questions</small></button></div>';
+'<button type="button" data-srd-mode="all"><span class="md-srd-tile-icon">📚</span><strong>Full SRD Bank</strong><small>Up to 200 source-linked, instructor-hard questions · choose length below</small></button></div>'+
+'<div class="md-srd-length-setting"><label for="md-srd-tile-length">Multiple-choice session length</label><select id="md-srd-tile-length"><option value="50">50 questions</option><option value="75">75 questions</option><option value="100">100 questions</option><option value="all">Full selected deck</option></select></div>';
 panel.insertBefore(tileZone,selector);
 const focusPanel=document.createElement('section');focusPanel.id='md-srd-directive-focus';
 focusPanel.innerHTML='<h2>Test a specific medical directive</h2><p>Choose the directive <strong>by its real name</strong>. Focus sessions contain all unique questions for that directive, with no repeated filler.</p>'+
@@ -104,7 +105,13 @@ function directiveChallenge(){
  if(picks.length!==50){desc.textContent='50-question directive bank incomplete.';return;}
  beginStandard(picks);
 }
-function legacy(which){bank.value=which;bank.onchange?.();len.value='all';startButton.click();}
+function legacy(which){
+ bank.value=which;bank.onchange?.();
+ const desired=tileZone.querySelector('#md-srd-tile-length').value;
+ const count=base.counts[which]||200;
+ len.value=desired==='all'||Number(desired)>count?'all':desired;
+ startButton.click();
+}
 tileZone.querySelectorAll('[data-srd-mode]').forEach(b=>b.addEventListener('click',()=>{
  const which=b.dataset.srdMode;
  if(which==='directives')directiveChallenge();
