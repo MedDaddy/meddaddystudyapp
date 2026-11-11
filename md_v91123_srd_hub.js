@@ -48,10 +48,14 @@ const positions=(()=>{let output=null;
  if(!output)throw new Error('Unable to balance SRD answer letters');return output;
 })();
 const letter='ABCD';
+const continuity=window.MD_SRD_CONTINUITY_91125;
+if(!continuity?.stems){window.MD_PCT2_SRD_91123={ready:false,errors:['SRD context correction source missing']};return;}
 const questions=flat.map(({g,gi,j,t},i)=>{
- const [category,prompt,right,w1,w2,w3,why]=t;
+ const [category,oldPrompt,right,w1,w2,w3,why]=t;
+ const prompt=continuity.stems[String(i+1)]||oldPrompt;
  const answerPosition=positions[i];
- const distractors=mix([w1,w2,w3]);
+ const overrides=continuity.options?.[String(i+1)]||{};
+ const distractors=mix([w1,w2,w3].map(x=>overrides[x]||x));
  const choices=distractors.slice();choices.splice(answerPosition,0,right);
  return {id:'PCT2-SRD-91123-'+String(i+1).padStart(3,'0'),course:'Patient Care & Theory II',unit:'Symptom Relief Drugs',
   bankType:'directive-verified',topic:g.directive,reviewCategory:category,
@@ -65,6 +69,13 @@ const questions=flat.map(({g,gi,j,t},i)=>{
   mockInfluence:'PCT2 Pharmacology Review; original 350-question pharmacology mock audited separately',
   directiveCategory:g.directive.startsWith('Seizure')?'Auxiliary':'Core'};
 });
+/* Archived raw source remains 200 items for review and rollback. Only medication
+ * interventions and their associated eligibility/assessment are playable in SRD.
+ * Airway device/Seizure disposition and pure ECG-logistics questions stay out. */
+const nonDrugIds=new Set(['PCT2-SRD-91123-018','PCT2-SRD-91123-019']);
+const medicationQuestions=questions.filter(q=>q.topic!=='Supraglottic Airway' &&
+ q.topic!=='Seizure — PCP Auxiliary (Treat and Discharge)' && !nonDrugIds.has(q.id));
+if(medicationQuestions.length!==186)issues.push('Expected 186 medication-relevant questions, got '+medicationQuestions.length);
 for(const q of questions){
  if(seen.has(q.id)||!q.choices||new Set(q.choices).size!==4||q.choices.length!==4)issues.push('Invalid ID or choices: '+q.id);
  seen.add(q.id);
@@ -72,11 +83,11 @@ for(const q of questions){
  if(existing&&(existing.prompt!==q.prompt||existing.answer!==q.answer))issues.push('Registry collision: '+q.id);
 }
 if(issues.length){window.MD_PCT2_SRD_91123={ready:false,errors:issues};console.error('SRD registry audit blocked',issues);return;}
-for(const q of questions){if(!registry.has(q.id))registry.set(q.id,q);}
+for(const q of medicationQuestions){if(!registry.has(q.id))registry.set(q.id,q);}
 if(typeof BANK!=='undefined'&&Array.isArray(BANK)){
- for(const q of questions)if(!BANK.some(x=>x.id===q.id))BANK.push(q);
+ for(const q of medicationQuestions)if(!BANK.some(x=>x.id===q.id))BANK.push(q);
 }
-const byName=name=>questions.filter(q=>q.topic===name);
+const byName=name=>medicationQuestions.filter(q=>q.topic===name);
 function chooseEven(pool,n){
  if(pool.length<n)throw new Error('Insufficient pool for '+n+' questions');
  return Array.from({length:n},(_,i)=>pool[Math.floor((i+0.5)*pool.length/n)]);
@@ -105,7 +116,7 @@ function balanceDeck(selected,target){
   let best=null;
   for(let i=0;i<out.length;i++){
    const old=out[i];
-   for(const next of questions){
+   for(const next of medicationQuestions){
     if(next.topic!==old.topic||next.answer===old.answer||out.some(x=>x.id===next.id))continue;
     const nextCount={...count,[old.answer]:count[old.answer]-1,[next.answer]:count[next.answer]+1};
     const nextScore=score(nextCount);
@@ -118,11 +129,11 @@ function balanceDeck(selected,target){
  return out;
 }
 const highYield=balanceDeck(families.flatMap(([name,pool])=>chooseEven(pool,5)),{A:13,B:12,C:12,D:13});
-const sourceMock=balanceDeck(chooseEven(questions,50),{A:13,B:12,C:13,D:12}); // original 350Q source archive kept separately.
-const dose=questions.filter(q=>q.reviewCategory==='D');
-const contraindications=questions.filter(q=>q.reviewCategory==='C');
-const treatment=questions.filter(q=>q.reviewCategory==='T'||q.reviewCategory==='S');
-const pools={high:highYield,mock:sourceMock,dose,contra:contraindications,treatment,all:questions};
+const sourceMock=balanceDeck(chooseEven(medicationQuestions,50),{A:13,B:12,C:13,D:12}); // original 350Q source archive kept separately.
+const dose=medicationQuestions.filter(q=>q.reviewCategory==='D');
+const contraindications=medicationQuestions.filter(q=>q.reviewCategory==='C');
+const treatment=medicationQuestions.filter(q=>q.reviewCategory==='T'||q.reviewCategory==='S');
+const pools={high:highYield,mock:sourceMock,dose,contra:contraindications,treatment,all:medicationQuestions};
 for(const [name,pool] of Object.entries(pools))
  if(pool.length<50||new Set(pool.map(x=>x.id)).size!==pool.length)issues.push('Invalid session pool '+name+': '+pool.length);
 if(issues.length){window.MD_PCT2_SRD_91123={ready:false,errors:issues};return;}
@@ -145,10 +156,10 @@ page.innerHTML=
 '<button class="success" id="md-srd-start" type="button">Start SRD Practice</button></div>'+
 '<p id="md-srd-meta" class="muted" aria-live="polite"></p>'+
 '<details><summary>Exam scope and source rules</summary><p>Based on the instructor\'s 38-question PCT II Pharmacology Review, 350-question source mock and Symptom Relief companion slides. Official uploaded ALS PCS v5.4 controls PCP doses, eligibility, contraindications, routes and intervals. The 350-question source mock is preserved in the study sources; its original answer sheet was not blindly imported.</p>'+
-'<p>200 distinct questions (72 dose/math, 60 contraindications, 46 treatment choices, 22 reassessment/sequence). High-Yield and mock sessions are selected from that same verified pool, not extra duplicate questions. Seizure treat-and-discharge is explicitly PCP auxiliary; IV therapies require separate PCP Autonomous IV authorization.</p></details></section>';
+'<p>'+medicationQuestions.length+' medication-relevant questions ('+dose.length+' dose/math, '+contraindications.length+' contraindication, '+treatment.length+' treatment/reassessment). The non-drug SGA, seizure disposition and pure ECG-logistics questions remain in the archived source only and will not appear in SRD sessions. IV medications require separately authorized PCP Autonomous IV scope.</p></details></section>';
 parent.prepend(page);
 const card=document.createElement('div');card.id='md-pct2-srd-card';card.className='md-pct2-srd-card';
-card.innerHTML='<div><strong>PCT II — Symptom Relief Drugs</strong><small>ALS 5.4 directives · 200 hard questions · High-Yield 50 · 50-question mock</small></div>'+
+card.innerHTML='<div><strong>PCT II — Symptom Relief Drugs</strong><small>ALS 5.4 directives · '+medicationQuestions.length+' medication questions · High-Yield 50 · 50-question mock</small></div>'+
 '<button id="md-srd-open" type="button">Open SRD Unit</button>';
 anchor.after(card);
 function exit(){parent.classList.remove('md-srd-visible');page.style.display='none';show('studyHub');}
@@ -189,5 +200,5 @@ css.textContent='#pct2InfectiousPage.md-srd-visible > :not(#pct2SrdPage){display
  '#pct2SrdPage details{opacity:.92;font-size:.91rem;margin-top:18px}#pct2SrdPage details summary{font-weight:700;cursor:pointer}'+
  '@media(max-width:650px){#pct2SrdPage .md-srd-select{grid-template-columns:1fr}}';
 document.head.appendChild(css);
-window.MD_PCT2_SRD_91123={ready:true,version:'9.11.23',errors:[],counts:{all:200,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',highYieldFamilies:families.map(([name])=>name)};
+window.MD_PCT2_SRD_91123={ready:true,version:'9.11.25',errors:[],counts:{all:medicationQuestions.length,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-medicationQuestions.length,sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',highYieldFamilies:families.map(([name])=>name)};
 })();
