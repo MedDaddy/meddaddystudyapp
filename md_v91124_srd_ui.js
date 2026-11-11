@@ -143,7 +143,11 @@ function beginStandard(items){
  parent.classList.remove('md-srd-visible');page.style.display='none';start(selected);
 }
 function directiveChallenge(){
- const queues=directory.map(d=>shuffle(d.items.slice()));
+ const queues=directory.map(d=>{
+  const historical=shuffle(d.items.filter(q=>q.id.startsWith('PCT2-SRD-91123-')));
+  const newDrugCases=shuffle(d.items.filter(q=>q.id.startsWith('PCT2-SRD-91129-')));
+  return [...historical,...newDrugCases]; // pick new hard cases first, then established directive items
+ });
  const picks=[];
  while(picks.length<50&&queues.some(arr=>arr.length))for(const arr of queues){if(picks.length<50&&arr.length)picks.push(arr.pop());}
  if(picks.length!==50){desc.textContent='50-question directive bank incomplete.';return;}
