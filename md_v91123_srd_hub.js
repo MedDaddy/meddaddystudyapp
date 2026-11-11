@@ -33,7 +33,20 @@ if(issues.length){window.MD_PCT2_SRD_91123={ready:false,errors:issues};console.e
 let seed=91123017;
 const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
 function mix(a){let x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
-const positions=mix(Array.from({length:200},(_,i)=>i%4));
+const positions=(()=>{let output=null;
+ for(let attempt=0;attempt<1000&&!output;attempt++){
+  const remaining=[50,50,50,50],out=[];let valid=true;
+  for(let i=0;i<200;i++){
+   const eligible=[0,1,2,3].filter(k=>remaining[k]>0&&!(i>=2&&out[i-1]===k&&out[i-2]===k));
+   if(!eligible.length){valid=false;break;}
+   let weighted=eligible.reduce((s,k)=>s+remaining[k],0),draw=rand()*weighted,pick=eligible[eligible.length-1];
+   for(const k of eligible){draw-=remaining[k];if(draw<0){pick=k;break;}}
+   out.push(pick);remaining[pick]--;
+  }
+  if(valid&&remaining.every(n=>n===0))output=out;
+ }
+ if(!output)throw new Error('Unable to balance SRD answer letters');return output;
+})();
 const letter='ABCD';
 const questions=flat.map(({g,gi,j,t},i)=>{
  const [category,prompt,right,w1,w2,w3,why]=t;
@@ -45,7 +58,9 @@ const questions=flat.map(({g,gi,j,t},i)=>{
   difficulty:'Instructor Hard',prompt,choices,answer:letter[answerPosition],
   explanation:why,whyCorrect:why,sourceTitle:g.directive==='Medication Calculations and Pharmacology'?
    'PCT2 Pharmacology Review + ALS PCS v5.4 as cited':'Ontario ALS PCS v5.4 — PCP medical directive',
-  sourceLocator:'ALS PCS v5.4, '+(g.directive.startsWith('Seizure')?'PCP Auxiliary':'PCP Core')+', '+g.directive+', pp. '+g.pages,
+  sourceLocator:g.directive==='Medication Calculations and Pharmacology'?
+   'PCT2 Pharmacology Review, dose-math and medication rights; official ALS v5.4 dosing cited in rationale':
+   'ALS PCS v5.4, '+(g.directive.startsWith('Seizure')?'PCP Auxiliary':'PCP Core')+', '+g.directive+', '+(g.pages.match(/^[0-9]/)?'pp. ':'')+g.pages,
   source:'ALS PCS v5.4, '+g.directive+' pp. '+g.pages,
   mockInfluence:'PCT2 Pharmacology Review; original 350-question pharmacology mock audited separately',
   directiveCategory:g.directive.startsWith('Seizure')?'Auxiliary':'Core'};
