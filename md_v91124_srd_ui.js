@@ -51,12 +51,29 @@ if(errors.length){window.MD_PCT2_SRD_UI_91124={ready:false,errors};console.error
 /* Name the directive at the start of each existing MCQ stem. Stable IDs, answer letters
  * and four choices are preserved. In particular, citation page numbers are never
  * substituted for actual medical directive names. */
+/* SRD-only statement layout; Unicode line separator U+2028 is a forced
+ * line break in current browsers even with white-space:normal. Keep source
+ * prompts plain text (no injected HTML) and preserve question identities. */
+const lineBreak='\u2028';
+function stackStatements(stem){
+ let out=stem;
+ if(/Consider:\s*1\.\s/.test(out)){
+  out=out.replace(/Consider:\s*1\.\s/,'Consider:'+lineBreak+'1. ');
+  out=out.replace(/;\s*([2-4]\.\s)/g,lineBreak+'$1');
+  out=out.replace(/\.\s*(Which statements are correct\?)/,'.'+lineBreak+lineBreak+'$1');
+ }
+ if(/findings:\s*A\.\s/.test(out)){
+  out=out.replace(/findings:\s*A\.\s/,'findings:'+lineBreak+'A. ');
+  out=out.replace(/;\s*([BCD]\.\s)/g,lineBreak+'$1');
+  out=out.replace(/\.\s*(Which findings independently contraindicate SL nitroglycerin\?)/,'.'+lineBreak+lineBreak+'$1');
+ }
+ return out;
+}
 for(const q of all){
  const original=q._mdSrdPromptBeforeContext||q.prompt;
  q._mdSrdPromptBeforeContext=original;
  q.srdDirectiveName=q.topic==='Integrated PCP Directive Choices'?crossDirective(original):nameFor(q.topic);
- q.srdFocus=focusNames[q.reviewCategory]||'Clinical reasoning';
- q.prompt=q.srdDirectiveName+' — '+q.srdFocus+'. '+original;
+ q.prompt=q.srdDirectiveName+lineBreak+stackStatements(original);
 }
 const css=document.createElement('link');css.id='md-srd-91124-css';css.rel='stylesheet';css.href='./md_v91124_srd_ui.css?md_build=9.11.24';document.head.appendChild(css);
 selector.style.display='none';
@@ -163,5 +180,5 @@ check.onclick=submit;
 next.onclick=()=>{if(!typed.marked)return;typed.at++;render();};
 answer.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(typed.marked&&!next.disabled)next.click();else submit();}});
 fib.querySelector('#md-srd-back-tiles').onclick=()=>viewFill(false);
-window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.26',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
+window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.28',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
 })();
