@@ -158,8 +158,13 @@ const sourceMock=balanceDeck(chooseEven(medicationQuestions,50),{A:13,B:12,C:13,
 /* WrestleMania Fight Card: every one of the 30 new scenarios plus 20 audited
  * original medication cases; no duplicates and near-equal correct-letter spread. */
 const originalMed=medicationQuestions.filter(q=>q.id.startsWith('PCT2-SRD-91123-'));
-const wrestleSupplements={A:5,B:4,C:6,D:5};
-const wrestle=[...extraQuestions,...Object.entries(wrestleSupplements).flatMap(([key,n])=>chooseEven(originalMed.filter(q=>q.answer===key),n))];
+/* Curated legacy cases: higher reasoning/dose complexity, not 20 easy random recall
+ * items. Key position distribution A5/B4/C6/D5 combined with the 30 new cases
+ * yields A13/B12/C13/D12 on the complete WrestleMania 50. */
+const wrestleCuratedIds=[104,67,90,119,180,93,158,197,9,42,103,198,57,6,117,48,100,27,20,195];
+const originalById=new Map(originalMed.map(q=>[Number(q.id.slice(-3)),q]));
+const wrestle=[...extraQuestions,...wrestleCuratedIds.map(id=>originalById.get(id))];
+if(wrestle.some(q=>!q))issues.push('WrestleMania curated historical question missing');
 if(wrestle.length!==50||new Set(wrestle.map(q=>q.id)).size!==50)issues.push('WrestleMania session selection failed');
 const dose=medicationQuestions.filter(q=>q.reviewCategory==='D');
 const contraindications=medicationQuestions.filter(q=>q.reviewCategory==='C');
