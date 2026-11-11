@@ -49,15 +49,20 @@ const positions=(()=>{let output=null;
 })();
 const letter='ABCD';
 const continuity=window.MD_SRD_CONTINUITY_91125;
-if(!continuity?.stems){window.MD_PCT2_SRD_91123={ready:false,errors:['SRD context correction source missing']};return;}
+const medPatches=window.MD_SRD_MED_OVERRIDES_91129;
+const extraData=window.MD_SRD_WRESTLE_91129;
+if(!continuity?.stems||!medPatches||!Array.isArray(extraData)||extraData.length!==30){
+ window.MD_PCT2_SRD_91123={ready:false,errors:['SRD medication-only extension data missing']};return;
+}
 const questions=flat.map(({g,gi,j,t},i)=>{
  const [category,oldPrompt,right,w1,w2,w3,why]=t;
- const keyedCorrect=continuity.correct?.[String(i+1)]||right;
- const keyedRationale=continuity.rationales?.[String(i+1)]||why;
- const prompt=continuity.stems[String(i+1)]||oldPrompt;
+ const fix=medPatches[String(i+1).padStart(3,'0')];
+ const keyedCorrect=fix?.right||continuity.correct?.[String(i+1)]||right;
+ const keyedRationale=fix?.why||continuity.rationales?.[String(i+1)]||why;
+ const prompt=fix?.prompt||continuity.stems[String(i+1)]||oldPrompt;
  const answerPosition=positions[i];
  const overrides=continuity.options?.[String(i+1)]||{};
- const distractors=mix([w1,w2,w3].map(x=>overrides[x]||x));
+ const distractors=mix((fix?.wrong||[w1,w2,w3]).map(x=>overrides[x]||x));
  const choices=distractors.slice();choices.splice(answerPosition,0,keyedCorrect);
  return {id:'PCT2-SRD-91123-'+String(i+1).padStart(3,'0'),course:'Patient Care & Theory II',unit:'Symptom Relief Drugs',
   bankType:'directive-verified',topic:g.directive,reviewCategory:category,
@@ -75,12 +80,30 @@ const questions=flat.map(({g,gi,j,t},i)=>{
  * interventions and their associated eligibility/assessment are playable in SRD.
  * Airway device/Seizure disposition and pure ECG-logistics questions stay out. */
 const nonDrugIds=new Set(['PCT2-SRD-91123-018','PCT2-SRD-91123-019']);
-const medicationQuestions=questions.filter(q=>q.topic!=='Supraglottic Airway' &&
- q.topic!=='Seizure — PCP Auxiliary (Treat and Discharge)' && !nonDrugIds.has(q.id));
-if(medicationQuestions.length!==186)issues.push('Expected 186 medication-relevant questions, got '+medicationQuestions.length);
-for(const q of questions){
- if(seen.has(q.id)||!q.choices||new Set(q.choices).size!==4||q.choices.length!==4)issues.push('Invalid ID or choices: '+q.id);
+const extraQuestions=extraData.map((item,i)=>{
+ const pos=(i*3+1)%4;
+ const choices=mix(item.wrong);
+ choices.splice(pos,0,item.right);
+ return {id:item.id,course:'Patient Care & Theory II',unit:'Symptom Relief Drugs',
+ bankType:'directive-verified',topic:item.topic,reviewCategory:item.category,
+ difficulty:'Instructor Hard',prompt:item.prompt,choices,answer:letter[pos],
+ explanation:item.why,whyCorrect:item.why,
+ sourceTitle:'Ontario ALS PCS v5.4 — PCP Core medical directive',
+ sourceLocator:'ALS PCS v5.4, PCP Core '+item.topic+', pp. '+item.pages,
+ source:'ALS PCS v5.4, PCP Core '+item.topic+', pp. '+item.pages,
+ directiveCategory:'Core'};
+});
+const medicationQuestions=[
+ ...questions.filter(q=>q.topic!=='Supraglottic Airway' &&
+ q.topic!=='Seizure — PCP Auxiliary (Treat and Discharge)' && !nonDrugIds.has(q.id)),
+ ...extraQuestions
+];
+if(medicationQuestions.length!==216)issues.push('Expected 216 medication-focused questions, got '+medicationQuestions.length);
+for(const q of [...questions,...extraQuestions]){
+ if(seen.has(q.id)||!q.choices||new Set(q.choices).size!==4||q.choices.length!==4||!q.choices.includes(q.choices[letter.indexOf(q.answer)]))issues.push('Invalid ID or choices: '+q.id);
  seen.add(q.id);
+ const keyText=q.choices[letter.indexOf(q.answer)];
+ if(normalize(q.prompt).includes(normalize(keyText))&&normalize(keyText).length>30)issues.push('Answer leakage in stem: '+q.id);
  const existing=registry.get(q.id);
  if(existing&&(existing.prompt!==q.prompt||existing.answer!==q.answer))issues.push('Registry collision: '+q.id);
 }
@@ -132,10 +155,21 @@ function balanceDeck(selected,target){
 }
 const highYield=balanceDeck(families.flatMap(([name,pool])=>chooseEven(pool,5)),{A:13,B:12,C:12,D:13});
 const sourceMock=balanceDeck(chooseEven(medicationQuestions,50),{A:13,B:12,C:13,D:12}); // original 350Q source archive kept separately.
+/* WrestleMania Fight Card: every one of the 30 new scenarios plus 20 audited
+ * original medication cases; no duplicates and near-equal correct-letter spread. */
+const originalMed=medicationQuestions.filter(q=>q.id.startsWith('PCT2-SRD-91123-'));
+/* Curated legacy cases: higher reasoning/dose complexity, not 20 easy random recall
+ * items. Key position distribution A5/B4/C6/D5 combined with the 30 new cases
+ * yields A13/B12/C13/D12 on the complete WrestleMania 50. */
+const wrestleCuratedIds=[104,67,90,119,180,93,158,197,9,42,103,198,57,6,117,48,100,27,20,195];
+const originalById=new Map(originalMed.map(q=>[Number(q.id.slice(-3)),q]));
+const wrestle=[...extraQuestions,...wrestleCuratedIds.map(id=>originalById.get(id))];
+if(wrestle.some(q=>!q))issues.push('WrestleMania curated historical question missing');
+if(wrestle.length!==50||new Set(wrestle.map(q=>q.id)).size!==50)issues.push('WrestleMania session selection failed');
 const dose=medicationQuestions.filter(q=>q.reviewCategory==='D');
 const contraindications=medicationQuestions.filter(q=>q.reviewCategory==='C');
 const treatment=medicationQuestions.filter(q=>q.reviewCategory==='T'||q.reviewCategory==='S');
-const pools={high:highYield,mock:sourceMock,dose,contra:contraindications,treatment,all:medicationQuestions};
+const pools={wrestle,high:highYield,mock:sourceMock,dose,contra:contraindications,treatment,all:medicationQuestions};
 for(const [name,pool] of Object.entries(pools))
  if(pool.length<50||new Set(pool.map(x=>x.id)).size!==pool.length)issues.push('Invalid session pool '+name+': '+pool.length);
 if(issues.length){window.MD_PCT2_SRD_91123={ready:false,errors:issues};return;}
@@ -146,12 +180,12 @@ page.innerHTML=
 '<h1>Symptom Relief Drugs</h1><p>Directive-first dosing, subtle contraindications and best-treatment decisions. All questions are PCP-level.</p></div>'+
 '<button id="md-srd-home" type="button">Study Home</button></div>'+
 '<div class="md-srd-select"><label for="md-srd-bank">Question deck</label>'+
-'<select id="md-srd-bank"><option value="high">High-Yield 50 · 10 medication concepts × 5</option>'+
+'<select id="md-srd-bank"><option value="wrestle">WrestleMania Medication Mayhem · 50</option><option value="high">High-Yield 50 · 10 medication concepts × 5</option>'+
 '<option value="mock">Instructor-style Pharmacology Mock · 50 questions</option>'+
 '<option value="dose">Dose, concentration & medication math · '+dose.length+'</option>'+
 '<option value="contra">Contraindication and eligibility traps · '+contraindications.length+'</option>'+
 '<option value="treatment">Best treatment & reassessment · '+treatment.length+'</option>'+
-'<option value="all">Complete SRD directive challenge · 200 questions</option></select>'+
+'<option value="all">Complete SRD directive challenge · '+medicationQuestions.length+' questions</option></select>'+
 '<label for="md-srd-length">Session length</label>'+
 '<select id="md-srd-length"><option value="50">50 questions</option><option value="75">75 questions</option>'+
 '<option value="100">100 questions</option><option value="all">Full selected bank</option></select>'+
@@ -202,5 +236,5 @@ css.textContent='#pct2InfectiousPage.md-srd-visible > :not(#pct2SrdPage){display
  '#pct2SrdPage details{opacity:.92;font-size:.91rem;margin-top:18px}#pct2SrdPage details summary{font-weight:700;cursor:pointer}'+
  '@media(max-width:650px){#pct2SrdPage .md-srd-select{grid-template-columns:1fr}}';
 document.head.appendChild(css);
-window.MD_PCT2_SRD_91123={ready:true,version:'9.11.25',errors:[],counts:{all:medicationQuestions.length,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-medicationQuestions.length,sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',highYieldFamilies:families.map(([name])=>name)};
+window.MD_PCT2_SRD_91123={ready:true,version:'9.11.29',errors:[],counts:{all:medicationQuestions.length,wrestle:50,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-(medicationQuestions.length-extraQuestions.length),sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',addedMedicationScenarios:extraQuestions.length,highYieldFamilies:families.map(([name])=>name)};
 })();

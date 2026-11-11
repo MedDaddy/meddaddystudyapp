@@ -4,14 +4,18 @@ if(window.MD_PCT2_SRD_UI_91124)return;
 const base=window.MD_PCT2_SRD_91123,page=document.getElementById('pct2SrdPage'),parent=document.getElementById('pct2InfectiousPage');
 const registry=window.MD_SAFE_QUESTIONS;
 const typedSource=window.MD_SRD_FIB_91124;
-const blanks=Array.isArray(typedSource)?typedSource.filter(x=>x.directive!=='Supraglottic Airway'&&x.directive!=='Seizure'):[];
+const newTypedSource=window.MD_SRD_FIB_EXTRA_91129;
+const blanks=Array.isArray(typedSource)&&Array.isArray(newTypedSource)?[
+ ...typedSource.filter(x=>x.directive!=='Supraglottic Airway'&&x.directive!=='Seizure'),
+ ...newTypedSource
+]:[];
 const errors=[];
 if(!base?.ready||!page||!parent)errors.push('SRD unit not ready');
 if(!(registry instanceof Map))errors.push('Study question registry unavailable');
-if(!Array.isArray(typedSource)||blanks.length!==45)errors.push('Medication-specific typed bank incomplete');
+if(!Array.isArray(typedSource)||!Array.isArray(newTypedSource)||newTypedSource.length!==55||blanks.length!==100)errors.push('100-item medication typed bank incomplete');
 if(typeof start!=='function'||typeof shuffle!=='function')errors.push('Study engine unavailable');
-const all=registry instanceof Map?[...registry.values()].filter(q=>q?.id?.startsWith('PCT2-SRD-91123-')):[];
-if(all.length!==186)errors.push('SRD 186 medication-question bank incomplete');
+const all=registry instanceof Map?[...registry.values()].filter(q=>q?.id?.startsWith('PCT2-SRD-91123-')||q?.id?.startsWith('PCT2-SRD-91129-')):[];
+if(all.length!==216)errors.push('SRD 216 medication-question bank incomplete');
 const panel=page?.querySelector('.md-srd-panel'),selector=page?.querySelector('.md-srd-select'),bank=page?.querySelector('#md-srd-bank'),len=page?.querySelector('#md-srd-length'),startButton=page?.querySelector('#md-srd-start');
 if(!panel||!selector||!bank||!len||!startButton)errors.push('Existing SRD controls missing');
 const names={
@@ -101,7 +105,8 @@ const tileZone=document.createElement('section');tileZone.id='md-srd-mode-tiles'
 tileZone.innerHTML='<h2>Choose your SRD training match</h2><p class="md-srd-intro">Every question names its <strong>PCP medical directive</strong> and what you are testing. Doses, cutoffs and contraindications are based on ALS PCS v5.4.</p>'+
 '<div class="md-srd-tiles">'+
 '<button type="button" data-srd-mode="directives" class="md-srd-feature"><span class="md-srd-tile-icon">📋</span><strong>PCP Directive Challenge</strong><small>50 questions across named PCP directives · hard treatments, doses and contraindications</small></button>'+
-'<button type="button" data-srd-mode="fill" class="md-srd-feature"><span class="md-srd-tile-icon">✍️</span><strong>Fill in the Blank</strong><small>'+blanks.length+' typed dose, weight, interval and cutoff questions with immediate feedback</small></button>'+
+'<button type="button" data-srd-mode="fill" class="md-srd-feature"><span class="md-srd-tile-icon">✍️</span><strong>Fill in the Blank</strong><small>'+blanks.length+' typed doses, thresholds, drug names and medication-order questions with immediate feedback</small></button>'+
+'<button type="button" data-srd-mode="wrestle" class="md-srd-feature"><span class="md-srd-tile-icon">🤼</span><strong>WrestleMania Medication Mayhem</strong><small>50 hard ringside drug, dose, contraindication and sequence decisions</small></button>'+
 '<button type="button" data-srd-mode="high"><span class="md-srd-tile-icon">🎯</span><strong>High-Yield 50</strong><small>Ten priority concept groups · five questions per concept</small></button>'+
 '<button type="button" data-srd-mode="mock"><span class="md-srd-tile-icon">🏆</span><strong>Instructor-Style Mock 50</strong><small>Balanced answer choices and real-world judgement</small></button>'+
 '<button type="button" data-srd-mode="dose"><span class="md-srd-tile-icon">💉</span><strong>Doses &amp; Medication Math</strong><small>'+base.counts.dose+' dosing, routes, weight and calculation questions</small></button>'+
@@ -123,7 +128,7 @@ chooser.onchange=describe;describe();
 const fib=document.createElement('section');fib.id='md-srd-fill-workspace';
 fib.innerHTML='<div class="md-srd-fib-head"><button type="button" id="md-srd-back-tiles">Back to SRD tiles</button><small id="md-srd-fib-status"></small></div>'+
 '<div id="md-srd-fib-question" class="md-srd-fib-question" aria-live="polite"></div>'+
-'<label for="md-srd-fib-answer">Your answer (number only; question specifies unit)</label><input type="text" id="md-srd-fib-answer" inputmode="decimal" autocomplete="off" placeholder="Enter the number"/>'+
+'<label for="md-srd-fib-answer">Your answer (number or medication name, as requested)</label><input type="text" id="md-srd-fib-answer" inputmode="decimal" autocomplete="off" placeholder="Enter the number"/>'+
 '<div class="md-srd-fib-controls"><button type="button" id="md-srd-fib-check">Check Answer</button><button type="button" id="md-srd-fib-next" disabled>Next Question</button></div>'+
 '<div id="md-srd-fib-feedback" role="status" aria-live="polite"></div><div id="md-srd-fib-finish"></div>';
 panel.insertBefore(fib,selector);
@@ -138,7 +143,11 @@ function beginStandard(items){
  parent.classList.remove('md-srd-visible');page.style.display='none';start(selected);
 }
 function directiveChallenge(){
- const queues=directory.map(d=>shuffle(d.items.slice()));
+ const queues=directory.map(d=>{
+  const historical=shuffle(d.items.filter(q=>q.id.startsWith('PCT2-SRD-91123-')));
+  const newDrugCases=shuffle(d.items.filter(q=>q.id.startsWith('PCT2-SRD-91129-')));
+  return [...historical,...newDrugCases]; // pick new hard cases first, then established directive items
+ });
  const picks=[];
  while(picks.length<50&&queues.some(arr=>arr.length))for(const arr of queues){if(picks.length<50&&arr.length)picks.push(arr.pop());}
  if(picks.length!==50){desc.textContent='50-question directive bank incomplete.';return;}
@@ -168,8 +177,11 @@ function render(){
  question.textContent='';
  const namediv=document.createElement('div');namediv.className='md-srd-fib-directive';namediv.textContent=nameFor(q.directive);
  const objective=document.createElement('div');objective.className='md-srd-fib-focus';objective.textContent='Testing: '+q.focus;
- const prompt=document.createElement('p');prompt.textContent=q.prompt+' Answer in '+q.unit+'.';
+ const prompt=document.createElement('p');prompt.textContent=q.prompt+(q.kind==='medication'?'':' Answer in '+q.unit+'.');
  question.appendChild(namediv);question.appendChild(objective);question.appendChild(prompt);
+ answerLabel.textContent=q.kind==='medication'?'Your answer (medication name)':'Your answer (number only; unit specified)';
+ answer.inputMode=q.kind==='medication'?'text':'decimal';
+ answer.placeholder=q.kind==='medication'?'Enter medication name':'Enter the number';
  answer.value='';answer.disabled=false;check.disabled=false;next.disabled=true;next.textContent=typed.at===typed.deck.length-1?'Show Results':'Next Question';typed.marked=false;answer.focus?.();
 }
 function numeric(str){
@@ -177,14 +189,21 @@ function numeric(str){
  if(!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(v))return null;
  return Number(v);
 }
+function normalizeDrug(value){
+ return String(value||'').toLowerCase().trim().replace(/\s*\/\s*/g,'/').replace(/[\s-]+/g,' ');
+}
 function submit(){
  if(typed.marked)return;
  const q=typed.deck[typed.at];if(!q)return;
- if(!answer.value.trim()){feedback.textContent='Enter a number first. The unit is supplied in the question.';return;}
- const value=numeric(answer.value),correct=value!==null&&q.answers.some(x=>Math.abs(x-value)<0.000001);
+ if(!answer.value.trim()){feedback.textContent=q.kind==='medication'?'Enter a medication name first.':'Enter a number first. The unit is supplied in the question.';return;}
+ const value=numeric(answer.value);
+ const correct=q.kind==='medication'
+  ? q.answers.some(x=>normalizeDrug(x)===normalizeDrug(answer.value))
+  : value!==null&&q.answers.some(x=>Math.abs(x-value)<0.000001);
  typed.marked=true;if(correct)typed.correct++;else typed.missed.push(q);
  feedback.className=correct?'md-srd-correct':'md-srd-incorrect';
- feedback.textContent=(correct?'✅ Correct. ':'❌ Not quite. ')+'Correct answer: '+q.answers.join(' or ')+' '+q.unit+'. '+q.explanation+' Source: '+q.source+'.';
+ const displayAnswer=q.kind==='medication'?q.answers[0]:q.answers.join(' or ')+' '+q.unit;
+ feedback.textContent=(correct?'✅ Correct. ':'❌ Not quite. ')+'Correct answer: '+displayAnswer+'. '+q.explanation+' Source: '+q.source+'.';
  answer.disabled=true;check.disabled=true;next.disabled=false;
  try{const k='md_srd_fill_stats_91124',p=JSON.parse(localStorage.getItem(k)||'{"correct":0,"attempts":0}');localStorage.setItem(k,JSON.stringify({correct:(p.correct||0)+(correct?1:0),attempts:(p.attempts||0)+1}));}catch(e){}
 }
@@ -200,5 +219,5 @@ check.onclick=submit;
 next.onclick=()=>{if(!typed.marked)return;typed.at++;render();};
 answer.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(typed.marked&&!next.disabled)next.click();else submit();}});
 fib.querySelector('#md-srd-back-tiles').onclick=()=>viewFill(false);
-window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.28',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
+window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.29',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
 })();
