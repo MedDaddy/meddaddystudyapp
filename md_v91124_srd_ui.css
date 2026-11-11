@@ -1,0 +1,29 @@
+
+#pct2SrdPage #md-srd-mode-tiles{margin:21px 0}
+#pct2SrdPage #md-srd-mode-tiles h2,#pct2SrdPage #md-srd-directive-focus h2{font-size:1.25rem;margin:5px 0 10px}
+#pct2SrdPage .md-srd-intro{font-size:.96rem;opacity:.88;margin-bottom:16px}
+#pct2SrdPage .md-srd-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+#pct2SrdPage .md-srd-tiles button{display:flex;flex-direction:column;text-align:left;align-items:flex-start;gap:7px;background:#12384b;border:1px solid #4a8b9c;color:#f0f8ff;border-radius:13px;padding:18px;min-height:132px;cursor:pointer;white-space:normal;transition:background .15s,border-color .15s}
+#pct2SrdPage .md-srd-tiles button:hover,#pct2SrdPage .md-srd-tiles button:focus-visible{background:#1d5361;border-color:#84d9d1;outline-offset:3px}
+#pct2SrdPage .md-srd-tiles button.md-srd-feature{border:2px solid #64c9bb;background:#174955}
+#pct2SrdPage .md-srd-tiles button strong{font-size:1.03rem;line-height:1.3}
+#pct2SrdPage .md-srd-tiles button small{font-size:.82rem;opacity:.9;line-height:1.4}
+#pct2SrdPage .md-srd-tile-icon{font-size:1.35rem}
+#pct2SrdPage #md-srd-directive-focus{margin:23px 0;padding:17px;border:1px solid #567e91;border-radius:12px;background:#0d2737}
+#pct2SrdPage #md-srd-directive-focus label{display:block;font-weight:700;margin:12px 0 7px}
+#pct2SrdPage #md-srd-directive-focus select{width:100%;padding:10px;color:#fff;background:#071925;border:1px solid #6c9eab;min-height:48px;border-radius:9px}
+#pct2SrdPage #md-srd-directive-focus button{margin-top:11px;font-weight:700}
+#pct2SrdPage #md-srd-directive-focus p{font-size:.9rem;line-height:1.5}
+#pct2SrdPage #md-srd-fill-workspace{display:none;margin:20px 0;padding:24px 16px;background:#0b2737;border:1px solid #65b3bf;border-radius:14px}
+#pct2SrdPage .md-srd-fib-head{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:15px}
+#pct2SrdPage .md-srd-fib-directive{font-weight:800;font-size:1.15rem;line-height:1.35;color:#9fe4de;margin:12px 0}
+#pct2SrdPage .md-srd-fib-focus{font-weight:700;opacity:.86;font-size:.9rem}
+#pct2SrdPage .md-srd-fib-question p{font-size:1.17rem;line-height:1.6;margin:15px 0}
+#pct2SrdPage #md-srd-fib-answer{display:block;width:100%;max-width:380px;padding:12px;margin:9px 0 15px;border-radius:9px;background:#061923;border:1px solid #75bac4;color:white;font-size:1.1rem}
+#pct2SrdPage .md-srd-fib-controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+#pct2SrdPage #md-srd-fib-feedback{padding:13px;line-height:1.5;border-radius:9px;margin-top:13px}
+#pct2SrdPage .md-srd-correct{background:#0d3935;border:1px solid #61ad85}
+#pct2SrdPage .md-srd-incorrect{background:#3a2933;border:1px solid #db8878}
+#pct2SrdPage #md-srd-fib-finish{display:flex;flex-wrap:wrap;gap:12px;margin-top:15px}
+#pct2SrdPage #md-srd-fib-finish h3,#pct2SrdPage #md-srd-fib-finish p{width:100%;margin:4px 0}
+@media(max-width:640px){#pct2SrdPage .md-srd-tiles{grid-template-columns:1fr}#pct2SrdPage .md-srd-tiles button{min-height:105px}}
