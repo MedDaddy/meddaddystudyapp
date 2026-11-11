@@ -52,15 +52,17 @@ const continuity=window.MD_SRD_CONTINUITY_91125;
 if(!continuity?.stems){window.MD_PCT2_SRD_91123={ready:false,errors:['SRD context correction source missing']};return;}
 const questions=flat.map(({g,gi,j,t},i)=>{
  const [category,oldPrompt,right,w1,w2,w3,why]=t;
+ const keyedCorrect=continuity.correct?.[String(i+1)]||right;
+ const keyedRationale=continuity.rationales?.[String(i+1)]||why;
  const prompt=continuity.stems[String(i+1)]||oldPrompt;
  const answerPosition=positions[i];
  const overrides=continuity.options?.[String(i+1)]||{};
  const distractors=mix([w1,w2,w3].map(x=>overrides[x]||x));
- const choices=distractors.slice();choices.splice(answerPosition,0,right);
+ const choices=distractors.slice();choices.splice(answerPosition,0,keyedCorrect);
  return {id:'PCT2-SRD-91123-'+String(i+1).padStart(3,'0'),course:'Patient Care & Theory II',unit:'Symptom Relief Drugs',
   bankType:'directive-verified',topic:g.directive,reviewCategory:category,
   difficulty:'Instructor Hard',prompt,choices,answer:letter[answerPosition],
-  explanation:why,whyCorrect:why,sourceTitle:g.directive==='Medication Calculations and Pharmacology'?
+  explanation:keyedRationale,whyCorrect:keyedRationale,sourceTitle:g.directive==='Medication Calculations and Pharmacology'?
    'PCT2 Pharmacology Review + ALS PCS v5.4 as cited':'Ontario ALS PCS v5.4 — PCP medical directive',
   sourceLocator:g.directive==='Medication Calculations and Pharmacology'?
    'PCT2 Pharmacology Review, dose-math and medication rights; official ALS v5.4 dosing cited in rationale':
