@@ -2,14 +2,16 @@
 (()=>{'use strict';
 if(window.MD_PCT2_SRD_UI_91124)return;
 const base=window.MD_PCT2_SRD_91123,page=document.getElementById('pct2SrdPage'),parent=document.getElementById('pct2InfectiousPage');
-const registry=window.MD_SAFE_QUESTIONS,blanks=window.MD_SRD_FIB_91124;
+const registry=window.MD_SAFE_QUESTIONS;
+const typedSource=window.MD_SRD_FIB_91124;
+const blanks=Array.isArray(typedSource)?typedSource.filter(x=>x.directive!=='Supraglottic Airway'&&x.directive!=='Seizure'):[];
 const errors=[];
 if(!base?.ready||!page||!parent)errors.push('SRD unit not ready');
 if(!(registry instanceof Map))errors.push('Study question registry unavailable');
-if(!Array.isArray(blanks)||blanks.length!==47)errors.push('Typed bank not complete');
+if(!Array.isArray(typedSource)||blanks.length!==45)errors.push('Medication-specific typed bank incomplete');
 if(typeof start!=='function'||typeof shuffle!=='function')errors.push('Study engine unavailable');
 const all=registry instanceof Map?[...registry.values()].filter(q=>q?.id?.startsWith('PCT2-SRD-91123-')):[];
-if(all.length!==200)errors.push('SRD 200-question bank incomplete');
+if(all.length!==186)errors.push('SRD 186 medication-question bank incomplete');
 const panel=page?.querySelector('.md-srd-panel'),selector=page?.querySelector('.md-srd-select'),bank=page?.querySelector('#md-srd-bank'),len=page?.querySelector('#md-srd-length'),startButton=page?.querySelector('#md-srd-start');
 if(!panel||!selector||!bank||!len||!startButton)errors.push('Existing SRD controls missing');
 const names={
@@ -43,7 +45,7 @@ function crossDirective(prompt){
 }
 const dirs=Object.keys(names).filter(topic=>!['Medication Calculations and Pharmacology','Seizure'].includes(topic) && all.some(q=>q.topic===topic));
 const directory=dirs.map(topic=>({topic,name:nameFor(topic),items:all.filter(q=>q.topic===topic)}));
-if(directory.length!==12)errors.push('Expected 12 named PCP directive pools, found '+directory.length);
+if(directory.length!==10)errors.push('Expected 10 medication-specific PCP directives, found '+directory.length);
 if(new Set(blanks.map(q=>q.id)).size!==blanks.length||blanks.some(q=>!q.directive||!q.focus||!q.prompt||!q.unit||!q.answers?.length||!q.explanation||!q.source))errors.push('Typed-question validation failed');
 if(errors.length){window.MD_PCT2_SRD_UI_91124={ready:false,errors};console.error('SRD UI failed precheck',errors);return;}
 /* Name the directive at the start of each existing MCQ stem. Stable IDs, answer letters
@@ -62,13 +64,13 @@ const tileZone=document.createElement('section');tileZone.id='md-srd-mode-tiles'
 tileZone.innerHTML='<h2>Choose your SRD training match</h2><p class="md-srd-intro">Every question names its <strong>PCP medical directive</strong> and what you are testing. Doses, cutoffs and contraindications are based on ALS PCS v5.4.</p>'+
 '<div class="md-srd-tiles">'+
 '<button type="button" data-srd-mode="directives" class="md-srd-feature"><span class="md-srd-tile-icon">📋</span><strong>PCP Directive Challenge</strong><small>50 questions across named PCP directives · hard treatments, doses and contraindications</small></button>'+
-'<button type="button" data-srd-mode="fill" class="md-srd-feature"><span class="md-srd-tile-icon">✍️</span><strong>Fill in the Blank</strong><small>47 typed dose, weight, interval and cutoff questions with immediate feedback</small></button>'+
+'<button type="button" data-srd-mode="fill" class="md-srd-feature"><span class="md-srd-tile-icon">✍️</span><strong>Fill in the Blank</strong><small>'+blanks.length+' typed dose, weight, interval and cutoff questions with immediate feedback</small></button>'+
 '<button type="button" data-srd-mode="high"><span class="md-srd-tile-icon">🎯</span><strong>High-Yield 50</strong><small>Ten priority concept groups · five questions per concept</small></button>'+
 '<button type="button" data-srd-mode="mock"><span class="md-srd-tile-icon">🏆</span><strong>Instructor-Style Mock 50</strong><small>Balanced answer choices and real-world judgement</small></button>'+
-'<button type="button" data-srd-mode="dose"><span class="md-srd-tile-icon">💉</span><strong>Doses &amp; Medication Math</strong><small>72 dosing, routes, weight and calculation questions</small></button>'+
-'<button type="button" data-srd-mode="contra"><span class="md-srd-tile-icon">🛑</span><strong>Contraindication Traps</strong><small>60 subtle eligibility and contraindication cases</small></button>'+
-'<button type="button" data-srd-mode="treatment"><span class="md-srd-tile-icon">🩺</span><strong>Best Treatment &amp; Reassessment</strong><small>68 clinical decisions and reassessment questions</small></button>'+
-'<button type="button" data-srd-mode="all"><span class="md-srd-tile-icon">📚</span><strong>Full SRD Bank</strong><small>Up to 200 source-linked, instructor-hard questions · choose length below</small></button></div>'+
+'<button type="button" data-srd-mode="dose"><span class="md-srd-tile-icon">💉</span><strong>Doses &amp; Medication Math</strong><small>'+base.counts.dose+' dosing, routes, weight and calculation questions</small></button>'+
+'<button type="button" data-srd-mode="contra"><span class="md-srd-tile-icon">🛑</span><strong>Contraindication Traps</strong><small>'+base.counts.contra+' subtle eligibility and contraindication cases</small></button>'+
+'<button type="button" data-srd-mode="treatment"><span class="md-srd-tile-icon">🩺</span><strong>Best Treatment &amp; Reassessment</strong><small>'+base.counts.treatment+' clinical decisions and reassessment questions</small></button>'+
+'<button type="button" data-srd-mode="all"><span class="md-srd-tile-icon">📚</span><strong>Full SRD Bank</strong><small>Up to '+base.counts.all+' source-linked, instructor-hard questions · choose length below</small></button></div>'+
 '<div class="md-srd-length-setting"><label for="md-srd-tile-length">Multiple-choice session length</label><select id="md-srd-tile-length"><option value="50">50 questions</option><option value="75">75 questions</option><option value="100">100 questions</option><option value="all">Full selected deck</option></select></div>';
 panel.insertBefore(tileZone,selector);
 const focusPanel=document.createElement('section');focusPanel.id='md-srd-directive-focus';
@@ -153,7 +155,7 @@ function complete(){
  status.textContent='Fill-in-the-Blank session complete';question.textContent='';answer.style.display='none';answerLabel.style.display='none';check.style.display='none';next.style.display='none';feedback.textContent='';
  const title=document.createElement('h3');title.textContent='Your score: '+typed.correct+' / '+typed.deck.length;
  const note=document.createElement('p');note.textContent=typed.missed.length?'You missed '+typed.missed.length+' directive '+(typed.missed.length===1?'fact':'facts')+'. Drill them again without repeating mastered questions.':'Perfect recall — all directive values correct!';
- const retry=document.createElement('button');retry.type='button';retry.textContent='Run all 47 questions';retry.onclick=()=>beginTyped();
+ const retry=document.createElement('button');retry.type='button';retry.textContent='Run all '+blanks.length+' questions';retry.onclick=()=>beginTyped();
  const missed=document.createElement('button');missed.type='button';missed.textContent='Study missed only ('+typed.missed.length+')';missed.disabled=!typed.missed.length;missed.onclick=()=>beginTyped(typed.missed.slice());
  finish.appendChild(title);finish.appendChild(note);finish.appendChild(retry);finish.appendChild(missed);
 }
@@ -161,5 +163,5 @@ check.onclick=submit;
 next.onclick=()=>{if(!typed.marked)return;typed.at++;render();};
 answer.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(typed.marked&&!next.disabled)next.click();else submit();}});
 fib.querySelector('#md-srd-back-tiles').onclick=()=>viewFill(false);
-window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.24',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
+window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.25',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
 })();
