@@ -152,7 +152,7 @@ function submit(){
 function complete(){
  status.textContent='Fill-in-the-Blank session complete';question.textContent='';answer.style.display='none';answerLabel.style.display='none';check.style.display='none';next.style.display='none';feedback.textContent='';
  const title=document.createElement('h3');title.textContent='Your score: '+typed.correct+' / '+typed.deck.length;
- const note=document.createElement('p');note.textContent=typed.missed.length?'You missed '+typed.missed.length+' directive facts. Drill them again without repeating mastered questions.':'Perfect recall — all directive values correct!';
+ const note=document.createElement('p');note.textContent=typed.missed.length?'You missed '+typed.missed.length+' directive '+(typed.missed.length===1?'fact':'facts')+'. Drill them again without repeating mastered questions.':'Perfect recall — all directive values correct!';
  const retry=document.createElement('button');retry.type='button';retry.textContent='Run all 47 questions';retry.onclick=()=>beginTyped();
  const missed=document.createElement('button');missed.type='button';missed.textContent='Study missed only ('+typed.missed.length+')';missed.disabled=!typed.missed.length;missed.onclick=()=>beginTyped(typed.missed.slice());
  finish.appendChild(title);finish.appendChild(note);finish.appendChild(retry);finish.appendChild(missed);
