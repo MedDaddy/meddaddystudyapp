@@ -155,10 +155,16 @@ function balanceDeck(selected,target){
 }
 const highYield=balanceDeck(families.flatMap(([name,pool])=>chooseEven(pool,5)),{A:13,B:12,C:12,D:13});
 const sourceMock=balanceDeck(chooseEven(medicationQuestions,50),{A:13,B:12,C:13,D:12}); // original 350Q source archive kept separately.
+/* WrestleMania Fight Card: every one of the 30 new scenarios plus 20 audited
+ * original medication cases; no duplicates and near-equal correct-letter spread. */
+const originalMed=medicationQuestions.filter(q=>q.id.startsWith('PCT2-SRD-91123-'));
+const wrestleSupplements={A:5,B:4,C:6,D:5};
+const wrestle=[...extraQuestions,...Object.entries(wrestleSupplements).flatMap(([key,n])=>chooseEven(originalMed.filter(q=>q.answer===key),n))];
+if(wrestle.length!==50||new Set(wrestle.map(q=>q.id)).size!==50)issues.push('WrestleMania session selection failed');
 const dose=medicationQuestions.filter(q=>q.reviewCategory==='D');
 const contraindications=medicationQuestions.filter(q=>q.reviewCategory==='C');
 const treatment=medicationQuestions.filter(q=>q.reviewCategory==='T'||q.reviewCategory==='S');
-const pools={high:highYield,mock:sourceMock,dose,contra:contraindications,treatment,all:medicationQuestions};
+const pools={wrestle,high:highYield,mock:sourceMock,dose,contra:contraindications,treatment,all:medicationQuestions};
 for(const [name,pool] of Object.entries(pools))
  if(pool.length<50||new Set(pool.map(x=>x.id)).size!==pool.length)issues.push('Invalid session pool '+name+': '+pool.length);
 if(issues.length){window.MD_PCT2_SRD_91123={ready:false,errors:issues};return;}
@@ -169,7 +175,7 @@ page.innerHTML=
 '<h1>Symptom Relief Drugs</h1><p>Directive-first dosing, subtle contraindications and best-treatment decisions. All questions are PCP-level.</p></div>'+
 '<button id="md-srd-home" type="button">Study Home</button></div>'+
 '<div class="md-srd-select"><label for="md-srd-bank">Question deck</label>'+
-'<select id="md-srd-bank"><option value="high">High-Yield 50 · 10 medication concepts × 5</option>'+
+'<select id="md-srd-bank"><option value="wrestle">WrestleMania Medication Mayhem · 50</option><option value="high">High-Yield 50 · 10 medication concepts × 5</option>'+
 '<option value="mock">Instructor-style Pharmacology Mock · 50 questions</option>'+
 '<option value="dose">Dose, concentration & medication math · '+dose.length+'</option>'+
 '<option value="contra">Contraindication and eligibility traps · '+contraindications.length+'</option>'+
@@ -225,5 +231,5 @@ css.textContent='#pct2InfectiousPage.md-srd-visible > :not(#pct2SrdPage){display
  '#pct2SrdPage details{opacity:.92;font-size:.91rem;margin-top:18px}#pct2SrdPage details summary{font-weight:700;cursor:pointer}'+
  '@media(max-width:650px){#pct2SrdPage .md-srd-select{grid-template-columns:1fr}}';
 document.head.appendChild(css);
-window.MD_PCT2_SRD_91123={ready:true,version:'9.11.29',errors:[],counts:{all:medicationQuestions.length,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-medicationQuestions.length,sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',addedMedicationScenarios:extraQuestions.length,highYieldFamilies:families.map(([name])=>name)};
+window.MD_PCT2_SRD_91123={ready:true,version:'9.11.29',errors:[],counts:{all:medicationQuestions.length,wrestle:50,high:50,mock:50,dose:dose.length,contra:contraindications.length,treatment:treatment.length},sourceArchive:questions.length,nonDrugExcluded:questions.length-medicationQuestions.length,sourceMockPreserved:true,sourceAuthority:'ALS PCS v5.4',addedMedicationScenarios:extraQuestions.length,highYieldFamilies:families.map(([name])=>name)};
 })();
