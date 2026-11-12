@@ -189,21 +189,104 @@ function numeric(str){
  if(!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(v))return null;
  return Number(v);
 }
-function normalizeDrug(value){
- return String(value||'').toLowerCase().trim().replace(/\s*\/\s*/g,'/').replace(/[\s-]+/g,' ');
+
+/* v9.11.32 — SRC-specific medication recall: accepted aliases + visually sourced teaching. */
+const srMedNames={
+ epinephrine:['epi','adrenaline','adrenalin','epipen'],
+ dexamethasone:['dex','dexa','decadron'],
+ aspirin:['asa','acetylsalicylic acid'],diphenhydramine:['benadryl','diphen'],
+ dimenhydrinate:['gravol','dimen'],glucagon:['glucagen'],naloxone:['narcan'],
+ 'buprenorphine/naloxone':['suboxone','buprenorphine naloxone','bup naloxone','bup/nal'],
+ nitroglycerin:['nitro','gtn','glyceryl trinitrate'],
+ acetaminophen:['tylenol','paracetamol','apap'],hydrocortisone:['solu-cortef','solu cortef'],
+ salbutamol:['ventolin','albuterol'],ondansetron:['zofran'],ibuprofen:['advil','motrin'],ketorolac:['toradol']
+};
+function normalizeDrug(v){return String(v||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
+function srDistance(a,b){
+ if(Math.abs(a.length-b.length)>2)return 99;
+ let p=Array.from({length:b.length+1},(_,i)=>i);
+ for(let i=1;i<=a.length;i++){const row=[i];for(let j=1;j<=b.length;j++)row[j]=Math.min(row[j-1]+1,p[j]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=row;}return p[b.length];
 }
+function srIdentifyDrug(input){
+ const t=normalizeDrug(input);if(!t)return null;
+ const entries=Object.entries(srMedNames);
+ let hits=entries.filter(([drug,alias])=>[drug,...alias].some(v=>normalizeDrug(v)===t)).map(x=>x[0]);
+ if(hits.length)return hits.length===1?hits[0]:null;
+ hits=entries.filter(([drug])=>t.length>=4&&normalizeDrug(drug).startsWith(t)).map(x=>x[0]);
+ if(hits.length)return hits.length===1?hits[0]:null;
+ if(t.length<7)return null;
+ hits=entries.filter(([drug,alias])=>[drug,...alias].some(v=>{
+  const w=normalizeDrug(v);return w.length>=7&&srDistance(t,w)<=(t.length>=12&&w.length>=12?2:1);
+ })).map(x=>x[0]);
+ return hits.length===1?hits[0]:null;
+}
+function srDrugAccepted(q,typed){
+ const t=normalizeDrug(typed);if(q.answers.some(a=>normalizeDrug(a)===t))return true;
+ const recognized=srIdentifyDrug(typed);
+ return !!recognized&&q.answers.some(a=>srIdentifyDrug(a)===recognized);
+}
+function srMnemonic(q){
+ const t=[q.focus,q.prompt,q.explanation].join(' ').toLowerCase(),d=String(q.directive||'').toLowerCase();
+ if(/\bd50\b/.test(t))return 'D50 stops at 50: 1 mL/kg, capped at 50 mL (25 g).';
+ if(/\bd10\b/.test(t))return 'D10: 2 mL/kg, capped at 250 mL (25 g).';
+ if(/glucagon/.test(t))return 'Glucagon IM: below 25 kg = 0.5 mg, 25+ = 1 mg. IN: age 4+, 3 mg.';
+ if(/hydrocortisone|solu.cortef/.test(t))return 'Hydrocortisone: 2 mg/kg, round to nearest 10 mg; max 100 mg.';
+ if(/buprenorphine|suboxone|cows/.test(t))return 'Withdrawal: COWS at least 8; exclude methadone within 72 hours.';
+ if(/naloxone|narcan/.test(t))return 'Naloxone: 0.4 mg IM or 2–4 mg IN; 5-minute intervals, max 3 doses.';
+ if(/dexamethasone|steroid/.test(t)&&(/croup|bronchoconstriction/.test(d)||/dexamethasone/.test(t)))return 'DEX: 0.5 mg/kg; 8-mg maximum. Check steroid contraindications.';
+ if(/salbutamol|mdi|nebuliz/.test(t))return 'Salbutamol 25-kg split: under 25 = 6 puffs / 2.5 mg NEB; 25+ = 8 puffs / 5 mg NEB.';
+ if(/epinephrine|adrenaline/.test(t)&&/croup/.test(d))return 'Croup EPI NEB: under 10 kg = 2.5 mg; 10+ = 5 mg; HR below 200.';
+ if(/epinephrine|adrenaline/.test(t))return 'EPI IM: 0.01 mg/kg; max 0.5 mg. Anaphylaxis re-dose after at least 5 minutes.';
+ if(/diphenhydramine|benadryl/.test(t))return 'Diphenhydramine: 25–under-50 kg = 25 mg; 50+ = 50 mg.';
+ if(/nitroglycerin|nitrate|stemi|pde/.test(t)&&/pulmonary edema/.test(d))return 'ACPE nitro: SBP under 140 → up to 0.4 mg; 140+ may allow up to 0.8 mg with conditions.';
+ if(/nitroglycerin|nitrate|stemi|pde/.test(t))return 'Ischemia nitro: SBP at least 100; HR 60–159; PDE check 48 h; 5-minute interval.';
+ if(/aspirin|asa|chewable/.test(t))return 'ASA: 2 × 81-mg chewable tablets = 162 mg.';
+ if(/dimenhydrinate|gravol/.test(t))return 'Gravol: 25 mg at 25–under-50 kg; 50 mg max at 50+; 30-minute interval.';
+ if(/ondansetron|zofran/.test(t))return 'Ondansetron: 4 mg once; check QT and other contraindications.';
+ if(/ketorolac|toradol/.test(t))return 'Ketorolac 10–15 mg once; max 15. Check recent NSAIDs.';
+ if(/ibuprofen|advil/.test(t))return 'Ibuprofen 400 mg PO once; check NSAIDs in previous 6 h.';
+ if(/acetaminophen|tylenol/.test(t))return 'Acetaminophen: ages 12–17 max 650 mg; adults max 1,000 mg.';
+ if(/one.third|1\/3|third decline|third drop/.test(t))return 'One-third SBP fall means two-thirds of baseline pressure remains.';
+ return '';
+}
+function srCalculation(q){
+ const p=q.prompt||'',w=p.match(/\b(\d+(?:\.\d+)?)\s*-?\s*kg\b/i),kg=w?Number(w[1]):null;
+ const n=x=>String(Number(x.toFixed(3)));
+ if(kg!==null&&/\bd50\b/i.test(p))return kg+' kg × 1 mL/kg = '+n(kg)+' mL; cap 50 mL → '+n(Math.min(kg,50))+' mL.';
+ if(kg!==null&&/\bd10\b/i.test(p))return kg+' kg × 2 mL/kg = '+n(kg*2)+' mL; cap 250 mL → '+n(Math.min(kg*2,250))+' mL.';
+ if(kg!==null&&/hydrocortisone/i.test(p)){const a=kg*2,r=Math.round(a/10)*10;return kg+' × 2 = '+n(a)+' mg; round to nearest 10 = '+r+' mg; cap 100 → '+n(Math.min(r,100))+' mg.';}
+ if(kg!==null&&/dexamethasone/i.test(p))return kg+' × 0.5 = '+n(kg*.5)+' mg; cap 8 → '+n(Math.min(kg*.5,8))+' mg.';
+ if(kg!==null&&/epinephrine/i.test(p)&&!/croup/i.test(q.directive||'')){const a=kg*.01,c=Math.min(a,.5),r=/round/i.test(p)?Math.round(c/.05)*.05:c;return kg+' × 0.01 = '+n(a)+' mg; max 0.5 mg'+(/round/i.test(p)?', round to 0.05 mg':'')+' → '+n(r)+' mg.';}
+ const sbp=p.match(/(?:SBP|systolic blood pressure)\s+(?:was\s+)?(\d+)\b/i);
+ if(sbp&&/third/i.test(p))return sbp[1]+' × 2/3 = '+n(Number(sbp[1])*2/3)+' mmHg remaining.';
+ if(/two 81.mg/i.test(p))return '2 tablets × 81 mg/tablet = 162 mg.';
+ if(/eight complete 100.mcg/i.test(p))return '8 puffs × 100 mcg/puff = 800 mcg.';
+ return '';
+}
+const srStudyStyle=document.createElement('style');srStudyStyle.textContent='#md-srd-fib-feedback .sr-learn{margin-top:12px;padding:14px;background:#082b35;border:1px solid #62b8b3;border-radius:12px;color:#eaffff}#md-srd-fib-feedback .sr-learn h3{font-size:1.08rem;color:#9cf1db;margin:0 0 12px}#md-srd-fib-feedback .sr-learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}#md-srd-fib-feedback .sr-learn-part{background:#123b4b;border-radius:8px;padding:10px}#md-srd-fib-feedback .sr-learn-part strong{display:block;color:#a0efdd;margin-bottom:6px}#md-srd-fib-feedback .sr-learn-source{margin-top:11px;font-size:.88rem;color:#c3dce3}';document.head.appendChild(srStudyStyle);
+function srStudyCard(q,correctAnswer){
+ const section=document.createElement('section');section.className='sr-learn';section.setAttribute('aria-label','Directive learning card');
+ const title=document.createElement('h3');title.textContent='📋 Directive study card: '+nameFor(q.directive);section.appendChild(title);
+ const grid=document.createElement('div');grid.className='sr-learn-grid';section.appendChild(grid);
+ function field(label,value){if(!value)return;const part=document.createElement('div');part.className='sr-learn-part';const heading=document.createElement('strong');heading.textContent=label;const content=document.createElement('span');content.textContent=value;part.append(heading,content);grid.appendChild(part);}
+ field('✓ Correct dose / drug',correctAnswer);field('🧮 Calculation',srCalculation(q));field('📖 Directive rule',q.explanation);field('🧠 Memory trick',srMnemonic(q));
+ const src=document.createElement('div');src.className='sr-learn-source';src.textContent='Source: '+q.source+'. Consult the full directive for eligibility, contraindications and local authorization.';section.appendChild(src);
+ if(/\b(?:IV|intravenous|D10|D50)\b/i.test(q.prompt)){const note=document.createElement('div');note.className='sr-learn-source';note.textContent='Scope: IV dosing requires the appropriate PCP IV authorization; this is for directive knowledge, not non-IV administration.';section.appendChild(note);}
+ return section;
+}
+
 function submit(){
  if(typed.marked)return;
  const q=typed.deck[typed.at];if(!q)return;
  if(!answer.value.trim()){feedback.textContent=q.kind==='medication'?'Enter a medication name first.':'Enter a number first. The unit is supplied in the question.';return;}
  const value=numeric(answer.value);
  const correct=q.kind==='medication'
-  ? q.answers.some(x=>normalizeDrug(x)===normalizeDrug(answer.value))
+  ? srDrugAccepted(q,answer.value)
   : value!==null&&q.answers.some(x=>Math.abs(x-value)<0.000001);
  typed.marked=true;if(correct)typed.correct++;else typed.missed.push(q);
  feedback.className=correct?'md-srd-correct':'md-srd-incorrect';
  const displayAnswer=q.kind==='medication'?q.answers[0]:q.answers.join(' or ')+' '+q.unit;
- feedback.textContent=(correct?'✅ Correct. ':'❌ Not quite. ')+'Correct answer: '+displayAnswer+'. '+q.explanation+' Source: '+q.source+'.';
+ feedback.textContent='';if(correct){const ok=document.createElement('span');ok.textContent='✅ Correct. '+(q.kind==='medication'?'Recognized as '+displayAnswer+'. ':'')+q.explanation+' Source: '+q.source+'.';feedback.appendChild(ok);}else{const warn=document.createElement('div');warn.textContent='❌ Not quite. Review the directive-based breakdown:';feedback.append(warn,srStudyCard(q,displayAnswer));}
  answer.disabled=true;check.disabled=true;next.disabled=false;
  try{const k='md_srd_fill_stats_91124',p=JSON.parse(localStorage.getItem(k)||'{"correct":0,"attempts":0}');localStorage.setItem(k,JSON.stringify({correct:(p.correct||0)+(correct?1:0),attempts:(p.attempts||0)+1}));}catch(e){}
 }
@@ -219,5 +302,5 @@ check.onclick=submit;
 next.onclick=()=>{if(!typed.marked)return;typed.at++;render();};
 answer.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(typed.marked&&!next.disabled)next.click();else submit();}});
 fib.querySelector('#md-srd-back-tiles').onclick=()=>viewFill(false);
-window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.29',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length};
+window.MD_PCT2_SRD_UI_91124={ready:true,version:'9.11.32',errors:[],questionContexts:all.length,typedQuestions:blanks.length,directivePools:directory.map(d=>({name:d.name,count:d.items.length})),tiles:tileZone.querySelectorAll('[data-srd-mode]').length,medicationMatches:srDrugAccepted,calculate:srCalculation,studyCard:srStudyCard};
 })();
