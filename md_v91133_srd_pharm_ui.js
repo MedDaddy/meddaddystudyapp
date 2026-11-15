@@ -1,4 +1,4 @@
-/* Med Daddy v9.11.34: SRD Pharmacology Instructor Guide — restored original SRD layout. */
+/* Med Daddy v9.11.35: SRD Pharmacology Instructor Guide — high-quality questions and all-option rationales. */
 (()=>{'use strict';
 if(window.MD_SRD_PHARM_UI_91133)return;
 const data=window.MD_SRD_PHARM_GUIDE_91133;
@@ -12,7 +12,7 @@ const targeted=document.getElementById('md-srd-targeted-workspace');
 const meta=document.getElementById('md-srd-meta');
 const details=panel&&panel.querySelector('details');
 if(!data?.ready||data.questions.length!==50||!panel||!tileArea||!tiles||!focus||!fib){console.error('Pharmacology guide prerequisites unavailable');return;}
-const key='md_srd_pharm_missed_91133';
+const key='md_srd_pharm_missed_91135';
 function load(){try{let v=JSON.parse(localStorage.getItem(key)||'[]');return new Set(Array.isArray(v)?v:[]);}catch(e){return new Set();}}
 const missed=load();
 function save(){try{localStorage.setItem(key,JSON.stringify([...missed]));}catch(e){}}
@@ -83,9 +83,22 @@ function grade(){
  put(feedback,'h3',correct?'✅ Correct':'❌ Not quite — learn the rule');
  if(q.kind==='matching'){
    put(feedback,'p',part+' / 4 pairs correct. Correct matches:');
-   const ul=document.createElement('ul');q.pairs.forEach(([a,b])=>put(ul,'li',a+' → '+b));feedback.appendChild(ul);
- }else put(feedback,'p','Correct answer: '+q.choices[q.key]);
- put(feedback,'p','Why: '+q.why);
+   const ul=document.createElement('ul');q.pairs.forEach(([term,definition])=>put(ul,'li',term+' → '+definition));feedback.appendChild(ul);
+   put(feedback,'p','Why: '+q.why);
+ }else if(q.kind==='mc'){
+   put(feedback,'p','Correct answer: '+String.fromCharCode(65+q.key)+'. '+q.choices[q.key]);
+   const head=put(feedback,'p','Option-by-option review:');head.style.fontWeight='700';
+   const ol=document.createElement('ol');ol.type='A';ol.className='pg-choice-review';
+   q.choices.forEach((option,i)=>{
+     const correctOption=i===q.key;
+     const li=put(ol,'li',option+' — '+(correctOption?'Correct: '+q.why:'Incorrect: '+(q.whyWrong?.[option]||'Compare the pharmacological mechanisms.')));
+     if(correctOption)li.className='pg-choice-correct';
+   });
+   feedback.appendChild(ol);
+ }else{
+   put(feedback,'p','Correct answer: '+q.choices[q.key]);
+   put(feedback,'p','Why: '+q.why);
+ }
  put(feedback,'p','Memory trick: '+q.memory,'pg-memory');
  put(feedback,'small','Source: Instructor Pharmacology Study Guide, p. '+q.page+'. Referenced course material: Caroline Ch. 7 and lecture slides.','pg-note');
  progress.textContent='Question '+(active.index+1)+' / '+active.deck.length+' · '+active.correct+' correct';
@@ -103,7 +116,7 @@ function finish(){
  progress.textContent='Session complete';
 }
 const css=document.createElement('style');css.id='md-srd-pharm-guide-css';
-css.textContent="#pct2SrdPage #md-srd-pharm-guide-space{display:none;margin:20px 0;padding:24px 16px;background:#0b2737;border:1px solid #65b3bf;border-radius:14px;color:#eef8ff}\n#pct2SrdPage #md-srd-pharm-guide-space h2{font-size:1.25rem;margin:5px 0 10px}\n#pct2SrdPage #md-srd-pharm-guide-space h3{font-size:1.12rem;margin:14px 0 10px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-intro{font-size:.96rem;opacity:.88;line-height:1.55;margin-bottom:16px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-top{margin-bottom:15px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-top small{color:#bfd6e0}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-deck-tiles{margin:13px 0 18px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-notes{padding:12px 14px;border:1px solid #527f8f;border-radius:10px;background:#0c2735;font-size:.9rem;line-height:1.55}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-notes summary{cursor:pointer;font-weight:700}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-prompt{font-size:1.17rem;line-height:1.6;margin:15px 0;font-weight:650}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-label{font-size:.92rem;font-weight:700;color:#9fe4de;margin:13px 0 7px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-options{display:grid;gap:10px;margin:12px 0}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option{display:flex;align-items:center;gap:12px;background:#12384b;border:1px solid #4a8b9c;color:#f0f8ff;padding:14px 15px;border-radius:11px;min-height:58px;cursor:pointer;line-height:1.5}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option:hover{background:#1d5361;border-color:#84d9d1}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option:has(input:checked){background:#1d5361;border-color:#84d9d1}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option:has(input:disabled){cursor:default}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option input{width:19px;height:19px;flex:none;accent-color:#65c9bb}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-match{display:grid;grid-template-columns:minmax(120px,1fr) minmax(0,2fr);align-items:center;gap:13px;padding:13px 15px;background:#12384b;border:1px solid #4a8b9c;border-radius:11px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-match strong{font-size:.98rem;line-height:1.3}\n#pct2SrdPage #md-srd-pharm-guide-space select{width:100%;min-width:0;min-height:45px;padding:10px;background:#071925;border:1px solid #6c9eab;border-radius:9px;color:#fff}\n#pct2SrdPage #md-srd-pharm-guide-space button:disabled{opacity:.5;cursor:not-allowed}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-feedback:not(:empty){padding:13px;line-height:1.5;border-radius:9px;margin:14px 0}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-feedback.pg-correct{background:#0d3935;border:1px solid #61ad85}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-feedback.pg-wrong{background:#3a2933;border:1px solid #db8878}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-memory{color:#9fe4de;font-weight:700}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-note{display:block;color:#c3d9e3;font-size:.86rem;margin-top:10px}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-finished{padding:8px 0;line-height:1.55}\n@media(max-width:640px){#pct2SrdPage #md-srd-pharm-guide-space{padding:15px 12px}#pct2SrdPage #md-srd-pharm-guide-space .pg-match{grid-template-columns:1fr}}";
+css.textContent="#pct2SrdPage #md-srd-pharm-guide-space{display:none;margin:20px 0;padding:24px 16px;background:#0b2737;border:1px solid #65b3bf;border-radius:14px;color:#eef8ff}\n#pct2SrdPage #md-srd-pharm-guide-space h2{font-size:1.25rem;margin:5px 0 10px}\n#pct2SrdPage #md-srd-pharm-guide-space h3{font-size:1.12rem;margin:14px 0 10px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-intro{font-size:.96rem;opacity:.88;line-height:1.55;margin-bottom:16px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-top{margin-bottom:15px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-top small{color:#bfd6e0}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-deck-tiles{margin:13px 0 18px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-notes{padding:12px 14px;border:1px solid #527f8f;border-radius:10px;background:#0c2735;font-size:.9rem;line-height:1.55}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-notes summary{cursor:pointer;font-weight:700}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-prompt{font-size:1.17rem;line-height:1.6;margin:15px 0;font-weight:650}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-label{font-size:.92rem;font-weight:700;color:#9fe4de;margin:13px 0 7px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-options{display:grid;gap:10px;margin:12px 0}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option{display:flex;align-items:center;gap:12px;background:#12384b;border:1px solid #4a8b9c;color:#f0f8ff;padding:14px 15px;border-radius:11px;min-height:58px;cursor:pointer;line-height:1.5}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option:hover{background:#1d5361;border-color:#84d9d1}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option:has(input:checked){background:#1d5361;border-color:#84d9d1}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option:has(input:disabled){cursor:default}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-option input{width:19px;height:19px;flex:none;accent-color:#65c9bb}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-match{display:grid;grid-template-columns:minmax(120px,1fr) minmax(0,2fr);align-items:center;gap:13px;padding:13px 15px;background:#12384b;border:1px solid #4a8b9c;border-radius:11px}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-match strong{font-size:.98rem;line-height:1.3}\n#pct2SrdPage #md-srd-pharm-guide-space select{width:100%;min-width:0;min-height:45px;padding:10px;background:#071925;border:1px solid #6c9eab;border-radius:9px;color:#fff}\n#pct2SrdPage #md-srd-pharm-guide-space button:disabled{opacity:.5;cursor:not-allowed}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-feedback:not(:empty){padding:13px;line-height:1.5;border-radius:9px;margin:14px 0}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-feedback.pg-correct{background:#0d3935;border:1px solid #61ad85}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-feedback.pg-wrong{background:#3a2933;border:1px solid #db8878}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-memory{color:#9fe4de;font-weight:700}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-choice-review{margin:10px 0 15px;padding-left:28px;display:grid;gap:9px;line-height:1.5}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-choice-correct{color:#a4ecd8;font-weight:650}\n#pct2SrdPage #md-srd-pharm-guide-space .pg-note{display:block;color:#c3d9e3;font-size:.86rem;margin-top:10px}\n#pct2SrdPage #md-srd-pharm-guide-space #pg-finished{padding:8px 0;line-height:1.55}\n@media(max-width:640px){#pct2SrdPage #md-srd-pharm-guide-space{padding:15px 12px}#pct2SrdPage #md-srd-pharm-guide-space .pg-match{grid-template-columns:1fr}}";
 document.head.appendChild(css);
-window.MD_SRD_PHARM_UI_91133={ready:true,version:'9.11.34',rounds:data.questions.length,tile:true};
+window.MD_SRD_PHARM_UI_91133={ready:true,version:'9.11.35',rounds:data.questions.length,tile:true};
 })();
