@@ -1,4 +1,4 @@
-/* Med Daddy v9.11.37 — A&P II Reproductive System.
+/* Med Daddy v9.11.38 — A&P II Reproductive System.
  * Standard A&P unit launcher. Instructor 25 x 5 review, 75 distinct lecture/Patton
  * supplements, independent curated High-Yield 50 selection. Existing quiz UI reused.
  * Accurate distinction: not yet a 3-per-every-Quick-Quiz bank.
@@ -8,6 +8,8 @@ if(window.MD_AP2_REPRO_91137)return;
 const review=window.MD_AP2_REPRO_REVIEW_91137||[];
 const lecture=window.MD_AP2_REPRO_LECT_91137||[];
 const all=[...review,...lecture];
+const editorial=window.MD_AP2_REPRO_EDITORIAL_91138;
+
 const errors=[];
 const registry=window.MD_SAFE_QUESTIONS;
 const parent=document.getElementById('ap2UrinaryPage');
@@ -16,6 +18,7 @@ if(!(registry instanceof Map))errors.push('Existing Med Daddy question registry 
 if(!parent||!anchor)errors.push('A&P navigation missing');
 if(typeof start!=='function'||typeof show!=='function'||typeof shuffle!=='function')errors.push('Original Med Daddy study engine missing');
 if(review.length!==125||lecture.length!==75||all.length!==200)errors.push('Expected 125 instructor plus 75 lecture questions');
+if(!editorial?.ready||editorial.changed!==24)errors.push('Reproductive editorial-quality patch missing or incomplete');
 const ids=new Set(),stems=new Set(),reviewCounts={},lectureCounts={},letters={A:0,B:0,C:0,D:0};
 const normalize=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
 all.forEach(q=>{
@@ -116,7 +119,7 @@ page.querySelector('#md-ap2-repro-start').onclick=()=>{
 if(typeof MutationObserver==='function'){
  const watcher=new MutationObserver(()=>{
   if(parent.classList.contains('md-endo-unit-visible')||parent.classList.contains('md-lymph-unit-visible')){
-    parent.classList.remove('md-repro-unit-visible');page.style.display='none';
+    if(parent.classList.contains('md-repro-unit-visible'))parent.classList.remove('md-repro-unit-visible');page.style.display='none';
   }
  });
  watcher.observe(parent,{attributes:true,attributeFilter:['class']});
@@ -137,5 +140,6 @@ css.textContent=
 '#ap2ReproductivePage .md-ap2-repro-notes summary{cursor:pointer;font-weight:700}'+
 '@media(max-width:650px){#ap2ReproductivePage .md-ap2-repro-control{grid-template-columns:1fr}}';
 document.head.appendChild(css);
-window.MD_AP2_REPRO_91137={ready:true,version:'9.11.37',counts:{review:125,lecture:75,highYield:50,uniquePlayable:200},sourceNote:'25 review objectives × 5; lecture supplement 75 distinct; 3-per-all-slide-prompt claim NOT made',highYieldCoverage:concepts,answerCounts:letters,errors:[]};
+document.title='Med Daddy v9.11.38 — A&P II Reproductive System';
+window.MD_AP2_REPRO_91137={ready:true,version:'9.11.38',counts:{review:125,lecture:75,highYield:50,uniquePlayable:200},sourceNote:'25 review objectives × 5; lecture supplement 75 distinct; 3-per-all-slide-prompt claim NOT made',highYieldCoverage:concepts,answerCounts:letters,errors:[]};
 })();
