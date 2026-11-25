@@ -1,4 +1,4 @@
-/* Med Daddy v9.11.38 — A&P II Reproductive System.
+/* Med Daddy v9.11.39 — A&P II Reproductive System.
  * Standard A&P unit launcher. Instructor 25 x 5 review, 75 distinct lecture/Patton
  * supplements, independent curated High-Yield 50 selection. Existing quiz UI reused.
  * Accurate distinction: not yet a 3-per-every-Quick-Quiz bank.
@@ -63,17 +63,7 @@ page.id='ap2ReproductivePage';page.style.display='none';page.className='md-ap2-r
 page.innerHTML='<section class="md-ap2-repro-panel">'+
 '<div class="md-ap2-repro-head"><div><small>ANATOMY &amp; PHYSIOLOGY II · INSTRUCTOR STANDARD</small><h1>Reproductive System</h1>'+
 '<p>Male and female anatomy, gametogenesis, reproductive cycles, pregnancy and lactation, embryonic development, genetics and aging—grounded in your uploaded course materials.</p></div><button type="button" id="md-ap2-repro-home">Study Home</button></div>'+
-'<div class="md-ap2-repro-control">'+
-'<label for="md-ap2-repro-bank">Question deck</label>'+
-'<select id="md-ap2-repro-bank">'+
-'<option value="high">High-Yield 50 · ten core concepts</option>'+
-'<option value="review">Instructor Reproductive Review · 25 objectives × 5 = 125</option>'+
-'<option value="lecture">Lecture &amp; Patton Reinforcement · 75 original questions</option>'+
-'<option value="all">Complete Reproductive Bank · 200 original questions</option>'+
-'</select>'+
-'<label for="md-ap2-repro-length">Session length</label><select id="md-ap2-repro-length">'+
-'<option value="50">50 questions</option><option value="75">75 questions</option><option value="100">100 questions</option><option value="all">Entire selected deck</option></select>'+
-'<button type="button" class="success" id="md-ap2-repro-start">Start A&amp;P Reproductive Exam</button></div>'+
+"<section class=\"md-ap2-repro-training\">\n  <h2>Choose your training match</h2>\n  <p class=\"md-ap2-repro-hint\">Choose a session length, then select a tile to start using the standard Med Daddy question screen.</p>\n  <div class=\"md-srd-tiles md-ap2-repro-tiles\">\n    <button type=\"button\" class=\"md-srd-feature\" data-repro-deck=\"high\">\n      <span class=\"md-srd-tile-icon\">🏆</span><strong>High-Yield 50</strong>\n      <small>10 core exam concepts · 5 questions each · best first session</small>\n    </button>\n    <button type=\"button\" data-repro-deck=\"review\">\n      <span class=\"md-srd-tile-icon\">📝</span><strong>Instructor Review</strong>\n      <small>125 questions · all 25 review objectives × 5</small>\n    </button>\n    <button type=\"button\" data-repro-deck=\"lecture\">\n      <span class=\"md-srd-tile-icon\">📚</span><strong>Lecture &amp; Patton</strong>\n      <small>75 original questions · anatomy, genetics and development reinforcement</small>\n    </button>\n    <button type=\"button\" data-repro-deck=\"all\">\n      <span class=\"md-srd-tile-icon\">🎯</span><strong>Full Reproductive Bank</strong>\n      <small>200 unique questions · all review and lecture material</small>\n    </button>\n  </div>\n  <div class=\"md-srd-length-setting md-ap2-repro-length-setting\">\n    <label for=\"md-ap2-repro-length\">Session length</label>\n    <select id=\"md-ap2-repro-length\">\n      <option value=\"50\">50 questions</option>\n      <option value=\"75\">75 questions</option>\n      <option value=\"100\">100 questions</option>\n      <option value=\"all\">Entire selected deck</option>\n    </select>\n  </div>\n  <p class=\"md-ap2-repro-hint md-ap2-repro-small\">A smaller deck automatically runs all available questions if you choose a longer session.</p>\n</section>"+
 '<p id="md-ap2-repro-meta" class="muted" aria-live="polite"></p>'+
 '<details class="md-ap2-repro-notes"><summary>Source coverage and exam focus</summary>'+
 '<p><strong>Instructor sheets:</strong> all 25 Reproductive System Review questions with five source-linked items each; the second Reproduction Test Review has been used as the checklist for emphasis.</p>'+
@@ -94,28 +84,28 @@ function open(){
 }
 page.querySelector('#md-ap2-repro-home').onclick=exit;
 card.querySelector('#md-ap2-repro-open').onclick=open;
-const bank=page.querySelector('#md-ap2-repro-bank'),length=page.querySelector('#md-ap2-repro-length'),meta=page.querySelector('#md-ap2-repro-meta');
+const length=page.querySelector('#md-ap2-repro-length');
+const meta=page.querySelector('#md-ap2-repro-meta');
 const pools={high:highYield,review,lecture,all};
-function options(){
- const pool=pools[bank.value]||highYield;
- [...length.options].forEach(o=>o.disabled=o.value!=='all'&&Number(o.value)>pool.length);
- if(length.selectedOptions?.[0]?.disabled)length.value='all';
- meta.textContent=pool.length+' unique source-linked questions, with explanations for all four options.';
-}
-bank.onchange=options;length.onchange=options;options();
-page.querySelector('#md-ap2-repro-start').onclick=()=>{
- const pool=pools[bank.value]||highYield;
- const n=length.value==='all'?pool.length:Math.min(Number(length.value),pool.length);
- if(n<50){meta.textContent='Select at least 50 questions for a full exam session.';return;}
+const deckNames={high:'High-Yield 50',review:'Instructor Review',lecture:'Lecture & Patton',all:'Full Reproductive Bank'};
+const tiles=[...page.querySelectorAll('[data-repro-deck]')];
+meta.textContent='Select a tile above to start. All questions use the original Med Daddy quiz and answer explanations.';
+function launch(deckName){
+ const pool=pools[deckName];
+ if(!pool||pool.length<50){meta.textContent='Selected deck is unavailable. No session started.';return;}
+ const requested=length.value==='all'?pool.length:Number(length.value);
+ const n=Math.min(requested,pool.length);
+ if(!Number.isInteger(n)||n<50){meta.textContent='Select a valid session length of at least 50.';return;}
  const selection=shuffle(pool.slice()).slice(0,n);
- if(new Set(selection.map(q=>q.id)).size!==n){meta.textContent='Duplicate detected, session not started.';return;}
- if(selection.some(q=>registry.get(q.id)?.answer!==q.answer)){meta.textContent='Registry mismatch: session not started.';return;}
+ if(new Set(selection.map(q=>q.id)).size!==n){meta.textContent='Duplicate question detected; session not started.';return;}
+ if(selection.some(q=>registry.get(q.id)?.answer!==q.answer)){meta.textContent='Registry mismatch; session not started.';return;}
  const recycle=document.getElementById('recycle'),adaptive=document.getElementById('adaptiveNext');
  if(recycle)recycle.checked=false;if(adaptive)adaptive.checked=false;
  parent.classList.remove('md-repro-unit-visible');page.style.display='none';
  start(selection);
- if(typeof quiz!=='undefined'&&quiz.length!==n)console.warn('A&P Reproductive requested '+n+' questions but engine loaded '+quiz.length);
-};
+ if(typeof quiz!=='undefined'&&quiz.length!==n)console.warn('A&P Reproductive '+deckNames[deckName]+' expected '+n+' but engine loaded '+quiz.length);
+}
+tiles.forEach(tile=>{tile.onclick=()=>launch(tile.dataset.reproDeck)});
 if(typeof MutationObserver==='function'){
  const watcher=new MutationObserver(()=>{
   if(parent.classList.contains('md-endo-unit-visible')||parent.classList.contains('md-lymph-unit-visible')){
@@ -125,21 +115,8 @@ if(typeof MutationObserver==='function'){
  watcher.observe(parent,{attributes:true,attributeFilter:['class']});
 }
 const css=document.createElement('style');css.id='md-ap2-repro-style';
-css.textContent=
-'#ap2UrinaryPage.md-repro-unit-visible:not(.md-endo-unit-visible):not(.md-lymph-unit-visible)>:not(#ap2ReproductivePage){display:none!important}'+
-'#md-ap2-repro-card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:14px 0;padding:17px 18px;border:1px solid #3a6483;background:#10233a;border-radius:13px;color:#eff8ff}'+
-'#md-ap2-repro-card strong{display:block;font-size:1.12rem}#md-ap2-repro-card small{display:block;opacity:.8;margin-top:6px}'+
-'#md-ap2-repro-card button{min-height:43px;padding:10px 17px;font-weight:700;border-radius:8px}'+
-'#ap2ReproductivePage{padding:15px 8px}#ap2ReproductivePage .md-ap2-repro-panel{max-width:1080px;margin:0 auto;padding:25px;background:#10233a;border:1px solid #416981;border-radius:16px;color:#ecf5ff}'+
-'#ap2ReproductivePage .md-ap2-repro-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}'+
-'#ap2ReproductivePage h1{font-size:1.9rem;margin:8px 0}#ap2ReproductivePage p{line-height:1.5}'+
-'#ap2ReproductivePage .md-ap2-repro-control{display:grid;grid-template-columns:160px 1fr;align-items:center;gap:13px;margin:22px 0}'+
-'#ap2ReproductivePage label{font-weight:700}#ap2ReproductivePage select{width:100%;min-height:47px;padding:10px;background:#06192b;color:#fff;border:1px solid #527898;border-radius:9px}'+
-'#ap2ReproductivePage button{min-height:46px;padding:10px 16px;font-weight:700}#ap2ReproductivePage #md-ap2-repro-start{grid-column:1/-1}'+
-'#ap2ReproductivePage .md-ap2-repro-notes{margin-top:20px;font-size:.9rem;opacity:.92}'+
-'#ap2ReproductivePage .md-ap2-repro-notes summary{cursor:pointer;font-weight:700}'+
-'@media(max-width:650px){#ap2ReproductivePage .md-ap2-repro-control{grid-template-columns:1fr}}';
+css.textContent="#ap2UrinaryPage.md-repro-unit-visible:not(.md-endo-unit-visible):not(.md-lymph-unit-visible)>:not(#ap2ReproductivePage){display:none!important}\n#md-ap2-repro-card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:14px 0;padding:17px 18px;border:1px solid #3a6483;background:#10233a;border-radius:13px;color:#eff8ff}\n#md-ap2-repro-card strong{display:block;font-size:1.12rem}#md-ap2-repro-card small{display:block;opacity:.8;margin-top:6px}\n#md-ap2-repro-card button{min-height:43px;padding:10px 17px;font-weight:700;border-radius:8px}\n#ap2ReproductivePage{padding:15px 8px}\n#ap2ReproductivePage .md-ap2-repro-panel{max-width:1080px;margin:0 auto;padding:25px;background:#10233a;border:1px solid #416981;border-radius:16px;color:#ecf5ff}\n#ap2ReproductivePage .md-ap2-repro-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}\n#ap2ReproductivePage h1{font-size:1.9rem;margin:8px 0}\n#ap2ReproductivePage h2{font-size:1.25rem;margin:5px 0 10px}\n#ap2ReproductivePage p{line-height:1.5}\n#ap2ReproductivePage .md-ap2-repro-training{margin:24px 0 18px}\n#ap2ReproductivePage .md-ap2-repro-hint{font-size:.96rem;opacity:.88;margin:8px 0 16px}\n#ap2ReproductivePage .md-ap2-repro-small{font-size:.83rem;color:#bbd4dc;margin-top:8px}\n#ap2ReproductivePage .md-srd-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}\n#ap2ReproductivePage .md-srd-tiles button{display:flex;flex-direction:column;text-align:left;align-items:flex-start;gap:7px;background:#12384b;border:1px solid #4a8b9c;color:#f0f8ff;border-radius:13px;padding:18px;min-height:132px;cursor:pointer;white-space:normal;transition:background .15s,border-color .15s;font:inherit}\n#ap2ReproductivePage .md-srd-tiles button:hover,#ap2ReproductivePage .md-srd-tiles button:focus-visible{background:#1d5361;border-color:#84d9d1;outline-offset:3px}\n#ap2ReproductivePage .md-srd-tiles button.md-srd-feature{border:2px solid #64c9bb;background:#174955}\n#ap2ReproductivePage .md-srd-tiles button strong{font-size:1.03rem;line-height:1.3}\n#ap2ReproductivePage .md-srd-tiles button small{font-size:.82rem;opacity:.9;line-height:1.4}\n#ap2ReproductivePage .md-srd-tile-icon{font-size:1.35rem}\n#ap2ReproductivePage .md-srd-length-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:19px 0 9px;padding:14px 16px;background:#0c2735;border:1px solid #527f8f;border-radius:10px}\n#ap2ReproductivePage .md-srd-length-setting label{font-weight:700}\n#ap2ReproductivePage .md-srd-length-setting select{min-height:44px;border:1px solid #6393a4;border-radius:8px;background:#061923;color:white;padding:9px;min-width:180px;max-width:100%}\n#ap2ReproductivePage .md-ap2-repro-notes{margin-top:20px;font-size:.9rem;opacity:.92}\n#ap2ReproductivePage .md-ap2-repro-notes summary{cursor:pointer;font-weight:700}\n@media(max-width:640px){#ap2ReproductivePage .md-srd-tiles{grid-template-columns:1fr}#ap2ReproductivePage .md-srd-tiles button{min-height:105px}#ap2ReproductivePage .md-ap2-repro-panel{padding:16px}}\n";
 document.head.appendChild(css);
-document.title='Med Daddy v9.11.38 — A&P II Reproductive System';
-window.MD_AP2_REPRO_91137={ready:true,version:'9.11.38',counts:{review:125,lecture:75,highYield:50,uniquePlayable:200},sourceNote:'25 review objectives × 5; lecture supplement 75 distinct; 3-per-all-slide-prompt claim NOT made',highYieldCoverage:concepts,answerCounts:letters,errors:[]};
+document.title='Med Daddy v9.11.39 — A&P II Reproductive System';
+window.MD_AP2_REPRO_91137={ready:true,version:'9.11.39',counts:{review:125,lecture:75,highYield:50,uniquePlayable:200},sourceNote:'25 review objectives × 5; lecture supplement 75 distinct; 3-per-all-slide-prompt claim NOT made',highYieldCoverage:concepts,answerCounts:letters,errors:[]};
 })();
