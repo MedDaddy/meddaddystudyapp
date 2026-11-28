@@ -49,9 +49,9 @@ function distractors(term,field){
   ['Rhabdomyolysis','Myoglobin','Desquamation','Escharotomy','Parkland formula','Frostbite']
  ];
  const closest=clusters.find(cluster=>cluster.includes(term[0]))||[];
- const pool=[...closest.map(name=>termsByName.get(name)).filter(Boolean),...(groups[category]||[]),
+ const pool=[...new Map([...closest.map(name=>termsByName.get(name)).filter(Boolean),...(groups[category]||[]),
  ...(neighbors[category]||[]).flatMap(c=>groups[c]||[])]
- .filter(t=>t!==term&&norm(t[0])!==norm(term[0]));
+ .filter(t=>t!==term&&norm(t[0])!==norm(term[0])).map(t=>[norm(t[0]),t])).values()];
  const priority=new Set(closest);
  const score=t=>{
    const n1=norm(term[0]),n2=norm(t[0]);
