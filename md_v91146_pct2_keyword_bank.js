@@ -63,11 +63,7 @@ for(let i=0;i<terms.length;i++){
   // rewrite avoids giving the answer away before the student selects an option.
   if(variation<2&&norm(term[0]).length>=7&&norm(prompts[variation]).includes(norm(term[0]))){
    const replacement='this clinical finding';
-   prompts[variation]=prompts[variation].replace(new RegExp(term[0].replace(/[.*+?^${}()|[\]\\]/g,'\\const prompts=[
-   'Which course term most accurately matches this definition: '+term[2]+'?',
-   'A patient or clinical context is described as follows: '+term[3]+'. Which term best identifies the phenomenon or disorder?',
-   'Which distinguishing association is most accurate for '+term[0]+'?'
-  ];'),'ig'),replacement);
+   prompts[variation]=prompts[variation].split(term[0]).join(replacement);
   }
   const correct=variation===2?term[4]:term[0];
   const options=other.map(x=>variation===2?x[4]:x[0]);
