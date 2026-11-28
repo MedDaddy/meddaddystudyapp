@@ -33,14 +33,17 @@ function distractors(term,field){
    const first=n1.slice(0,3)===n2.slice(0,3)?3:0;
    const words=norm(term[2]+' '+term[3]+' '+term[4]).split(' ');
    const similarly=words.filter(w=>w.length>=6&&norm(t[2]+' '+t[3]+' '+t[4]).includes(w)).length;
-   return first+Math.min(similarly,4);
+   return (t[1]===term[1]?50:0)+first+Math.min(similarly,4);
  };
  // prefer adjacent concepts without repeating synonyms or using any candidate
  // that's just another label for the correct term.
  const stem=field===0?'Which course term most accurately matches this definition: '+term[2]+'?':
   field===1?'A patient or clinical context is described as follows: '+term[3]+'. Which term best identifies the phenomenon or disorder?':
   'Which distinguishing association is most accurate for '+term[0]+'?';
- const ranked=pool.map(t=>({t,s:score(t),v:hash(term[0]+'/'+t[0]+'/'+field)}))
+ const equivalent=(a,b)=>[a,b].some(v=>/^(antidiuretic hormone|vasopressin)/i.test(v))&&
+ [a,b].every(v=>/^(antidiuretic hormone|vasopressin)/i.test(v));
+ const ranked=pool.filter(t=>!equivalent(t[0],term[0]))
+  .map(t=>({t,s:score(t),v:hash(term[0]+'/'+t[0]+'/'+field)}))
   .filter(x=>{
    const label=field===2?x.t[4]:x.t[0];
    const v=norm(label);return !(v.length>=7&&norm(stem).includes(v));
@@ -65,6 +68,20 @@ for(let i=0;i<terms.length;i++){
    const replacement='this clinical finding';
    prompts[variation]=prompts[variation].split(term[0]).join(replacement);
   }
+  const override={
+    '079-2':'A patient receiving a narrow-therapeutic-index mood stabilizer develops new ataxia, coarse tremor and confusion during dehydration. Which drug is most concerning?',
+    '091-2':'Following extensive muscle injury, a heme-containing oxygen-binding muscle pigment enters the bloodstream and may contribute to kidney injury. Which substance is it?',
+    '108-1':'Which infection is caused by Bordetella species and produces paroxysmal coughing bouts, sometimes with an inspiratory whoop?',
+    '114-2':'After ovulation, the corpus luteum releases a steroid that maintains a secretory uterine lining. Which hormone is it?',
+    '121-2':'A mild rash illness during early pregnancy can produce a characteristic congenital syndrome involving hearing, cardiac and eye abnormalities. Which infection is most concerning?',
+    '122-2':'A screening blood test detects a marker or antibody for a specific infectious agent. Which term describes this positive serologic result?',
+    '130-2':'An androgen synthesized by testicular Leydig cells in response to LH supports male secondary characteristics. Which hormone is this?',
+    '133-2':'A recognizable clinical pattern of pupil findings, respiratory rate and consciousness suggests a category of poisoning. What is this diagnostic pattern called?',
+    '138-1':'Which infection is caused by a slow-growing acid-fast mycobacterium associated with chronic cough, weight loss and airborne spread?',
+    '141-1':'Which primary infection from varicella-zoster virus produces successive crops of pruritic vesicles, commonly in childhood?',
+    '142-2':'A posterior-pituitary-released peptide hormone acts at renal collecting ducts to conserve free water; it is also known as ADH. Which alternative name applies?'
+  };
+  if(override[number+'-'+(variation+1)])prompts[variation]=override[number+'-'+(variation+1)];
   const correct=variation===2?term[4]:term[0];
   const options=other.map(x=>variation===2?x[4]:x[0]);
   options.splice(key,0,correct);
