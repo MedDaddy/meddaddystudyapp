@@ -21,7 +21,13 @@ const termsByName=new Map(terms.map(t=>[t[0],t]));
 const all=[],seenStems=new Set(),seenIds=new Set();
 function synonyms(a,b){const ta=norm(a).split(' '),tb=norm(b).split(' ');return ta.some(t=>t.length>5&&tb.includes(t))}
 function distractors(term,field){
- const category=term[1],pool=(groups[category]||[]).filter(t=>t!==term);
+ const category=term[1],neighbors={
+  RESP:['ENV','CARD','INF'],CARD:['NEU','ENDO','RESP'],TOX:['ENDO','NEU','INF'],
+  NEU:['ENDO','GI','ENV'],ENV:['NEU','ENDO','GI'],ENDO:['NEU','ENV','GI'],
+  GI:['ENDO','NEU','INF'],INF:['GI','NEU','ENV']
+ };
+ const pool=[...(groups[category]||[]),...(neighbors[category]||[]).flatMap(c=>groups[c]||[])]
+ .filter(t=>t!==term && norm(t[0])!==norm(term[0]));
  const score=t=>{
    const n1=norm(term[0]),n2=norm(t[0]);
    const first=n1.slice(0,3)===n2.slice(0,3)?3:0;
@@ -31,8 +37,14 @@ function distractors(term,field){
  };
  // prefer adjacent concepts without repeating synonyms or using any candidate
  // that's just another label for the correct term.
+ const stem=field===0?'Which course term most accurately matches this definition: '+term[2]+'?':
+  field===1?'A patient or clinical context is described as follows: '+term[3]+'. Which term best identifies the phenomenon or disorder?':
+  'Which distinguishing association is most accurate for '+term[0]+'?';
  const ranked=pool.map(t=>({t,s:score(t),v:hash(term[0]+'/'+t[0]+'/'+field)}))
-  .filter(x=>!synonyms(x.t[0],term[0])&&!synonyms(term[0],x.t[0]))
+  .filter(x=>{
+   const label=field===2?x.t[4]:x.t[0];
+   const v=norm(label);return !(v.length>=7&&norm(stem).includes(v));
+  })
   .sort((a,b)=>b.s-a.s||a.v-b.v);
  let chosen=ranked.slice(0,3).map(x=>x.t);
  if(chosen.length<3)errors.push('Too few relevant alternatives for '+term[0]);
@@ -47,6 +59,16 @@ for(let i=0;i<terms.length;i++){
    'A patient or clinical context is described as follows: '+term[3]+'. Which term best identifies the phenomenon or disorder?',
    'Which distinguishing association is most accurate for '+term[0]+'?'
   ];
+  // Some instructor terms recur literally in the description. A short clinical
+  // rewrite avoids giving the answer away before the student selects an option.
+  if(variation<2&&norm(term[0]).length>=7&&norm(prompts[variation]).includes(norm(term[0]))){
+   const replacement='this clinical finding';
+   prompts[variation]=prompts[variation].replace(new RegExp(term[0].replace(/[.*+?^${}()|[\]\\]/g,'\\const prompts=[
+   'Which course term most accurately matches this definition: '+term[2]+'?',
+   'A patient or clinical context is described as follows: '+term[3]+'. Which term best identifies the phenomenon or disorder?',
+   'Which distinguishing association is most accurate for '+term[0]+'?'
+  ];'),'ig'),replacement);
+  }
   const correct=variation===2?term[4]:term[0];
   const options=other.map(x=>variation===2?x[4]:x[0]);
   options.splice(key,0,correct);
