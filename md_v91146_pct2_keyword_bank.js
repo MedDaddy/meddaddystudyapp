@@ -26,14 +26,39 @@ function distractors(term,field){
   NEU:['ENDO','GI','ENV'],ENV:['NEU','ENDO','GI'],ENDO:['NEU','ENV','GI'],
   GI:['ENDO','NEU','INF'],INF:['GI','NEU','ENV']
  };
- const pool=[...(groups[category]||[]),...(neighbors[category]||[]).flatMap(c=>groups[c]||[])]
- .filter(t=>t!==term && norm(t[0])!==norm(term[0]));
+ const clusters=[
+  ['Afterdrop','Frostbite','Cold diuresis','Hypothermia','Hyperthermia','Heat exhaustion','Heat stroke'],
+  ['Altitude illness','High-altitude cerebral edema (HACE)','High-altitude pulmonary edema (HAPE)','Acute mountain sickness (AMS)','Decompression sickness'],
+  ['Airborne transmission','Droplet transmission','Contact transmission','Vector-borne transmission','Vehicle transmission'],
+  ['Carriers','Reservoir','Host resistance','Normal flora','Nosocomial','Pathogens','Virulence','Seropositive','Personal protective equipment (PPE)'],
+  ['Measles (rubeola)','Mumps','Rubella','Varicella','Shingles','Herpes simplex','Rabies','West Nile virus','Middle East respiratory syndrome (MERS)'],
+  ['Gonorrhea','Syphilis','Pertussis','Tuberculosis','Methicillin-resistant Staphylococcus aureus (MRSA)','Helicobacter pylori','Hepatitis'],
+  ['Cirrhosis','Esophageal varices','Mallory–Weiss syndrome','Portal hypertension','Coffee-ground emesis','Melena','Hematochezia','Ulcer'],
+  ['Appendicitis','Cholecystitis','Pancreatitis','Colitis','Crohn disease','Diverticulitis','Diverticulosis','Intestinal obstruction'],
+  ['Borborygmi','Constipation','Feculent','Steatorrhea','Hernia','Mesentery','Gallbladder','Umbilicus','Retroperitoneal'],
+  ['Cullen sign','Grey Turner sign','Murphy sign','Rebound tenderness','Hematuria'],
+  ['Amyotrophic lateral sclerosis (ALS)','Multiple sclerosis','Parkinson disease','Alzheimer disease','Muscular dystrophy','Peripheral neuropathy','Trigeminal neuralgia'],
+  ['Decorticate posturing','Decerebrate posturing','Cushing triad','Herniation','Intracranial pressure (ICP)','Intracranial hemorrhage','Epidural hematoma','Subarachnoid hemorrhage'],
+  ['Cerebral cortex','Diencephalon','Occipital lobe','Parietal lobe','Cerebrovascular accident (CVA)','Transient ischemic attack (TIA)','Cerebral concussion'],
+  ['Anterograde amnesia','Retrograde amnesia','Trismus','Carpopedal spasm','Perioral numbness','Hyperextension','Syncope'],
+  ['Antidiuretic hormone (ADH)','Vasopressin','Oxytocin','Estrogen','Progesterone','Testosterone','Parathyroid hormone (PTH)','Thyroid gland','Iodine','Levothyroxine'],
+  ['Hypoglycemia','Hyperglycemia','Diabetic ketoacidosis (DKA)','Hyperosmolar hyperglycemic state (HHS)','Polydipsia','Polyuria','Hyponatremia','Hyperkalemia','Hypotension'],
+  ['Hypothyroidism','Hyperthyroidism','Myxedema coma','Exophthalmos','Cushing syndrome'],
+  ['Hyperventilation','Acute respiratory distress syndrome (ARDS)','Heat stroke','Hypothermia','Hypotension','Syncope'],
+  ['Opiate','Opioid','Lithium','Tricyclic antidepressants (TCA)','Delirium tremens','Toxidrome'],
+  ['Rhabdomyolysis','Myoglobin','Desquamation','Escharotomy','Parkland formula','Frostbite']
+ ];
+ const closest=clusters.find(cluster=>cluster.includes(term[0]))||[];
+ const pool=[...closest.map(name=>termsByName.get(name)).filter(Boolean),...(groups[category]||[]),
+ ...(neighbors[category]||[]).flatMap(c=>groups[c]||[])]
+ .filter(t=>t!==term&&norm(t[0])!==norm(term[0]));
+ const priority=new Set(closest);
  const score=t=>{
    const n1=norm(term[0]),n2=norm(t[0]);
    const first=n1.slice(0,3)===n2.slice(0,3)?3:0;
    const words=norm(term[2]+' '+term[3]+' '+term[4]).split(' ');
    const similarly=words.filter(w=>w.length>=6&&norm(t[2]+' '+t[3]+' '+t[4]).includes(w)).length;
-   return (t[1]===term[1]?50:0)+first+Math.min(similarly,4);
+   return (priority.has(t[0])?100:0)+(t[1]===term[1]?50:0)+first+Math.min(similarly,4);
  };
  // prefer adjacent concepts without repeating synonyms or using any candidate
  // that's just another label for the correct term.
@@ -78,7 +103,7 @@ for(let i=0;i<terms.length;i++){
     '130-2':'An androgen synthesized by testicular Leydig cells in response to LH supports male secondary characteristics. Which hormone is this?',
     '133-2':'A recognizable clinical pattern of pupil findings, respiratory rate and consciousness suggests a category of poisoning. What is this diagnostic pattern called?',
     '138-1':'Which infection is caused by a slow-growing acid-fast mycobacterium associated with chronic cough, weight loss and airborne spread?',
-    '141-1':'Which primary infection from varicella-zoster virus produces successive crops of pruritic vesicles, commonly in childhood?',
+    '141-1':'Which primary chickenpox infection produces successive crops of itchy vesicles, often in childhood?',
     '142-2':'A posterior-pituitary-released peptide hormone acts at renal collecting ducts to conserve free water; it is also known as ADH. Which alternative name applies?'
   };
   if(override[number+'-'+(variation+1)])prompts[variation]=override[number+'-'+(variation+1)];
