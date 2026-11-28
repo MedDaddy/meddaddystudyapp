@@ -1,5 +1,5 @@
-/* Med Daddy v9.11.44 — Instructor Final Review (uploaded 'PCT 2 Final Reveiw.docx').
-   Independent tile inside A&P II navigation *as requested*, accurately labelled PCT II.
+/* Med Daddy v9.11.45 — Instructor Final Review (uploaded 'PCT 2 Final Reveiw.docx').
+   Independent tile inside PCT II navigation, with the correct PCT II classification.
    Core 50: exactly one newly authored instructor-standard question per study point 1–50.
    Extended practice reuses existing source-linked PCT II question registry; never
    marks random supplemental questions as exact instructor review item matches.
@@ -10,11 +10,11 @@
 if(window.MD_PCT2_INSTRUCTOR_REVIEW_91144)return;
 const core=window.MD_PCT2_FINAL_REVIEW_1144||[];
 const registry=window.MD_SAFE_QUESTIONS;
-const parent=document.getElementById('ap2UrinaryPage');
-const anchor=document.getElementById('ap2UnitThree');
+const parent=document.getElementById('pct2InfectiousPage');
+const anchor=document.getElementById('pct2UnitSix');
 const errors=[];
 if(!(registry instanceof Map))errors.push('Existing question registry missing');
-if(!parent||!anchor)errors.push('A&P II navigation unavailable');
+if(!parent||!anchor)errors.push('PCT II navigation unavailable');
 if(typeof start!=='function'||typeof show!=='function'||typeof shuffle!=='function')errors.push('Original Med Daddy quiz engine missing');
 if(core.length!==50)errors.push('Required instructor review source bank is incomplete');
 const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
@@ -97,7 +97,7 @@ function reinforce(n,exclude){
 const page=document.createElement('section');page.id='pct2InstructorFinalReviewPage';page.style.display='none';
 page.innerHTML=
  '<section class="md-pct2-inst-panel"><header class="md-pct2-inst-head"><div><small>INSTRUCTOR REVIEW · PATIENT CARE &amp; THEORY II</small><h1>Final Review — 50 Study Questions</h1>'+
- '<p>Built around the exact 50 numbered prompts in your uploaded Final Review Sheet. Shown independently under the A&amp;P II menu as requested, while retaining its correct PCT II designation.</p></div>'+
+ '<p>Built around the exact 50 numbered prompts in your uploaded Final Review Sheet. Located independently in the PCT II study menu, alongside the existing comprehensive final review.</p></div>'+
  '<button type="button" id="md-pct2-inst-home">Study Home</button></header>'+
  '<div class="md-pct2-inst-tiles">'+
  '<button type="button" data-inst-mode="core"><span>📝</span><strong>Instructor Review 50</strong><small>All 50 numbered study points, one individually written question per point</small></button>'+
@@ -117,9 +117,10 @@ const card=document.createElement('div');card.id='md-pct2-inst-card';card.innerH
 anchor.after(card);
 function hide(){parent.classList.remove('md-pct2-inst-visible');page.style.display='none';show('studyHub');}
 function open(){
- parent.classList.remove('md-endo-unit-visible','md-lymph-unit-visible','md-repro-unit-visible');
- for(const id of ['ap2EndocrinePage','ap2LymphPage','ap2ReproductivePage']){const other=document.getElementById(id);if(other)other.style.display='none';}
- show('ap2UrinaryPage');parent.classList.add('md-pct2-inst-visible');page.style.display='block';
+ parent.classList.remove('md-srd-visible','md-pct-final-visible');
+ const otherFinal=document.getElementById('pct2FinalExamPage');if(otherFinal)otherFinal.style.display='none';
+ const srdPage=document.getElementById('pct2SrdPage');if(srdPage)srdPage.style.display='none';
+ show('pct2InfectiousPage');parent.classList.add('md-pct2-inst-visible');page.style.display='block';
  refresh();page.scrollIntoView?.({block:'start'});
 }
 card.querySelector('#md-pct2-inst-open').onclick=open;
@@ -172,7 +173,7 @@ for(const btn of page.querySelectorAll('[data-inst-mode]'))btn.onclick=()=>{
 };
 const css=document.createElement('style');css.id='md-pct2-inst-style';
 css.textContent=
-'#ap2UrinaryPage.md-pct2-inst-visible > :not(#pct2InstructorFinalReviewPage){display:none!important}'+
+'#pct2InfectiousPage.md-pct2-inst-visible > :not(#pct2InstructorFinalReviewPage){display:none!important}'+
 '#md-pct2-inst-card{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:15px 0;padding:18px;border:1px solid #3e7898;background:#10263c;color:#eff8ff;border-radius:13px}'+
 '#md-pct2-inst-card strong{display:block;font-size:1.1rem}#md-pct2-inst-card small{display:block;opacity:.86;margin-top:7px}#md-pct2-inst-card button{min-height:44px;font-weight:700;padding:10px 16px}'+
 '#pct2InstructorFinalReviewPage{padding:14px 8px;color:#ecf7ff}#pct2InstructorFinalReviewPage .md-pct2-inst-panel{max-width:1100px;margin:0 auto;background:#10263c;border:1px solid #477d95;border-radius:16px;padding:24px}'+
@@ -191,5 +192,5 @@ css.textContent=
 '@media(max-width:700px){#pct2InstructorFinalReviewPage .md-pct2-inst-tiles{grid-template-columns:1fr}#pct2InstructorFinalReviewPage .md-pct2-inst-panel{padding:15px}}';
 document.head.appendChild(css);
 refresh();
-window.MD_PCT2_INSTRUCTOR_REVIEW_91144={ready:true,version:'9.11.44',placement:'A&P II navigation; correctly classified PCT II instructor review',coreCount:core.length,reviewCoverage:covered.size,answerKeys:keys,ecgRhythmImages:rhythms.length,sourceSupplementCount:supplementary.length,open,build:make,errors:[]};
+window.MD_PCT2_INSTRUCTOR_REVIEW_91144={ready:true,version:'9.11.45',placement:'PCT II navigation; independent PCT II instructor review',coreCount:core.length,reviewCoverage:covered.size,answerKeys:keys,ecgRhythmImages:rhythms.length,sourceSupplementCount:supplementary.length,open,build:make,errors:[]};
 })();
